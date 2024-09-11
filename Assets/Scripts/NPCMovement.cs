@@ -9,7 +9,6 @@ public class NPCMovement : MonoBehaviour
     private int iterator;
     public GameObject currentNode;
     private float moveSpeed;
-    private float progress;
     public bool Patrolling;
     // Start is called before the first frame update
     void Start()
@@ -18,23 +17,16 @@ public class NPCMovement : MonoBehaviour
         Patrolling = true;
         iterator = 0;
         currentNode = patrolPath[iterator];
-        //StartCoroutine("Patrol");
     }
 
     // Update is called once per frame
     void Update()
     {
-        progress = moveSpeed * Time.deltaTime;
-    }
-
-    IEnumerator Patrol()
-    {
-        while (Patrolling) 
+        if (Patrolling)
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, currentNode.transform.position, progress);
             if (Vector3.Distance(this.transform.position, currentNode.transform.position) < 0.001f)
             {
-                if (iterator == patrolPath.Count)
+                if (iterator == patrolPath.Count - 1)
                 {
                     iterator = 0;
                     currentNode = patrolPath[iterator];
@@ -45,7 +37,10 @@ public class NPCMovement : MonoBehaviour
                     currentNode = patrolPath[iterator];
                 }
             }
+            else
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, currentNode.transform.position, moveSpeed * Time.deltaTime);
+            }
         }
-        return null;
     }
 }
