@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/IsaacTestScene.unity
+    guid: aac9d21fc7c84e74898368cdfc03ca34
+  - enabled: 1
+    path: Assets/Scenes/BattleScenes/BattleScene.unity
+    guid: 3d1843c46a8863544b02c78e6c9c2d9e
+  - enabled: 1
+    path: Assets/Scenes/BattleScenes/Attack.unity
+    guid: 16ccb5f036fcfe544a6d15a684cc63b8
+  - enabled: 1
+    path: Assets/Scenes/BattleScenes/Magic.unity
+    guid: 5b2a323a4342b1a4e9a3071a473ae0b5
+  - enabled: 1
+    path: Assets/Scenes/BattleScenes/BattleInventory.unity
+    guid: cdc210f850ca3974fad70af88d9fb420
   m_configObjects: {}
