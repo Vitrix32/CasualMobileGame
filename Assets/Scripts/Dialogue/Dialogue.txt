@@ -1,0 +1,26 @@
+{
+  "npc_characters": [
+    {
+      "name": "NPC_1",
+      "dialogue": [
+        {
+          "option": "Hello, traveler. What brings you to these lands? This makes 62 characters 76 79 and now this should be on the next line"
+        },
+        {
+          "option": "It's dangerous to go alone, take this."
+        }
+      ]
+    },
+    {
+      "name": "NPC_2",
+      "dialogue": [
+        {
+          "option": "Welcome to the village. Stay as long as you like."
+        },
+        {
+          "option": "We need your help to defeat the monsters in the forest."
+        }
+      ]
+    }
+  ]
+}
