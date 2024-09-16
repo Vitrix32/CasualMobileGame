@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class AttackManager : MonoBehaviour
 {
+    public GameObject attackPanel;
+    public GameObject mainMenuPanel;
+
     public Enemy enemy;  // Reference to the Enemy
     //public Text battleLog; // A Text UI element to display battle events
 
@@ -11,6 +14,9 @@ public class AttackManager : MonoBehaviour
     {
         int damage = 30; // Set damage amount
         enemy.TakeDamage(damage); // Apply damage to the enemy
+        attackPanel.SetActive(false);      // Show attack panel
+        mainMenuPanel.SetActive(true);      // Show attack panel
+
         //UpdateBattleLog("Player used Sword Slash! It dealt " + damage + " damage.");
     }
 
@@ -18,6 +24,8 @@ public class AttackManager : MonoBehaviour
     {
         int damage = 40; // Set damage amount
         enemy.TakeDamage(damage); // Apply damage to the enemy
+        attackPanel.SetActive(false);      // Show attack panel
+        mainMenuPanel.SetActive(true);      // Show attack panel
         //UpdateBattleLog("Player cast Fireball! It dealt " + damage + " damage.");
     }
 

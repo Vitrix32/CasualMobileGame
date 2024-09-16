@@ -1,27 +1,36 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
 
-    public Text healthText; // UI Text to display health
-    public Slider healthSlider; // Optional health slider UI
+    public Text healthText;
+    public Slider healthSlider;
 
-    private bool playerTurn = true; // Track whose turn it is
+    public Button[] attackButtons;
+
+    private bool playerTurn = true;
+
+    public Enemy enemy; // Reference to the enemy, which we can assign in the Inspector
+
+    public GameObject attackPanel;
+    public GameObject mainMenuPanel;
 
     void Start()
     {
-        currentHealth = maxHealth; // Set initial health
-        UpdateHealthUI(); // Update UI at the start
+        currentHealth = maxHealth;
+        UpdateHealthUI();
+        SetAttackButtonsInteractable(playerTurn);
     }
 
-    // Method to take damage
+    // Method for taking damage from the enemy
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Ensure health doesn't go below 0
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
 
         if (currentHealth <= 0)
@@ -30,7 +39,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Update health display on the UI
     void UpdateHealthUI()
     {
         if (healthText != null)
@@ -40,33 +48,45 @@ public class Player : MonoBehaviour
 
         if (healthSlider != null)
         {
-            healthSlider.value = (float)currentHealth / maxHealth; // Update health bar
+            healthSlider.value = (float)currentHealth / maxHealth;
         }
     }
 
-    // Handle player death
     void Die()
     {
         Debug.Log("Player died!");
-        // Implement death logic, such as restarting the game or showing a Game Over screen
     }
 
-    // Player's attack turn, only allowed if it's their turn
-    public void PlayerAttack(Enemy enemy, int damage)
+    // General PlayerAttack method without parameters, for UI buttons
+    public void PlayerAttack(int damage)
     {
-        if (playerTurn)
+        if (playerTurn && enemy != null)
         {
-            enemy.TakeDamage(damage);
-            playerTurn = false; // End player's turn
-            StartCoroutine(EnemyAttackTurn(enemy)); // Start enemy turn after player attacks
+            enemy.TakeDamage(damage); // Apply damage to the enemy
+            playerTurn = false;
+            SetAttackButtonsInteractable(false);
+
+            StartCoroutine(EnemyAttackTurn());
+
+            attackPanel.SetActive(false);      // Show attack panel
+            mainMenuPanel.SetActive(true);      // Show attack panel
+
         }
     }
 
-    // Coroutine to manage the enemy's attack after player's turn
-    IEnumerator EnemyAttackTurn(Enemy enemy)
+    IEnumerator EnemyAttackTurn()
     {
-        yield return new WaitForSeconds(1); // Delay for enemy attack, simulating the turn system
+        yield return new WaitForSeconds(1);
         enemy.EnemyAttack(this);
-        playerTurn = true; // Player can attack after enemy
+        playerTurn = true;
+        SetAttackButtonsInteractable(true);
+    }
+
+    void SetAttackButtonsInteractable(bool interactable)
+    {
+        foreach (Button button in attackButtons)
+        {
+            button.interactable = interactable;
+        }
     }
 }
