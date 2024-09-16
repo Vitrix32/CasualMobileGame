@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class DialogueManager : MonoBehaviour
     public TextAsset dialogue;
     private NPCCollection npcData;
     public TMPro.TextMeshProUGUI dialogueText;
+    public Button endButton;
+    public string endingDialogue;
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +21,22 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator displayText(string s)
     {
         dialogueText.text = "";
+        int j = 0;
         for (int i = 0; i < s.Length; i++)
         {
-            yield return new WaitForSeconds(.05f);
+            j++;
             dialogueText.text += s[i];
-            if (i%80 == 79)
+            if (j >= 80 && s[i] == ' ')
             {
                 dialogueText.text += '\n';
+                j = 0;
+            }
+            if (s[i] == '.' || s[i] == '?' || s[i] == '!')
+            {
+                yield return new WaitForSeconds(.4f);
+            } else
+            {
+                yield return new WaitForSeconds(.05f);
             }
         }
         yield return null;
@@ -38,6 +50,10 @@ public class DialogueManager : MonoBehaviour
         if (npc != null && optionIndex >= 0 && optionIndex < npc.dialogue.Length)
         {
             StartCoroutine(displayText(npc.dialogue[optionIndex].option));
+            if (npcName + optionIndex == endingDialogue)
+            {
+                endButton.gameObject.SetActive(true);
+            }
         }
         StartCoroutine("Dialogue not found");
     }
