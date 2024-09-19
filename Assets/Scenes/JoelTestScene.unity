@@ -3124,7 +3124,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1232303286}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1593877629}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: PlayerSkipSpell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1232303286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4443,8 +4455,14 @@ MonoBehaviour:
   - {fileID: 1073064790}
   - {fileID: 600822650}
   - {fileID: 1289684251}
+  spellButtons:
+  - {fileID: 1232303285}
+  - {fileID: 1952811053}
+  - {fileID: 2092465042}
+  - {fileID: 1031101910}
   enemy: {fileID: 2024950893}
   attackPanel: {fileID: 1726642942}
+  spellPanel: {fileID: 1696959848}
   mainMenuPanel: {fileID: 2037871565}
 --- !u!224 &1593877630
 RectTransform:

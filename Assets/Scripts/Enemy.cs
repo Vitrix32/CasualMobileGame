@@ -97,6 +97,11 @@ public class Enemy : MonoBehaviour
         player.TakeDamage(attackDamage); // Enemy attacks the player
     }
 
+    public void EnemySkip(Player player)
+    {
+        Debug.Log("Enemy skipped!");
+    }
+
     // Method to handle enemy death
     void Die()
     {
