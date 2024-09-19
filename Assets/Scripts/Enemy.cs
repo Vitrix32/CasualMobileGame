@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,11 +11,32 @@ public class Enemy : MonoBehaviour
 
     public int attackDamage = 20; // Damage enemy deals to the player
 
+    // Variables for the shake effect
+    public float shakeDuration = 0.5f;  // How long the shake lasts
+    public float shakeMagnitude = 0.9f; // How much the object shakes (for UI units)
+    private Vector2 originalPosition;   // To store the original position of the UI element
+
+    private RectTransform rectTransform; // Reference to the RectTransform for UI element
+
     void Start()
     {
         currentHealth = maxHealth;
-        UpdateHealthBar(); // Initialize the health bar to show full health
+        UpdateHealthBar();
+
+        // Get the RectTransform from the child object
+        rectTransform = GetComponentInChildren<RectTransform>();
+
+        // Check if rectTransform is found
+        if (rectTransform == null)
+        {
+            Debug.LogError("No RectTransform found on child Image!");
+        }
+        else
+        {
+            originalPosition = rectTransform.anchoredPosition;
+        }
     }
+
 
     // Method for enemy to take damage
     public void TakeDamage(int damage)
@@ -24,6 +46,8 @@ public class Enemy : MonoBehaviour
         UpdateHealthBar(); // Update the health bar
 
         Debug.Log("Enemy took " + damage + " damage! Health remaining: " + currentHealth);
+
+        StartCoroutine(Shake()); // Start the shake effect when taking damage
 
         if (currentHealth <= 0)
         {
@@ -40,6 +64,32 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // Coroutine to handle the shake effect
+    private IEnumerator Shake()
+    {
+        float elapsed = 0.0f;
+
+        while (elapsed < shakeDuration)
+        {
+            // Generate a random offset for the shake effect
+            float offsetX = Random.Range(-1f, 1f) * shakeMagnitude * 100;
+            float offsetY = Random.Range(-1f, 1f) * shakeMagnitude * 100;
+
+            Debug.Log(offsetX);
+            Debug.Log(offsetY);
+
+            // Apply the offset to the RectTransform's anchored position
+            rectTransform.anchoredPosition = new Vector2(originalPosition.x + offsetX, originalPosition.y + offsetY);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        // Reset the UI element's position after the shake effect is over
+        rectTransform.anchoredPosition = originalPosition;
+    }
+
     // Method to handle enemy's attack
     public void EnemyAttack(Player player)
     {
@@ -47,7 +97,7 @@ public class Enemy : MonoBehaviour
         player.TakeDamage(attackDamage); // Enemy attacks the player
     }
 
-    // Handle enemy death
+    // Method to handle enemy death
     void Die()
     {
         Debug.Log("Enemy died!");
