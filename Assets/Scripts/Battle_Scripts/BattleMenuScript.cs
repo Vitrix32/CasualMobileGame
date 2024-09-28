@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-public class BattleMenu : MonoBehaviour
+public class OtherBattleMenu : MonoBehaviour
 {
     public void Attack()
     {
