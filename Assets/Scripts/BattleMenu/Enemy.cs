@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
     // Method for enemy to take damage
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        currentHealth -= (damage - healthModifier);
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Ensure health doesn't go below 0
         UpdateHealthBar(); // Update the health bar
 
