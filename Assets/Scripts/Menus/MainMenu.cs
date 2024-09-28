@@ -12,6 +12,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void QuitGame()
     {
+        Debug.Log(Application.persistentDataPath);
         Application.Quit();
     }
 }
