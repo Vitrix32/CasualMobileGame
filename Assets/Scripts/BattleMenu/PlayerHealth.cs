@@ -134,6 +134,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Heal(int health)
+    {
+        currentHealth += health;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        SetSpellButtonsInteractable(false);
+        UpdateHealthUI();
+
+        StartCoroutine(EnemyAttackTurn());
+
+        spellPanel.SetActive(false);      // Show attack panel
+        mainMenuPanel.SetActive(true);      // Show attack panel
+    }
+
     public void PlayerSkipSpell()
     {
         if (playerTurn && enemy != null)
@@ -156,6 +169,8 @@ public class Player : MonoBehaviour
         enemy.EnemyAttack(this);
         playerTurn = true;
         SetAttackButtonsInteractable(true);
+        SetSpellButtonsInteractable(true);
+
     }
 
     IEnumerator EnemySkipTurn()

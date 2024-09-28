@@ -10,6 +10,7 @@ public class AttackManager : MonoBehaviour
     //public Text battleLog; // A Text UI element to display battle events
 
     // Example attack methods
+    /*
     public void QuickPunch()
     {
         int damage = 30; // Set damage amount
@@ -26,9 +27,8 @@ public class AttackManager : MonoBehaviour
         enemy.TakeDamage(damage); // Apply damage to the enemy
         attackPanel.SetActive(false);      // Show attack panel
         mainMenuPanel.SetActive(true);      // Show attack panel
-        //UpdateBattleLog("Player cast Fireball! It dealt " + damage + " damage.");
     }
-
+    */
     /*
     // Optional: Update the battle log in the UI
     void UpdateBattleLog(string message)
