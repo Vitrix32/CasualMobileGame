@@ -403,10 +403,9 @@ MonoBehaviour:
   - {fileID: 74205111}
   - {fileID: 342933168}
   - {fileID: 1256108261}
-  activeCoroutine: 0
   idleing: 0
   patrolling: 0
-  wandering: 0
+  activeCoroutine: 0
 --- !u!70 &222762038
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2613,7 +2612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 1415886217}
   moveSpeed: 200
-  joystickSize: {x: 90, y: 90}
+  joystickSize: {x: 100, y: 100}
 --- !u!114 &1813877715
 MonoBehaviour:
   m_ObjectHideFlags: 0

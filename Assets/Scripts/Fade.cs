@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Name: Fade
+ * Author: Isaac Drury
+ * Date: 9/22/24
+ * Description:
+ * This script was created for the purpose of allowing sprites and images to 
+ * change their alpha value (transparency) over time (fade in/ fade out).
+ * It contains a function, startFade, that can be called by other scripts to
+ * pass on the parameters for and start the coroutines responsible for the 
+ * change in transparency. There are two coroutines to support functionality
+ * for sprites and images.
+ */
 public class Fade : MonoBehaviour
 {
     [SerializeField]
@@ -38,7 +50,6 @@ public class Fade : MonoBehaviour
     IEnumerator fadeImage(float endVal, float duration)
     {
         float counter = 0;
-        //Get current color
         Color imageColor = this.GetComponent<Image>().color;
         while (counter < duration)
         {
