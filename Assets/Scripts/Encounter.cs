@@ -13,7 +13,7 @@ public class Encounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("WorldPlayer");
         encountered = false;
         //Add code to randomize later
     }

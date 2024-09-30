@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BattleMenu : MonoBehaviour
@@ -34,5 +35,7 @@ public class BattleMenu : MonoBehaviour
     public void Flee()
     {
         Debug.Log("Flee from battle!");   // Just a log for now, you can replace this with actual flee logic
+        GameObject.Find("WorldPlayer").GetComponent<PlayerStatus>().exitingCombat();
+        SceneManager.LoadScene("IsaacTestScene");
     }
 }

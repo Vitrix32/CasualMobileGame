@@ -31,7 +31,7 @@ public class PlayerStatus : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         inCombat = false;
-        this.GetComponent<PlayerMovement>().enabled = false;
+        this.GetComponent<PlayerMovement>().enabled = true;
         rb.velocity = Vector2.zero;
         this.transform.position = worldPosition;
     }
