@@ -28,6 +28,11 @@ public class JSONWriteSystem : MonoBehaviour
             List<EnemyData> list = new List<EnemyData>();
             for (int i = 0; i < enemyList.Enemies.Length; i++)
             {
+                if (enemyList.Enemies[i].Id == data.Id)
+                {
+                    Debug.Log("Cannot input another enemy with the same ID");
+                    return;
+                }
                 list.Add(enemyList.Enemies[i]);
             }
             list.Add(data);

@@ -37,7 +37,7 @@ public class Encounter : MonoBehaviour
             this.GetComponent<SpriteRenderer>().enabled = false;
             SceneManagement.DontDestroyOnLoad(player);
             SceneManagement.DontDestroyOnLoad(this.gameObject);
-            SceneManager.LoadScene("BattleScene");
+            SceneManager.LoadScene("JoelTestScene");
         }
     }
 }
