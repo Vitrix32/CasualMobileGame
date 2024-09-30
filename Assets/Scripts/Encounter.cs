@@ -32,11 +32,9 @@ public class Encounter : MonoBehaviour
         if (!encountered && collision == player.GetComponent<Collider2D>())
         {
             encountered = true;
-            player.GetComponent<PlayerMovement>().enabled = false;
-            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             this.GetComponent<SpriteRenderer>().enabled = false;
-            SceneManagement.DontDestroyOnLoad(player);
-            SceneManagement.DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);
+            player.GetComponent<PlayerStatus>().enteringCombat();
             SceneManager.LoadScene("JoelTestScene");
         }
     }
