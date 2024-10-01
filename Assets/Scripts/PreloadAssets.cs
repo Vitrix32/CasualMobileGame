@@ -9,7 +9,8 @@ public class PreloadAssets : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(GameObject.Find("WorldPlayer"));
-        DontDestroyOnLoad(GameObject.Find("RandomEncounter"));
+        DontDestroyOnLoad(GameObject.Find("RandomEncounter")); //Remove later
+        DontDestroyOnLoad(GameObject.Find("Capsule")); //Remove later
         SceneManager.LoadScene("IsaacTestScene");
     }
 }
