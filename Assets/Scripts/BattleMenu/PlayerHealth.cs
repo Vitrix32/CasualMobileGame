@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
         UpdateHealthUI();
         SetAttackButtonsInteractable(playerTurn);
 
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemy = enemies[0].GetComponent<Enemy>();
+
         // Get the RectTransform from the child object
         rectTransform = GetComponentInChildren<RectTransform>();
 
