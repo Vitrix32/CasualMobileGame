@@ -11,6 +11,10 @@ public class Enemy : MonoBehaviour
 
     public int attackDamage = 20; // Damage enemy deals to the player
 
+    // DOT-related variables
+    private int dotDamage = 0;
+    private int dotTurnsRemaining = 0;
+
     // Variables for the shake effect
     public float shakeDuration = 0.5f;  // How long the shake lasts
     public float shakeMagnitude = 0.9f; // How much the object shakes (for UI units)
@@ -75,9 +79,6 @@ public class Enemy : MonoBehaviour
             float offsetX = Random.Range(-1f, 1f) * shakeMagnitude * 100;
             float offsetY = Random.Range(-1f, 1f) * shakeMagnitude * 100;
 
-            Debug.Log(offsetX);
-            Debug.Log(offsetY);
-
             // Apply the offset to the RectTransform's anchored position
             rectTransform.anchoredPosition = new Vector2(originalPosition.x + offsetX, originalPosition.y + offsetY);
 
@@ -108,4 +109,23 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy died!");
         Destroy(gameObject); // Destroy enemy when health is 0
     }
+
+    // Call this method when the DOT attack hits the enemy
+    public void ApplyDOT(int damagePerTurn, int numberOfTurns)
+    {
+        dotDamage = damagePerTurn;
+        dotTurnsRemaining = numberOfTurns;
+
+    }
+
+    public void ApplyTurnEffects()
+    {
+        if (dotTurnsRemaining > 0)
+        {
+            currentHealth -= dotDamage;
+            dotTurnsRemaining--;
+            UpdateHealthBar();
+            Debug.Log("Enemy took " + dotDamage + " damage! Health remaining: " + currentHealth);
+        }
+    }  
 }

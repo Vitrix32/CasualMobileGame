@@ -82,9 +82,6 @@ public class Player : MonoBehaviour
             float offsetX = Random.Range(-1f, 1f) * shakeMagnitude * 10;
             float offsetY = Random.Range(-1f, 1f) * shakeMagnitude * 10;
 
-            Debug.Log(offsetX);
-            Debug.Log(offsetY);
-
             // Apply the offset to the RectTransform's anchored position
             rectTransform.anchoredPosition = new Vector2(originalPosition.x + offsetX, originalPosition.y + offsetY);
 
@@ -162,16 +159,43 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AttackWithDOT()
+    {
+        int dotDamage = 5; // The amount of damage to apply per turn
+        int duration = 3;  // Number of turns DOT will last
+
+        /*if (enemy != null)
+        {
+            enemy.ApplyDOT(dotDamage, duration);
+        }*/
+        if (playerTurn && enemy != null)
+        {
+            playerTurn = false;
+            SetSpellButtonsInteractable(false);
+            enemy.ApplyDOT(dotDamage, duration);
+
+            StartCoroutine(EnemyAttackTurn());
+
+            spellPanel.SetActive(false);      // Show attack panel
+            mainMenuPanel.SetActive(true);      // Show attack panel
+
+        }
+    }
+
 
     IEnumerator EnemyAttackTurn()
     {
         yield return new WaitForSeconds(1);
-        enemy.EnemyAttack(this);
+
+        enemy.ApplyTurnEffects();  // Apply any DOT effects before the enemy attacks
+        enemy.EnemyAttack(this);   // Enemy attacks player
+
+        // Allow the player to attack again after the enemy turn ends
         playerTurn = true;
         SetAttackButtonsInteractable(true);
         SetSpellButtonsInteractable(true);
-
     }
+
 
     IEnumerator EnemySkipTurn()
     {
@@ -196,4 +220,11 @@ public class Player : MonoBehaviour
             button.interactable = interactable;
         }
     }
+
+     /*public void ApplyDOT(int damagePerTurn, int duration)
+    {
+        dotDamage = damagePerTurn;
+        dotTurnsRemaining = duration;
+        Debug.Log("Enemy inflicted with DOT: " + damagePerTurn + " damage for " + duration + " turns.");
+    }*/
 }
