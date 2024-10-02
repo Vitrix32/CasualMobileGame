@@ -14,9 +14,12 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         string[] enemyTypes = { "Goblin", "Lion", "Wolf" };
         int randomIndex = Random.Range(0, enemyTypes.Length);
         enemyPrefabName = enemyTypes[randomIndex];
+        */
+        enemyPrefabName = "GenericEnemyTemplate";
 
         // Call the Spawn method repeatedly, you can also use your logic for conditional spawns
         //InvokeRepeating("SpawnEnemy", 2f, spawnInterval);

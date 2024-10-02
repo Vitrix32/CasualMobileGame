@@ -4,10 +4,18 @@ using UnityEngine.UI;
 
 public class BattleMenu : MonoBehaviour
 {
+    private GameObject UniversalAudio;
+    private GameObject FadePanel;
     // References to the panels and main menu
     public GameObject attackPanel;
     public GameObject spellPanel;
     public GameObject mainMenuPanel;
+
+    private void Start()
+    {
+        UniversalAudio = GameObject.Find("UniversalAudio");
+        FadePanel = GameObject.Find("FadePanel");
+    }
 
     // Method to show the Attack options
     public void ShowAttacks()
@@ -35,7 +43,16 @@ public class BattleMenu : MonoBehaviour
     public void Flee()
     {
         Debug.Log("Flee from battle!");   // Just a log for now, you can replace this with actual flee logic
-        GameObject.Find("WorldPlayer").GetComponent<PlayerStatus>().exitingCombat();
+        FadePanel.GetComponent<SceneTransition>().End();
+        //UniversalAudio.GetComponent<UniversalAudioHandling>().ExitingCombat();
+        Invoke("ExitScene", 3.1f);
+    }
+
+    private void ExitScene()
+    {
+        GameObject.Find("WorldPlayer").GetComponent<PlayerStatus>().EnableControl();
+        GameObject.Find("WorldPlayer").GetComponent<PlayerStatus>().ExitingCombat();
+        UniversalAudio.GetComponent<UniversalAudioHandling>().ExitingCombat();
         SceneManager.LoadScene("IsaacTestScene");
     }
 }

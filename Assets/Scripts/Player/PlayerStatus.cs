@@ -17,34 +17,38 @@ public class PlayerStatus : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
     }
 
-    public void enteringCombat()
+    public void EnteringCombat()
     {
-        DontDestroyOnLoad(this.gameObject);
         inCombat = true;
-        this.GetComponent<PlayerMovement>().enabled = false;
-        rb.velocity = Vector2.zero;
         worldPosition = this.transform.position;
         this.transform.position = combatPosition;
     }
 
-    public void exitingCombat() 
+    public void ExitingCombat() 
     {
-        DontDestroyOnLoad(this.gameObject);
         inCombat = false;
-        this.GetComponent<PlayerMovement>().enabled = true;
-        rb.velocity = Vector2.zero;
         this.transform.position = worldPosition;
     }
 
-    public void enteringNewArea()
+    public void EnteringNewArea()
     {
-        DontDestroyOnLoad(this.gameObject);
         worldPosition = this.transform.position;
     }
 
-    public void exitingNewArea()
+    public void ExitingNewArea()
     {
-        DontDestroyOnLoad(this.gameObject);
         this.transform.position = worldPosition;
+    }
+
+    public void EnableControl()
+    {
+        this.GetComponent<PlayerMovement>().enabled = true;
+        rb.velocity = Vector2.zero;
+    }
+
+    public void DisableControl() 
+    {
+        this.GetComponent<PlayerMovement>().enabled = false;
+        rb.velocity = Vector2.zero;
     }
 }
