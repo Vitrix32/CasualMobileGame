@@ -11,8 +11,11 @@ public class BattleMenu : MonoBehaviour
     public GameObject spellPanel;
     public GameObject mainMenuPanel;
 
+    private int enemiesAmount;
+
     private void Start()
     {
+        enemiesAmount = 1;
         UniversalAudio = GameObject.Find("UniversalAudio");
         FadePanel = GameObject.Find("FadePanel");
     }
@@ -42,7 +45,20 @@ public class BattleMenu : MonoBehaviour
     // Method to handle Fleeing from battle
     public void Flee()
     {
-        Debug.Log("Flee from battle!");   // Just a log for now, you can replace this with actual flee logic
+        AllEnemiesDead();
+    }
+
+    public void EnemyNeutralized()
+    {
+        enemiesAmount -= 1;
+        if (enemiesAmount == 0)
+        {
+            AllEnemiesDead();
+        }
+    }
+
+    public void AllEnemiesDead()
+    {
         FadePanel.GetComponent<SceneTransition>().End();
         //UniversalAudio.GetComponent<UniversalAudioHandling>().ExitingCombat();
         Invoke("ExitScene", 3.1f);

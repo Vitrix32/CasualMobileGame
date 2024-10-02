@@ -4,6 +4,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
+    private GameObject MenuManager;
     public int maxHealth = 100; // Maximum health for the enemy
     public int currentHealth;
 
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        MenuManager = GameObject.Find("MenuManager");
         currentHealth = maxHealth;
         UpdateHealthBar();
 
@@ -107,6 +109,7 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy died!");
+        MenuManager.GetComponent<BattleMenu>().EnemyNeutralized();
         Destroy(gameObject); // Destroy enemy when health is 0
     }
 
