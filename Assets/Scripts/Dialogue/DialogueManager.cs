@@ -55,7 +55,7 @@ public class DialogueManager : MonoBehaviour
             StartCoroutine(displayText(npc.dialogue[optionIndex].option));
             if (npcName + optionIndex == endingDialogue)
             {
-                endButton.gameObject.SetActive(true);
+                //endButton.gameObject.SetActive(true);
             }
         }
     }

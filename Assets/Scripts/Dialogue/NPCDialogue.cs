@@ -15,7 +15,7 @@ public class NPCDialogue : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.name == "WorldPlayer")
         {
             talkImage.SetActive(true);
             talkImage.transform.parent = this.transform;

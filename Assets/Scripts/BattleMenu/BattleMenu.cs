@@ -69,6 +69,6 @@ public class BattleMenu : MonoBehaviour
         GameObject.Find("WorldPlayer").GetComponent<PlayerStatus>().EnableControl();
         GameObject.Find("WorldPlayer").GetComponent<PlayerStatus>().ExitingCombat();
         UniversalAudio.GetComponent<UniversalAudioHandling>().ExitingCombat();
-        SceneManager.LoadScene("IsaacTestScene");
+        SceneManager.LoadScene("GameplayScene");
     }
 }

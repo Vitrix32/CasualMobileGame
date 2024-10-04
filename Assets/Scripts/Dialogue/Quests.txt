@@ -7,10 +7,10 @@
 			"questInfo": "This is the first quest!"
 		},
 		{
-			"name": "OtherQuest",
-			"start": "NPC_1 100",
-			"end": "NPC_1 200",
-			"questInfo": "This quest will never trigger"
+			"name": "JeffQuest",
+			"start": "Jeff 0",
+			"end": "Jeff 1",
+			"questInfo": "This is Jeff quest"
 		}
 	]
 }
