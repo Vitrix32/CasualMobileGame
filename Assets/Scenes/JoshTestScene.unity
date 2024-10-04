@@ -840,7 +840,8 @@ Transform:
   m_LocalPosition: {x: 31.6, y: 17.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 158572249}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &114965350
@@ -1316,7 +1317,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 23.996576
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1345,7 +1346,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 93346936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &239929852
 GameObject:
@@ -1762,7 +1763,7 @@ Transform:
   m_GameObject: {fileID: 329215371}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.30000043, y: 10.5, z: 0}
+  m_LocalPosition: {x: -24.2, y: 8.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7487,7 +7488,7 @@ Transform:
   m_GameObject: {fileID: 1357683790}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.8, y: -14.4, z: 0}
+  m_LocalPosition: {x: 27.6, y: 13.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7507,6 +7508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currDialogue: 0
   dialoguemanager: {fileID: 1697901950}
+  questmanager: {fileID: 0}
   talkImage: {fileID: 815091262}
   increments: []
   questStarts: []
@@ -9416,6 +9418,7 @@ GameObject:
   - component: {fileID: 1697901952}
   - component: {fileID: 1697901951}
   - component: {fileID: 1697901953}
+  - component: {fileID: 1697901954}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -9484,6 +9487,21 @@ MonoBehaviour:
   potionPanel: {fileID: 155748085}
   armorPanel: {fileID: 239929852}
   openInventoryButton: {fileID: 924923543}
+--- !u!114 &1697901954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697901950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f68196e08421043907df3460285752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests: {fileID: 4900000, guid: 57cf5298f51504c49bd2dd349242e1ed, type: 3}
+  questList:
+    quests: []
 --- !u!1 &1716480478
 GameObject:
   m_ObjectHideFlags: 0
@@ -9739,7 +9757,7 @@ GameObject:
   - component: {fileID: 1735316142}
   - component: {fileID: 1735316141}
   m_Layer: 0
-  m_Name: NPC_1 (1)
+  m_Name: NPC_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9773,8 +9791,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currDialogue: 0
   dialoguemanager: {fileID: 1697901950}
+  questmanager: {fileID: 0}
   talkImage: {fileID: 815091262}
-  increments: []
+  increments:
+  - {fileID: 1357683790}
   questStarts: []
   questEnds: []
 --- !u!61 &1735316143
@@ -9883,7 +9903,7 @@ Transform:
   m_GameObject: {fileID: 1735316140}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.3, y: -15.3, z: 0}
+  m_LocalPosition: {x: 34.6, y: 13.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11075,4 +11095,3 @@ SceneRoots:
   - {fileID: 815091264}
   - {fileID: 329215373}
   - {fileID: 114965353}
-  - {fileID: 158572249}
