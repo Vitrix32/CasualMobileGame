@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
 
+    
+
     public TextAsset dialogue;
     private NPCCollection npcData;
     public TMPro.TextMeshProUGUI dialogueText;
@@ -49,13 +51,13 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         if (npc != null && optionIndex >= 0 && optionIndex < npc.dialogue.Length)
         {
+            this.GetComponent<QuestManager>().TryQuest(npcName + " " + optionIndex);
             StartCoroutine(displayText(npc.dialogue[optionIndex].option));
             if (npcName + optionIndex == endingDialogue)
             {
                 endButton.gameObject.SetActive(true);
             }
         }
-        StartCoroutine("Dialogue not found");
     }
 
     

@@ -1,0 +1,16 @@
+{
+	"quests": [
+		{
+			"name": "testQuest",
+			"start": "NPC_1 0",
+			"end": "NPC_1 1",
+			"questInfo": "This is the first quest!"
+		},
+		{
+			"name": "OtherQuest",
+			"start": "NPC_1 100",
+			"end": "NPC_1 200",
+			"questInfo": "This quest will never trigger"
+		}
+	]
+}

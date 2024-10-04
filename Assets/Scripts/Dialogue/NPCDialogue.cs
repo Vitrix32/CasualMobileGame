@@ -6,9 +6,12 @@ public class NPCDialogue : MonoBehaviour
 {
     public int currDialogue;
     public GameObject dialoguemanager;
+    public GameObject questmanager;
     public GameObject talkImage;
     private bool canTalk = false;
     public GameObject[] increments;
+    public GameObject[] questStarts;
+    public GameObject[] questEnds;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

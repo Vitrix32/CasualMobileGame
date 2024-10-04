@@ -4,10 +4,10 @@
       "name": "NPC_1",
       "dialogue": [
         {
-          "option": "Hello, traveler. What brings you to these lands? This makes 62 characters 76 79 and now this should be on the next line"
+          "option": "Hello, traveler. Can you ask my friend over there what time it is? I'm afraid I have lost my watch. If you do this and tell me the time your quest will be complete"
         },
         {
-          "option": "It's dangerous to go alone, take this."
+          "option": "Thanks a bunch! Now I know it is 3:38 PM"
         }
       ]
     },
@@ -15,10 +15,7 @@
       "name": "NPC_2",
       "dialogue": [
         {
-          "option": "Welcome to the village. Stay as long as you like."
-        },
-        {
-          "option": "We need your help to defeat the monsters in the forest."
+          "option": "It is 7:45 AM but tell him something different to throw him off."
         }
       ]
     },
