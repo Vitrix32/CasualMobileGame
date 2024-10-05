@@ -4545,6 +4545,7 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 2037871565}
   shakeDuration: 0.5
   shakeMagnitude: 0.9
+  UniversalAudio: {fileID: 0}
 --- !u!224 &1593877630
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4996,6 +4997,10 @@ PrefabInstance:
     - target: {fileID: 1761883959433178519, guid: 4eda9898566de4a4f9599c65fdd414f1, type: 3}
       propertyPath: m_Name
       value: FadePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761883959433178519, guid: 4eda9898566de4a4f9599c65fdd414f1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5449999713875695315, guid: 4eda9898566de4a4f9599c65fdd414f1, type: 3}
       propertyPath: m_Pivot.x

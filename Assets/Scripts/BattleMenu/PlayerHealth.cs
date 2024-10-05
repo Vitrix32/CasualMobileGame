@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
 
     private RectTransform rectTransform; // Reference to the RectTransform for UI element
 
-    // UniversalAudioHandling audioHandling;
+    public GameObject UniversalAudio;
 
     void Start()
     {
@@ -117,7 +117,8 @@ public class Player : MonoBehaviour
     {
         Debug.Log("You died!");
         Destroy(gameObject); // Destroy enemy when health is 0
-        //audioHandling.Die();
+        UniversalAudio = GameObject.Find("UniversalAudio");
+        UniversalAudio.GetComponent<UniversalAudioHandling>().Die();
         SceneManager.LoadScene("DeathScene");
     }
 
