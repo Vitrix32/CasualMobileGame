@@ -20,7 +20,7 @@ public class Joystick : MonoBehaviour
     private float elapsedTime;
     private float fadeJoystick;
     private float fadeDuration;
-    private bool inUse;
+    public bool inUse;
     private bool faded;
 
     // Start is called before the first frame update
@@ -29,6 +29,12 @@ public class Joystick : MonoBehaviour
         player = GameObject.Find("WorldPlayer");
         knob = GameObject.Find("JoystickKnob");
         background = GameObject.Find("JoystickBackground");
+
+        elapsedTime = 0.0f;
+        fadeJoystick = 1.0f;
+        fadeDuration = 0.5f;
+        inUse = false;
+        faded = false;
     }
 
     // Update is called once per frame
