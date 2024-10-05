@@ -12,7 +12,7 @@ public class PlayerStatus : MonoBehaviour
     void Start()
     {
         inCombat = false;
-        combatPosition = new Vector2(-3.0f, 2.0f); //Change to some different value later
+        combatPosition = new Vector2(0.0f, 0.0f);
         worldPosition = Vector2.zero;
         rb = this.GetComponent<Rigidbody2D>();
     }
@@ -22,12 +22,14 @@ public class PlayerStatus : MonoBehaviour
         inCombat = true;
         worldPosition = this.transform.position;
         this.transform.position = combatPosition;
+        this.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void ExitingCombat() 
     {
         inCombat = false;
         this.transform.position = worldPosition;
+        this.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void EnteringNewArea()

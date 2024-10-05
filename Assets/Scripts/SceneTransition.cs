@@ -24,7 +24,7 @@ public class SceneTransition : MonoBehaviour
     {
         if (end)
         {
-            this.transform.position = new Vector3(this.transform.position.x + 10000, this.transform.position.y + 10000, this.transform.position.z);
+            this.transform.position = new Vector3(GameObject.Find("WorldPlayer").transform.position.x, GameObject.Find("WorldPlayer").transform.position.y, this.transform.position.z);
         }
         else
         {
