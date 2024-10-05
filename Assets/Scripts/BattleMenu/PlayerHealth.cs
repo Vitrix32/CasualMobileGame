@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class Player : MonoBehaviour
     private Vector2 originalPosition;   // To store the original position of the UI element
 
     private RectTransform rectTransform; // Reference to the RectTransform for UI element
+
+    // UniversalAudioHandling audioHandling;
 
     void Start()
     {
@@ -114,7 +117,8 @@ public class Player : MonoBehaviour
     {
         Debug.Log("You died!");
         Destroy(gameObject); // Destroy enemy when health is 0
-
+        //audioHandling.Die();
+        SceneManager.LoadScene("DeathScene");
     }
 
     // General PlayerAttack method without parameters, for UI buttons

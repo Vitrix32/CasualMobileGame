@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JoelTestScene.unity
     guid: 5b3314f1514ba49ebb58ce3adf2e6d80
+  - enabled: 1
+    path: Assets/Scenes/Menu/DeathScene.unity
+    guid: 5d89904ec37887c498e77d915576f296
   m_configObjects: {}

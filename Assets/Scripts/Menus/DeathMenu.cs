@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour
+public class DeathMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public void PlayAgain()
     {
         SceneManager.LoadScene("Preload");
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void QuitGame()
     {
-        Debug.Log(Application.persistentDataPath);
         Application.Quit();
     }
 }

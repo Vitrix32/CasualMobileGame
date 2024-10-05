@@ -37,4 +37,12 @@ public class UniversalAudioHandling : MonoBehaviour
         combatMusic.Stop();
         backgroundMusic.Play();
     }
+
+    /*
+    public void Die()
+    {
+        combatMusic.Stop();
+        backgroundMusic.Stop();
+    }
+    */
 }
