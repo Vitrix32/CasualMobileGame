@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseButton;
     public bool isPaused;
 
+    public GameObject UniversalAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
         pauseButton.SetActive(false);
+        UniversalAudio = GameObject.Find("UniversalAudio");
+        UniversalAudio.GetComponent<UniversalAudioHandling>().Pause();
     }
 
     public void ResumeGame()
@@ -50,6 +53,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
         pauseButton.SetActive(true);
+        UniversalAudio = GameObject.Find("UniversalAudio");
+        // Needs to change if we add menu music  --  DONT BE "EXITING COMBAT"
+        UniversalAudio.GetComponent<UniversalAudioHandling>().ExitingCombat();
     }
 
     public void GoToMainMenu()
