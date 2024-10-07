@@ -23,10 +23,10 @@
       "name": "Jeff",
       "dialogue": [
         {
-          "option": "Go see what that cat has to say, I bet it's real interesting. If you do I'll provide you +50 social credit and a button to get to the title screen! What fun!"
+          "option": "Go see what that cat down there has to say, I bet it's real interesting. Do that and come backto me to complete your quest hero. What fun!"
         },
         {
-          "option": "So interesting right! Ok here is your button as promised! ... Your social credit? I don't remember promising that, now go get that end screen!"
+          "option": "So interesting right! Congratulations onn completing your quest... theres nothing left to do here so enjoy being stuck here!"
         }
       ]
     },

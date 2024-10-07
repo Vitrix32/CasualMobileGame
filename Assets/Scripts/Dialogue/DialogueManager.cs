@@ -23,7 +23,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator displayText(string s)
     {
-        textPanel.SetActive(true);
+        //textPanel.SetActive(true);
         dialogueText.text = "";
         int j = 0;
         for (int i = 0; i < s.Length; i++)
@@ -66,7 +66,7 @@ public class DialogueManager : MonoBehaviour
                 waitForTextScroll = true;
             }
         }
-        textPanel.SetActive(false);
+        //textPanel.SetActive(false);
         yield return null;
     }
 
