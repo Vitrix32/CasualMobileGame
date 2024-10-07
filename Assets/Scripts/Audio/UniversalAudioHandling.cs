@@ -46,7 +46,7 @@ public class UniversalAudioHandling : MonoBehaviour
 
     public void Pause()
     {
-        combatMusic.Stop();
-        backgroundMusic.Stop();
+        combatMusic.Pause();
+        backgroundMusic.Pause();
     }
 }

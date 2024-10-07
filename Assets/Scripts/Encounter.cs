@@ -39,6 +39,13 @@ public class Encounter : MonoBehaviour
         }
     }
 
+    public void playerDead()
+    {
+        player.transform.position = Vector2.zero;
+        encountered = false;
+        this.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
     IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(3.1f);
