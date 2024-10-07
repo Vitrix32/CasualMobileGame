@@ -4,7 +4,7 @@
       "name": "NPC_1",
       "dialogue": [
         {
-          "option": "Hello, traveler. Can you ask my friend over there what time it is? I'm afraid I have lost my watch. If you do this and tell me the time your quest will be complete"
+          "option": "Hello, traveler. Can you ask my friend over there what time it is? I'm afraid I have lost my watch. If you do this and tell me the time your quest will be complete. This is filler text, I just need to fill space so that it loops twice, I thinkl this is enough but I will add this just in case."
         },
         {
           "option": "Thanks a bunch! Now I know it is 3:38 PM"

@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
 
-    
 
+    public GameObject textPanel;
     public TextAsset dialogue;
     private NPCCollection npcData;
     public TMPro.TextMeshProUGUI dialogueText;
     public Button endButton;
     public string endingDialogue;
+    public bool waitForTextScroll = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator displayText(string s)
     {
+        textPanel.SetActive(true);
         dialogueText.text = "";
         int j = 0;
         for (int i = 0; i < s.Length; i++)
@@ -32,6 +34,20 @@ public class DialogueManager : MonoBehaviour
             {
                 dialogueText.text += '\n';
                 j = 0;
+                if (dialogueText.text.Length > 160)
+                {
+
+                    waitForTextScroll = false;
+                    while (!waitForTextScroll)
+                    {
+                        yield return null;
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            waitForTextScroll = true;
+                        }
+                    }
+                    dialogueText.text = "";
+                }
             }
             if (s[i] == '.' || s[i] == '?' || s[i] == '!')
             {
@@ -41,6 +57,16 @@ public class DialogueManager : MonoBehaviour
                 yield return new WaitForSeconds(.05f);
             }
         }
+        waitForTextScroll = false;
+        while (!waitForTextScroll)
+        {
+            yield return null;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                waitForTextScroll = true;
+            }
+        }
+        textPanel.SetActive(false);
         yield return null;
     }
 

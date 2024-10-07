@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    public GameObject questPanel;
+    public TMPro.TextMeshProUGUI questText;
+    public bool questActive = false;
     public TextAsset quests;
     public QuestList questList;
+    public List<Quest> currentQuests = new List<Quest>();
     public Dictionary<Quest, bool> starts = new Dictionary<Quest, bool>();
     public Dictionary<Quest, bool> ends = new Dictionary<Quest, bool>();
     
@@ -16,6 +20,20 @@ public class QuestManager : MonoBehaviour
         {
             starts[q] = false;
             ends[q] = false;
+        }
+    }
+
+    public void OpenQuests()
+    {
+        questActive = !questActive;
+        questPanel.SetActive(questActive);
+        if (questActive)
+        {
+            questText.text = "The current active quests are: \n\n";
+            foreach (Quest q in currentQuests)
+            {
+                questText.text += q.name + "\n";
+            }
         }
     }
 
@@ -38,11 +56,13 @@ public class QuestManager : MonoBehaviour
 
     void AddQuest(Quest q)
     {
+        currentQuests.Add(q);
         Debug.Log("quest started: " + q.name);
     }
 
     void RemoveQuest(Quest q)
     {
+        currentQuests.Remove(q);
         Debug.Log("quest ended: " + q.name);
     }
     

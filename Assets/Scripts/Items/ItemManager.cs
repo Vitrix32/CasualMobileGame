@@ -90,15 +90,17 @@ public class ItemManager : MonoBehaviour
 
     void PanelDisplay(GameObject panel, List<Item> itemList)
     {
-        for (int i = transform.childCount - 1; i >= 1; i--)
+        
+        for (int i = panel.transform.childCount - 1; i >= 1; i--)
         {
-            Destroy(transform.GetChild(i).gameObject);
+            Destroy(panel.transform.GetChild(i).gameObject);
         }
+        Debug.Log(panel.transform.childCount);
         foreach (Item i in itemList)
         {
             if (spriteList.ContainsKey(i.name))
             {
-                Debug.Log("Adding: " + i.name);
+                //Debug.Log("Adding: " + i.name);
                 Sprite sprite = spriteList[i.name];
                 GameObject imageObject = new GameObject("Image");
                 Image imageComponent = imageObject.AddComponent<Image>();
@@ -109,7 +111,7 @@ public class ItemManager : MonoBehaviour
                 rectTransform.anchoredPosition = new Vector2(-25 + (12.5f * ((panel.transform.childCount -2)  % 5)), 25 - (50 * Mathf.FloorToInt((panel.transform.childCount - 2) / 4)));
             } else
             {
-                Debug.Log("The sprite was not found:" + i.name);
+                //Debug.Log("The sprite was not found:" + i.name);
             }
         }
     }
