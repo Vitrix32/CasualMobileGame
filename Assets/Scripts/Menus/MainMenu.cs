@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     private GameObject UniversalAudio;
     private GameObject WorldPlayer;
@@ -24,7 +24,6 @@ public class NewBehaviourScript : MonoBehaviour
         }
         else
         {
-            UniversalAudio.GetComponent<UniversalAudioHandling>().ExitingCombat();
             SceneManager.LoadScene("Preload");
         }
     }

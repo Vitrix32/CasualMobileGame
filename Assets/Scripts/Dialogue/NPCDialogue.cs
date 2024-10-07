@@ -13,6 +13,10 @@ public class NPCDialogue : MonoBehaviour
     public GameObject[] questStarts;
     public GameObject[] questEnds;
 
+    private void Start()
+    {
+        dialoguemanager = GameObject.Find("DialogueManager");
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "WorldPlayer")
