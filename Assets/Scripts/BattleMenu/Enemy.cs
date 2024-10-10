@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEditor.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -43,6 +44,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public int GetDOTTurn() {
+        return dotTurnsRemaining;
+    }
+
 
     // Method for enemy to take damage
     public void TakeDamage(int damage)
@@ -78,8 +83,8 @@ public class Enemy : MonoBehaviour
         while (elapsed < shakeDuration)
         {
             // Generate a random offset for the shake effect
-            float offsetX = Random.Range(-1f, 1f) * shakeMagnitude * 100;
-            float offsetY = Random.Range(-1f, 1f) * shakeMagnitude * 100;
+            float offsetX = Random.Range(-1f, 1f) * shakeMagnitude * 0.5f;
+            float offsetY = Random.Range(-1f, 1f) * shakeMagnitude * 0.5f;
 
             // Apply the offset to the RectTransform's anchored position
             rectTransform.anchoredPosition = new Vector2(originalPosition.x + offsetX, originalPosition.y + offsetY);
@@ -126,9 +131,16 @@ public class Enemy : MonoBehaviour
         if (dotTurnsRemaining > 0)
         {
             currentHealth -= dotDamage;
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Ensure health doesn't go below 0
             dotTurnsRemaining--;
             UpdateHealthBar();
+            StartCoroutine(Shake()); // Start the shake effect when taking damage
             Debug.Log("Enemy took " + dotDamage + " damage! Health remaining: " + currentHealth);
+
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }  
 }

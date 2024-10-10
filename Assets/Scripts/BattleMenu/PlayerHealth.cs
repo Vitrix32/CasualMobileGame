@@ -131,7 +131,13 @@ public class Player : MonoBehaviour
             playerTurn = false;
             SetAttackButtonsInteractable(false);
 
-            StartCoroutine(EnemyAttackTurn());
+            /*if (enemy.GetDOTTurn() > 0)
+            {
+                StartCoroutine(EnemyDOTTurn());
+            }*/
+
+            // StartCoroutine(EnemyAttackTurn());
+            StartCoroutine(BattleSequence());
 
             attackPanel.SetActive(false);      // Show attack panel
             mainMenuPanel.SetActive(true);      // Show attack panel
@@ -146,7 +152,16 @@ public class Player : MonoBehaviour
         SetSpellButtonsInteractable(false);
         UpdateHealthUI();
 
+/*
+        if (enemy.GetDOTTurn() > 0)
+        {
+            StartCoroutine(EnemyDOTTurn());
+        }
+
         StartCoroutine(EnemyAttackTurn());
+        */
+
+        StartCoroutine(BattleSequence());
 
         spellPanel.SetActive(false);      // Show attack panel
         mainMenuPanel.SetActive(true);      // Show attack panel
@@ -158,6 +173,11 @@ public class Player : MonoBehaviour
         {
             playerTurn = false;
             SetSpellButtonsInteractable(false);
+
+            /*if (enemy.GetDOTTurn() > 0)
+            {
+                StartCoroutine(EnemyDOTTurn());
+            }*/
 
             StartCoroutine(EnemySkipTurn());
 
@@ -182,7 +202,14 @@ public class Player : MonoBehaviour
             SetSpellButtonsInteractable(false);
             enemy.ApplyDOT(dotDamage, duration);
 
-            StartCoroutine(EnemyAttackTurn());
+            /*if (enemy.GetDOTTurn() > 0)
+            {
+                StartCoroutine(EnemyDOTTurn());
+            }*/
+
+            //StartCoroutine(EnemyAttackTurn());
+
+            StartCoroutine(BattleSequence());
 
             spellPanel.SetActive(false);      // Show attack panel
             mainMenuPanel.SetActive(true);      // Show attack panel
@@ -195,13 +222,36 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
-        enemy.ApplyTurnEffects();  // Apply any DOT effects before the enemy attacks
+        //enemy.ApplyTurnEffects();  // Apply any DOT effects before the enemy attacks
         enemy.EnemyAttack(this);   // Enemy attacks player
 
         // Allow the player to attack again after the enemy turn ends
         playerTurn = true;
         SetAttackButtonsInteractable(true);
         SetSpellButtonsInteractable(true);
+    }
+
+    IEnumerator BattleSequence()
+    {
+        if (enemy.GetDOTTurn() > 0)
+        {
+            yield return StartCoroutine(EnemyDOTTurn());
+        }
+
+        yield return (StartCoroutine(EnemyAttackTurn()));
+    }
+
+    IEnumerator EnemyDOTTurn()
+    {
+        yield return new WaitForSeconds(1);
+
+        enemy.ApplyTurnEffects();  // Apply any DOT effects before the enemy attacks
+        //enemy.EnemyAttack(this);   // Enemy attacks player
+
+        // Allow the player to attack again after the enemy turn ends
+        //playerTurn = true;
+        //SetAttackButtonsInteractable(true);
+        //SetSpellButtonsInteractable(true);
     }
 
 
