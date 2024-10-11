@@ -4902,13 +4902,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 176373650}
     m_Modifications:
+    - target: {fileID: 685545040736467064, guid: 4eda9898566de4a4f9599c65fdd414f1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1761883959433178519, guid: 4eda9898566de4a4f9599c65fdd414f1, type: 3}
       propertyPath: m_Name
       value: FadePanel
       objectReference: {fileID: 0}
     - target: {fileID: 1761883959433178519, guid: 4eda9898566de4a4f9599c65fdd414f1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5449999713875695315, guid: 4eda9898566de4a4f9599c65fdd414f1, type: 3}
       propertyPath: m_Pivot.x

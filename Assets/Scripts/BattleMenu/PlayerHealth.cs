@@ -63,12 +63,13 @@ public class Player : MonoBehaviour
     // Method for taking damage from the enemy
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        UpdateHealthUI();
-
+        if (!GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
+        {
+            currentHealth -= damage;
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+            UpdateHealthUI();
+        }
         StartCoroutine(Shake()); // Start the shake effect when taking damage
-
 
         if (currentHealth <= 0)
         {
@@ -125,6 +126,10 @@ public class Player : MonoBehaviour
     // General PlayerAttack method without parameters, for UI buttons
     public void PlayerAttack(int damage)
     {
+        if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
+        {
+            damage = 10000;
+        }
         if (playerTurn && enemy != null)
         {
             enemy.TakeDamage(damage); // Apply damage to the enemy
