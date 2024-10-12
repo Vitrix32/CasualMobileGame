@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class DebugMenu : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private GameObject sceneInput;
     private bool debugMode;
     private bool toggle1;
     private bool toggle2;
@@ -33,6 +39,13 @@ public class DebugMenu : MonoBehaviour
         {
             this.gameObject.GetComponent<Canvas>().enabled = false;
         }
+    }
+
+    //Takes the user to the scene specified in the search field
+    //NO ERROR HANDLING - Make sure you enter the scene name in correctly
+    public void goToScene()
+    {
+        SceneManager.LoadScene(sceneInput.GetComponent<TMP_InputField>().text);
     }
 
     //Toggles the time scale up and down
