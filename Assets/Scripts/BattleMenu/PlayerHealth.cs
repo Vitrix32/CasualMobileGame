@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -35,7 +36,12 @@ public class Player : MonoBehaviour
 
     private RectTransform rectTransform; // Reference to the RectTransform for UI element
 
+    // New variable for the healing particle effect
+    public ParticleSystem healParticleEffect;
+
     public GameObject UniversalAudio;
+
+    public TextMeshProUGUI battleText;
 
     void Start()
     {
@@ -58,6 +64,18 @@ public class Player : MonoBehaviour
         {
             originalPosition = rectTransform.anchoredPosition;
         }
+
+        if (healParticleEffect == null)
+        {
+            Debug.LogError("No particle system assigned for healing effects!");
+        }
+
+        UpdateText("What would you like to do?");
+    }
+
+    public void UpdateText(string newText)
+    {
+        battleText.text = newText;
     }
 
     // Method for taking damage from the enemy
@@ -133,6 +151,7 @@ public class Player : MonoBehaviour
         if (playerTurn && enemy != null)
         {
             enemy.TakeDamage(damage); // Apply damage to the enemy
+            UpdateText("You attacked!");
             playerTurn = false;
             SetAttackButtonsInteractable(false);
 
@@ -146,7 +165,17 @@ public class Player : MonoBehaviour
 
             attackPanel.SetActive(false);      // Show attack panel
             mainMenuPanel.SetActive(true);      // Show attack panel
+            
+            // UpdateText("What would you like to do?");
 
+        }
+    }
+
+    void PlayHealingEffect()
+    {
+        if (healParticleEffect != null)
+        {
+            healParticleEffect.Play(); // Trigger the particle effect
         }
     }
 
@@ -156,20 +185,15 @@ public class Player : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         SetSpellButtonsInteractable(false);
         UpdateHealthUI();
-
-/*
-        if (enemy.GetDOTTurn() > 0)
-        {
-            StartCoroutine(EnemyDOTTurn());
-        }
-
-        StartCoroutine(EnemyAttackTurn());
-        */
+        UpdateText("You healed!");
+        PlayHealingEffect();
 
         StartCoroutine(BattleSequence());
 
         spellPanel.SetActive(false);      // Show attack panel
         mainMenuPanel.SetActive(true);      // Show attack panel
+
+        // UpdateText("What would you like to do?");
     }
 
     public void PlayerSkipSpell()
@@ -179,16 +203,21 @@ public class Player : MonoBehaviour
             playerTurn = false;
             SetSpellButtonsInteractable(false);
 
+            UpdateText("You skipped the enemy's turn!");
+
             /*if (enemy.GetDOTTurn() > 0)
             {
                 StartCoroutine(EnemyDOTTurn());
             }*/
 
-            StartCoroutine(EnemySkipTurn());
+            // StartCoroutine(EnemySkipTurn());
+
+            StartCoroutine(Skip());
 
             spellPanel.SetActive(false);      // Show attack panel
             mainMenuPanel.SetActive(true);      // Show attack panel
 
+            //UpdateText("What would you like to do?");
         }
     }
 
@@ -204,6 +233,7 @@ public class Player : MonoBehaviour
         if (playerTurn && enemy != null)
         {
             playerTurn = false;
+            UpdateText("You dealt damage over time!");
             SetSpellButtonsInteractable(false);
             enemy.ApplyDOT(dotDamage, duration);
 
@@ -219,16 +249,20 @@ public class Player : MonoBehaviour
             spellPanel.SetActive(false);      // Show attack panel
             mainMenuPanel.SetActive(true);      // Show attack panel
 
+            // UpdateText("What would you like to do?");
+
         }
     }
 
 
     IEnumerator EnemyAttackTurn()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
         //enemy.ApplyTurnEffects();  // Apply any DOT effects before the enemy attacks
         enemy.EnemyAttack(this);   // Enemy attacks player
+
+        UpdateText("The enemy attacked!");
 
         // Allow the player to attack again after the enemy turn ends
         playerTurn = true;
@@ -246,10 +280,21 @@ public class Player : MonoBehaviour
         yield return (StartCoroutine(EnemyAttackTurn()));
     }
 
+    IEnumerator Skip()
+    {
+        if (enemy.GetDOTTurn() > 0)
+        {
+            yield return StartCoroutine(EnemyDOTTurn());
+        }
+
+        yield return (StartCoroutine(EnemySkipTurn()));
+    }
+
     IEnumerator EnemyDOTTurn()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
+        UpdateText("The enemy was hurt!");
         enemy.ApplyTurnEffects();  // Apply any DOT effects before the enemy attacks
         //enemy.EnemyAttack(this);   // Enemy attacks player
 
@@ -262,7 +307,7 @@ public class Player : MonoBehaviour
 
     IEnumerator EnemySkipTurn()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         enemy.EnemySkip(this);
         playerTurn = true;
         SetSpellButtonsInteractable(true);
