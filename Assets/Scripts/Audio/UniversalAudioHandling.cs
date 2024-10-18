@@ -17,7 +17,7 @@ public class UniversalAudioHandling : MonoBehaviour
     {
         backgroundMusic = gravePeacefulTown;
         combatMusic = commonBattle;
-        backgroundMusic.Play();
+        //backgroundMusic.Play();
         /**
         if (SceneManager.GetActiveScene().name == "IsaacTestScene")
         {

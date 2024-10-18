@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
         pauseButton.SetActive(false);
         UniversalAudio = GameObject.Find("UniversalAudio");
-        UniversalAudio.GetComponent<UniversalAudioHandling>().Pause();
+        UniversalAudio.GetComponent<UniversalAudioHandling>().EnteringCombat();
     }
 
     public void ResumeGame()

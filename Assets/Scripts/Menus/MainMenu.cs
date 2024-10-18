@@ -8,24 +8,33 @@ public class MainMenu : MonoBehaviour
 {
     private GameObject UniversalAudio;
     private GameObject WorldPlayer;
-    public void PlayGame()
+
+    void Start()
     {
-        WorldPlayer = GameObject.Find("WorldPlayer");
-        UniversalAudio = GameObject.Find("UniversalAudio");
-        // Needs to change if we add menu music  --  DONT BE "EXITING COMBAT"
-        if (UniversalAudio != null)
+        /*
+        if (!PlayerPrefs.HasKey("MusicVolume"))
         {
-            Debug.Log("INTHISFUNCTION");
-            UniversalAudio.GetComponent<UniversalAudioHandling>().ExitingCombat();
-            WorldPlayer.GetComponent<PlayerStatus>().ExitingCombat();
-            WorldPlayer.GetComponent<PlayerStatus>().EnableControl();
-            WorldPlayer.transform.position = Vector2.zero;
-            SceneManager.LoadScene("GameplayScene");
+            PlayerPrefs.SetFloat("MusicVolume", 1);
+            Load();
         }
         else
         {
-            SceneManager.LoadScene("Preload");
-        }
+            Load();
+        }*/
+        UniversalAudio = GameObject.Find("UniversalAudio");
+        WorldPlayer = GameObject.Find("WorldPlayer");
+        UniversalAudio.GetComponent<UniversalAudioHandling>().EnteringCombat();
+    }
+    public void PlayGame()
+    {
+        //WorldPlayer = GameObject.Find("WorldPlayer");
+        //UniversalAudio = GameObject.Find("UniversalAudio");
+        // Needs to change if we add menu music  --  DONT BE "EXITING COMBAT"
+        UniversalAudio.GetComponent<UniversalAudioHandling>().ExitingCombat();
+        WorldPlayer.GetComponent<PlayerStatus>().ExitingCombat();
+        WorldPlayer.GetComponent<PlayerStatus>().EnableControl();
+        WorldPlayer.transform.position = Vector2.zero;
+        SceneManager.LoadScene("GameplayScene");
     }
 
     public void QuitGame()
