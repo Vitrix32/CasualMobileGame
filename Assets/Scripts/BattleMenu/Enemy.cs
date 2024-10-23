@@ -22,12 +22,15 @@ public class Enemy : MonoBehaviour
     private Vector2 originalPosition;   // To store the original position of the UI element
 
     private RectTransform rectTransform; // Reference to the RectTransform for UI element
+    private AudioSource audioSource;
+    public AudioClip attackSound;
 
     void Start()
     {
         MenuManager = GameObject.Find("MenuManager");
         currentHealth = maxHealth;
         UpdateHealthBar();
+        audioSource = GetComponent<AudioSource>();
 
         // Get the RectTransform from the child object
         rectTransform = GetComponentInChildren<RectTransform>();
@@ -41,6 +44,7 @@ public class Enemy : MonoBehaviour
         {
             originalPosition = rectTransform.anchoredPosition;
         }
+        
     }
 
     public int GetDOTTurn() {
@@ -101,6 +105,7 @@ public class Enemy : MonoBehaviour
     public void EnemyAttack(Player player)
     {
         Debug.Log("Enemy attacks!");
+        audioSource.PlayOneShot(attackSound);
         player.TakeDamage(attackDamage); // Enemy attacks the player
     }
 
