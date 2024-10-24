@@ -11,7 +11,14 @@ public class Player : MonoBehaviour
     private AudioSource audioSource;
 
     // New: AudioClip to play attack sound
+    public AudioClip swordSound;
+    public AudioClip fireSound;
+    public AudioClip punchSound;
     public AudioClip attackSound;
+    public AudioClip arrowSound;
+    public AudioClip skySound;
+
+
 
     public int maxHealth = 100;
     public int currentHealth;
@@ -160,9 +167,6 @@ public class Player : MonoBehaviour
         }
         if (playerTurn && enemy != null)
         {
-            // Play attack sound
-            audioSource.PlayOneShot(attackSound);
-
             enemy.TakeDamage(damage); // Apply damage to the enemy
             UpdateText("You attacked!");
             playerTurn = false;
