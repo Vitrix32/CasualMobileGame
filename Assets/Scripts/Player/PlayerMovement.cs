@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed;
+    private bool moving;
     private Rigidbody2D rb;
     private Vector2 moveVector;
 
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody2D>();
         moveVector = Vector2.zero;
+        moving = false;
     }
 
     private void FixedUpdate()
@@ -39,6 +41,14 @@ public class PlayerMovement : MonoBehaviour
     //Apply velocity to player
     private void moveLogic()
     {
+        if (moveVector == Vector2.zero)
+        {
+            moving = false;
+        }
+        else
+        {
+            moving = true;
+        }
         Vector2 val = moveVector * moveSpeed * Time.fixedDeltaTime;
         rb.velocity = val;
     }
@@ -53,5 +63,11 @@ public class PlayerMovement : MonoBehaviour
     public void setVector(Vector2 vec)
     {
         moveVector = vec;
+    }
+
+    //
+    public bool isMoving()
+    {
+        return moving;
     }
 }

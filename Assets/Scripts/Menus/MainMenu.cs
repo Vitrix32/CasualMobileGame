@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private GameObject UniversalAudio;
+    [SerializeField]
+    private AudioSource buttonPress;
     private GameObject WorldPlayer;
 
     void Start()
@@ -21,25 +22,33 @@ public class MainMenu : MonoBehaviour
         {
             Load();
         }*/
-        UniversalAudio = GameObject.Find("UniversalAudio");
         WorldPlayer = GameObject.Find("WorldPlayer");
-        UniversalAudio.GetComponent<UniversalAudioHandling>().EnteringCombat();
     }
     public void PlayGame()
     {
         //WorldPlayer = GameObject.Find("WorldPlayer");
         //UniversalAudio = GameObject.Find("UniversalAudio");
         // Needs to change if we add menu music  --  DONT BE "EXITING COMBAT"
-        UniversalAudio.GetComponent<UniversalAudioHandling>().ExitingCombat();
-        WorldPlayer.GetComponent<PlayerStatus>().ExitingCombat();
-        WorldPlayer.GetComponent<PlayerStatus>().EnableControl();
+        ButtonSound();
+        WorldPlayer.GetComponent<PlayerStatus>().EnteringGameWorld(false, 0.4f);
         WorldPlayer.transform.position = Vector2.zero;
         SceneManager.LoadScene("GameplayScene");
     }
 
     public void QuitGame()
     {
+        ButtonSound();
+        Invoke("Quit", 0.4f);
+    }
+
+    private void Quit()
+    {
         Debug.Log(Application.persistentDataPath);
         Application.Quit();
+    }
+
+    private void ButtonSound()
+    {
+        buttonPress.Play();
     }
 }

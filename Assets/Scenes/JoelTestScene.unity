@@ -4507,6 +4507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e290a9a92c149c69b929095dc55a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorldPlayer: {fileID: 0}
   swordSound: {fileID: 8300000, guid: 3a8bc37d9b403ca46b577519b8de1578, type: 3}
   fireSound: {fileID: 0}
   punchSound: {fileID: 0}
@@ -4896,8 +4897,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 543794189
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0

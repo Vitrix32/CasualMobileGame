@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class BattleMenu : MonoBehaviour
 {
-    private GameObject UniversalAudio;
     private GameObject FadePanel;
     // References to the panels and main menu
     public GameObject attackPanel;
@@ -16,7 +15,6 @@ public class BattleMenu : MonoBehaviour
     private void Start()
     {
         enemiesAmount = 1;
-        UniversalAudio = GameObject.Find("UniversalAudio");
         FadePanel = GameObject.Find("FadePanel");
     }
 
@@ -60,15 +58,12 @@ public class BattleMenu : MonoBehaviour
     public void AllEnemiesDead()
     {
         FadePanel.GetComponent<SceneTransition>().End();
-        //UniversalAudio.GetComponent<UniversalAudioHandling>().ExitingCombat();
         Invoke("ExitScene", 3.1f);
     }
 
     private void ExitScene()
     {
-        GameObject.Find("WorldPlayer").GetComponent<PlayerStatus>().EnableControl();
-        GameObject.Find("WorldPlayer").GetComponent<PlayerStatus>().ExitingCombat();
-        UniversalAudio.GetComponent<UniversalAudioHandling>().ExitingCombat();
+        GameObject.Find("WorldPlayer").GetComponent<PlayerStatus>().EnteringGameWorld(true, 0.0f);
         SceneManager.LoadScene("GameplayScene");
     }
 }

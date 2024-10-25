@@ -119,7 +119,8 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Enemy died!");
         MenuManager.GetComponent<BattleMenu>().EnemyNeutralized();
-        Destroy(gameObject); // Destroy enemy when health is 0
+        gameObject.SetActive(false);
+        //Destroy(gameObject); // Destroy enemy when health is 0
     }
 
     // Call this method when the DOT attack hits the enemy

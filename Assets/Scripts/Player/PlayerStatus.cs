@@ -17,7 +17,7 @@ public class PlayerStatus : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
     }
 
-    public void EnteringCombat()
+    private void EnteringCombat()
     {
         inCombat = true;
         worldPosition = this.transform.position;
@@ -25,32 +25,71 @@ public class PlayerStatus : MonoBehaviour
         this.GetComponent<SpriteRenderer>().enabled = false;
     }
 
-    public void ExitingCombat() 
+    private void ExitingCombat() 
     {
         inCombat = false;
         this.transform.position = worldPosition;
         this.GetComponent<SpriteRenderer>().enabled = true;
     }
 
-    public void EnteringNewArea()
+    private void EnteringNewArea()
     {
         worldPosition = this.transform.position;
     }
 
-    public void ExitingNewArea()
+    private void ExitingNewArea()
     {
         this.transform.position = worldPosition;
     }
 
-    public void EnableControl()
+    private void EnableControl()
     {
         this.GetComponent<PlayerMovement>().enabled = true;
         rb.velocity = Vector2.zero;
     }
 
-    public void DisableControl() 
+    private void DisableControl() 
     {
         this.GetComponent<PlayerMovement>().enabled = false;
         rb.velocity = Vector2.zero;
+    }
+
+    /*****
+    This function has the purpose of handling the transition of the player object from the game world to combat
+    or new areas. you must specify if you are entering combat or just a new area, and a delay must be given.
+    If no delay is desired just give a delay of 0.0f.
+    *****/
+    public void LeavingGameWorld(bool isCombat, float delay)
+    {
+        this.GetComponent<FootstepAudioHandling>().StopAllCoroutines();
+        this.GetComponent<UniversalAudioHandling>().EnteringCombat();
+        DisableControl();
+        if (isCombat)
+        {
+            Invoke("EnteringCombat", delay);
+        }
+        else
+        {
+            Invoke("EnteringNewArea", delay);
+        }
+    }
+
+    /*****
+    This function has the purpose of handling the transition of the player object from the game world to combat or new areas.
+    You must specify if you are entering combat or just a new area, and a delay must be given.
+    If no delay is desired, just give a delay of 0.0f.
+    *****/
+    public void EnteringGameWorld(bool isCombat, float delay)
+    {
+        if (isCombat)
+        {
+            Invoke("ExitingCombat", delay);
+        }
+        else
+        {
+            Invoke("ExitingNewArea", delay);
+        }
+        EnableControl();
+        this.GetComponent<UniversalAudioHandling>().ExitingCombat();
     }
 }

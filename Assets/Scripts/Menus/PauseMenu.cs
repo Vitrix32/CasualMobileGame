@@ -6,15 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject WorldPlayer;
+    [SerializeField]
+    private AudioSource buttonPress;
+
     public GameObject pauseMenu;
     public GameObject pauseButton;
     public bool isPaused;
 
-    public GameObject UniversalAudio;
-
     // Start is called before the first frame update
     void Start()
     {
+        WorldPlayer = GameObject.Find("WorldPlayer");
         pauseMenu.SetActive(false);
         pauseButton.SetActive(true);
     }
@@ -39,27 +43,28 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        ButtonSound();
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
         pauseButton.SetActive(false);
-        UniversalAudio = GameObject.Find("UniversalAudio");
-        UniversalAudio.GetComponent<UniversalAudioHandling>().EnteringCombat();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().Pause();
     }
 
     public void ResumeGame()
     {
+        ButtonSound();
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
         pauseButton.SetActive(true);
-        UniversalAudio = GameObject.Find("UniversalAudio");
         // Needs to change if we add menu music  --  DONT BE "EXITING COMBAT"
-        UniversalAudio.GetComponent<UniversalAudioHandling>().ExitingCombat();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().Resume();
     }
 
     public void GoToMainMenu()
     {
+        ButtonSound();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
         isPaused = false;
@@ -67,6 +72,17 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        ButtonSound();
+        Invoke("Quit", 0.4f);
+    }
+
+    private void Quit()
+    {
         Application.Quit();
+    }
+
+    private void ButtonSound()
+    {
+        buttonPress.Play();
     }
 }

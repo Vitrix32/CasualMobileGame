@@ -7,6 +7,9 @@ using TMPro;
 public class Player : MonoBehaviour
 {
 
+    [SerializeField]
+    private GameObject WorldPlayer;
+
     // New: Reference to the AudioSource component
     private AudioSource audioSource;
 
@@ -59,6 +62,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        WorldPlayer = GameObject.Find("WorldPlayer");
         currentHealth = maxHealth;
         UpdateHealthUI();
         SetAttackButtonsInteractable(playerTurn);
@@ -153,8 +157,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("You died!");
         Destroy(gameObject); // Destroy enemy when health is 0
-        UniversalAudio = GameObject.Find("UniversalAudio");
-        UniversalAudio.GetComponent<UniversalAudioHandling>().Die();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().Die();
         SceneManager.LoadScene("DeathScene");
     }
 

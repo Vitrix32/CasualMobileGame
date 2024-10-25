@@ -5,48 +5,46 @@ using UnityEngine.SceneManagement;
 
 public class UniversalAudioHandling : MonoBehaviour
 {
-    [SerializeField] 
-    private AudioSource gravePeacefulTown;
     [SerializeField]
-    private AudioSource commonBattle;
+    private AudioSource primaryMusicSource;
+    [SerializeField]
+    private AudioClip[] backgroundMusics;
+    [SerializeField]
+    private AudioClip[] combatMusics;
 
-    private AudioSource backgroundMusic;
-    private AudioSource combatMusic;
+    private AudioClip backgroundMusic;
+    private AudioClip combatMusic;
     // Start is called before the first frame update
     void Start()
     {
-        backgroundMusic = gravePeacefulTown;
-        combatMusic = commonBattle;
-        //backgroundMusic.Play();
-        /**
-        if (SceneManager.GetActiveScene().name == "IsaacTestScene")
-        {
-            backgroundMusic.Play();
-        }
-        /**/
+        backgroundMusic = backgroundMusics[0];
+        combatMusic = combatMusics[0];
     }
 
     public void EnteringCombat()
     {
-        backgroundMusic.Stop();
-        combatMusic.Play();
+        primaryMusicSource.clip = combatMusic;
+        primaryMusicSource.Play();
     }
 
     public void ExitingCombat() 
-    { 
-        combatMusic.Stop();
-        backgroundMusic.Play();
+    {
+        primaryMusicSource.clip = backgroundMusic;
+        primaryMusicSource.Play();
     }
 
     public void Die()
     {
-        combatMusic.Stop();
-        backgroundMusic.Stop();
+        primaryMusicSource.Stop();
     }
 
     public void Pause()
     {
-        combatMusic.Pause();
-        backgroundMusic.Pause();
+        primaryMusicSource.Pause();
+    }
+
+    public void Resume()
+    {
+        primaryMusicSource.Play();
     }
 }
