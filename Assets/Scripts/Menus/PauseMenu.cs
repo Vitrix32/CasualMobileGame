@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject WorldPlayer;
 
+    public GameObject GameMenu;
     public GameObject pauseMenu;
     public GameObject pauseButton;
     public bool isPaused;
@@ -53,6 +54,7 @@ public class PauseMenu : MonoBehaviour
     {
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         pauseMenu.SetActive(false);
+        GameMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
         pauseButton.SetActive(true);
