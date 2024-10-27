@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    private AudioSource buttonPress;
     private GameObject WorldPlayer;
 
     void Start()
@@ -29,7 +28,7 @@ public class MainMenu : MonoBehaviour
         //WorldPlayer = GameObject.Find("WorldPlayer");
         //UniversalAudio = GameObject.Find("UniversalAudio");
         // Needs to change if we add menu music  --  DONT BE "EXITING COMBAT"
-        ButtonSound();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         WorldPlayer.GetComponent<PlayerStatus>().EnteringGameWorld(false, 0.4f);
         WorldPlayer.transform.position = Vector2.zero;
         SceneManager.LoadScene("GameplayScene");
@@ -37,7 +36,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        ButtonSound();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         Invoke("Quit", 0.4f);
     }
 
@@ -45,10 +44,5 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log(Application.persistentDataPath);
         Application.Quit();
-    }
-
-    private void ButtonSound()
-    {
-        buttonPress.Play();
     }
 }

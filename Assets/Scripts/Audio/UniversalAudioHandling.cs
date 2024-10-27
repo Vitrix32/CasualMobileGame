@@ -8,6 +8,8 @@ public class UniversalAudioHandling : MonoBehaviour
     [SerializeField]
     private AudioSource primaryMusicSource;
     [SerializeField]
+    private AudioSource primaryUISource;
+    [SerializeField]
     private AudioClip[] backgroundMusics;
     [SerializeField]
     private AudioClip[] combatMusics;
@@ -46,5 +48,10 @@ public class UniversalAudioHandling : MonoBehaviour
     public void Resume()
     {
         primaryMusicSource.Play();
+    }
+
+    public void ButtonPressed()
+    {
+        primaryUISource.Play();
     }
 }

@@ -6,12 +6,17 @@ using UnityEngine.SceneManagement;
 public class DeathMenu : MonoBehaviour
 {
     [SerializeField]
-    private AudioSource buttonPress;
+    private GameObject WorldPlayer;
     // Doesnt Work  --  Cant "restart" Game
     // Going back to preload will cause problems! Will comment out for the time being
+    private void Start()
+    {
+        WorldPlayer = GameObject.Find("WorldPlayer");
+    }
+
     public void PlayAgain()
     {
-        ButtonSound();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         GameObject.Find("WorldPlayer").GetComponent<PlayerStatus>().EnteringGameWorld(true, 0.0f);
         GameObject.Find("RandomEncounter").GetComponent<Encounter>().playerDead();
         //SceneManager.LoadScene("Preload");
@@ -20,13 +25,13 @@ public class DeathMenu : MonoBehaviour
     // Doesnt Work  --  Cant "restart" Game
     public void MainMenu()
     {
-        ButtonSound();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         Invoke("Menu", 0.4f);
     }
 
     public void QuitGame()
     {
-        ButtonSound();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         Invoke("Quit", 0.4f);
     }
 
@@ -41,8 +46,4 @@ public class DeathMenu : MonoBehaviour
         Application.Quit();
     }
 
-    private void ButtonSound()
-    {
-        buttonPress.Play();
-    }
 }

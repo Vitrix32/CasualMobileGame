@@ -8,8 +8,6 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField]
     private GameObject WorldPlayer;
-    [SerializeField]
-    private AudioSource buttonPress;
 
     public GameObject pauseMenu;
     public GameObject pauseButton;
@@ -43,7 +41,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        ButtonSound();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
@@ -53,7 +51,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        ButtonSound();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
@@ -64,7 +62,7 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        ButtonSound();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
         isPaused = false;
@@ -72,17 +70,12 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        ButtonSound();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         Invoke("Quit", 0.4f);
     }
 
     private void Quit()
     {
         Application.Quit();
-    }
-
-    private void ButtonSound()
-    {
-        buttonPress.Play();
     }
 }
