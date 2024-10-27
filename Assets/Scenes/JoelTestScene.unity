@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 176373649}
   - component: {fileID: 176373648}
   - component: {fileID: 176373647}
+  - component: {fileID: 176373651}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -470,7 +471,7 @@ Canvas:
   m_GameObject: {fileID: 176373646}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -516,6 +517,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &176373651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176373646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67e387ed2f1189418efb1f65b612943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &176674111
 GameObject:
   m_ObjectHideFlags: 0
@@ -4852,8 +4865,8 @@ Transform:
   m_GameObject: {fileID: 1683082252}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23, y: 238, z: 1}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 176373650}
@@ -9915,7 +9928,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 685545040736467064, guid: 4eda9898566de4a4f9599c65fdd414f1, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1761883959433178519, guid: 4eda9898566de4a4f9599c65fdd414f1, type: 3}
       propertyPath: m_Name
