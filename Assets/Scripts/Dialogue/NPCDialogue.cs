@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NPCDialogue : MonoBehaviour
 {
-    public int currDialogue;
     public GameObject dialoguemanager;
     public GameObject questmanager;
     public GameObject talkImage;
@@ -15,7 +14,7 @@ public class NPCDialogue : MonoBehaviour
 
     private void Start()
     {
-        dialoguemanager = GameObject.Find("DialogueManager");
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -41,12 +40,7 @@ public class NPCDialogue : MonoBehaviour
     {
         if (canTalk)
         {
-            dialoguemanager.GetComponent<DialogueManager>().GetDialogue(this.name, currDialogue);
-            if (currDialogue < increments.Length && increments[currDialogue] != null)
-            {
-                increments[currDialogue].gameObject.GetComponent<NPCDialogue>().currDialogue++;
-                increments[currDialogue] = null;
-            }
+            dialoguemanager.GetComponent<DialogueManager>().GetDialogue(this.name);
         }
         
     }

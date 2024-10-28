@@ -5,25 +5,26 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-
-
+    private GameObject[] NPCs;
+    public TMPro.TextMeshProUGUI continueText;
     public GameObject textPanel;
     public TextAsset dialogue;
     private NPCCollection npcData;
     public TMPro.TextMeshProUGUI dialogueText;
-    public Button endButton;
-    public string endingDialogue;
-    public bool waitForTextScroll = false;
+    private bool waitForTextScroll = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
         npcData = JsonUtility.FromJson<NPCCollection>(dialogue.text);
+        NPCs = GameObject.FindGameObjectsWithTag("NPC");
     }
 
     private IEnumerator displayText(string s)
     {
-        //textPanel.SetActive(true);
+        textPanel.SetActive(true);
+        continueText.gameObject.SetActive(false);
         dialogueText.text = "";
         int j = 0;
         for (int i = 0; i < s.Length; i++)
@@ -36,13 +37,14 @@ public class DialogueManager : MonoBehaviour
                 j = 0;
                 if (dialogueText.text.Length > 160)
                 {
-
                     waitForTextScroll = false;
                     while (!waitForTextScroll)
                     {
+                        continueText.gameObject.SetActive(true);
                         yield return null;
                         if (Input.GetKeyDown(KeyCode.Space))
                         {
+                            continueText.gameObject.SetActive(false);
                             waitForTextScroll = true;
                         }
                     }
@@ -58,31 +60,35 @@ public class DialogueManager : MonoBehaviour
             }
         }
         waitForTextScroll = false;
+        continueText.gameObject.SetActive(true);
         while (!waitForTextScroll)
         {
             yield return null;
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                continueText.gameObject.SetActive(false);
                 waitForTextScroll = true;
             }
         }
-        //textPanel.SetActive(false);
+        textPanel.SetActive(false);
         yield return null;
     }
 
-    public void GetDialogue(string npcName, int optionIndex)
+    public void GetDialogue(string npcName)
     {
         NPC npc = FindNPCByName(npcName);
+        int optionIndex = npc.value;
 
         StopAllCoroutines();
         if (npc != null && optionIndex >= 0 && optionIndex < npc.dialogue.Length)
         {
             this.GetComponent<QuestManager>().TryQuest(npcName + " " + optionIndex);
-            StartCoroutine(displayText(npc.dialogue[optionIndex].option));
-            if (npcName + optionIndex == endingDialogue)
+            if (npc.dialogue[npc.value].increment != "none")
             {
-                //endButton.gameObject.SetActive(true);
+                NPC incNPC = FindNPCByName(npc.dialogue[npc.value].increment);
+                incNPC.value++;
             }
+            StartCoroutine(displayText(npc.dialogue[optionIndex].option));
         }
     }
 
@@ -103,12 +109,14 @@ public class DialogueManager : MonoBehaviour
     public class DialogueOption
     {
         public string option;
+        public string increment;
     }
 
     [System.Serializable]
     public class NPC
     {
         public string name;
+        public int value;
         public DialogueOption[] dialogue;
     }
 
