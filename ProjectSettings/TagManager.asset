@@ -16,7 +16,7 @@ TagManager:
   - 
   - Unwalkable
   - 
-  - 
+  - background
   - 
   - 
   - 
@@ -42,11 +42,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Obstacles
+  - name: Background
+    uniqueID: 3944533399
+    locked: 0
+  - name: Decorations
+    uniqueID: 4015802983
+    locked: 0
+  - name: Foreground
     uniqueID: 2887758557
     locked: 0
-  - name: Characters
-    uniqueID: 2317513327
+  - name: Upground
+    uniqueID: 1955920629
     locked: 0
   - name: Particles
     uniqueID: 543794189
