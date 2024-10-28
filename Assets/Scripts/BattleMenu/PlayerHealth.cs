@@ -186,7 +186,7 @@ public class Player : MonoBehaviour
     {
         if (healParticleEffect != null)
         {
-            healParticleEffect.Play(); // Trigger the particle effect
+            healParticleEffect.Emit(100); // Trigger the particle effect
         }
     }
 
