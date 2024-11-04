@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="116" height="116" tilewidth="16" tileheight="16" infinite="1" nextlayerid="154" nextobjectid="1">
+ <tileset firstgid="1" name="Road1_grass" tilewidth="16" tileheight="16" tilecount="390" columns="15">
+  <image source="Road1_grass.png" width="240" height="416"/>
+ </tileset>
+ <tileset firstgid="391" name="Road2_grass" tilewidth="16" tileheight="16" tilecount="390" columns="15">
+  <image source="Road2_grass.png" width="240" height="416"/>
+ </tileset>
+ <tileset firstgid="781" name="Road3_grass" tilewidth="16" tileheight="16" tilecount="390" columns="15">
+  <image source="Road3_grass.png" width="240" height="416"/>
+ </tileset>
+ <tileset firstgid="1171" name="Road4_grass" tilewidth="16" tileheight="16" tilecount="390" columns="15">
+  <image source="Road4_grass.png" width="240" height="416"/>
+ </tileset>
+ <tileset firstgid="1561" name="Road5_grass" tilewidth="16" tileheight="16" tilecount="390" columns="15">
+  <image source="Road5_grass.png" width="240" height="416"/>
+ </tileset>
+ <tileset firstgid="1951" name="Road1_ground" tilewidth="16" tileheight="16" tilecount="390" columns="15">
+  <image source="Road1_ground.png" width="240" height="416"/>
+ </tileset>
+ <tileset firstgid="2341" name="Road2_ground" tilewidth="16" tileheight="16" tilecount="390" columns="15">
+  <image source="Road2_ground.png" width="240" height="416"/>
+ </tileset>
+ <tileset firstgid="2731" name="Road3_ground" tilewidth="16" tileheight="16" tilecount="390" columns="15">
+  <image source="Road3_ground.png" width="240" height="416"/>
+ </tileset>
+ <tileset firstgid="3121" name="Road4_ground" tilewidth="16" tileheight="16" tilecount="390" columns="15">
+  <image source="Road4_ground.png" width="240" height="416"/>
+ </tileset>
+ <tileset firstgid="3511" name="Road5_ground" tilewidth="16" tileheight="16" tilecount="390" columns="15">
+  <image source="Road5_ground.png" width="240" height="416"/>
+ </tileset>
+ <tileset firstgid="3901" name="Ground_grass" tilewidth="16" tileheight="16" tilecount="527" columns="17">
+  <image source="Ground_grass.png" width="272" height="496"/>
+ </tileset>
+ <layer id="153" name="ground2" width="116" height="116">
+  <data encoding="base64" compression="zlib">
+   <chunk x="-16" y="0" width="16" height="16">
+   eJxjYBgF6MBUgHg8qn9UPzo4z088Hmj9AAhON04=
+  </chunk>
+   <chunk x="0" y="0" width="16" height="16">
+   eJxjYBjZwFRgFI9i8vF5ftJxJhIeaP0A/flM2w==
+  </chunk>
+   <chunk x="16" y="0" width="16" height="16">
+   eJxjYBjZwFSAeDyqf1Q/OsjkJx4PRv0AziwqKA==
+  </chunk>
+   <chunk x="-16" y="16" width="16" height="16">
+   eJxjYMAE5/mJx9jAqP5R/SNZ/1ACALFNfAM=
+  </chunk>
+   <chunk x="0" y="16" width="16" height="16">
+   eJw7z8/AcJ5EnImESdU7qn9U/3DSP9QBAGjWpNc=
+  </chunk>
+   <chunk x="16" y="16" width="16" height="16">
+   eJzL5GdgyCQSYwPE6h3VP6p/OOof6gAAXH1DCQ==
+  </chunk>
+  </data>
+ </layer>
+ <layer id="150" name="ground1" width="116" height="116">
+  <data encoding="base64" compression="zlib">
+   <chunk x="-16" y="0" width="16" height="16">
+   eJxjYBgF6IBRkHg8qp9++vPYKNNfS6H+gfY/Mv4kwMBgQYF+JqheAOvOCzI=
+  </chunk>
+   <chunk x="0" y="0" width="16" height="16">
+   eJxjYBjZgFEQghkEGRoo0c8MxB8FyNdPrhuQ9TMJUmY/OX5A1k+KGzqB9nQJYOonxg0gvfOAeDYW/Z+AYsJ43ICsF5t+Qu6fhaQXWT/IXiFB/HZj028BVG+OQx8sjED4IJSeh6afFLuwYQBsmiDu
+  </chunk>
+   <chunk x="16" y="0" width="16" height="16">
+   eJxjYBgFo4B8cECAgeEgEHcJYLK7BQjrny2AG8+FmoXPHHz6kc3BZQYx+mFmUKJ/9iDVDwAANDEi
+  </chunk>
+   <chunk x="-16" y="16" width="16" height="16">
+   eJxjYMAEjILY8ScBBgYhIG0BxMKCWDSi6QepNxeE6BEioAcZmBNhxygYBaOAcgAAv44EjA==
+  </chunk>
+   <chunk x="0" y="16" width="16" height="16">
+   eJxjYMANVgswMPQC8Ww8mBCYRaF+kBvW4HEHsQBmzkUgvoRkHrlgNdSsUTAKhjIAAF3aFuY=
+  </chunk>
+   <chunk x="16" y="16" width="16" height="16">
+   eJybLcDAMJtIjA0Qq5cS/T1AfJFM/SC9a3HoBYFLQLleHPrWENALA6uhakFuvESCvlEwCgYaAADIyyfX
+  </chunk>
+  </data>
+ </layer>
+ <layer id="148" name="grass" width="116" height="116">
+  <data encoding="base64" compression="zlib">
+   <chunk x="-16" y="0" width="16" height="16">
+   eJxjYBgF6OCXAHb8B4hfCZCvH4R/U6gf5IaXBNyBTz8MKwoyNFCi/6cAZfoptR9fOBLS+xqIeQTJ108oDimxG59+YvTi0o9LLwA9imz4
+  </chunk>
+   <chunk x="0" y="0" width="16" height="16">
+   eJxjYBgFtAQyAgwMskAsJ0C6nhAgNgRiPSA2IMGcUKgebNiAgBkySHaSY4YuAb0wrC+Aaie6fwlhmBuIcS8+NxDrXnQsD8QOAvjDmhj/k2M/zG4QAJrTgE+dPRAroPFhekEAAMHQIIY=
+  </chunk>
+   <chunk x="16" y="0" width="16" height="16">
+   eJxjYBgFMNAkwMAwHYin4MD49DUT0ItLPyE7CemfTKReXPp3U6h/qgBDAyX6lwDF2yjQT4oZ+AAx4YgPgNywFIhP4XELsQBmFrI5rSTox+amZTj0AwCt3kg/
+  </chunk>
+   <chunk x="-16" y="16" width="16" height="16">
+   eJxjYMAE3IIMDAZAbCgIYYNoHkEsCokA2/gZGN4C8Tsg3g7EO/hJ03saiE8g4VMkmHEcTS+yGfjcsg0qj243NnOwAXx60PFQ1r+TTP0gfTeB+BYZ+nfi0UdIPzF68eknJe0NFQAAKA5e5Q==
+  </chunk>
+   <chunk x="0" y="16" width="16" height="16">
+   eJyzE2BgsAdiBSDWQ8P6QAwCdkA6BYgdgNifn4EhAIgD+RlQgC4W/aECDA3IakB6U4A4EYiT0cywg7ojFWqXPdQ+mL4AJL2JSGYQAxLQ9CHjHQTM8MdiLzI+RcAMfHaD8AkgPolHfyFQLpiA/vf8qOFMivtvAvEtCtxPCHRQqJ+Q/4kBIDOKcJhDCsDmlqEOAHHaNqM=
+  </chunk>
+   <chunk x="16" y="16" width="16" height="16">
+   eJxjYBhYEMhPmf4kCvUn81PmhkR+yswA6Qdhcv0B09/Bz9AwUPYHAXExBfopiUNK/A4ClLh9OAAASXQMHQ==
+  </chunk>
+  </data>
+ </layer>
+ <layer id="149" name="Roads" width="116" height="116">
+  <data encoding="base64" compression="zlib">
+   <chunk x="-16" y="0" width="16" height="16">
+   eJztkjtOAlEUhq8UczoeBYXS8LBQGhULO8SQwAKILsBIiyRiCAWQKEwIhhAwhoplWNtYuwN6tWQFfpNDIhm4BHtP8mXu3PN/95EZY/7LXzUxpg4FKELXMcZ1VnPp4Hr/EceFS7iCPu7Twr8TXT8aomfxx/Rf4AbKcI6bW/gPouvv45ctfoxsHKaQddTfw2nASHT9U/yaxU+TP4I8vMIO+QD0RPsV5u4Zv1n8W3pVKJF7hzDjCEy8ed6b0GH8YfFb9NpwTe4TvuDb0X3bMIRn+jOLvyt63zm5BM8kpET3Haz5jv46IHsoeu9jOIGM6L7b1BnZkPzeOwcXsp3rlffvLZ+78QfXK9d37t4G/wdneii+
+  </chunk>
+   <chunk x="0" y="0" width="16" height="16">
+   eJzl0M0vA0EcxvGJnZOGXkhL6uWi5YCL/i2cvWyDkHhpg5AQBGkTnCVcnCiHOggl0YuXeqmTE60Djlw4Et/NbrKz408wySfZ37Pz7ExWiP+9QpXu845PiF2kMYs5vBje/VVk1QihDp30uxDwC3HEfIwsVrGGdWzzjUy5EIfoYzaVvkk3hjD9S+Yr5LGJLZRJcvo5uucYJ4sjgKD1TDeBqN97zwydAzwghW6+04NeNNELI4Izujnn/tYqsfcZF4Z97jw2MEJvFGPooBf12fsLdO+d+1vrnb0fqGdfg3Tvc0t2h4L2P4t0S8r9v3n/g1a6bUr/kewJRa2vrhj707zfwz76mQcwqOVDzMPybz9BluX9CU4xwTyJKS2fZp5x+qa0z30lf0Me17jBEvkyVqQ3TzKnnH5c2ud+kn8p/61Ru1+QuQa1Wr7AvAgDUrr/rV3bF2FuRouSJyuE+AVc9VBk
+  </chunk>
+   <chunk x="16" y="0" width="16" height="16">
+   eJzt0M1KAlEYxvHXdPygGSyvIK9AKQlyUZTrRFvbRWRr7yCwRW7ty0soqKDcCG0z0CswmNxIEJQutP/hjGDQHL2AXvgx75k5z/kYkf+aLTck8oWEJZJCGk+Mm6HF8iobI5PENnZwz7uHBfM9S5+hhn36PG7obw35DnPeve997/wNlHh/iAn9mfV3dnNZJMq3EXPeMMQdnuGqddFX2bD53GHmfJJ5RIS+q87B8xtDxA1519t37P27aR3Rl3Hsc3ZVFVvfN2jpfac1oF/HBjL48FnjhPyl/Xtftd6Y8S72kDPcv0X2Cte2HleZewqH+QWeRRzMuX/AEVlydB/nuYJV1Mmd48Jw/xf2beMVVTJbyGLN8c/M1g/zIzcZ
+  </chunk>
+   <chunk x="-16" y="16" width="16" height="16">
+   eJzN089KAlEUx/EzoyD2Dgm20wxqE+mmWplv4Kqtq3bmwuoBlCBFIgn6g3tzo9sS9AlyYa4EBXMVFAhpLvwWDo7jXKldBz5c5sz9wXDuHZHFunSJ7GIP+7hyLe6JrdgEFeXTRfxY12e9vFsk7f5dfodcECF9vn+tyJ9Z+mFyB4hM86usHqQU+XP6bW32HGfvMRLTfIB1A1+afX5M/w0d9nRxgQyy6KGMCqK6ff67RuTfef+BW9zhHgPUUEdsSf6nHCIaiux7QAlOnp9ZG6Z52JX5zJp8ywtayOGR3hOqS/LmM+uReUUfBdwgj23F/K0zM+blxRoOySW5fyeKO2idmTGvTWzhiHyKbFqRt87MmNcn3zzEKXkHWecf/oH/WhMYoj2s
+  </chunk>
+   <chunk x="0" y="16" width="16" height="16">
+   eJzV0rtKA0EUxvGzEosNxkvtvTFq0tioYGOhBgSxUATRTgxBEitNhEQQBcUkjalCbPSlvL6A+gJq53/YkZ0cVq0d+DGbyfmWcyYRCVZXTCSBbuRRwH5Mfl2tRPjcT+0ABlFGBcd/5M2q+8E+SW0KaVRRQ13lVyLy6+SrfvvZHZ/v8aDOt5GzzxtY8ER2qGnZd5zGRc4g8NARb88fII8sdnHofNckf0V9Az3oRZ/Km1XEKAoRs9xQf4shDGMkIv/dx5gzi15JcuOYsPkt5nxkf8Kz7f0EKaTpewple1eX7NPkZjBr83vkX9hf8YaS08cc9fP2/kz2GovklpBx+n/HBz5VrxVqNk3G3B8a6jfTc2fVWY18zg/uf9n2kfTDuUo4ct5ZVPfW6fRo/gerZn4/nOscF6qnNe/nHv/b+gLvbzPB
+  </chunk>
+   <chunk x="16" y="16" width="16" height="16">
+   eJzd0b9LAmEcx/EveHGndQhikJM0maOjimhb9oeEg4tLf0CDzg06Si0uUrq0tLg4uwjmIlZQbuVQouTQ+1DhEO/X6hde3D2Pn89zhzc+EnnFG+q6yAXyqLF2M1/kvjHFg77aS3JNIa0797NkcjjHCSKmd7jEnYszNhMje4a4vnqXRw/dzWS2Oi3Wf5rIUvN+ljE+egG/yKHfPjcnt9h6htE9dnju1fqqcr6GMvkKbkzdhirSVHf3SyiY1lU6Ndyuuy16T3i26F+jCIX8PZkB1xcMcYouez30LfrGhMl1+L2ND+4/MUEQCYzYf7fpGxMi94NfzBBB1OM38/H/KThw+Fb7NP9OFyz6
+  </chunk>
+  </data>
+ </layer>
+</map>

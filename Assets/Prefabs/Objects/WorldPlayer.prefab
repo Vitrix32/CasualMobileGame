@@ -68,7 +68,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -138,8 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580b74e90002c4d469c57181fef3eaf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravePeacefulTown: {fileID: 5173684452165444952}
-  commonBattle: {fileID: 5793335671160581291}
+  primaryMusicSource: {fileID: 0}
+  primaryUISource: {fileID: 0}
+  backgroundMusics: []
+  combatMusics: []
 --- !u!82 &5173684452165444952
 AudioSource:
   m_ObjectHideFlags: 0
@@ -410,8 +412,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1977453969
-  m_SortingLayer: 0
+  m_SortingLayerID: -1407208739
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 835975667, guid: 47893d42fb0dfe04a823471efbae8c84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
