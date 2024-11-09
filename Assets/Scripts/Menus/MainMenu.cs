@@ -34,6 +34,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("GameplayScene");
     }
 
+    public void TEST()
+    {
+        EnemyData enemyData = FindObjectOfType<ReadEnemyFromJson>().ReturnRandomEnemy();
+    }
+
     public void QuitGame()
     {
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
