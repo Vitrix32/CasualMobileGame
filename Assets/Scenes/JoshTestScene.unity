@@ -600,7 +600,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1697901953}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
         m_MethodName: ToggleWeapons
         m_Mode: 1
@@ -815,7 +815,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1977453969
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -2215,7 +2215,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1697901953}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
         m_MethodName: ToggleArmor
         m_Mode: 1
@@ -2608,7 +2608,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1697901953}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
         m_MethodName: TogglePotions
         m_Mode: 1
@@ -2871,7 +2871,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1697901953}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
         m_MethodName: ToggleWeapons
         m_Mode: 1
@@ -3004,7 +3004,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1697901953}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
         m_MethodName: ToggleInventory
         m_Mode: 1
@@ -5594,7 +5594,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1697901953}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
         m_MethodName: ToggleInventory
         m_Mode: 1
@@ -8771,7 +8771,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1697901953}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
         m_MethodName: ToggleArmor
         m_Mode: 1
@@ -9881,8 +9881,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1697901952}
   - component: {fileID: 1697901951}
-  - component: {fileID: 1697901953}
   - component: {fileID: 1697901954}
+  - component: {fileID: 1697901955}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -9921,38 +9921,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1697901953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697901950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d29c161ead255146974cea754c2f502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: {fileID: 4900000, guid: 5a5e3bc752c4f7049afa87c5b82be4eb, type: 3}
-  inventory:
-    items: []
-  spritelist:
-    NDI:
-    - name: GreatSword
-      sprite: {fileID: 21300000, guid: c1eac1a0c6098824398738d6b9631e0d, type: 3}
-    - name: MediocoreSword
-      sprite: {fileID: 21300000, guid: 723d34c098602774fb12c451d388fe13, type: 3}
-    - name: HealthPotion
-      sprite: {fileID: 21300000, guid: 6f556112c5cdab94c972cd6c00ae9b07, type: 3}
-  toggleInventory: 0
-  toggleArmor: 0
-  toggleWeapons: 0
-  togglePotions: 0
-  inventoryPanel: {fileID: 511457423}
-  weaponPanel: {fileID: 643240143}
-  potionPanel: {fileID: 155748085}
-  armorPanel: {fileID: 239929852}
-  openInventoryButton: {fileID: 924923543}
 --- !u!114 &1697901954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9973,6 +9941,42 @@ MonoBehaviour:
   questList:
     quests: []
   currentQuests: []
+--- !u!114 &1697901955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697901950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d29c161ead255146974cea754c2f502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PS:
+    stats: []
+  statsJSON: {fileID: 4900000, guid: 8df7e7b53aabe8843ab25897e8733719, type: 3}
+  IL:
+    items: []
+  itemsJSON: {fileID: 4900000, guid: 5a5e3bc752c4f7049afa87c5b82be4eb, type: 3}
+  attack:
+    type: 
+    basic: 0
+    itemEnhancement: 0
+    itemName: 
+    boostEnhancement: 0
+  defense:
+    type: 
+    basic: 0
+    itemEnhancement: 0
+    itemName: 
+    boostEnhancement: 0
+  health:
+    type: 
+    basic: 0
+    itemEnhancement: 0
+    itemName: 
+    boostEnhancement: 0
 --- !u!1 &1716480478
 GameObject:
   m_ObjectHideFlags: 0
@@ -11740,7 +11744,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1697901953}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ItemManager, Assembly-CSharp
         m_MethodName: TogglePotions
         m_Mode: 1

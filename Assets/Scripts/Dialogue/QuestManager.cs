@@ -13,9 +13,11 @@ public class QuestManager : MonoBehaviour
     public List<Quest> currentQuests = new List<Quest>();
     public Dictionary<Quest, bool> starts = new Dictionary<Quest, bool>();
     public Dictionary<Quest, bool> ends = new Dictionary<Quest, bool>();
+    private ItemManager IM;
     
     void Start()
     {
+        IM = this.GetComponent<ItemManager>();
         questList = JsonUtility.FromJson<QuestList>(quests.text);
         foreach(Quest q in questList.quests)
         {
@@ -93,6 +95,7 @@ public class QuestManager : MonoBehaviour
             }
             currentQuests.Remove(q);
             Debug.Log("quest ended: " + q.name);
+            IM.checkItemAquire(q.name);
         }
     }
 

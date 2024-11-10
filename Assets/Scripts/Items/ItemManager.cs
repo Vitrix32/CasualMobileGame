@@ -1,168 +1,84 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
-    public TextAsset items;
-    [SerializeField]
-    public Inventory inventory;
 
-    [SerializeField]
-    NewDict spritelist;
-    Dictionary<string, Sprite> spriteList = new Dictionary<string, Sprite>();
-    public bool toggleInventory = false, toggleArmor = false, toggleWeapons = false, togglePotions = false;
-    public GameObject inventoryPanel, weaponPanel, potionPanel, armorPanel, openInventoryButton;
+    public PlayerStats PS;
+    public TextAsset statsJSON;
+    public ItemList IL;
+    public TextAsset itemsJSON;
+    public StatType attack, defense, health;
 
     private void Start()
     {
-        spriteList = spritelist.ToDictionary();
-        inventory = JsonUtility.FromJson<Inventory>(items.text);
-    }
-
-    public void ToggleInventory()
-    {
-        toggleInventory = !toggleInventory;
-        inventoryPanel.SetActive(toggleInventory);
-        openInventoryButton.SetActive(!toggleInventory);
-    }
-
-    public void ToggleArmor()
-    {
-        toggleInventory = !toggleInventory;
-        inventoryPanel.SetActive(toggleInventory);
-        toggleArmor = !toggleArmor;
-        armorPanel.SetActive(toggleArmor);
-        if (toggleArmor)
+        PS = JsonUtility.FromJson<PlayerStats>(statsJSON.text);
+        for (int i = 0; i < PS.stats.Length; i++)
         {
-            List<Item> itemArr = new();
-            foreach(Item item in inventory.items)
+            if (PS.stats[i].type == "attack")
             {
-                if (item.type == "Armor")
-                {
-                    itemArr.Add(item);
-                }
-            }
-            PanelDisplay(armorPanel, itemArr);
-        }
-    }
-
-    public void ToggleWeapons()
-    {
-        toggleInventory = !toggleInventory;
-        inventoryPanel.SetActive(toggleInventory);
-        toggleWeapons = !toggleWeapons;
-        weaponPanel.SetActive(toggleWeapons);
-        if (toggleWeapons)
-        {
-            List<Item> itemArr = new();
-            foreach (Item item in inventory.items)
+                attack = PS.stats[i];
+            } else if (PS.stats[i].type == "defense")
             {
-                if (item.type == "Weapon")
-                {
-                    itemArr.Add(item);
-                }
-            }
-            PanelDisplay(weaponPanel, itemArr);
-        }
-    }
-    public void TogglePotions()
-    {
-        toggleInventory = !toggleInventory;
-        inventoryPanel.SetActive(toggleInventory);
-        togglePotions = !togglePotions;
-        potionPanel.SetActive(togglePotions);
-        if (togglePotions)
-        {
-            List<Item> itemArr = new();
-            foreach (Item item in inventory.items)
-            {
-                if (item.type == "Potion")
-                {
-                    itemArr.Add(item);
-                }
-            }
-            PanelDisplay(potionPanel, itemArr);
-        }
-    }
-
-    void PanelDisplay(GameObject panel, List<Item> itemList)
-    {
-        
-        for (int i = panel.transform.childCount - 1; i >= 1; i--)
-        {
-            Destroy(panel.transform.GetChild(i).gameObject);
-        }
-        Debug.Log(panel.transform.childCount);
-        foreach (Item i in itemList)
-        {
-            if (spriteList.ContainsKey(i.name))
-            {
-                //Debug.Log("Adding: " + i.name);
-                Sprite sprite = spriteList[i.name];
-                GameObject imageObject = new GameObject("Image");
-                Image imageComponent = imageObject.AddComponent<Image>();
-                imageComponent.sprite = sprite;
-                RectTransform rectTransform = imageObject.GetComponent<RectTransform>();
-                rectTransform.sizeDelta = new Vector2(50,50);
-                rectTransform.SetParent(panel.transform);
-                rectTransform.anchoredPosition = new Vector2(-25 + (12.5f * ((panel.transform.childCount -2)  % 5)), 25 - (50 * Mathf.FloorToInt((panel.transform.childCount - 2) / 4)));
+                defense = PS.stats[i];
             } else
             {
-                //Debug.Log("The sprite was not found:" + i.name);
+                health = PS.stats[i];
+            }
+        }
+        IL = JsonUtility.FromJson<ItemList>(itemsJSON.text);
+    }
+
+    public void checkItemAquire(string s)
+    {
+        for (int i = 0; i < IL.items.Length; i++)
+        {
+            if (IL.items[i].questName == s)
+            {
+                Debug.Log("Aquired Item: " + IL.items[i].name);
+                if (IL.items[i].type == "attack")
+                {
+                    attack.itemEnhancement = IL.items[i].value;
+                    attack.itemName = IL.items[i].name;
+                } else if (IL.items[i].type == "health")
+                {
+                    health.itemEnhancement = IL.items[i].value;
+                    health.itemName = IL.items[i].name;
+                } else
+                {
+                    defense.itemEnhancement = IL.items[i].value;
+                    defense.itemName = IL.items[i].name;
+                }
             }
         }
     }
 
-    [Serializable]
-    public class Item
+    [System.Serializable]
+    public class ItemList
     {
-        [SerializeField]
-        public string name;
-        [SerializeField]
-        public string type;
-        [SerializeField]
-        public string effect;
-        [SerializeField]
-        public string amount;
-        [SerializeField]
-        public string count;
-        [SerializeField]
-        public bool equipped;
-    }
-
-    [Serializable]
-    public class Inventory
-    {
-        [SerializeField]
         public Item[] items;
     }
-}
-
-[Serializable]
-public class NewDict 
-{
-    [SerializeField]
-    NewDictItem[] NDI;
-
-    public Dictionary<string, Sprite> ToDictionary()
+    [System.Serializable]
+    public class Item
     {
-        Dictionary<string, Sprite> newDict = new Dictionary<string, Sprite>();
-        foreach(var item in NDI)
-        {
-            newDict.Add(item.name, item.sprite);
-        }
-        return newDict;
+        public string name;
+        public string type;
+        public int value;
+        public string questName;
     }
-}
-
-[Serializable]
-public class NewDictItem
-{
-    [SerializeField]
-    public string name;
-    [SerializeField]
-    public Sprite sprite;
+    [System.Serializable]
+    public class PlayerStats
+    {
+        public StatType[] stats;
+    }
+    [System.Serializable]
+    public class StatType
+    {
+        public string type;
+        public int basic;
+        public int itemEnhancement;
+        public string itemName;
+        public int boostEnhancement;
+    }
 }

@@ -1,60 +1,10 @@
 {
-    "items": [
-        {
-            "name": "MediocoreSword",
-            "type": "Weapon",
-            "effect": "Damage",
-            "amount": "15",
-            "count": "1",
-            "equiped": false
-        },
-        {
-            "name": "GreatSword",
-            "type": "Weapon",
-            "effect": "Damage",
-            "amount": "25",
-            "count": "1",
-            "equiped": false
-        },
-        {
-            "name": "MediocreBow",
-            "type": "Weapon",
-            "effect": "Damage",
-            "amount": "10",
-            "Count": "1",
-            "equiped": false
-        },
-        {
-            "name": "GreatBow",
-            "type": "Weapon",
-            "effect": "Damage",
-            "amount": "20",
-            "count": "1",
-            "equiped": false
-        },
-        {
-            "name": "HealthPotion",
-            "type": "Potion",
-            "effect": "Heal",
-            "amount": "15",
-            "count": "10",
-            "equiped": false
-        },
-        {
-            "name": "MediocreSheild",
-            "type": "Armor",
-            "effect": "Protect",
-            "amount": "15",
-            "count": "1",
-            "equiped": false
-        },
-        {
-            "name": "GreatSheild",
-            "type": "Armor",
-            "effect": "Protect",
-            "amount": "15",
-            "count": "1",
-            "equiped": false
-        }
-    ]
+	"items": [
+		{
+			"name": "GreatSword",
+			"type": "attack",
+			"value": "10",
+			"questName": "JeffQuest"
+		}
+	]
 }
