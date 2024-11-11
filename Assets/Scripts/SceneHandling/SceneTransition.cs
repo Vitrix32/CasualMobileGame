@@ -5,9 +5,11 @@ using UnityEngine;
 public class SceneTransition : MonoBehaviour
 {
     private bool end;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("WorldPlayer");
         end = false;
         this.GetComponent<Fade>().startFade(0.0f, 3.0f);
         Invoke("Reposition", 3.1f);
@@ -24,7 +26,7 @@ public class SceneTransition : MonoBehaviour
     {
         if (end)
         {
-            this.transform.position = new Vector3(GameObject.Find("WorldPlayer").transform.position.x, GameObject.Find("WorldPlayer").transform.position.y, this.transform.position.z);
+            this.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, this.transform.position.z);
         }
         else
         {

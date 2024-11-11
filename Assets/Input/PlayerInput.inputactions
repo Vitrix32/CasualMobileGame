@@ -91,6 +91,17 @@
                 },
                 {
                     "name": "",
+                    "id": "52520037-b63d-49d1-9c54-70f172b70134",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c94774df-5f94-4b35-8b9a-9f29eb30feac",
                     "path": "<Keyboard>/e",
                     "interactions": "",

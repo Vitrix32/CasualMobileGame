@@ -39,7 +39,6 @@ public class DeathMenu : MonoBehaviour
 
     private void Menu()
     {
-        GameObject.Find("RandomEncounter").GetComponent<Encounter>().playerDead();
         SceneManager.LoadScene("MainMenu");
     }
 

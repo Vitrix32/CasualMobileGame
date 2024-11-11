@@ -15,9 +15,6 @@ public class PreloadAssets : MonoBehaviour
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(debugMenu);
         player.GetComponent<SpriteRenderer>().enabled = true;
-        DontDestroyOnLoad(GameObject.Find("RandomEncounter")); //Remove later
-        //SceneManager.LoadScene("IsaacTestScene");
-        //GameObject.Find("UniversalAudio").GetComponent<UniversalAudioHandling>().ExitingCombat();
         SceneManager.LoadScene("MainMenu");
     }
 }
