@@ -92,4 +92,9 @@ public class PlayerStatus : MonoBehaviour
         EnableControl();
         this.GetComponent<UniversalAudioHandling>().ExitingCombat();
     }
+
+    public void SetWorldPosition()
+    {
+        worldPosition = Vector2.zero;
+    }
 }
