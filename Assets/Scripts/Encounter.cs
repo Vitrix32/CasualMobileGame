@@ -30,8 +30,8 @@ public class Encounter : MonoBehaviour
         if (!encountered && collision == player.GetComponent<Collider2D>())
         {
             encountered = true;
-            FadePanel = GameObject.Find("FadePanel"); //Will remove this later once this object is no longer preloaded
-            FadePanel.GetComponent<SceneTransition>().End();
+            //FadePanel = GameObject.Find("FadePanel"); //Will remove this later once this object is no longer preloaded
+            //FadePanel.GetComponent<SceneTransition>().End();
             player.GetComponent<PlayerStatus>().LeavingGameWorld(true, 3.1f);
             StartCoroutine("ChangeScene");
         }
