@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 100; // Maximum health for the enemy
     public int currentHealth;
 
+    public TMP_Text healthText;
     public Slider healthBar; // Reference to the health bar UI
 
     public int attackDamage = 20; // Damage enemy deals to the player
@@ -29,7 +31,7 @@ public class Enemy : MonoBehaviour
     {
         MenuManager = GameObject.Find("MenuManager");
         currentHealth = maxHealth;
-        UpdateHealthBar();
+        UpdateHealthUI();
         audioSource = GetComponent<AudioSource>();
 
         // Get the RectTransform from the child object
@@ -57,7 +59,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Ensure health doesn't go below 0
-        UpdateHealthBar(); // Update the health bar
+        UpdateHealthUI(); // Update the health bar
 
         Debug.Log("Enemy took " + damage + " damage! Health remaining: " + currentHealth);
 
@@ -70,8 +72,12 @@ public class Enemy : MonoBehaviour
     }
 
     // Update the health bar based on the current health
-    void UpdateHealthBar()
+    void UpdateHealthUI()
     {
+        if (healthText != null)
+        {
+            healthText.text = "HP: " + currentHealth;
+        }
         if (healthBar != null)
         {
             healthBar.value = (float)currentHealth / maxHealth;
@@ -138,7 +144,7 @@ public class Enemy : MonoBehaviour
             currentHealth -= dotDamage;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Ensure health doesn't go below 0
             dotTurnsRemaining--;
-            UpdateHealthBar();
+            UpdateHealthUI();
             StartCoroutine(Shake()); // Start the shake effect when taking damage
             Debug.Log("Enemy took " + dotDamage + " damage! Health remaining: " + currentHealth);
 

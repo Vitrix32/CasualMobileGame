@@ -16,16 +16,6 @@ public class Player : MonoBehaviour
     // New: Reference to the AudioSource component
     private AudioSource audioSource;
 
-    // New: AudioClip to play attack sound
-    public AudioClip swordSound;
-    public AudioClip fireSound;
-    public AudioClip punchSound;
-    public AudioClip attackSound;
-    public AudioClip arrowSound;
-    public AudioClip skySound;
-
-
-
     public int maxHealth = 100;
     public int currentHealth;
 
@@ -33,7 +23,7 @@ public class Player : MonoBehaviour
 
     public int damage = 0;
 
-    public Text healthText;
+    public TMP_Text healthText;
     public Slider healthSlider;
 
     public Button[] attackButtons;
@@ -149,7 +139,7 @@ public class Player : MonoBehaviour
     {
         if (healthText != null)
         {
-            healthText.text = "Health: " + currentHealth;
+            healthText.text = "HP: " + currentHealth;
         }
 
         if (healthSlider != null)

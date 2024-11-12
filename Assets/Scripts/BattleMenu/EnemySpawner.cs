@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
     // This method will spawn the enemy at a random spawn point
     void SpawnEnemy()
     {
-        spawnPoint.position = new Vector3(5, 2.5f, 0);
+        spawnPoint.position = new Vector3(5, 1.75f, 0);
         // Dynamically load the enemy prefab using the provided name
         GameObject enemyPrefab = Resources.Load<GameObject>("Enemies/" + enemyPrefabName);
 
