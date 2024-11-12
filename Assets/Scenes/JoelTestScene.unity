@@ -209,13 +209,13 @@ MonoBehaviour:
       - m_Target: {fileID: 1593877629}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: PlayerAttack
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 30
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: sword
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1593877631}
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skybreaker
+  m_text: Heavy Axe
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1080,13 +1080,13 @@ MonoBehaviour:
       - m_Target: {fileID: 1593877629}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: PlayerAttack
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 25
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: arrow
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1593877631}
@@ -1225,13 +1225,13 @@ MonoBehaviour:
       - m_Target: {fileID: 1593877629}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: PlayerAttack
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 20
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: punch
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1593877631}
@@ -4224,7 +4224,7 @@ GameObject:
   - component: {fileID: 1552773938}
   - component: {fileID: 1552773937}
   m_Layer: 5
-  m_Name: Skybreaker
+  m_Name: Heavy Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4297,13 +4297,13 @@ MonoBehaviour:
       - m_Target: {fileID: 1593877629}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: PlayerAttack
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 10
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: axe
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1593877631}
@@ -4911,7 +4911,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 543794189
-  m_SortingLayer: 3
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9936,7 +9936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1761883959433178519, guid: 4eda9898566de4a4f9599c65fdd414f1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5449999713875695315, guid: 4eda9898566de4a4f9599c65fdd414f1, type: 3}
       propertyPath: m_Pivot.x

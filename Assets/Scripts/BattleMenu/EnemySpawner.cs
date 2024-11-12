@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -32,6 +34,24 @@ public class EnemySpawner : MonoBehaviour
         spawnPoint.position = new Vector3(5, 2.5f, 0);
         // Dynamically load the enemy prefab using the provided name
         GameObject enemyPrefab = Resources.Load<GameObject>("Enemies/" + enemyPrefabName);
+
+        Enemy enemy = enemyPrefab.GetComponent<Enemy>();
+
+        if(enemy != null) {
+            ReadEnemyFromJson reader = enemy.AddComponent<ReadEnemyFromJson>();
+            EnemyData data = reader.ReturnRandomEnemy();
+
+            enemy.attackDamage = Int32.Parse(data.Damage);
+            enemy.maxHealth = Int32.Parse(data.Hp);
+
+            Sprite newSprite = Resources.Load("EnemyArt/" + data.Name, typeof(Sprite)) as Sprite;
+            Debug.Log("EnemyArt/" + data.Name);
+            Debug.Log(newSprite);
+            SpriteRenderer spriteRenderer = enemy.GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = newSprite;
+
+            Debug.Log(data.Name);
+        }
 
         if (enemyPrefab != null && spawnPoint != null)
         {

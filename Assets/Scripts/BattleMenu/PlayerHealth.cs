@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
+using Random=UnityEngine.Random;
+
 
 public class Player : MonoBehaviour
 {
@@ -92,6 +95,8 @@ public class Player : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         UpdateText("What would you like to do?");
+
+        PlayerPrefs.SetFloat("swordMultiplier", 5f);
     }
 
     public void UpdateText(string newText)
@@ -162,8 +167,14 @@ public class Player : MonoBehaviour
     }
 
     // General PlayerAttack method without parameters, for UI buttons
-    public void PlayerAttack(int damage)
+    public void PlayerAttack(string attack)
     {
+        float baseDamage = PlayerPrefs.GetFloat(attack + "Damage", 10.0f);
+        float multiplier = PlayerPrefs.GetFloat(attack + "Multiplier", 1.0f);
+        int damage = (int)(baseDamage * multiplier);
+
+        Debug.Log(damage);
+
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
             damage = 10000;
