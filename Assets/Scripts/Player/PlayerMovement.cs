@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveVector;
 
+    [SerializeField]
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
         }
         Vector2 val = moveVector * moveSpeed * Time.fixedDeltaTime;
         rb.velocity = val;
+
+        anim.SetFloat("horizontal", val.x);
+        anim.SetFloat("vertical", val.y);
     }
 
     //Grab player input
