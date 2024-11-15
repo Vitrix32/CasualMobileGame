@@ -7,6 +7,7 @@ public class QuestManager : MonoBehaviour
     public TMPro.TextMeshProUGUI sampleQuestText;
     public GameObject questPrefab;
     public GameObject questPanel;
+    private GameObject player;
     public bool questActive = false;
     public TextAsset quests;
     public QuestList questList;
@@ -17,6 +18,7 @@ public class QuestManager : MonoBehaviour
     
     void Start()
     {
+        player = GameObject.Find("WorldPlayer");
         IM = this.GetComponent<ItemManager>();
         questList = JsonUtility.FromJson<QuestList>(quests.text);
         foreach(Quest q in questList.quests)
@@ -30,6 +32,15 @@ public class QuestManager : MonoBehaviour
     {
         questActive = !questActive;
         questPanel.SetActive(questActive);
+        if(questActive)
+        {
+            player.GetComponent<PlayerStatus>().BeginDialogue();
+        }
+        else
+        {
+            player.GetComponent<PlayerStatus>().EndDialogue();
+        }
+        
     }
 
     public void TryQuest(string s)

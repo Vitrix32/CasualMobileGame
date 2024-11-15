@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     private GameObject[] NPCs;
+    private GameObject player;
     public TMPro.TextMeshProUGUI continueText;
     public GameObject textPanel;
     public TextAsset dialogue;
@@ -17,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("WorldPlayer");
         npcData = JsonUtility.FromJson<NPCCollection>(dialogue.text);
         NPCs = GameObject.FindGameObjectsWithTag("NPC");
     }
@@ -71,6 +73,7 @@ public class DialogueManager : MonoBehaviour
             }
         }
         textPanel.SetActive(false);
+        player.GetComponent<PlayerStatus>().EndDialogue();
         yield return null;
     }
 
@@ -88,6 +91,7 @@ public class DialogueManager : MonoBehaviour
                 NPC incNPC = FindNPCByName(npc.dialogue[npc.value].increment);
                 incNPC.value++;
             }
+            player.GetComponent<PlayerStatus>().BeginDialogue();
             StartCoroutine(displayText(npc.dialogue[optionIndex].option));
         }
     }

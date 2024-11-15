@@ -42,16 +42,16 @@ public class PlayerStatus : MonoBehaviour
         this.transform.position = worldPosition;
     }
 
+    //Enables player control of the player character
     private void EnableControl()
     {
-        this.GetComponent<PlayerMovement>().enabled = true;
-        rb.velocity = Vector2.zero;
+        this.GetComponent<PlayerMovement>().EnableMovement();
     }
 
-    private void DisableControl() 
+    //Disables player control of the player character
+    private void DisableControl()
     {
-        this.GetComponent<PlayerMovement>().enabled = false;
-        rb.velocity = Vector2.zero;
+        this.GetComponent<PlayerMovement>().DisableMovement();
     }
 
     /*****
@@ -93,6 +93,27 @@ public class PlayerStatus : MonoBehaviour
         this.GetComponent<UniversalAudioHandling>().ExitingCombat();
     }
 
+    /*****
+    This function has the purpose of disabling control of the player.
+    Will eventually hide various ui elements before dialogue.
+    *****/
+    public void BeginDialogue()
+    {
+        DisableControl();
+    }
+
+    /*****
+    This function has the purpose of reenabling control of the player. 
+    Will eventually reveal various ui elements after dialogue.
+    *****/
+    public void EndDialogue()
+    {
+        EnableControl();
+    }
+
+    /*****
+    This function has the purpose of setting the vector worldPosition to (0,0).
+    *****/
     public void SetWorldPosition()
     {
         worldPosition = Vector2.zero;
