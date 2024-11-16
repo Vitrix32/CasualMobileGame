@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
 
         UpdateText("What would you like to do?");
 
-        PlayerPrefs.SetFloat("swordMultiplier", 5f);
+        PlayerPrefs.SetFloat("swordMultiplier", 2f);
     }
 
     public void UpdateText(string newText)
@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
     void Die()
     {
         Debug.Log("You died!");
-        Destroy(gameObject); // Destroy enemy when health is 0
+        Destroy(gameObject); // Destroy player when health is 0
         WorldPlayer.GetComponent<UniversalAudioHandling>().Die();
         SceneManager.LoadScene("DeathScene");
     }
@@ -244,16 +244,20 @@ public class Player : MonoBehaviour
 
     IEnumerator EnemyAttackTurn()
     {
-        yield return new WaitForSeconds(2);
+        if (enemy.currentHealth > 0){
+             yield return new WaitForSeconds(2);
 
-        enemy.EnemyAttack(this);   // Enemy attacks player
+            enemy.EnemyAttack(this);   // Enemy attacks player
+            UpdateText("The enemy attacked!");
 
-        UpdateText("The enemy attacked!");
-
-        // Allow the player to attack again after the enemy turn ends
-        playerTurn = true;
-        SetAttackButtonsInteractable(true);
-        SetSpellButtonsInteractable(true);
+            // Allow the player to attack again after the enemy turn ends
+            playerTurn = true;
+            SetAttackButtonsInteractable(true);
+            SetSpellButtonsInteractable(true);
+        }
+        else {
+             yield return new WaitForSeconds(1);
+        }
     }
 
     IEnumerator BattleSequence()
