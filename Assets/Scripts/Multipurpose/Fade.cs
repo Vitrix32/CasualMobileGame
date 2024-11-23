@@ -12,8 +12,8 @@ using UnityEngine.UI;
  * change their alpha value (transparency) over time (fade in/ fade out).
  * It contains a function, startFade, that can be called by other scripts to
  * pass on the parameters for and start the coroutines responsible for the 
- * change in transparency. There are two coroutines to support functionality
- * for sprites and images.
+ * change in transparency. There are two coroutines: one to support functionality
+ * for sprites and another for images.
  */
 public class Fade : MonoBehaviour
 {

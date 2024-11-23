@@ -54,11 +54,9 @@ public class PlayerStatus : MonoBehaviour
         this.GetComponent<PlayerMovement>().DisableMovement();
     }
 
-    /*****
-    This function has the purpose of handling the transition of the player object from the game world to combat
-    or new areas. you must specify if you are entering combat or just a new area, and a delay must be given.
-    If no delay is desired just give a delay of 0.0f.
-    *****/
+    //This function has the purpose of handling the transition of the player object from the game world to combat
+    //or new areas. you must specify if you are entering combat or just a new area, and a delay must be given.
+    //If no delay is desired just give a delay of 0.0f.
     public void LeavingGameWorld(bool isCombat, float delay)
     {
         this.GetComponent<FootstepAudioHandling>().StopAllCoroutines();
@@ -74,11 +72,9 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
-    /*****
-    This function has the purpose of handling the transition of the player object from the game world to combat or new areas.
-    You must specify if you are entering combat or just a new area, and a delay must be given.
-    If no delay is desired, just give a delay of 0.0f.
-    *****/
+    //This function has the purpose of handling the transition of the player object from the game world to combat or new areas.
+    //You must specify if you are entering combat or just a new area, and a delay must be given.
+    //If no delay is desired, just give a delay of 0.0f.
     public void EnteringGameWorld(bool isCombat, float delay)
     {
         if (isCombat)
@@ -93,27 +89,21 @@ public class PlayerStatus : MonoBehaviour
         this.GetComponent<UniversalAudioHandling>().ExitingCombat();
     }
 
-    /*****
-    This function has the purpose of disabling control of the player.
-    Will eventually hide various ui elements before dialogue.
-    *****/
+    //This function has the purpose of disabling control of the player.
+    //Will eventually hide various ui elements before dialogue.
     public void BeginDialogue()
     {
         DisableControl();
     }
 
-    /*****
-    This function has the purpose of reenabling control of the player. 
-    Will eventually reveal various ui elements after dialogue.
-    *****/
+    //This function has the purpose of reenabling control of the player. 
+    //Will eventually reveal various ui elements after dialogue.
     public void EndDialogue()
     {
         EnableControl();
     }
 
-    /*****
-    This function has the purpose of setting the vector worldPosition to (0,0).
-    *****/
+    //This function has the purpose of setting the vector worldPosition to (0,0).
     public void SetWorldPosition()
     {
         worldPosition = Vector2.zero;

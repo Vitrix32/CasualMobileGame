@@ -8,7 +8,7 @@ using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 
 /*
  * Name: PlayerMovement
- * Author: Isaac Drury
+ * Author: Michael Dabney & Isaac Drury
  * Date: 9/22/24
  * Description:
  * This script was created for the purpose of applying movement to the
@@ -75,36 +75,31 @@ public class PlayerMovement : MonoBehaviour
         moveVector = val.Get<Vector2>();
     }
 
-    /*****
-    This function has the purpose of setting the moveVector to any vector specified in the parameters.
-    This function allows other scripts to change the moveVector, such as the virtual joystick's script.
-    *****/
+    
+    //This function has the purpose of setting the moveVector to any vector specified in the parameters.
+    //This function allows other scripts to change the moveVector, such as the virtual joystick's script.
     public void setVector(Vector2 vec)
     {
         moveVector = vec;
     }
 
-    /*****
-    This function has the purpose of returning the value of the moving boolean.
-    *****/
+    
+    //This function has the purpose of returning the value of the moving boolean.
     public bool isMoving()
     {
         return moving;
     }
 
-    /*****
-    This function has the purpose of enabling the canMove boolean. 
-    This boolean controls whether or not player input moves the player character.
-    *****/
+    
+    //This function has the purpose of enabling the canMove boolean. 
+    //This boolean controls whether or not player input moves the player character.
     public void EnableMovement()
     {
         canMove = true;
     }
 
-    /*****
-    This function has the purpose of disabling the canMove boolean. 
-    This boolean controls whether or not player input moves the player character.
-    *****/
+    //This function has the purpose of disabling the canMove boolean. 
+    //This boolean controls whether or not player input moves the player character.
     public void DisableMovement()
     {
         canMove = false;

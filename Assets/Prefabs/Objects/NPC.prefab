@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5337014862612746161}
   - component: {fileID: 526516291299920847}
   - component: {fileID: 3651112616533222583}
+  - component: {fileID: 8324220378279108439}
   - component: {fileID: 8947379375879449434}
   m_Layer: 0
   m_Name: NPC
@@ -104,6 +105,22 @@ MonoBehaviour:
   increments: []
   questStarts: []
   questEnds: []
+--- !u!114 &8324220378279108439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2495075205976332785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbec2aa32a6ff7648b8c35bd161cffed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolPath: []
+  moveCount: 2
+  idleDuration: -1
+  moveSpeed: 3
 --- !u!61 &8947379375879449434
 BoxCollider2D:
   m_ObjectHideFlags: 0

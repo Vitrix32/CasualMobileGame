@@ -96,7 +96,13 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    
+    //Finds NPC and 
+    public int GetNPCValue(string npcName)
+    {
+        NPC npc = FindNPCByName(npcName);
+        return npc.value;
+    }
+
     private NPC FindNPCByName(string npcName)
     {
         foreach (NPC npc in npcData.npc_characters)
