@@ -54,6 +54,10 @@ public class ItemManager : MonoBehaviour
         }
     }
 
+
+
+    /*
+    // MAKE THIS 4 SEPERATE CLASS FILES
     [System.Serializable]
     public class ItemList
     {
@@ -81,4 +85,5 @@ public class ItemManager : MonoBehaviour
         public string itemName;
         public int boostEnhancement;
     }
+    */
 }

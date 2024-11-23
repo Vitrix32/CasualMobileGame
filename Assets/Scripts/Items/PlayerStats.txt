@@ -1,25 +1,25 @@
 {
-	"stats": [
-		{
-			"type": "health",
-			"basic": 10,
-			"itemEnhancement": 0,
-			"itemName": "nothing",
-			"boosterEnhancement": 0
-		},
-		{
-			"type": "armor",
-			"basic": 10,
-			"itemEnhancement": 0,
-			"itemName": "nothing",
-			"boosterEnhancement": 0
-		},
-		{
-			"type": "attack",
-			"basic": 10,
-			"itemEnhancement": 0,
-			"itemName": "nothing",
-			"boosterEnhancement": 0
-		}
-	]
+    "stats": [
+        {
+            "type": "health",
+            "basic": 10,
+            "itemEnhancement": 0,
+            "itemName": "nothing",
+            "boostEnhancement": 0
+        },
+        {
+            "type": "armor",
+            "basic": 10,
+            "itemEnhancement": 0,
+            "itemName": "nothing",
+            "boostEnhancement": 0
+        },
+        {
+            "type": "attack",
+            "basic": 10,
+            "itemEnhancement": 0,
+            "itemName": "nothing",
+            "boostEnhancement": 0
+        }
+    ]
 }

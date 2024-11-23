@@ -60,6 +60,8 @@ public class PlayerStatus : MonoBehaviour
     public void LeavingGameWorld(bool isCombat, float delay)
     {
         this.GetComponent<FootstepAudioHandling>().StopAllCoroutines();
+        // We need another version of this function or if statement or something along those lines to be able to
+        // tell if it is combat, death, or main menu causing the exiting of the world -- different music for each
         this.GetComponent<UniversalAudioHandling>().EnteringCombat();
         DisableControl();
         if (isCombat)
@@ -77,6 +79,8 @@ public class PlayerStatus : MonoBehaviour
     //If no delay is desired, just give a delay of 0.0f.
     public void EnteringGameWorld(bool isCombat, float delay)
     {
+        // Same here probably, different parts of if statement to say which music to play
+        // We could add a "isDeath" and a "isMenu" bool or something along those lines
         if (isCombat)
         {
             Invoke("ExitingCombat", delay);

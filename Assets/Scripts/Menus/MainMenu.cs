@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,26 +24,32 @@ public class MainMenu : MonoBehaviour
         }*/
         WorldPlayer = GameObject.Find("WorldPlayer");
     }
-    public void PlayGame()
+    public void LoadGame()
     {
-        //WorldPlayer = GameObject.Find("WorldPlayer");
-        //UniversalAudio = GameObject.Find("UniversalAudio");
-        // Needs to change if we add menu music  --  DONT BE "EXITING COMBAT"
+        SetLiveJSONToSave();
+
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         WorldPlayer.GetComponent<PlayerStatus>().EnteringGameWorld(false, 0.4f);
-        WorldPlayer.transform.position = Vector2.zero;
+        WorldPlayer.GetComponent<PlayerStatus>().SetWorldPosition();
         SceneManager.LoadScene("GameplayScene");
-    }
-
-    public void TEST()
-    {
-        EnemyData enemyData = FindObjectOfType<ReadEnemyFromJson>().ReturnRandomEnemy();
     }
 
     public void QuitGame()
     {
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         Invoke("Quit", 0.4f);
+    }
+
+    private void SetLiveJSONToSave()
+    {
+        string quest = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt");
+        File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Quests.txt", quest);
+
+        string dialogue = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt");
+        File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt", dialogue);
+
+        string stats = File.ReadAllText(Application.dataPath + "/Scripts/Items/SavePlayerStats.txt");
+        File.WriteAllText(Application.dataPath + "/Scripts/Items/PlayerStats.txt", stats);
     }
 
     private void Quit()

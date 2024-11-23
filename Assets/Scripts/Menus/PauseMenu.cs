@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject WorldPlayer;
 
-    public GameObject GameMenu;
+    //public GameObject GameMenu;
     public GameObject pauseMenu;
     public GameObject pauseButton;
     public bool isPaused;
@@ -20,24 +21,6 @@ public class PauseMenu : MonoBehaviour
         WorldPlayer = GameObject.Find("WorldPlayer");
         pauseMenu.SetActive(false);
         pauseButton.SetActive(true);
-    }
-
-    // Update is called once per frame 
-    
-    void Update()
-    {
-        /*
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(isPaused)
-            {
-                ResumeGame();
-            } else
-            {
-                PauseGame();
-            }
-        }
-        */
     }
 
     public void PauseGame()
@@ -54,7 +37,7 @@ public class PauseMenu : MonoBehaviour
     {
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         pauseMenu.SetActive(false);
-        GameMenu.SetActive(false);
+        //GameMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
         pauseButton.SetActive(true);
@@ -62,7 +45,18 @@ public class PauseMenu : MonoBehaviour
         WorldPlayer.GetComponent<UniversalAudioHandling>().Resume();
     }
 
-    public void GoToMainMenu()
+    public void SaveAndExitToMenu()
+    {
+        SaveGame();
+        GoToMainMenu();
+    }
+
+    public void DontSaveAndExitToMenu()
+    {
+        GoToMainMenu();
+    }
+
+    private void GoToMainMenu()
     {
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         Time.timeScale = 1f;
@@ -70,8 +64,24 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
+    private void SaveGame()
+    {
+        string quest = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/Quests.txt");
+        File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt", quest);
+
+        string dialogue = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt");
+        File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt", dialogue);
+
+        string stats = File.ReadAllText(Application.dataPath + "/Scripts/Items/PlayerStats.txt");
+        File.WriteAllText(Application.dataPath + "/Scripts/Items/SavePlayerStats.txt", stats);
+
+        //PlayerPrefs.SetInt();
+        //PlayerPrefs.SetInt();
+    }
+
     public void QuitGame()
     {
+        SaveGame();
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         Invoke("Quit", 0.4f);
     }

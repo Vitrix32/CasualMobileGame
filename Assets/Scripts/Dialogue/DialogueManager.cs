@@ -115,6 +115,8 @@ public class DialogueManager : MonoBehaviour
         return null;
     }
 
+    /*
+    // Should be 3 files of classes
     [System.Serializable]
     public class DialogueOption
     {
@@ -135,4 +137,5 @@ public class DialogueManager : MonoBehaviour
     {
         public NPC[] npc_characters;
     }
+    */
 }

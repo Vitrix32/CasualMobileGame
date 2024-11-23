@@ -1,0 +1,42 @@
+{
+    "quests": [
+        {
+            "name": "testQuest",
+            "questInfo": "This is the first quest!",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Talk to the first NPC",
+                    "increment": "NPC_1 0"
+                },
+                {
+                    "description": "Talk to the second NPC",
+                    "increment": "NPC_2 0"
+                },
+                {
+                    "description": "Return to the first NPC",
+                    "increment": "NPC_1 1"
+                }
+            ]
+        },
+        {
+            "name": "JeffQuest",
+            "questInfo": "This is Jeff's magic cat quest!",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Talk to Jeff",
+                    "increment": "Jeff 0"
+                },
+                {
+                    "description": "Find the cat and talk to it",
+                    "increment": "Cat 0"
+                },
+                {
+                    "description": "Return to Jeff and tell him what the cat said",
+                    "increment": "Jeff 1"
+                }
+            ]
+        }
+    ]
+}

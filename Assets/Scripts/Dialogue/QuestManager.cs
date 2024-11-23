@@ -110,6 +110,9 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+
+    /*
+    // These should all 3 be seperate files
     [System.Serializable]
     public class QuestPart
     {
@@ -131,4 +134,5 @@ public class QuestManager : MonoBehaviour
     {
         public Quest[] quests;
     }
+    */
 }

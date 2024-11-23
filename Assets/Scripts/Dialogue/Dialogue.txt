@@ -1,52 +1,52 @@
 {
-  "npc_characters": [
-    {
-      "name": "NPC_1",
-      "value": 0,
-      "dialogue": [
+    "npc_characters": [
         {
-          "option": "Hello, traveler. Can you ask my friend over there what time it is? I'm afraid I have lost my watch. If you do this and tell me the time your quest will be complete. This is filler text, I just need to fill space so that it loops twice, I thinkl this is enough but I will add this just in case.",
-          "increment": "none"
+            "name": "NPC_1",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Hello, traveler. Can you ask my friend over there what time it is? I'm afraid I have lost my watch. If you do this and tell me the time your quest will be complete. This is filler text, I just need to fill space so that it loops twice, I thinkl this is enough but I will add this just in case.",
+                    "increment": "none"
+                },
+                {
+                    "option": "Thanks a bunch! Now I know it is 3:38 PM",
+                    "increment": "none"
+                }
+            ]
         },
         {
-          "option": "Thanks a bunch! Now I know it is 3:38 PM",
-          "increment": "none"
-        }
-      ]
-    },
-    {
-      "name": "NPC_2",
-      "value": 0,
-      "dialogue": [
-        {
-          "option": "It is 7:45 AM but tell him something different to throw him off.",
-          "increment": "NPC_1"
-        }
-      ]
-    },
-    {
-      "name": "Jeff",
-      "value": 0,
-      "dialogue": [
-        {
-          "option": "Go see what that cat down there has to say, I bet it's real interesting. Do that and come back to me to complete your quest hero. What fun!",
-          "increment": "none"
+            "name": "NPC_2",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "It is 7:45 AM but tell him something different to throw him off.",
+                    "increment": "NPC_1"
+                }
+            ]
         },
         {
-          "option": "So interesting right! Congratulations on completing your quest... theres nothing left to do here so enjoy being stuck here!", 
-          "increment": "none"
-        }
-      ]
-    },
-    {
-      "name": "Cat",
-      "value": 0,
-      "dialogue": [
+            "name": "Jeff",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Go see what that cat down there has to say, I bet it's real interesting. Do that and come back to me to complete your quest hero. What fun!",
+                    "increment": "none"
+                },
+                {
+                    "option": "So interesting right! Congratulations on completing your quest... theres nothing left to do here so enjoy being stuck here!",
+                    "increment": "none"
+                }
+            ]
+        },
         {
-          "option": "Meow", 
-          "increment": "Jeff"
+            "name": "Cat",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Meow",
+                    "increment": "Jeff"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
