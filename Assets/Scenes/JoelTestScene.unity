@@ -4699,17 +4699,6 @@ MonoBehaviour:
   damage: 0
   healthText: {fileID: 921649186}
   healthSlider: {fileID: 1792121099}
-  attackButtons:
-  - {fileID: 1306356349}
-  - {fileID: 1073064790}
-  - {fileID: 600822650}
-  - {fileID: 1289684251}
-  spellButtons:
-  - {fileID: 1232303285}
-  - {fileID: 1952811053}
-  - {fileID: 2092465042}
-  - {fileID: 1031101910}
-  enemy: {fileID: 2024950893}
   attackPanel: {fileID: 1726642942}
   spellPanel: {fileID: 1696959848}
   mainMenuPanel: {fileID: 2037871565}
@@ -4718,6 +4707,20 @@ MonoBehaviour:
   healParticleEffect: {fileID: 1683082255}
   UniversalAudio: {fileID: 0}
   battleText: {fileID: 1454473799}
+  enemy: {fileID: 2024950893}
+  attackButtonInfos:
+  - attackName: sword
+    button: {fileID: 82284952}
+    cooldown: 0
+  - attackName: axe
+    button: {fileID: 1552773937}
+    cooldown: 0
+  - attackName: arrow
+    button: {fileID: 383576536}
+    cooldown: 0
+  - attackName: punch
+    button: {fileID: 387417013}
+    cooldown: 0
 --- !u!224 &1593877630
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10883,6 +10886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  healthText: {fileID: 0}
   healthBar: {fileID: 1170133642}
   attackDamage: 20
   shakeDuration: 0.5
