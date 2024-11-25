@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using System.Linq;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     private NPCCollection npcData;
     public TMPro.TextMeshProUGUI dialogueText;
     private bool waitForTextScroll = false;
+    public bool click = false;
+    public bool talking = false;
 
 
     // Start is called before the first frame update
@@ -25,6 +29,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator displayText(string s)
     {
+        talking = true;
         textPanel.SetActive(true);
         continueText.gameObject.SetActive(false);
         dialogueText.text = "";
@@ -32,39 +37,65 @@ public class DialogueManager : MonoBehaviour
         for (int i = 0; i < s.Length; i++)
         {
             j++;
-            dialogueText.text += s[i];
-            if (j >= 80 && s[i] == ' ')
+            if (s[i] == '`')
             {
-                dialogueText.text += '\n';
                 j = 0;
-                if (dialogueText.text.Length > 160)
+                waitForTextScroll = false;
+                while (!waitForTextScroll)
                 {
-                    waitForTextScroll = false;
-                    while (!waitForTextScroll)
+                    click = false;
+                    continueText.gameObject.SetActive(true);
+                    yield return null;
+                    if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        continueText.gameObject.SetActive(true);
-                        yield return null;
-                        if (Input.GetKeyDown(KeyCode.Space))
-                        {
-                            continueText.gameObject.SetActive(false);
-                            waitForTextScroll = true;
-                        }
+                        continueText.gameObject.SetActive(false);
+                        waitForTextScroll = true;
                     }
-                    dialogueText.text = "";
+                }
+                dialogueText.text = "";
+            }
+            else
+            {
+                dialogueText.text += s[i];
+                if (j >= 80 && s[i] == ' ')
+                {
+                    dialogueText.text += '\n';
+                    j = 0;
+                    if (dialogueText.text.Length > 160)
+                    {
+                        waitForTextScroll = false;
+                        while (!waitForTextScroll)
+                        {
+                            click = false;
+                            continueText.gameObject.SetActive(true);
+                            yield return null;
+                            if (Input.GetKeyDown(KeyCode.Space))
+                            {
+                                continueText.gameObject.SetActive(false);
+                                waitForTextScroll = true;
+                            }
+                        }
+                        dialogueText.text = "";
+                    }
                 }
             }
-            if (s[i] == '.' || s[i] == '?' || s[i] == '!')
+            if (!click)
             {
-                yield return new WaitForSeconds(.4f);
-            } else
-            {
-                yield return new WaitForSeconds(.05f);
+                if (s[i] == '.' || s[i] == '?' || s[i] == '!')
+                {
+                    yield return new WaitForSeconds(.4f);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(.05f);
+                }
             }
         }
         waitForTextScroll = false;
         continueText.gameObject.SetActive(true);
         while (!waitForTextScroll)
         {
+            click = false;
             yield return null;
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -74,6 +105,7 @@ public class DialogueManager : MonoBehaviour
         }
         textPanel.SetActive(false);
         player.GetComponent<PlayerStatus>().EndDialogue();
+        talking = false;
         yield return null;
     }
 
@@ -115,8 +147,17 @@ public class DialogueManager : MonoBehaviour
         return null;
     }
 
+<<<<<<< Updated upstream
     /*
     // Should be 3 files of classes
+=======
+    public void SaveNPCDialogue()
+    {
+        string json = JsonUtility.ToJson(npcData, true);
+        File.WriteAllText(Application.dataPath + "/Scripts/Dilogue/NewDialogue.txt", json);
+    }
+
+>>>>>>> Stashed changes
     [System.Serializable]
     public class DialogueOption
     {
