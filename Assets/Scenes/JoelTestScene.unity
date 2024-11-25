@@ -1602,6 +1602,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabName: 
   spawnPoint: {fileID: 2024950895}
+  player: {fileID: 1593877630}
+  spawnOffset: {x: 5, y: 0, z: 0}
   spawnInterval: 3
 --- !u!1 &703551078
 GameObject:

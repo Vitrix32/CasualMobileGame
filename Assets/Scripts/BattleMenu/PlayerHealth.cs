@@ -98,6 +98,7 @@ public class Player : MonoBehaviour
         damage = im.attack.basic +
                  im.attack.itemEnhancement +
                  im.attack.boostEnhancement;
+        
         Debug.Log("Player damage calculated: " + damage);
 
         // Initialize cooldowns

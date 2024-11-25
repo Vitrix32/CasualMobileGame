@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     // Spawn position or region
     public Transform spawnPoint;
 
+    public Transform player; // Assign this in the Inspector
+
     // The interval between spawns (optional)
     public float spawnInterval = 3f;
 
@@ -31,7 +33,12 @@ public class EnemySpawner : MonoBehaviour
     // This method will spawn the enemy at a random spawn point
     void SpawnEnemy()
     {
-        spawnPoint.position = new Vector3(5, 1.25f, 0);
+        Vector3 spawnOffset = new Vector3(10f, 0f, 0f); // Adjust as needed
+
+        Vector3 spawnPoint = player.position + spawnOffset;
+        Debug.Log(player.position);
+        Debug.Log(spawnPoint);
+
         // Dynamically load the enemy prefab using the provided name
         GameObject enemyPrefab = Resources.Load<GameObject>("Enemies/" + enemyPrefabName);
 
@@ -56,7 +63,7 @@ public class EnemySpawner : MonoBehaviour
         if (enemyPrefab != null && spawnPoint != null)
         {
             // Instantiate the enemy at the spawn point's position and rotation
-            Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
         }
         else
         {
