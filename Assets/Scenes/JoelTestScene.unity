@@ -1603,7 +1603,6 @@ MonoBehaviour:
   enemyPrefabName: 
   spawnPoint: {fileID: 2024950895}
   player: {fileID: 1593877630}
-  spawnOffset: {x: 5, y: 0, z: 0}
   spawnInterval: 3
 --- !u!1 &703551078
 GameObject:
@@ -2704,7 +2703,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f5ec7ed051aee4addbd7320ef9ea85c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df1a6d890295647fdbba8a33dc503aaa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
