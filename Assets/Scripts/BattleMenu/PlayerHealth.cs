@@ -140,6 +140,9 @@ public class Player : MonoBehaviour
 
                 string currentAttack = attackInfo.attackName;
 
+                // Debugging: Log assignment of listeners
+                Debug.Log($"Assigning listener to attack '{currentAttack}'.");
+
                 attackInfo.button.onClick.AddListener(() => PlayerAttack(currentAttack));
             }
             else
@@ -273,8 +276,12 @@ public class Player : MonoBehaviour
                     PerformAttackWithDOT();
                     break;
 
-                case "SkipEnemyTurn": // Added case for Skip Enemy Turn
+                case "SkipEnemyTurn":
                     PerformSkipEnemyTurn();
+                    break;
+
+                case "DoubleDamage": // Added case for Double Damage
+                    PerformDoubleDamage();
                     break;
 
                 default:
@@ -295,9 +302,19 @@ public class Player : MonoBehaviour
             {
                 if (attackInfo.attackName == attack)
                 {
-                    attackInfo.cooldown = 2;
+                    if (attack == "DoubleDamage")
+                    {
+                        attackInfo.cooldown = 3; // Set cooldown to 3 turns
+                        Debug.Log($"Attack '{attackInfo.attackName}' cooldown set to {attackInfo.cooldown} turns.");
+                    }
+                    else
+                    {
+                        attackInfo.cooldown = 2;
+                        Debug.Log($"Attack '{attackInfo.attackName}' cooldown set to {attackInfo.cooldown} turns.");
+                    }
+
                     attackInfo.button.interactable = false;
-                    Debug.Log($"Attack '{attackInfo.attackName}' is now on cooldown (cooldown set to {attackInfo.cooldown}).");
+                    Debug.Log($"Attack '{attackInfo.attackName}' is now on cooldown.");
                     break;
                 }
             }
@@ -365,6 +382,22 @@ public class Player : MonoBehaviour
         skipEnemyTurn = true;
         UpdateText("You used Skip Enemy Turn!");
         Debug.Log("Player will skip the enemy's next turn.");
+    }
+
+    // New method to handle Double Damage
+    void PerformDoubleDamage()
+    {
+        int actualDamage = Mathf.RoundToInt(damage * 2 * damageMultiplier);
+        Debug.Log($"DoubleDamage attack used. Calculated damage: {actualDamage}");
+
+        if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
+        {
+            actualDamage = 20000; // Example value for God Mode
+            Debug.Log("God Mode is active. DoubleDamage set to 20000.");
+        }
+
+        enemy.TakeDamage(actualDamage);
+        UpdateText("You used Double Damage!");
     }
 
     void PlayHealingEffect()
