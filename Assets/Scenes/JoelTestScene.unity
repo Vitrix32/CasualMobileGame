@@ -1076,7 +1076,7 @@ GameObject:
   - component: {fileID: 383576537}
   - component: {fileID: 383576536}
   m_Layer: 5
-  m_Name: PiercingShot
+  m_Name: SharpShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1221,7 +1221,7 @@ GameObject:
   - component: {fileID: 387417014}
   - component: {fileID: 387417013}
   m_Layer: 5
-  m_Name: QuickPunch
+  m_Name: ShadowScratch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1300,7 +1300,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 20
           m_FloatArgument: 0
-          m_StringArgument: punch
+          m_StringArgument: AttackWithDOT
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1593877631}
@@ -2492,7 +2492,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quick Punch
+  m_text: Shadow Scratch
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2582,7 +2582,7 @@ GameObject:
   - component: {fileID: 1031101911}
   - component: {fileID: 1031101910}
   m_Layer: 5
-  m_Name: ArcaneBlast
+  m_Name: ShieldParty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2655,13 +2655,13 @@ MonoBehaviour:
       - m_Target: {fileID: 1593877629}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: PlayerAttack
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 20
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Shield
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1593877631}
@@ -3054,7 +3054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Arcance Blast
+  m_text: Shield Party
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4071,7 +4071,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Piercing Shot
+  m_text: Sharp Shot
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4788,11 +4788,17 @@ MonoBehaviour:
   - attackName: arrow
     button: {fileID: 383576536}
     cooldown: 0
-  - attackName: punch
+  - attackName: AttackWithDOT
     button: {fileID: 387417013}
     cooldown: 0
+  - attackName: Shield
+    button: {fileID: 1031101910}
+    cooldown: 0
+  - attackName: Empower
+    button: {fileID: 2092465042}
+    cooldown: 0
   empowerButton: {fileID: 0}
-  empowerDuration: 1
+  shieldButton: {fileID: 0}
 --- !u!224 &1593877630
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11189,14 +11195,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1593877629}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: Empower
-        m_Mode: 1
+        m_MethodName: PlayerAttack
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 20
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Empower
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1593877631}

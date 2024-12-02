@@ -11,24 +11,34 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject WorldPlayer;
     private AudioSource audioSource;
+
+    // Player Attributes
     public int maxHealth = 100;
     public int currentHealth;
-    public int heal = 0;
-    public int damage = 0;
+    public int damage = 0; // Base damage
     public TMP_Text healthText;
     public Slider healthSlider;
+
+    // UI Panels
     public GameObject attackPanel;
     public GameObject spellPanel;
     public GameObject mainMenuPanel;
+
+    // Shake Effect Parameters
     public float shakeDuration = 0.5f;
     public float shakeMagnitude = 0.9f;
     private Vector2 originalPosition;
     private RectTransform rectTransform;
+
+    // Particle Effects
     public ParticleSystem healParticleEffect;
+
+    // Other Components
     public GameObject UniversalAudio;
     public TextMeshProUGUI battleText;
     public ItemManager itemManager;
 
+    // Enemy Reference
     public Enemy enemy;
 
     [System.Serializable]
@@ -44,14 +54,17 @@ public class Player : MonoBehaviour
 
     private bool playerTurn = true;
 
-    // New variables for Empower spell
+    // Variables for Empower Spell
     private bool isEmpowered = false;
     private float damageMultiplier = 1.0f;
-    public Button empowerButton; // Assign this in the Inspector
-    // Removed empowerDuration as it's no longer needed
+
+    // Variables for Shield Spell
+    private bool isShieldActive = false;
+    private float shieldBlockChance = 0.8f; // 80% chance to block
 
     void Start()
     {
+        // Initialize References
         WorldPlayer = GameObject.Find("WorldPlayer");
 
         currentHealth = maxHealth;
@@ -60,6 +73,7 @@ public class Player : MonoBehaviour
         UpdateHealthUI();
         SetAttackButtonsInteractable();
 
+        // Find Enemy in Scene
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemies.Length > 0)
         {
@@ -71,6 +85,7 @@ public class Player : MonoBehaviour
             Debug.LogWarning("No enemies found in the scene.");
         }
 
+        // Setup RectTransform for Shake Effect
         rectTransform = GetComponentInChildren<RectTransform>();
 
         if (rectTransform == null)
@@ -95,6 +110,7 @@ public class Player : MonoBehaviour
 
         UpdateText("What would you like to do?");
 
+        // Calculate Base Damage from ItemManager
         ItemManager im = itemManager;
 
         damage = im.attack.basic +
@@ -102,9 +118,9 @@ public class Player : MonoBehaviour
                  im.attack.boostEnhancement;
 
         Debug.Log(im.attack.basic);
-
         Debug.Log("Player damage calculated: " + damage);
 
+        // Initialize Cooldowns
         foreach (var attackInfo in attackButtonInfos)
         {
             attackInfo.cooldown = 0;
@@ -112,16 +128,6 @@ public class Player : MonoBehaviour
         }
 
         AssignButtonListeners();
-
-        // Assign listener for Empower spell
-        if (empowerButton != null)
-        {
-            empowerButton.onClick.AddListener(() => Empower());
-        }
-        else
-        {
-            Debug.LogWarning("Empower button is not assigned in the Inspector.");
-        }
     }
 
     void AssignButtonListeners()
@@ -135,7 +141,6 @@ public class Player : MonoBehaviour
                 string currentAttack = attackInfo.attackName;
 
                 attackInfo.button.onClick.AddListener(() => PlayerAttack(currentAttack));
-
             }
             else
             {
@@ -157,15 +162,38 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damageAmount)
     {
         if (!GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
-            currentHealth -= damage;
+            if (isShieldActive)
+            {
+                // Attempt to block the attack
+                float roll = Random.Range(0f, 1f);
+                if (roll <= shieldBlockChance)
+                {
+                    // Block successful
+                    UpdateText("Shield blocked the attack!");
+                    Debug.Log("Player's shield successfully blocked the attack.");
+                    isShieldActive = false; // Shield used
+                    return;
+                }
+                else
+                {
+                    // Block failed
+                    UpdateText("Shield failed to block the attack.");
+                    Debug.Log("Player's shield failed to block the attack.");
+                    isShieldActive = false; // Shield used
+                }
+            }
+
+            // Proceed to take damage
+            currentHealth -= damageAmount;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             UpdateHealthUI();
-            Debug.Log($"Player took {damage} damage. Current Health: {currentHealth}");
+            Debug.Log($"Player took {damageAmount} damage. Current Health: {currentHealth}");
         }
+
         StartCoroutine(Shake());
         if (currentHealth <= 0)
         {
@@ -235,32 +263,33 @@ public class Player : MonoBehaviour
 
         if (playerTurn && enemy != null)
         {
-            int actualDamage = Mathf.RoundToInt(damage * damageMultiplier);
-            Debug.Log($"Calculated damage for attack '{attack}': {actualDamage}");
-
-            if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
+            switch (attack)
             {
-                actualDamage = 10000;
-                Debug.Log("God Mode is active. Damage set to 10000.");
+                case "Empower":
+                    PerformEmpower();
+                    break;
+
+                case "Shield":
+                    PerformShield();
+                    break;
+
+                case "AttackWithDOT":
+                    PerformAttackWithDOT();
+                    break;
+
+                default:
+                    PerformRegularAttack(attack);
+                    break;
             }
 
-            enemy.TakeDamage(actualDamage);
-            UpdateText("You used " + attack + "!");
             playerTurn = false;
 
-            // Reset the damage multiplier after the empowered attack
-            if (isEmpowered)
-            {
-                damageMultiplier = 1.0f;
-                isEmpowered = false;
-                Debug.Log("Empower effect has been used and is now removed.");
-            }
-
+            // Set cooldown and make button non-interactable
             foreach (var attackInfo in attackButtonInfos)
             {
                 if (attackInfo.attackName == attack)
                 {
-                    attackInfo.cooldown = 2;
+                    attackInfo.cooldown = 2; // Set cooldown to 2 for two turns
                     attackInfo.button.interactable = false;
                     Debug.Log($"Attack '{attackInfo.attackName}' is now on cooldown (cooldown set to {attackInfo.cooldown}).");
                     break;
@@ -270,12 +299,61 @@ public class Player : MonoBehaviour
             StartCoroutine(BattleSequence());
 
             attackPanel.SetActive(false);
+            spellPanel.SetActive(false); // Ensure spellPanel is also deactivated if attack is a spell
             mainMenuPanel.SetActive(true);
         }
         else
         {
             Debug.LogWarning("PlayerAttack called, but it's not the player's turn or no enemy is present.");
         }
+    }
+
+    void PerformRegularAttack(string attackName)
+    {
+        int actualDamage = Mathf.RoundToInt(damage * damageMultiplier);
+        Debug.Log($"Calculated damage for attack '{attackName}': {actualDamage}");
+
+        if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
+        {
+            actualDamage = 10000;
+            Debug.Log("God Mode is active. Damage set to 10000.");
+        }
+
+        enemy.TakeDamage(actualDamage);
+        UpdateText("You used " + attackName + "!");
+    }
+
+    void PerformAttackWithDOT()
+    {
+        int dotDamage = 5;
+        int duration = 3;
+        enemy.ApplyDOT(dotDamage, duration);
+        UpdateText("You used Attack With DOT!");
+        Debug.Log($"Player applied DOT: {dotDamage} damage per turn for {duration} turns.");
+    }
+
+    void PerformEmpower()
+    {
+        // Apply damage multiplier for the next attack only
+        damageMultiplier = 1.5f;
+        isEmpowered = true;
+        Debug.Log("Player damage increased by 50% for the next attack.");
+
+        // Heal the player
+        int healAmount = 10;
+        HealPlayer(healAmount);
+        Debug.Log($"Player healed for {healAmount} health.");
+
+        UpdateText("You empowered yourself!");
+    }
+
+    void PerformShield()
+    {
+        // Activate shield for the next enemy attack
+        isShieldActive = true;
+        Debug.Log("Player has activated Shield. 80% chance to block the next enemy attack.");
+
+        UpdateText("You raised a shield!");
     }
 
     void PlayHealingEffect()
@@ -296,7 +374,7 @@ public class Player : MonoBehaviour
         PlayHealingEffect();
 
         playerTurn = false;
-        SetSpellButtonsInteractable(false);
+        // Removed SetSpellButtonsInteractable(false);
 
         StartCoroutine(BattleSequence());
 
@@ -304,78 +382,6 @@ public class Player : MonoBehaviour
         mainMenuPanel.SetActive(true);
     }
 
-    public void PlayerSkipSpell()
-    {
-        if (playerTurn && enemy != null)
-        {
-            playerTurn = false;
-            SetSpellButtonsInteractable(false);
-
-            UpdateText("You skipped the enemy's turn!");
-            Debug.Log("Player skipped their turn.");
-
-            StartCoroutine(Skip());
-
-            spellPanel.SetActive(false);
-            mainMenuPanel.SetActive(true);
-        }
-    }
-
-    public void AttackWithDOT()
-    {
-        int dotDamage = 5;
-        int duration = 3;
-        if (playerTurn && enemy != null)
-        {
-            playerTurn = false;
-            UpdateText("You dealt damage over time!");
-            SetSpellButtonsInteractable(false);
-            enemy.ApplyDOT(dotDamage, duration);
-            Debug.Log($"Player applied DOT: {dotDamage} damage per turn for {duration} turns.");
-
-            StartCoroutine(BattleSequence());
-
-            spellPanel.SetActive(false);
-            mainMenuPanel.SetActive(true);
-        }
-    }
-
-    // Updated method for Empower spell
-    public void Empower()
-    {
-        if (playerTurn && enemy != null)
-        {
-            playerTurn = false;
-            UpdateText("You inspired your party!");
-            SetSpellButtonsInteractable(false);
-
-            // Apply damage multiplier for the next attack only
-            damageMultiplier = 1.5f;
-            isEmpowered = true;
-            Debug.Log("Player damage increased by 50% for the next attack.");
-
-            // Heal the player
-            int healAmount = 10;
-            HealPlayer(healAmount);
-            Debug.Log($"Player healed for {healAmount} health.");
-
-            foreach (var spellButton in spellPanel.GetComponentsInChildren<Button>())
-            {
-                spellButton.interactable = false;
-            }
-
-            StartCoroutine(BattleSequence());
-
-            spellPanel.SetActive(false);
-            mainMenuPanel.SetActive(true);
-        }
-        else
-        {
-            Debug.LogWarning("Empower called, but it's not the player's turn or no enemy is present.");
-        }
-    }
-
-    // Helper method to handle healing without triggering turn changes
     private void HealPlayer(int health)
     {
         currentHealth += health;
@@ -399,7 +405,7 @@ public class Player : MonoBehaviour
             playerTurn = true;
             UpdateAttackCooldowns();
             SetAttackButtonsInteractable();
-            SetSpellButtonsInteractable(true);
+            // Removed SetSpellButtonsInteractable(true);
         }
         else
         {
@@ -442,7 +448,7 @@ public class Player : MonoBehaviour
         enemy.EnemySkip(this);
         playerTurn = true;
         UpdateAttackCooldowns();
-        SetSpellButtonsInteractable(true);
+        SetAttackButtonsInteractable();
         Debug.Log("Enemy skipped their turn.");
     }
 
@@ -450,24 +456,10 @@ public class Player : MonoBehaviour
     {
         foreach (var attackInfo in attackButtonInfos)
         {
-            bool isInteractable = attackInfo.cooldown == 0;
+            bool isInteractable = attackInfo.cooldown == 0 && playerTurn;
             attackInfo.button.interactable = isInteractable;
-        }
-    }
-
-    void SetSpellButtonsInteractable(bool interactable)
-    {
-        // Assuming spells have their own buttons, implement interactable state
-        if (spellPanel != null)
-        {
-            foreach (Button spellButton in spellPanel.GetComponentsInChildren<Button>())
-            {
-                spellButton.interactable = interactable;
-            }
-        }
-        else
-        {
-            Debug.LogWarning("spellPanel is not assigned.");
+            // Debug log for each button
+            Debug.Log($"Attack '{attackInfo.attackName}' interactable: {isInteractable}");
         }
     }
 
@@ -480,7 +472,7 @@ public class Player : MonoBehaviour
                 attackInfo.cooldown--;
                 if (attackInfo.cooldown == 0)
                 {
-                    attackInfo.button.interactable = true;
+                    attackInfo.button.interactable = playerTurn;
                     Debug.Log($"Attack '{attackInfo.attackName}' is now off cooldown and available.");
                 }
                 else
