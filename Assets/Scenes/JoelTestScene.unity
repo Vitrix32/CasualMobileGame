@@ -4654,7 +4654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Healing Winds
+  m_text: Inspire
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4791,6 +4791,8 @@ MonoBehaviour:
   - attackName: punch
     button: {fileID: 387417013}
     cooldown: 0
+  empowerButton: {fileID: 0}
+  empowerDuration: 1
 --- !u!224 &1593877630
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11115,7 +11117,7 @@ GameObject:
   - component: {fileID: 2092465043}
   - component: {fileID: 2092465042}
   m_Layer: 5
-  m_Name: Healing Winds
+  m_Name: Inspire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11187,8 +11189,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1593877629}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: Heal
-        m_Mode: 3
+        m_MethodName: Empower
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
