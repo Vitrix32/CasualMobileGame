@@ -12,33 +12,27 @@ public class Player : MonoBehaviour
     private GameObject WorldPlayer;
     private AudioSource audioSource;
 
-    // Player Attributes
     public int maxHealth = 100;
     public int currentHealth;
-    public int damage = 0; // Base damage
+    public int damage = 0;
     public TMP_Text healthText;
     public Slider healthSlider;
 
-    // UI Panels
     public GameObject attackPanel;
     public GameObject spellPanel;
     public GameObject mainMenuPanel;
 
-    // Shake Effect Parameters
     public float shakeDuration = 0.5f;
     public float shakeMagnitude = 0.9f;
     private Vector2 originalPosition;
     private RectTransform rectTransform;
 
-    // Particle Effects
     public ParticleSystem healParticleEffect;
 
-    // Other Components
     public GameObject UniversalAudio;
     public TextMeshProUGUI battleText;
     public ItemManager itemManager;
 
-    // Enemy Reference
     public Enemy enemy;
 
     [System.Serializable]
@@ -54,17 +48,13 @@ public class Player : MonoBehaviour
 
     private bool playerTurn = true;
 
-    // Variables for Empower Spell
     private bool isEmpowered = false;
     private float damageMultiplier = 1.0f;
 
-    // Variables for Shield Spell
     private bool isShieldActive = false;
-    private float shieldBlockChance = 0.8f; // 80% chance to block
-
+    private float shieldBlockChance = 0.8f;
     void Start()
     {
-        // Initialize References
         WorldPlayer = GameObject.Find("WorldPlayer");
 
         currentHealth = maxHealth;
@@ -73,7 +63,6 @@ public class Player : MonoBehaviour
         UpdateHealthUI();
         SetAttackButtonsInteractable();
 
-        // Find Enemy in Scene
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemies.Length > 0)
         {
@@ -85,7 +74,6 @@ public class Player : MonoBehaviour
             Debug.LogWarning("No enemies found in the scene.");
         }
 
-        // Setup RectTransform for Shake Effect
         rectTransform = GetComponentInChildren<RectTransform>();
 
         if (rectTransform == null)
@@ -110,7 +98,6 @@ public class Player : MonoBehaviour
 
         UpdateText("What would you like to do?");
 
-        // Calculate Base Damage from ItemManager
         ItemManager im = itemManager;
 
         damage = im.attack.basic +
@@ -120,7 +107,6 @@ public class Player : MonoBehaviour
         Debug.Log(im.attack.basic);
         Debug.Log("Player damage calculated: " + damage);
 
-        // Initialize Cooldowns
         foreach (var attackInfo in attackButtonInfos)
         {
             attackInfo.cooldown = 0;
@@ -168,26 +154,22 @@ public class Player : MonoBehaviour
         {
             if (isShieldActive)
             {
-                // Attempt to block the attack
                 float roll = Random.Range(0f, 1f);
                 if (roll <= shieldBlockChance)
                 {
-                    // Block successful
                     UpdateText("Shield blocked the attack!");
                     Debug.Log("Player's shield successfully blocked the attack.");
-                    isShieldActive = false; // Shield used
+                    isShieldActive = false;
                     return;
                 }
                 else
                 {
-                    // Block failed
                     UpdateText("Shield failed to block the attack.");
                     Debug.Log("Player's shield failed to block the attack.");
-                    isShieldActive = false; // Shield used
+                    isShieldActive = false;
                 }
             }
 
-            // Proceed to take damage
             currentHealth -= damageAmount;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             UpdateHealthUI();
@@ -284,12 +266,11 @@ public class Player : MonoBehaviour
 
             playerTurn = false;
 
-            // Set cooldown and make button non-interactable
             foreach (var attackInfo in attackButtonInfos)
             {
                 if (attackInfo.attackName == attack)
                 {
-                    attackInfo.cooldown = 2; // Set cooldown to 2 for two turns
+                    attackInfo.cooldown = 2;
                     attackInfo.button.interactable = false;
                     Debug.Log($"Attack '{attackInfo.attackName}' is now on cooldown (cooldown set to {attackInfo.cooldown}).");
                     break;
@@ -299,7 +280,7 @@ public class Player : MonoBehaviour
             StartCoroutine(BattleSequence());
 
             attackPanel.SetActive(false);
-            spellPanel.SetActive(false); // Ensure spellPanel is also deactivated if attack is a spell
+            spellPanel.SetActive(false);
             mainMenuPanel.SetActive(true);
         }
         else
@@ -334,12 +315,10 @@ public class Player : MonoBehaviour
 
     void PerformEmpower()
     {
-        // Apply damage multiplier for the next attack only
         damageMultiplier = 1.5f;
         isEmpowered = true;
         Debug.Log("Player damage increased by 50% for the next attack.");
 
-        // Heal the player
         int healAmount = 10;
         HealPlayer(healAmount);
         Debug.Log($"Player healed for {healAmount} health.");
@@ -349,7 +328,6 @@ public class Player : MonoBehaviour
 
     void PerformShield()
     {
-        // Activate shield for the next enemy attack
         isShieldActive = true;
         Debug.Log("Player has activated Shield. 80% chance to block the next enemy attack.");
 
@@ -374,7 +352,6 @@ public class Player : MonoBehaviour
         PlayHealingEffect();
 
         playerTurn = false;
-        // Removed SetSpellButtonsInteractable(false);
 
         StartCoroutine(BattleSequence());
 
@@ -397,15 +374,12 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(2);
 
             enemy.EnemyAttack(this);
-            UpdateText("The enemy attacked!");
-            Debug.Log("Enemy performed an attack.");
-
+            // Removed redundant UpdateText call
             yield return new WaitForSeconds(1);
 
             playerTurn = true;
             UpdateAttackCooldowns();
             SetAttackButtonsInteractable();
-            // Removed SetSpellButtonsInteractable(true);
         }
         else
         {
@@ -458,7 +432,6 @@ public class Player : MonoBehaviour
         {
             bool isInteractable = attackInfo.cooldown == 0 && playerTurn;
             attackInfo.button.interactable = isInteractable;
-            // Debug log for each button
             Debug.Log($"Attack '{attackInfo.attackName}' interactable: {isInteractable}");
         }
     }
