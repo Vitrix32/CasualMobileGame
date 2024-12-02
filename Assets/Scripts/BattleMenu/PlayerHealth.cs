@@ -54,7 +54,10 @@ public class Player : MonoBehaviour
     private bool isShieldActive = false;
     private float shieldBlockChance = 0.8f;
 
-    // Added reference to BattleMenu
+    // Added variable to handle skipping enemy's turn
+    private bool skipEnemyTurn = false;
+
+    // Reference to BattleMenu
     private BattleMenu battleMenu;
 
     void Start()
@@ -270,6 +273,10 @@ public class Player : MonoBehaviour
                     PerformAttackWithDOT();
                     break;
 
+                case "SkipEnemyTurn": // Added case for Skip Enemy Turn
+                    PerformSkipEnemyTurn();
+                    break;
+
                 default:
                     PerformRegularAttack(attack);
                     break;
@@ -352,6 +359,14 @@ public class Player : MonoBehaviour
         UpdateText("You raised a shield!");
     }
 
+    // New method to handle Skip Enemy Turn
+    void PerformSkipEnemyTurn()
+    {
+        skipEnemyTurn = true;
+        UpdateText("You used Skip Enemy Turn!");
+        Debug.Log("Player will skip the enemy's next turn.");
+    }
+
     void PlayHealingEffect()
     {
         if (healParticleEffect != null)
@@ -399,7 +414,6 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(2);
 
             enemy.EnemyAttack(this);
-            // Removed redundant UpdateText call
             yield return new WaitForSeconds(1);
 
             playerTurn = true;
@@ -427,17 +441,15 @@ public class Player : MonoBehaviour
             yield return StartCoroutine(EnemyDOTTurn());
         }
 
-        yield return StartCoroutine(EnemyAttackTurn());
-    }
-
-    IEnumerator Skip()
-    {
-        if (enemy.GetDOTTurn() > 0)
+        if (skipEnemyTurn)
         {
-            yield return StartCoroutine(EnemyDOTTurn());
+            skipEnemyTurn = false;
+            yield return StartCoroutine(EnemySkipTurn()); // Enemy skips their turn
         }
-
-        yield return StartCoroutine(EnemySkipTurn());
+        else
+        {
+            yield return StartCoroutine(EnemyAttackTurn()); // Enemy takes their turn
+        }
     }
 
     IEnumerator EnemyDOTTurn()
