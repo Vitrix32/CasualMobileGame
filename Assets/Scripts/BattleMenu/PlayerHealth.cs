@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public ParticleSystem healParticleEffect;
     public GameObject UniversalAudio;
     public TextMeshProUGUI battleText;
+    public ItemManager itemManager;
 
     public Enemy enemy;
 
@@ -91,13 +92,15 @@ public class Player : MonoBehaviour
 
         UpdateText("What would you like to do?");
 
-        PlayerPrefs.SetFloat("swordMultiplier", 2f);
+        // PlayerPrefs.SetFloat("swordMultiplier", 2f);
 
-        ItemManager im = new ItemManager();
+        ItemManager im = itemManager;
 
         damage = im.attack.basic +
                  im.attack.itemEnhancement +
                  im.attack.boostEnhancement;
+
+        Debug.Log(im.attack.basic);
         
         Debug.Log("Player damage calculated: " + damage);
 
@@ -127,7 +130,7 @@ public class Player : MonoBehaviour
                 // Add listener to call PlayerAttack with the attackName
                 attackInfo.button.onClick.AddListener(() => PlayerAttack(currentAttack));
 
-                Debug.Log($"Assigned PlayerAttack(\"{currentAttack}\") to button '{attackInfo.button.name}'.");
+                // Debug.Log($"Assigned PlayerAttack(\"{currentAttack}\") to button '{attackInfo.button.name}'.");
             }
             else
             {
@@ -190,7 +193,7 @@ public class Player : MonoBehaviour
         if (healthText != null)
         {
             healthText.text = "HP: " + currentHealth;
-            Debug.Log($"Health UI Updated: HP = {currentHealth}");
+            // Debug.Log($"Health UI Updated: HP = {currentHealth}");
         }
         else
         {
@@ -200,7 +203,7 @@ public class Player : MonoBehaviour
         if (healthSlider != null)
         {
             healthSlider.value = (float)currentHealth / maxHealth;
-            Debug.Log($"Health Slider Updated: Value = {healthSlider.value}");
+            // Debug.Log($"Health Slider Updated: Value = {healthSlider.value}");
         }
         else
         {
@@ -230,9 +233,9 @@ public class Player : MonoBehaviour
 
         if (playerTurn && enemy != null)
         {
-            float baseDamage = PlayerPrefs.GetFloat(attack + "Damage", 10.0f);
-            float multiplier = PlayerPrefs.GetFloat(attack + "Multiplier", 1.0f);
-            int damage = (int)(baseDamage * multiplier);
+            //float baseDamage = PlayerPrefs.GetFloat(attack + "Damage", 10.0f);
+            //float multiplier = PlayerPrefs.GetFloat(attack + "Multiplier", 1.0f);
+            //int damage = (int)(baseDamage * multiplier);
 
             Debug.Log($"Calculated damage for attack '{attack}': {damage}");
 
@@ -400,7 +403,7 @@ public class Player : MonoBehaviour
         {
             bool isInteractable = attackInfo.cooldown == 0;
             attackInfo.button.interactable = isInteractable;
-            Debug.Log($"Attack '{attackInfo.attackName}' interactable: {isInteractable}");
+            // Debug.Log($"Attack '{attackInfo.attackName}' interactable: {isInteractable}");
         }
     }
 
