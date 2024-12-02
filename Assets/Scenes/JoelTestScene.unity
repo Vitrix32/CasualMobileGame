@@ -1155,7 +1155,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 25
           m_FloatArgument: 0
-          m_StringArgument: arrow
+          m_StringArgument: WeakenEnemy
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1593877631}
@@ -4781,24 +4781,31 @@ MonoBehaviour:
   - attackName: sword
     button: {fileID: 82284952}
     cooldown: 0
+    maxCooldown: 2
   - attackName: DoubleDamage
     button: {fileID: 1552773937}
     cooldown: 0
-  - attackName: arrow
+    maxCooldown: 6
+  - attackName: WeakenEnemy
     button: {fileID: 383576536}
     cooldown: 0
+    maxCooldown: 2
   - attackName: AttackWithDOT
     button: {fileID: 387417013}
     cooldown: 0
+    maxCooldown: 2
   - attackName: Shield
     button: {fileID: 1031101910}
     cooldown: 0
+    maxCooldown: 2
   - attackName: Empower
     button: {fileID: 2092465042}
     cooldown: 0
+    maxCooldown: 2
   - attackName: SkipEnemyTurn
     button: {fileID: 1232303285}
     cooldown: 0
+    maxCooldown: 2
 --- !u!224 &1593877630
 RectTransform:
   m_ObjectHideFlags: 0

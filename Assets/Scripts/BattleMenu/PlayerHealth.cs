@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
         public Button button;
         [HideInInspector]
         public int cooldown = 0;
+        public int maxCooldown = 2; // Default cooldown
     }
 
     public AttackButtonInfo[] attackButtonInfos;
@@ -54,7 +55,6 @@ public class Player : MonoBehaviour
     private bool isShieldActive = false;
     private float shieldBlockChance = 0.8f;
 
-    // Added variable to handle skipping enemy's turn
     private bool skipEnemyTurn = false;
 
     // Reference to BattleMenu
@@ -280,8 +280,12 @@ public class Player : MonoBehaviour
                     PerformSkipEnemyTurn();
                     break;
 
-                case "DoubleDamage": // Added case for Double Damage
+                case "DoubleDamage":
                     PerformDoubleDamage();
+                    break;
+
+                case "WeakenEnemy": // New attack
+                    PerformWeakenEnemy();
                     break;
 
                 default:
@@ -302,19 +306,9 @@ public class Player : MonoBehaviour
             {
                 if (attackInfo.attackName == attack)
                 {
-                    if (attack == "DoubleDamage")
-                    {
-                        attackInfo.cooldown = 3; // Set cooldown to 3 turns
-                        Debug.Log($"Attack '{attackInfo.attackName}' cooldown set to {attackInfo.cooldown} turns.");
-                    }
-                    else
-                    {
-                        attackInfo.cooldown = 2;
-                        Debug.Log($"Attack '{attackInfo.attackName}' cooldown set to {attackInfo.cooldown} turns.");
-                    }
-
+                    attackInfo.cooldown = attackInfo.maxCooldown;
                     attackInfo.button.interactable = false;
-                    Debug.Log($"Attack '{attackInfo.attackName}' is now on cooldown.");
+                    Debug.Log($"Attack '{attackInfo.attackName}' is now on cooldown ({attackInfo.cooldown} turns).");
                     break;
                 }
             }
@@ -376,7 +370,6 @@ public class Player : MonoBehaviour
         UpdateText("You raised a shield!");
     }
 
-    // New method to handle Skip Enemy Turn
     void PerformSkipEnemyTurn()
     {
         skipEnemyTurn = true;
@@ -384,7 +377,24 @@ public class Player : MonoBehaviour
         Debug.Log("Player will skip the enemy's next turn.");
     }
 
-    // New method to handle Double Damage
+    // New method to perform Weaken Enemy attack
+    void PerformWeakenEnemy()
+    {
+        int actualDamage = Mathf.RoundToInt(damage * 0.5f * damageMultiplier);
+        Debug.Log($"WeakenEnemy attack used. Calculated damage: {actualDamage}");
+
+        if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
+        {
+            actualDamage = Mathf.RoundToInt((damage * 0.5f) * damageMultiplier * 10); // Example value for God Mode
+            Debug.Log("God Mode is active. WeakenEnemy damage set to " + actualDamage + ".");
+        }
+
+        enemy.TakeDamage(actualDamage);
+        enemy.SetWeakened(true);
+        UpdateText("You used Weaken Enemy!");
+        Debug.Log("Enemy's next attack will be weakened.");
+    }
+
     void PerformDoubleDamage()
     {
         int actualDamage = Mathf.RoundToInt(damage * 2 * damageMultiplier);

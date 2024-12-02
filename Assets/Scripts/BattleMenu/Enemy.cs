@@ -22,9 +22,12 @@ public class Enemy : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip attackSound;
 
-    // Added variables for shield mechanics
     public bool isShieldActive = false;
     public float shieldReduction = 0.5f; // Reduces damage by 50%
+
+    // New flag to indicate if the enemy is weakened
+    private bool isWeakened = false;
+    private float weakenedDamageMultiplier = 0.5f; // Reduces damage by 50%
 
     void Start()
     {
@@ -105,10 +108,20 @@ public class Enemy : MonoBehaviour
     public void EnemyAttack(Player player)
     {
         float actionRoll = Random.Range(0f, 1f);
+        int damageToDeal = attackDamage;
+
+        if (isWeakened)
+        {
+            damageToDeal = Mathf.RoundToInt(damageToDeal * weakenedDamageMultiplier);
+            isWeakened = false; // Reset weakened status after one attack
+            Debug.Log("Enemy's attack is weakened! Damage reduced to " + damageToDeal);
+            player.UpdateText("Enemy's attack was weakened!");
+        }
+
         if (actionRoll <= 0.15f)
         {
             // Critical hit
-            int criticalDamage = Mathf.RoundToInt(attackDamage * 1.5f); // 50% more damage
+            int criticalDamage = Mathf.RoundToInt(damageToDeal * 1.5f); // 50% more damage
             Debug.Log("Enemy performs a critical hit!");
             player.UpdateText("Enemy performs a critical hit!");
             audioSource.PlayOneShot(attackSound);
@@ -128,13 +141,14 @@ public class Enemy : MonoBehaviour
             Debug.Log("Enemy attacks!");
             player.UpdateText("Enemy attacks!");
             audioSource.PlayOneShot(attackSound);
-            player.TakeDamage(attackDamage);
+            player.TakeDamage(damageToDeal);
         }
     }
 
     public void EnemySkip(Player player)
     {
-        Debug.Log("Enemy skipped!");
+        Debug.Log("Enemy skipped their turn!");
+        player.UpdateText("Enemy skipped their turn!");
     }
 
     void Die()
@@ -165,6 +179,16 @@ public class Enemy : MonoBehaviour
             {
                 Die();
             }
+        }
+    }
+
+    // Method to set the weakened status
+    public void SetWeakened(bool status)
+    {
+        isWeakened = status;
+        if (isWeakened)
+        {
+            Debug.Log("Enemy has been weakened. Their next attack will deal reduced damage.");
         }
     }
 }
