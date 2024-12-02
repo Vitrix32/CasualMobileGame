@@ -1885,7 +1885,7 @@ GameObject:
   - component: {fileID: 792764413}
   - component: {fileID: 792764412}
   m_Layer: 0
-  m_Name: MenuManager
+  m_Name: BattleMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4764,7 +4764,6 @@ MonoBehaviour:
   WorldPlayer: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
-  heal: 0
   damage: 0
   healthText: {fileID: 921649186}
   healthSlider: {fileID: 1792121099}
@@ -4797,8 +4796,6 @@ MonoBehaviour:
   - attackName: Empower
     button: {fileID: 2092465042}
     cooldown: 0
-  empowerButton: {fileID: 0}
-  shieldButton: {fileID: 0}
 --- !u!224 &1593877630
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10970,6 +10967,8 @@ MonoBehaviour:
   shakeDuration: 0.5
   shakeMagnitude: 0.1
   attackSound: {fileID: 0}
+  isShieldActive: 0
+  shieldReduction: 0.5
 --- !u!61 &2024950894
 BoxCollider2D:
   m_ObjectHideFlags: 0

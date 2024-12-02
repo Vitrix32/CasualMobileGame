@@ -1,46 +1,78 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class BattleMenu : MonoBehaviour
 {
     private GameObject FadePanel;
-    // References to the panels and main menu
     public GameObject attackPanel;
     public GameObject spellPanel;
     public GameObject mainMenuPanel;
 
     private int enemiesAmount;
 
+    // Added list to store all buttons in the battle menus
+    private List<Button> allButtons = new List<Button>();
+
     private void Start()
     {
         enemiesAmount = 1;
         FadePanel = GameObject.Find("FadePanel");
+
+        // Initialize allButtons list by finding all Button components in the panels
+        InitializeAllButtons();
     }
 
-    // Method to show the Attack options
+    private void InitializeAllButtons()
+    {
+        if (attackPanel != null)
+        {
+            Button[] attackButtons = attackPanel.GetComponentsInChildren<Button>();
+            allButtons.AddRange(attackButtons);
+        }
+
+        if (spellPanel != null)
+        {
+            Button[] spellButtons = spellPanel.GetComponentsInChildren<Button>();
+            allButtons.AddRange(spellButtons);
+        }
+
+        if (mainMenuPanel != null)
+        {
+            Button[] mainMenuButtons = mainMenuPanel.GetComponentsInChildren<Button>();
+            allButtons.AddRange(mainMenuButtons);
+        }
+    }
+
+    // Method to enable or disable all menu buttons
+    public void SetMenusInteractable(bool isInteractable)
+    {
+        foreach (Button btn in allButtons)
+        {
+            btn.interactable = isInteractable;
+        }
+    }
+
     public void ShowAttacks()
     {
-        mainMenuPanel.SetActive(false);   // Hide main menu
-        attackPanel.SetActive(true);      // Show attack panel
+        mainMenuPanel.SetActive(false);
+        attackPanel.SetActive(true);
     }
 
-    // Method to show the Spell options
     public void ShowSpells()
     {
-        mainMenuPanel.SetActive(false);   // Hide main menu
-        spellPanel.SetActive(true);       // Show spell panel
+        mainMenuPanel.SetActive(false);
+        spellPanel.SetActive(true);
     }
 
-    // Method to return back to the main menu
     public void BackToMenu()
     {
-        attackPanel.SetActive(false);     // Hide attack panel
-        spellPanel.SetActive(false);      // Hide spell panel
-        mainMenuPanel.SetActive(true);    // Show main menu
+        attackPanel.SetActive(false);
+        spellPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
     }
 
-    // Method to handle Fleeing from battle
     public void Flee()
     {
         AllEnemiesDead();
@@ -57,7 +89,6 @@ public class BattleMenu : MonoBehaviour
 
     public void AllEnemiesDead()
     {
-        //FadePanel.GetComponent<SceneTransition>().End();
         Invoke("ExitScene", 3.1f);
     }
 

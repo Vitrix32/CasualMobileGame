@@ -53,6 +53,10 @@ public class Player : MonoBehaviour
 
     private bool isShieldActive = false;
     private float shieldBlockChance = 0.8f;
+
+    // Added reference to BattleMenu
+    private BattleMenu battleMenu;
+
     void Start()
     {
         WorldPlayer = GameObject.Find("WorldPlayer");
@@ -114,6 +118,13 @@ public class Player : MonoBehaviour
         }
 
         AssignButtonListeners();
+
+        // Initialize BattleMenu reference
+        battleMenu = GameObject.Find("BattleMenu").GetComponent<BattleMenu>();
+        if (battleMenu == null)
+        {
+            Debug.LogError("BattleMenu component not found on BattleMenu GameObject.");
+        }
     }
 
     void AssignButtonListeners()
@@ -266,6 +277,13 @@ public class Player : MonoBehaviour
 
             playerTurn = false;
 
+            // Disable menus since it's now the enemy's turn
+            if (battleMenu != null)
+            {
+                battleMenu.SetMenusInteractable(false);
+                Debug.Log("Battle menus have been disabled.");
+            }
+
             foreach (var attackInfo in attackButtonInfos)
             {
                 if (attackInfo.attackName == attack)
@@ -353,6 +371,13 @@ public class Player : MonoBehaviour
 
         playerTurn = false;
 
+        // Disable menus since it's now the enemy's turn
+        if (battleMenu != null)
+        {
+            battleMenu.SetMenusInteractable(false);
+            Debug.Log("Battle menus have been disabled.");
+        }
+
         StartCoroutine(BattleSequence());
 
         spellPanel.SetActive(false);
@@ -378,6 +403,14 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(1);
 
             playerTurn = true;
+
+            // Re-enable menus since it's now the player's turn
+            if (battleMenu != null)
+            {
+                battleMenu.SetMenusInteractable(true);
+                Debug.Log("Battle menus have been enabled.");
+            }
+
             UpdateAttackCooldowns();
             SetAttackButtonsInteractable();
         }
@@ -421,6 +454,14 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(2);
         enemy.EnemySkip(this);
         playerTurn = true;
+
+        // Re-enable menus since it's now the player's turn
+        if (battleMenu != null)
+        {
+            battleMenu.SetMenusInteractable(true);
+            Debug.Log("Battle menus have been enabled.");
+        }
+
         UpdateAttackCooldowns();
         SetAttackButtonsInteractable();
         Debug.Log("Enemy skipped their turn.");
