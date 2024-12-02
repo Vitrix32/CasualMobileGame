@@ -284,8 +284,12 @@ public class Player : MonoBehaviour
                     PerformDoubleDamage();
                     break;
 
-                case "WeakenEnemy": // New attack
+                case "WeakenEnemy":
                     PerformWeakenEnemy();
+                    break;
+
+                case "HealSelf": // New attack
+                    PerformHealSelf();
                     break;
 
                 default:
@@ -377,7 +381,21 @@ public class Player : MonoBehaviour
         Debug.Log("Player will skip the enemy's next turn.");
     }
 
-    // New method to perform Weaken Enemy attack
+    void PerformDoubleDamage()
+    {
+        int actualDamage = Mathf.RoundToInt(damage * 2 * damageMultiplier);
+        Debug.Log($"DoubleDamage attack used. Calculated damage: {actualDamage}");
+
+        if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
+        {
+            actualDamage = 20000; // Example value for God Mode
+            Debug.Log("God Mode is active. DoubleDamage set to 20000.");
+        }
+
+        enemy.TakeDamage(actualDamage);
+        UpdateText("You used Double Damage!");
+    }
+
     void PerformWeakenEnemy()
     {
         int actualDamage = Mathf.RoundToInt(damage * 0.5f * damageMultiplier);
@@ -395,19 +413,13 @@ public class Player : MonoBehaviour
         Debug.Log("Enemy's next attack will be weakened.");
     }
 
-    void PerformDoubleDamage()
+    // New method to perform Heal Self attack
+    void PerformHealSelf()
     {
-        int actualDamage = Mathf.RoundToInt(damage * 2 * damageMultiplier);
-        Debug.Log($"DoubleDamage attack used. Calculated damage: {actualDamage}");
-
-        if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
-        {
-            actualDamage = 20000; // Example value for God Mode
-            Debug.Log("God Mode is active. DoubleDamage set to 20000.");
-        }
-
-        enemy.TakeDamage(actualDamage);
-        UpdateText("You used Double Damage!");
+        int healAmount = 10;
+        HealPlayer(healAmount);
+        UpdateText("You used Heal Self!");
+        Debug.Log($"Player healed for {healAmount} health.");
     }
 
     void PlayHealingEffect()
