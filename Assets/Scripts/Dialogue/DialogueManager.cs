@@ -146,37 +146,4 @@ public class DialogueManager : MonoBehaviour
         }
         return null;
     }
-
-<<<<<<< Updated upstream
-    /*
-    // Should be 3 files of classes
-=======
-    public void SaveNPCDialogue()
-    {
-        string json = JsonUtility.ToJson(npcData, true);
-        File.WriteAllText(Application.dataPath + "/Scripts/Dilogue/NewDialogue.txt", json);
-    }
-
->>>>>>> Stashed changes
-    [System.Serializable]
-    public class DialogueOption
-    {
-        public string option;
-        public string increment;
-    }
-
-    [System.Serializable]
-    public class NPC
-    {
-        public string name;
-        public int value;
-        public DialogueOption[] dialogue;
-    }
-
-    [System.Serializable]
-    public class NPCCollection
-    {
-        public NPC[] npc_characters;
-    }
-    */
 }

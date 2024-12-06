@@ -18,16 +18,16 @@ public class Encounter : MonoBehaviour
     void Start()
     {
         FadePanel = GameObject.Find("FadePanel");
-        numberOfIds = 5;
-        enemyId = Random.Range(1, numberOfIds + 1);
+        numberOfIds = 4;
+        enemyId = Random.Range(1, numberOfIds);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            int rand = Random.Range(0, 10);
-            if(rand == 0)
+            int rand = Random.Range(0, 100);
+            if(rand <= 25)
             {
                 FadePanel.GetComponent<SceneTransition>().End();
                 collision.gameObject.GetComponent<PlayerStatus>().LeavingGameWorld(true, 3.1f);
