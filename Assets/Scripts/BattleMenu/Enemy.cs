@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        MenuManager = GameObject.Find("MenuManager");
+        MenuManager = GameObject.Find("BattleMenu");
         currentHealth = maxHealth;
         UpdateHealthUI();
         audioSource = GetComponent<AudioSource>();

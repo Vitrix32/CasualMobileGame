@@ -29,7 +29,7 @@ public class Encounter : MonoBehaviour
             int rand = Random.Range(0, 100);
             if(rand <= 25)
             {
-                //FadePanel.GetComponent<SceneTransition>().End();
+                FadePanel.GetComponent<SceneTransition>().End();
                 collision.gameObject.GetComponent<PlayerStatus>().LeavingGameWorld(true, 3.1f);
                 StartCoroutine("ChangeScene");
             }

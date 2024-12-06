@@ -121,6 +121,8 @@ GameObject:
   - component: {fileID: -7778176496109672812}
   - component: {fileID: -5125782872989646814}
   - component: {fileID: 6653000658934705608}
+  - component: {fileID: 1724671952488794477}
+  - component: {fileID: -904130017895733391}
   m_Layer: 0
   m_Name: GenericEnemyTemplate
   m_TagString: Enemy
@@ -221,6 +223,8 @@ MonoBehaviour:
   shakeDuration: 0.5
   shakeMagnitude: 0.9
   attackSound: {fileID: 8300000, guid: b64728f271e3a984e842e3f6ea0cf840, type: 3}
+  isShieldActive: 0
+  shieldReduction: 0.5
 --- !u!82 &7246731905869640
 AudioSource:
   m_ObjectHideFlags: 0
@@ -390,6 +394,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6653000658934705608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3691535827709836765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c5b3ba3633ebb40ad5430c2c2fd0fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1724671952488794477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3691535827709836765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c5b3ba3633ebb40ad5430c2c2fd0fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-904130017895733391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
