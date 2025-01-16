@@ -147,7 +147,6 @@ public class DialogueManager : MonoBehaviour
         return null;
     }
 
-<<<<<<< Updated upstream
     /*
     // Should be 3 files of classes
 =======

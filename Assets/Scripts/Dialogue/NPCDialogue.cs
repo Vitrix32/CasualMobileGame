@@ -42,16 +42,13 @@ public class NPCDialogue : MonoBehaviour
         if (canTalk && !(dialoguemanager.GetComponent<DialogueManager>().talking))
         {
             dialoguemanager.GetComponent<DialogueManager>().GetDialogue(this.name);
-<<<<<<< Updated upstream
             if(this.GetComponent<NPCMovement>() != null)
             {
                 this.GetComponent<NPCMovement>().startIdleing(-1.0f);
             }
-=======
         } else
         {
             dialoguemanager.GetComponent<DialogueManager>().click = true;
->>>>>>> Stashed changes
         }
         
     }
