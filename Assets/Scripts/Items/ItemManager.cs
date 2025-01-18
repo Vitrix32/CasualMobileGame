@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-
     public PlayerStats PS;
     public TextAsset statsJSON;
     public ItemList IL;
@@ -14,17 +13,23 @@ public class ItemManager : MonoBehaviour
     private void Start()
     {
         PS = JsonUtility.FromJson<PlayerStats>(statsJSON.text);
-        for (int i = 0; i < PS.stats.Length; i++)
+        foreach (var stat in PS.stats)
         {
-            if (PS.stats[i].type == "attack")
+            if (stat.type == "attack")
             {
-                attack = PS.stats[i];
-            } else if (PS.stats[i].type == "defense")
+                attack = stat;
+                foreach (var attackType in attack.attackTypes)
+                {
+                    Debug.Log($"Attack Type: {attackType.type}, Basic: {attackType.basic}");
+                }
+            }
+            else if (stat.type == "defense")
             {
-                defense = PS.stats[i];
-            } else
+                defense = stat;
+            }
+            else if (stat.type == "health")
             {
-                health = PS.stats[i];
+                health = stat;
             }
         }
         IL = JsonUtility.FromJson<ItemList>(itemsJSON.text);
@@ -32,58 +37,35 @@ public class ItemManager : MonoBehaviour
 
     public void checkItemAquire(string s)
     {
-        for (int i = 0; i < IL.items.Length; i++)
+        foreach (var item in IL.items)
         {
-            if (IL.items[i].questName == s)
+            if (item.questName == s)
             {
-                Debug.Log("Aquired Item: " + IL.items[i].name);
-                if (IL.items[i].type == "attack")
+                Debug.Log("Aquired Item: " + item.name);
+                if (item.type.StartsWith("attack:")) // e.g., attack:melee
                 {
-                    attack.itemEnhancement = IL.items[i].value;
-                    attack.itemName = IL.items[i].name;
-                } else if (IL.items[i].type == "health")
+                    string attackTypeKey = item.type.Split(':')[1];
+                    foreach (var attackType in attack.attackTypes)
+                    {
+                        if (attackType.type == attackTypeKey)
+                        {
+                            attackType.itemEnhancement = item.value;
+                            attackType.itemName = item.name;
+                            Debug.Log($"Enhanced {attackTypeKey} attack with {item.name}");
+                        }
+                    }
+                }
+                else if (item.type == "health")
                 {
-                    health.itemEnhancement = IL.items[i].value;
-                    health.itemName = IL.items[i].name;
-                } else
+                    health.itemEnhancement = item.value;
+                    health.itemName = item.name;
+                }
+                else if (item.type == "defense")
                 {
-                    defense.itemEnhancement = IL.items[i].value;
-                    defense.itemName = IL.items[i].name;
+                    defense.itemEnhancement = item.value;
+                    defense.itemName = item.name;
                 }
             }
         }
     }
-
-
-
-    /*
-    // MAKE THIS 4 SEPERATE CLASS FILES
-    [System.Serializable]
-    public class ItemList
-    {
-        public Item[] items;
-    }
-    [System.Serializable]
-    public class Item
-    {
-        public string name;
-        public string type;
-        public int value;
-        public string questName;
-    }
-    [System.Serializable]
-    public class PlayerStats
-    {
-        public StatType[] stats;
-    }
-    [System.Serializable]
-    public class StatType
-    {
-        public string type;
-        public int basic;
-        public int itemEnhancement;
-        public string itemName;
-        public int boostEnhancement;
-    }
-    */
 }

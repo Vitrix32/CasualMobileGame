@@ -2,9 +2,21 @@
 	"items": [
 		{
 			"name": "GreatSword",
-			"type": "attack",
-			"value": "10",
+			"type": "attack:melee",
+			"value": 10,
 			"questName": "JeffQuest"
+		},
+		{
+			"name": "Bow",
+			"type": "attack:ranged",
+			"value": 8,
+			"questName": "RobinQuest"
+		},
+		{
+			"name": "MagicStaff",
+			"type": "attack:magic",
+			"value": 12,
+			"questName": "GandalfQuest"
 		}
 	]
 }
