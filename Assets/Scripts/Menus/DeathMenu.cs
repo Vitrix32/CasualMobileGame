@@ -20,7 +20,7 @@ public class DeathMenu : MonoBehaviour
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         WorldPlayer.GetComponent<PlayerStatus>().EnteringGameWorld(false, 0.4f);
         WorldPlayer.GetComponent<PlayerStatus>().SetWorldPosition();
-        Invoke("Play", 0.4f);
+        SceneManager.LoadScene(PlayerPrefs.GetString("SceneName"));
     }
 
     public void MainMenu()
@@ -87,6 +87,11 @@ public class DeathMenu : MonoBehaviour
             File.WriteAllText(Application.dataPath + "/Scripts/Items/SavePlayerStats.txt", json);
             File.WriteAllText(Application.dataPath + "/Scripts/Items/PlayerStats.txt", json);
         }
+
+        PlayerPrefs.SetFloat("XPos", 0);
+        PlayerPrefs.SetFloat("YPos", 0);
+        PlayerPrefs.SetString("SceneName", "GameplayScene");
+
         return;
     }
 

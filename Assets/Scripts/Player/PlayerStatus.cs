@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
+    [SerializeField]
+    private int prevSceneIndex;
     private bool inCombat;
     private Vector2 combatPosition;
     private Vector2 worldPosition;
@@ -30,16 +32,6 @@ public class PlayerStatus : MonoBehaviour
         inCombat = false;
         this.transform.position = worldPosition;
         this.GetComponent<SpriteRenderer>().enabled = true;
-    }
-
-    private void EnteringNewArea()
-    {
-        worldPosition = this.transform.position;
-    }
-
-    private void ExitingNewArea()
-    {
-        this.transform.position = worldPosition;
     }
 
     //Enables player control of the player character
@@ -111,5 +103,11 @@ public class PlayerStatus : MonoBehaviour
     public void SetWorldPosition()
     {
         worldPosition = Vector2.zero;
+    }
+
+    //This function allows other scripts to know the last scene the player was in.
+    public int GetPrevSceneIndex()
+    {
+        return prevSceneIndex;
     }
 }

@@ -12,6 +12,7 @@ public class SceneTransition : MonoBehaviour
         player = GameObject.Find("WorldPlayer");
         end = false;
         this.GetComponent<Fade>().startFade(0.0f, 3.0f);
+        this.transform.position = player.transform.position;
         Invoke("Reposition", 3.1f);
     }
 

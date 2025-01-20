@@ -14,6 +14,39 @@ public class UniversalAudioHandling : MonoBehaviour
     [SerializeField]
     private AudioClip[] combatMusics;
 
+    //The indexes in the backgroundMusics array where each area's
+    //background music is stored
+    [SerializeField]
+    private int startvilleMusicIndex;
+    [SerializeField]
+    private int newCastleMusicIndex;
+    [SerializeField]
+    private int otherAreaMusicIndex;
+    [SerializeField]
+    private int scorchedMountMusicIndex;
+    [SerializeField]
+    private int roadToNewCastleMusicIndex;
+    [SerializeField]
+    private int roadToOtherAreaMusicIndex;
+    [SerializeField]
+    private int roadToScorchedMountMusicIndex;
+    //The indexes in the combatMusics array where each area's
+    //combat music is stored
+    [SerializeField]
+    private int startvilleCombatMusicIndex;
+    [SerializeField]
+    private int newCastleCombatMusicIndex;
+    [SerializeField]
+    private int otherAreaCombatMusicIndex;
+    [SerializeField]
+    private int scorchedMountCombatMusicIndex;
+    [SerializeField]
+    private int roadToNewCastleCombatMusicIndex;
+    [SerializeField]
+    private int roadToOtherAreaCombatMusicIndex;
+    [SerializeField]
+    private int roadToScorchedMountCombatMusicIndex;
+
     private AudioClip backgroundMusic;
     private AudioClip combatMusic;
     // Start is called before the first frame update
@@ -53,5 +86,10 @@ public class UniversalAudioHandling : MonoBehaviour
     public void ButtonPressed()
     {
         primaryUISource.Play();
+    }
+
+    public void NewScene()
+    {
+
     }
 }

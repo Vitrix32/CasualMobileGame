@@ -29,7 +29,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Go see what that cat down there has to say, I bet it's real interesting. Do that and come back to me to complete your quest hero. What fun!",
+                    "option": "Welcome to our presentation! Go down through the grass to see combat.",
                     "increment": "none"
                 },
                 {
@@ -43,7 +43,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Meow",
+                    "option": "Good job, you made it! Hope you enjoyed this demo of our game in progress! Meow",
                     "increment": "Jeff"
                 }
             ]

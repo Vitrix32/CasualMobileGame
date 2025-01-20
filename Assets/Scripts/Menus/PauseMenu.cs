@@ -75,8 +75,9 @@ public class PauseMenu : MonoBehaviour
         string stats = File.ReadAllText(Application.dataPath + "/Scripts/Items/PlayerStats.txt");
         File.WriteAllText(Application.dataPath + "/Scripts/Items/SavePlayerStats.txt", stats);
 
-        //PlayerPrefs.SetInt();
-        //PlayerPrefs.SetInt();
+        PlayerPrefs.SetFloat("XPos", WorldPlayer.transform.position.x);
+        PlayerPrefs.SetFloat("YPos", WorldPlayer.transform.position.y);
+        PlayerPrefs.SetString("SceneName", SceneManager.GetActiveScene().name);
     }
 
     public void QuitGame()
