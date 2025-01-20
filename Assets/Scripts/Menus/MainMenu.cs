@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         WorldPlayer.GetComponent<PlayerStatus>().EnteringGameWorld(false, 0.4f);
         WorldPlayer.GetComponent<PlayerStatus>().SetWorldPosition();
-        SceneManager.LoadScene("GameplayScene");
+        SceneManager.LoadScene(PlayerPrefs.GetString("SceneName"));
     }
 
     public void QuitGame()
