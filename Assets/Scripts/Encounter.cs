@@ -27,7 +27,7 @@ public class Encounter : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             int rand = Random.Range(0, 100);
-            if(rand <= 25)
+            if(rand <= 25 && !collision.gameObject.GetComponent<PlayerStatus>().isCombatImmune())
             {
                 FadePanel.GetComponent<SceneTransition>().End();
                 collision.gameObject.GetComponent<PlayerStatus>().LeavingGameWorld(true, 3.1f);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,38 +15,21 @@ public class UniversalAudioHandling : MonoBehaviour
     [SerializeField]
     private AudioClip[] combatMusics;
 
-    //The indexes in the backgroundMusics array where each area's
-    //background music is stored
+    //The build indexes of each scene in the game.
+    //The order of these indexes below indicates the order the audio clips are
+    //stored in the backgroundMusics and combatMusics arrays.
     [SerializeField]
-    private int startvilleMusicIndex;
+    private int mainThemeIndex;
     [SerializeField]
-    private int newCastleMusicIndex;
+    private int startvilleIndex;
     [SerializeField]
-    private int otherAreaMusicIndex;
+    private int roadToNewCastleIndex;
     [SerializeField]
-    private int scorchedMountMusicIndex;
+    private int newCastleIndex;
     [SerializeField]
-    private int roadToNewCastleMusicIndex;
+    private int roadToScorchedMountIndex;
     [SerializeField]
-    private int roadToOtherAreaMusicIndex;
-    [SerializeField]
-    private int roadToScorchedMountMusicIndex;
-    //The indexes in the combatMusics array where each area's
-    //combat music is stored
-    [SerializeField]
-    private int startvilleCombatMusicIndex;
-    [SerializeField]
-    private int newCastleCombatMusicIndex;
-    [SerializeField]
-    private int otherAreaCombatMusicIndex;
-    [SerializeField]
-    private int scorchedMountCombatMusicIndex;
-    [SerializeField]
-    private int roadToNewCastleCombatMusicIndex;
-    [SerializeField]
-    private int roadToOtherAreaCombatMusicIndex;
-    [SerializeField]
-    private int roadToScorchedMountCombatMusicIndex;
+    private int scorchedMountIndex;
 
     private AudioClip backgroundMusic;
     private AudioClip combatMusic;
@@ -90,6 +74,43 @@ public class UniversalAudioHandling : MonoBehaviour
 
     public void NewScene()
     {
+        musicSelection();
+        primaryMusicSource.clip = backgroundMusic;
+        primaryMusicSource.Play();
+    }
 
+    private void musicSelection()
+    {
+        int index = SceneManager.GetActiveScene().buildIndex;
+        if (index == mainThemeIndex)
+        {
+            backgroundMusic = backgroundMusics[0];
+            combatMusic = combatMusics[0];
+        }
+        else if (index == startvilleIndex)
+        {
+            backgroundMusic = backgroundMusics[1];
+            combatMusic = combatMusics[1];
+        }
+        else if (index == roadToNewCastleIndex)
+        {
+            backgroundMusic = backgroundMusics[2];
+            combatMusic = combatMusics[2];
+        }
+        else if (index == newCastleIndex)
+        {
+            backgroundMusic = backgroundMusics[3];
+            combatMusic = combatMusics[3];
+        }
+        else if (index == roadToScorchedMountIndex)
+        {
+            backgroundMusic = backgroundMusics[4];
+            combatMusic = combatMusics[4];
+        }
+        else if (index == scorchedMountIndex)
+        {
+            backgroundMusic = backgroundMusics[5];
+            combatMusic = combatMusics[5];
+        }
     }
 }

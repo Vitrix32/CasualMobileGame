@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
     [SerializeField]
     private int prevSceneIndex;
+    [SerializeField]
+    private bool combatImmunity;
     private bool inCombat;
     private Vector2 combatPosition;
     private Vector2 worldPosition;
@@ -14,6 +17,7 @@ public class PlayerStatus : MonoBehaviour
     void Start()
     {
         inCombat = false;
+        combatImmunity = false;
         combatPosition = new Vector2(0.0f, 0.0f);
         worldPosition = Vector2.zero;
         rb = this.GetComponent<Rigidbody2D>();
@@ -22,6 +26,7 @@ public class PlayerStatus : MonoBehaviour
     private void EnteringCombat()
     {
         inCombat = true;
+        combatImmunity = true;
         worldPosition = this.transform.position;
         this.transform.position = combatPosition;
         this.GetComponent<SpriteRenderer>().enabled = false;
@@ -56,14 +61,8 @@ public class PlayerStatus : MonoBehaviour
         // tell if it is combat, death, or main menu causing the exiting of the world -- different music for each
         this.GetComponent<UniversalAudioHandling>().EnteringCombat();
         DisableControl();
-        if (isCombat)
-        {
-            Invoke("EnteringCombat", delay);
-        }
-        else
-        {
-            Invoke("EnteringNewArea", delay);
-        }
+        Invoke("EnteringCombat", delay);
+        Invoke("EndImmunity", 1.0f);
     }
 
     //This function has the purpose of handling the transition of the player object from the game world to combat or new areas.
@@ -76,10 +75,6 @@ public class PlayerStatus : MonoBehaviour
         if (isCombat)
         {
             Invoke("ExitingCombat", delay);
-        }
-        else
-        {
-            Invoke("ExitingNewArea", delay);
         }
         EnableControl();
         this.GetComponent<UniversalAudioHandling>().ExitingCombat();
@@ -109,5 +104,21 @@ public class PlayerStatus : MonoBehaviour
     public int GetPrevSceneIndex()
     {
         return prevSceneIndex;
+    }
+
+    //This function allows other scripts to change the recorded last scene the player was in.
+    public void SetPrevSceneIndex()
+    {
+        prevSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    }
+
+    public bool isCombatImmune()
+    {
+        return combatImmunity;
+    }
+    
+    private void EndImmunity()
+    {
+        combatImmunity = false;
     }
 }

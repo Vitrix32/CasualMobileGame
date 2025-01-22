@@ -32,14 +32,13 @@ public class TransitionPoint : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerMovement>().EnableMovement();
         if (player.GetComponent<PlayerStatus>().GetPrevSceneIndex() == buildIndex ) 
         {
             player.transform.position = entryPoint.position;
             player.GetComponent<PlayerMovement>().EnableMovement();
+            player.GetComponent<UniversalAudioHandling>().NewScene();
         }
         travelMsg.SetActive(false);
-        //must add music change here
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -68,6 +67,7 @@ public class TransitionPoint : MonoBehaviour
         GameObject fadePanel = GameObject.Find("FadePanel");
         fadePanel.GetComponent<SceneTransition>().End();
         player.GetComponent<PlayerMovement>().DisableMovement();
+        player.GetComponent<PlayerStatus>().SetPrevSceneIndex();
         StartCoroutine("Move", exitPoint.position);
         Invoke("Leave", 3.0f);
     }
