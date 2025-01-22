@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class BattleMenu : MonoBehaviour
 {
+    [SerializeField]
     private GameObject FadePanel;
     public GameObject attackPanel;
     public GameObject spellPanel;
@@ -89,7 +90,8 @@ public class BattleMenu : MonoBehaviour
 
     public void AllEnemiesDead()
     {
-        Invoke("ExitScene", 3.1f);
+        FadePanel.GetComponent<SceneTransition>().End();
+        Invoke("ExitScene", 3.0f);
     }
 
     private void ExitScene()

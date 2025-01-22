@@ -29,14 +29,14 @@ public class PlayerStatus : MonoBehaviour
         combatImmunity = true;
         worldPosition = this.transform.position;
         this.transform.position = combatPosition;
-        this.GetComponent<SpriteRenderer>().enabled = false;
+        ToggleSprite();
     }
 
-    private void ExitingCombat() 
+    private void ExitingCombat()
     {
         inCombat = false;
         this.transform.position = worldPosition;
-        this.GetComponent<SpriteRenderer>().enabled = true;
+        Invoke("ToggleSprite", 0.01f);
     }
 
     //Enables player control of the player character
@@ -51,18 +51,15 @@ public class PlayerStatus : MonoBehaviour
         this.GetComponent<PlayerMovement>().DisableMovement();
     }
 
-    //This function has the purpose of handling the transition of the player object from the game world to combat
-    //or new areas. you must specify if you are entering combat or just a new area, and a delay must be given.
+    //This function has the purpose of handling the transition of the player object from the game world to combat.
+    //You must specify if you are entering combat or just a new area, and a delay must be given.
     //If no delay is desired just give a delay of 0.0f.
     public void LeavingGameWorld(bool isCombat, float delay)
     {
         this.GetComponent<FootstepAudioHandling>().StopAllCoroutines();
-        // We need another version of this function or if statement or something along those lines to be able to
-        // tell if it is combat, death, or main menu causing the exiting of the world -- different music for each
         this.GetComponent<UniversalAudioHandling>().EnteringCombat();
         DisableControl();
         Invoke("EnteringCombat", delay);
-        Invoke("EndImmunity", 1.0f);
     }
 
     //This function has the purpose of handling the transition of the player object from the game world to combat or new areas.
@@ -77,6 +74,7 @@ public class PlayerStatus : MonoBehaviour
             Invoke("ExitingCombat", delay);
         }
         EnableControl();
+        Invoke("EndImmunity", 3.0f);
         this.GetComponent<UniversalAudioHandling>().ExitingCombat();
     }
 
@@ -112,13 +110,24 @@ public class PlayerStatus : MonoBehaviour
         prevSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
-    public bool isCombatImmune()
+
+    //Getter and setters for combat immunity
+    public bool IsCombatImmune()
     {
         return combatImmunity;
     }
-    
+
+    public void EnableImmunity()
+    {
+        combatImmunity = true;
+    }
     private void EndImmunity()
     {
         combatImmunity = false;
+    }
+
+    private void ToggleSprite()
+    {
+        this.GetComponent<SpriteRenderer>().enabled = !this.GetComponent<SpriteRenderer>().enabled;
     }
 }
