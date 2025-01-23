@@ -172,7 +172,10 @@ public class Enemy : MonoBehaviour
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             dotTurnsRemaining--;
             UpdateHealthUI();
-            StartCoroutine(Shake());
+            if (gameObject.activeSelf)
+            {
+                StartCoroutine(Shake());
+            }
             Debug.Log("Enemy took " + dotDamage + " damage! Health remaining: " + currentHealth);
 
             if (currentHealth <= 0)
