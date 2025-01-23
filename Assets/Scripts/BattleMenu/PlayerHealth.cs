@@ -60,6 +60,11 @@ public class Player : MonoBehaviour
     // Reference to BattleMenu
     private BattleMenu battleMenu;
 
+    public int swordDamage;
+    public int axeDamage;
+    public int clawDamage;
+    public int bowDamage;
+
     void Start()
     {
         WorldPlayer = GameObject.Find("WorldPlayer");
@@ -107,9 +112,11 @@ public class Player : MonoBehaviour
 
         ItemManager im = itemManager;
 
-        damage = im.attack.basic +
-                 im.attack.itemEnhancement +
-                 im.attack.boostEnhancement;
+        swordDamage = im.attack.attackTypes[0].basic;
+        axeDamage   = im.attack.attackTypes[1].basic;
+        clawDamage  = im.attack.attackTypes[2].basic;
+        bowDamage   = im.attack.attackTypes[3].basic;
+
 
         Debug.Log(im.attack.basic);
         Debug.Log("Player damage calculated: " + damage);
@@ -331,7 +338,7 @@ public class Player : MonoBehaviour
 
     void PerformRegularAttack(string attackName)
     {
-        int actualDamage = Mathf.RoundToInt(damage * damageMultiplier);
+        int actualDamage = Mathf.RoundToInt(swordDamage/* * damageMultiplier*/);
         Debug.Log($"Calculated damage for attack '{attackName}': {actualDamage}");
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
@@ -348,7 +355,7 @@ public class Player : MonoBehaviour
     {
         int dotDamage = 5;
         int duration = 3;
-        enemy.ApplyDOT(dotDamage, duration);
+        enemy.ApplyDOT(clawDamage, duration);
         UpdateText("You used Attack With DOT!");
         Debug.Log($"Player applied DOT: {dotDamage} damage per turn for {duration} turns.");
     }
@@ -383,13 +390,13 @@ public class Player : MonoBehaviour
 
     void PerformDoubleDamage()
     {
-        int actualDamage = Mathf.RoundToInt(damage * 2 * damageMultiplier);
+        int actualDamage = Mathf.RoundToInt(axeDamage/*damage * 2 * damageMultiplier*/);
         Debug.Log($"DoubleDamage attack used. Calculated damage: {actualDamage}");
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
-            actualDamage = 20000; // Example value for God Mode
-            Debug.Log("God Mode is active. DoubleDamage set to 20000.");
+            actualDamage = 10000;
+            Debug.Log("God Mode is active. DoubleDamage set to 10000.");
         }
 
         enemy.TakeDamage(actualDamage);
@@ -398,12 +405,12 @@ public class Player : MonoBehaviour
 
     void PerformWeakenEnemy()
     {
-        int actualDamage = Mathf.RoundToInt(damage * 0.5f * damageMultiplier);
+        int actualDamage = Mathf.RoundToInt(bowDamage/*damage * 0.5f * damageMultiplier*/);
         Debug.Log($"WeakenEnemy attack used. Calculated damage: {actualDamage}");
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
-            actualDamage = Mathf.RoundToInt((damage * 0.5f) * damageMultiplier * 10); // Example value for God Mode
+            actualDamage = 10000;
             Debug.Log("God Mode is active. WeakenEnemy damage set to " + actualDamage + ".");
         }
 

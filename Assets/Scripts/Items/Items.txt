@@ -2,8 +2,8 @@
 	"items": [
 		{
 			"name": "GreatSword",
-			"type": "attack",
-			"value": "10",
+			"type": "attack:sword",
+			"value": 10,
 			"questName": "JeffQuest"
 		}
 	]
