@@ -9,30 +9,79 @@ public class ItemManager : MonoBehaviour
     public ItemList IL;
     public TextAsset itemsJSON;
     public StatType attack, defense, health;
+    public Dictionary<string, int> consumables = new Dictionary<string, int>();
+
 
     private void Start()
+{
+    PS = JsonUtility.FromJson<PlayerStats>(statsJSON.text);
+    IL = JsonUtility.FromJson<ItemList>(itemsJSON.text);
+    consumables.Clear();
+
+    foreach (var stat in PS.stats)
     {
-        PS = JsonUtility.FromJson<PlayerStats>(statsJSON.text);
-        foreach (var stat in PS.stats)
+        if (stat.type == "attack")
         {
-            if (stat.type == "attack")
+            attack = stat;
+        }
+        else if (stat.type == "defense")
+        {
+            defense = stat;
+        }
+        else if (stat.type == "health")
+        {
+            health = stat;
+        }
+    }
+
+    foreach (var item in IL.items)
+    {
+        if (item.type == "consumable")
+        {
+            consumables[item.name] = item.quantity;
+        }
+        else if (item.type.StartsWith("attack:"))
+        {
+            string attackTypeKey = item.type.Split(':')[1];
+            foreach (var attackType in attack.attackTypes)
             {
-                attack = stat;
-                foreach (var attackType in attack.attackTypes)
+                if (attackType.type == attackTypeKey)
                 {
-                    Debug.Log($"Attack Type: {attackType.type}, Basic: {attackType.basic}");
+                    attackType.itemEnhancement = item.value;
+                    attackType.itemName = item.name;
                 }
             }
-            else if (stat.type == "defense")
-            {
-                defense = stat;
-            }
-            else if (stat.type == "health")
-            {
-                health = stat;
-            }
         }
-        IL = JsonUtility.FromJson<ItemList>(itemsJSON.text);
+        else if (item.type == "health")
+        {
+            health.itemEnhancement = item.value;
+            health.itemName = item.name;
+        }
+        else if (item.type == "defense")
+        {
+            defense.itemEnhancement = item.value;
+            defense.itemName = item.name;
+        }
+    }
+}
+
+    public bool HasConsumable(string itemName)
+    {
+        return consumables.ContainsKey(itemName) && consumables[itemName] > 0;
+         Debug.Log("HERE");
+        Debug.Log(consumables[itemName]);
+    }
+
+    public bool UseConsumable(string itemName)
+    {
+        if (HasConsumable(itemName))
+        {
+            consumables[itemName]--;
+            return true;
+        }
+        Debug.Log("USED");
+        Debug.Log(consumables[itemName]);
+        return false;
     }
 
     public void checkItemAquire(string s)

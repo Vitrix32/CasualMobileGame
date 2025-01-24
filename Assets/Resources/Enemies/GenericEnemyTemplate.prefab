@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 1574830866288011372}
   - component: {fileID: -5016654291474562415}
   - component: {fileID: -7681273166876860016}
+  - component: {fileID: -1677791077744078250}
   m_Layer: 0
   m_Name: GenericEnemyTemplate
   m_TagString: Enemy
@@ -197,12 +198,12 @@ SpriteRenderer:
   m_SortingLayerID: -1977453969
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3268506e27ef94e77b8828ce72ea702a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6eb75f9354b004ee7b3d0d963626f94c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 3.2, y: 3.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5817c1fd9f33e400c9208032ec001acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 35
+  maxHealth: 30
   currentHealth: 0
   healthText: {fileID: 2860557351010993533}
   healthBar: {fileID: 3734570033287303679}
@@ -483,6 +484,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &-7681273166876860016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3691535827709836765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c5b3ba3633ebb40ad5430c2c2fd0fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1677791077744078250
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
