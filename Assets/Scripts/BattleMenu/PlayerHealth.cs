@@ -304,13 +304,17 @@ public class Player : MonoBehaviour
                 case "Milk":
                 case "Cookie":
                 case "Banana":
-                    if (itemManager.HasConsumable(attack))
+                    // Check if the item is available; if not, don't consume a turn or exit
+                    if (!itemManager.HasConsumable(attack))
                     {
-                        PerformConsumeItem(attack);
+                        UpdateText("No " + attack + " left!");
+                        Debug.Log("Item not used; turn not consumed.");
+                        return; // <-- Important: This prevents ending the turn
                     }
                     else
                     {
-                        UpdateText("No " + attack + " left!");
+                        PerformConsumeItem(attack);
+                        itemManager.UseConsumable(attack);
                     }
                     break;
 
