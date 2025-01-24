@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
 
     public GameObject attackPanel;
     public GameObject spellPanel;
+    public GameObject itemPanel;
     public GameObject mainMenuPanel;
 
     public float shakeDuration = 0.5f;
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour
         WorldPlayer = GameObject.Find("WorldPlayer");
 
         currentHealth = maxHealth;
-        Debug.Log("Player currentHealth set to: " + currentHealth);
+        //Debug.log("Player currentHealth set to: " + currentHealth);
 
         UpdateHealthUI();
         SetAttackButtonsInteractable();
@@ -79,18 +80,18 @@ public class Player : MonoBehaviour
         if (enemies.Length > 0)
         {
             enemy = enemies[0].GetComponent<Enemy>();
-            Debug.Log("Enemy found: " + enemy.gameObject.name);
+            //Debug.log("Enemy found: " + enemy.gameObject.name);
         }
         else
         {
-            Debug.LogWarning("No enemies found in the scene.");
+            //Debug.logWarning("No enemies found in the scene.");
         }
 
         rectTransform = GetComponentInChildren<RectTransform>();
 
         if (rectTransform == null)
         {
-            Debug.LogError("No RectTransform found on child Image!");
+            //Debug.logError("No RectTransform found on child Image!");
         }
         else
         {
@@ -99,13 +100,13 @@ public class Player : MonoBehaviour
 
         if (healParticleEffect == null)
         {
-            Debug.LogError("No particle system assigned for healing effects!");
+            //Debug.logError("No particle system assigned for healing effects!");
         }
 
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
-            Debug.LogError("No AudioSource component found on the Player.");
+            //Debug.logError("No AudioSource component found on the Player.");
         }
 
         UpdateText("What would you like to do?");
@@ -118,13 +119,13 @@ public class Player : MonoBehaviour
         bowDamage   = im.attack.attackTypes[3].basic;
 
 
-        Debug.Log(im.attack.basic);
-        Debug.Log("Player damage calculated: " + damage);
+        //Debug.log(im.attack.basic);
+        //Debug.log("Player damage calculated: " + damage);
 
         foreach (var attackInfo in attackButtonInfos)
         {
             attackInfo.cooldown = 0;
-            Debug.Log($"Initialized cooldown for attack '{attackInfo.attackName}' to 0.");
+            //Debug.log($"Initialized cooldown for attack '{attackInfo.attackName}' to 0.");
         }
 
         AssignButtonListeners();
@@ -133,7 +134,7 @@ public class Player : MonoBehaviour
         battleMenu = GameObject.Find("BattleMenu").GetComponent<BattleMenu>();
         if (battleMenu == null)
         {
-            Debug.LogError("BattleMenu component not found on BattleMenu GameObject.");
+            //Debug.logError("BattleMenu component not found on BattleMenu GameObject.");
         }
     }
 
@@ -148,13 +149,13 @@ public class Player : MonoBehaviour
                 string currentAttack = attackInfo.attackName;
 
                 // Debugging: Log assignment of listeners
-                Debug.Log($"Assigning listener to attack '{currentAttack}'.");
+                //Debug.log($"Assigning listener to attack '{currentAttack}'.");
 
                 attackInfo.button.onClick.AddListener(() => PlayerAttack(currentAttack));
             }
             else
             {
-                Debug.LogWarning($"Attack '{attackInfo.attackName}' has no button assigned.");
+                //Debug.logWarning($"Attack '{attackInfo.attackName}' has no button assigned.");
             }
         }
     }
@@ -164,11 +165,11 @@ public class Player : MonoBehaviour
         if (battleText != null)
         {
             battleText.text = newText;
-            Debug.Log($"Battle Text Updated: {newText}");
+            //Debug.log($"Battle Text Updated: {newText}");
         }
         else
         {
-            Debug.LogWarning("battleText is not assigned.");
+            //Debug.logWarning("battleText is not assigned.");
         }
     }
 
@@ -182,14 +183,14 @@ public class Player : MonoBehaviour
                 if (roll <= shieldBlockChance)
                 {
                     UpdateText("Shield blocked the attack!");
-                    Debug.Log("Player's shield successfully blocked the attack.");
+                    //Debug.log("Player's shield successfully blocked the attack.");
                     isShieldActive = false;
                     return;
                 }
                 else
                 {
                     UpdateText("Shield failed to block the attack.");
-                    Debug.Log("Player's shield failed to block the attack.");
+                    //Debug.log("Player's shield failed to block the attack.");
                     isShieldActive = false;
                 }
             }
@@ -197,7 +198,7 @@ public class Player : MonoBehaviour
             currentHealth -= damageAmount;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             UpdateHealthUI();
-            Debug.Log($"Player took {damageAmount} damage. Current Health: {currentHealth}");
+            //Debug.log($"Player took {damageAmount} damage. Current Health: {currentHealth}");
         }
 
         StartCoroutine(Shake());
@@ -235,7 +236,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("healthText is not assigned.");
+            //Debug.logWarning("healthText is not assigned.");
         }
 
         if (healthSlider != null)
@@ -244,13 +245,13 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("healthSlider is not assigned.");
+            //Debug.logWarning("healthSlider is not assigned.");
         }
     }
 
     void Die()
     {
-        Debug.Log("You died!");
+        //Debug.log("You died!");
         Destroy(gameObject);
         if (WorldPlayer != null)
         {
@@ -258,14 +259,14 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("WorldPlayer is not assigned.");
+            //Debug.logWarning("WorldPlayer is not assigned.");
         }
         SceneManager.LoadScene("DeathScene");
     }
 
     public void PlayerAttack(string attack)
     {
-        Debug.Log($"PlayerAttack called with attack: {attack}");
+        //Debug.log($"PlayerAttack called with attack: {attack}");
 
         if (playerTurn && enemy != null)
         {
@@ -298,6 +299,24 @@ public class Player : MonoBehaviour
                 case "HealSelf": // New attack
                     PerformHealSelf();
                     break;
+                
+                case "Apple":
+                case "Milk":
+                case "Cookie":
+                case "Banana":
+                    // Check if the item is available; if not, don't consume a turn or exit
+                    if (!itemManager.HasConsumable(attack))
+                    {
+                        UpdateText("No " + attack + " left!");
+                        Debug.Log("Item not used; turn not consumed.");
+                        return; // <-- Important: This prevents ending the turn
+                    }
+                    else
+                    {
+                        PerformConsumeItem(attack);
+                        itemManager.UseConsumable(attack);
+                    }
+                    break;
 
                 default:
                     PerformRegularAttack(attack);
@@ -310,7 +329,7 @@ public class Player : MonoBehaviour
             if (battleMenu != null)
             {
                 battleMenu.SetMenusInteractable(false);
-                Debug.Log("Battle menus have been disabled.");
+                //Debug.log("Battle menus have been disabled.");
             }
 
             foreach (var attackInfo in attackButtonInfos)
@@ -319,7 +338,7 @@ public class Player : MonoBehaviour
                 {
                     attackInfo.cooldown = attackInfo.maxCooldown;
                     attackInfo.button.interactable = false;
-                    Debug.Log($"Attack '{attackInfo.attackName}' is now on cooldown ({attackInfo.cooldown} turns).");
+                    //Debug.log($"Attack '{attackInfo.attackName}' is now on cooldown ({attackInfo.cooldown} turns).");
                     break;
                 }
             }
@@ -328,28 +347,38 @@ public class Player : MonoBehaviour
 
             attackPanel.SetActive(false);
             spellPanel.SetActive(false);
+            itemPanel.SetActive(false);
             mainMenuPanel.SetActive(true);
         }
         else
         {
-            Debug.LogWarning("PlayerAttack called, but it's not the player's turn or no enemy is present.");
+            //Debug.logWarning("PlayerAttack called, but it's not the player's turn or no enemy is present.");
         }
     }
 
     void PerformRegularAttack(string attackName)
     {
         int actualDamage = Mathf.RoundToInt(swordDamage/* * damageMultiplier*/);
-        Debug.Log($"Calculated damage for attack '{attackName}': {actualDamage}");
+        //Debug.log($"Calculated damage for attack '{attackName}': {actualDamage}");
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
             actualDamage = 10000;
-            Debug.Log("God Mode is active. Damage set to 10000.");
+            //Debug.log("God Mode is active. Damage set to 10000.");
         }
 
         enemy.TakeDamage(actualDamage);
         UpdateText("You used " + attackName + "!");
     }
+
+    void PerformConsumeItem(string itemName)
+    {
+        int healAmount = 10;
+        HealPlayer(healAmount);
+        UpdateText("You used " + itemName + "!");
+        itemManager.UseConsumable(itemName);
+        //Debug.log($"Player used {itemName} and healed for {healAmount} health.");
+    }       
 
     void PerformAttackWithDOT()
     {
@@ -357,18 +386,18 @@ public class Player : MonoBehaviour
         int duration = 3;
         enemy.ApplyDOT(clawDamage, duration);
         UpdateText("You used Attack With DOT!");
-        Debug.Log($"Player applied DOT: {dotDamage} damage per turn for {duration} turns.");
+        //Debug.log($"Player applied DOT: {dotDamage} damage per turn for {duration} turns.");
     }
 
     void PerformEmpower()
     {
         damageMultiplier = 1.5f;
         isEmpowered = true;
-        Debug.Log("Player damage increased by 50% for the next attack.");
+        //Debug.log("Player damage increased by 50% for the next attack.");
 
         int healAmount = 10;
         HealPlayer(healAmount);
-        Debug.Log($"Player healed for {healAmount} health.");
+        //Debug.log($"Player healed for {healAmount} health.");
 
         UpdateText("You empowered yourself!");
     }
@@ -376,7 +405,7 @@ public class Player : MonoBehaviour
     void PerformShield()
     {
         isShieldActive = true;
-        Debug.Log("Player has activated Shield. 80% chance to block the next enemy attack.");
+        //Debug.log("Player has activated Shield. 80% chance to block the next enemy attack.");
 
         UpdateText("You raised a shield!");
     }
@@ -385,18 +414,18 @@ public class Player : MonoBehaviour
     {
         skipEnemyTurn = true;
         UpdateText("You used Skip Enemy Turn!");
-        Debug.Log("Player will skip the enemy's next turn.");
+        //Debug.log("Player will skip the enemy's next turn.");
     }
 
     void PerformDoubleDamage()
     {
         int actualDamage = Mathf.RoundToInt(axeDamage/*damage * 2 * damageMultiplier*/);
-        Debug.Log($"DoubleDamage attack used. Calculated damage: {actualDamage}");
+        //Debug.log($"DoubleDamage attack used. Calculated damage: {actualDamage}");
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
             actualDamage = 10000;
-            Debug.Log("God Mode is active. DoubleDamage set to 10000.");
+            //Debug.log("God Mode is active. DoubleDamage set to 10000.");
         }
 
         enemy.TakeDamage(actualDamage);
@@ -406,18 +435,18 @@ public class Player : MonoBehaviour
     void PerformWeakenEnemy()
     {
         int actualDamage = Mathf.RoundToInt(bowDamage/*damage * 0.5f * damageMultiplier*/);
-        Debug.Log($"WeakenEnemy attack used. Calculated damage: {actualDamage}");
+        //Debug.log($"WeakenEnemy attack used. Calculated damage: {actualDamage}");
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
             actualDamage = 10000;
-            Debug.Log("God Mode is active. WeakenEnemy damage set to " + actualDamage + ".");
+            //Debug.log("God Mode is active. WeakenEnemy damage set to " + actualDamage + ".");
         }
 
         enemy.TakeDamage(actualDamage);
         enemy.SetWeakened(true);
         UpdateText("You used Weaken Enemy!");
-        Debug.Log("Enemy's next attack will be weakened.");
+        //Debug.log("Enemy's next attack will be weakened.");
     }
 
     // New method to perform Heal Self attack
@@ -426,7 +455,7 @@ public class Player : MonoBehaviour
         int healAmount = 10;
         HealPlayer(healAmount);
         UpdateText("You used Heal Self!");
-        Debug.Log($"Player healed for {healAmount} health.");
+        //Debug.log($"Player healed for {healAmount} health.");
     }
 
     void PlayHealingEffect()
@@ -434,7 +463,7 @@ public class Player : MonoBehaviour
         if (healParticleEffect != null)
         {
             healParticleEffect.Emit(100);
-            Debug.Log("Healing effect played.");
+            //Debug.log("Healing effect played.");
         }
     }
 
@@ -452,7 +481,7 @@ public class Player : MonoBehaviour
         if (battleMenu != null)
         {
             battleMenu.SetMenusInteractable(false);
-            Debug.Log("Battle menus have been disabled.");
+            //Debug.log("Battle menus have been disabled.");
         }
 
         StartCoroutine(BattleSequence());
@@ -484,7 +513,7 @@ public class Player : MonoBehaviour
             if (battleMenu != null)
             {
                 battleMenu.SetMenusInteractable(true);
-                Debug.Log("Battle menus have been enabled.");
+                //Debug.log("Battle menus have been enabled.");
             }
 
             UpdateAttackCooldowns();
@@ -520,7 +549,7 @@ public class Player : MonoBehaviour
 
         UpdateText("The enemy was hurt!");
         enemy.ApplyTurnEffects();
-        Debug.Log("Enemy took DOT damage.");
+        //Debug.log("Enemy took DOT damage.");
     }
 
     IEnumerator EnemySkipTurn()
@@ -533,23 +562,38 @@ public class Player : MonoBehaviour
         if (battleMenu != null)
         {
             battleMenu.SetMenusInteractable(true);
-            Debug.Log("Battle menus have been enabled.");
+            //Debug.log("Battle menus have been enabled.");
         }
 
         UpdateAttackCooldowns();
         SetAttackButtonsInteractable();
-        Debug.Log("Enemy skipped their turn.");
+        //Debug.log("Enemy skipped their turn.");
     }
 
-    void SetAttackButtonsInteractable()
+    /*void SetAttackButtonsInteractable()
     {
         foreach (var attackInfo in attackButtonInfos)
         {
             bool isInteractable = attackInfo.cooldown == 0 && playerTurn;
             attackInfo.button.interactable = isInteractable;
-            Debug.Log($"Attack '{attackInfo.attackName}' interactable: {isInteractable}");
+            //Debug.log($"Attack '{attackInfo.attackName}' interactable: {isInteractable}");
         }
+    }*/
+
+    void SetAttackButtonsInteractable()
+{
+    foreach (var attackInfo in attackButtonInfos)
+    {
+        bool isInteractable = (attackInfo.cooldown == 0) && playerTurn;
+        if ((attackInfo.attackName == "Apple" || attackInfo.attackName == "Milk" 
+            || attackInfo.attackName == "Cookie" || attackInfo.attackName == "Banana")
+            && !itemManager.HasConsumable(attackInfo.attackName))
+        {
+            isInteractable = false;
+        }
+        attackInfo.button.interactable = isInteractable;
     }
+}
 
     void UpdateAttackCooldowns()
     {
@@ -561,11 +605,11 @@ public class Player : MonoBehaviour
                 if (attackInfo.cooldown == 0)
                 {
                     attackInfo.button.interactable = playerTurn;
-                    Debug.Log($"Attack '{attackInfo.attackName}' is now off cooldown and available.");
+                    //Debug.log($"Attack '{attackInfo.attackName}' is now off cooldown and available.");
                 }
                 else
                 {
-                    Debug.Log($"Attack '{attackInfo.attackName}' cooldown decreased to {attackInfo.cooldown}.");
+                    //Debug.log($"Attack '{attackInfo.attackName}' cooldown decreased to {attackInfo.cooldown}.");
                 }
             }
         }

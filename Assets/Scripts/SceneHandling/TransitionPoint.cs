@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -27,11 +28,20 @@ public class TransitionPoint : MonoBehaviour
     private Transform entryPoint;
     [SerializeField]
     private GameObject travelMsg;
+
+    private GameObject joystick;
     private GameObject player;
-    // Start is called before the first frame update
-    void Start()
+    private int delay;
+
+    private void Awake()
+    {
+        delay = 3;
+    }
+
+    private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        joystick = GameObject.Find("JoystickPanel");
         if (player.GetComponent<PlayerStatus>().GetPrevSceneIndex() == buildIndex ) 
         {
             player.transform.position = entryPoint.position;
@@ -46,7 +56,6 @@ public class TransitionPoint : MonoBehaviour
         Debug.Log("TriggerEntered");
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Identified as player");
             travelMsg.SetActive(true);
         }
     }
@@ -60,30 +69,20 @@ public class TransitionPoint : MonoBehaviour
     }
 
     //Handles details for exiting a scene and entering another
-    //Includes starting the fade to black, disabling player control of movement
     public void Exiting()
     {
         travelMsg.SetActive(false);
         GameObject fadePanel = GameObject.Find("FadePanel");
         fadePanel.GetComponent<SceneTransition>().End();
+        Vector3 moveVector = exitPoint.position - player.transform.position;
+        moveVector.Normalize();
+        Debug.Log(moveVector);
+        joystick.SetActive(false);
+        player.GetComponent<PlayerMovement>().setVector(moveVector);
+        player.GetComponent<PlayerMovement>().StartDevControl();
         player.GetComponent<PlayerMovement>().DisableMovement();
         player.GetComponent<PlayerStatus>().SetPrevSceneIndex();
-        StartCoroutine("Move", exitPoint.position);
-        Invoke("Leave", 3.0f);
-    }
-
-    private IEnumerator Move(Vector3 dest)
-    {
-        Vector3 originalPosition = player.transform.position;
-        float distance = Vector3.Distance(originalPosition, dest);
-        float duration = distance / 3;
-        float time = 0f;
-        while (time < duration)
-        {
-            time += Time.deltaTime;
-            player.transform.position = Vector2.Lerp(originalPosition, dest, time / duration);
-            yield return null;
-        }
+        Invoke("Leave", delay);
     }
 
     private void Leave()

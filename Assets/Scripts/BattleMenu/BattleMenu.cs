@@ -9,6 +9,7 @@ public class BattleMenu : MonoBehaviour
     private GameObject FadePanel;
     public GameObject attackPanel;
     public GameObject spellPanel;
+    public GameObject itemPanel;
     public GameObject mainMenuPanel;
 
     private int enemiesAmount;
@@ -39,6 +40,12 @@ public class BattleMenu : MonoBehaviour
             allButtons.AddRange(spellButtons);
         }
 
+        if (itemPanel != null)
+        {
+            Button[] itemButtons = itemPanel.GetComponentsInChildren<Button>();
+            allButtons.AddRange(itemButtons);
+        }
+
         if (mainMenuPanel != null)
         {
             Button[] mainMenuButtons = mainMenuPanel.GetComponentsInChildren<Button>();
@@ -67,10 +74,17 @@ public class BattleMenu : MonoBehaviour
         spellPanel.SetActive(true);
     }
 
+    public void ShowItems()
+    {
+        mainMenuPanel.SetActive(false);
+        itemPanel.SetActive(true);
+    }
+
     public void BackToMenu()
     {
         attackPanel.SetActive(false);
         spellPanel.SetActive(false);
+        itemPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
     }
 

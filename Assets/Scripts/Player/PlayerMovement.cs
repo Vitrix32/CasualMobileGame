@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -21,17 +22,20 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed;
+
+    [SerializeField]
+    private Animator anim;
+
+    private bool playerControl;
     private bool moving;
     private bool canMove;
     private Rigidbody2D rb;
     private Vector2 moveVector;
 
-    [SerializeField]
-    private Animator anim;
-
-    // Start is called before the first frame update
+    //Start is called before the first frame update
     void Start()
     {
+        playerControl = true;
         moving = false;
         canMove = true;
         rb = this.GetComponent<Rigidbody2D>();
@@ -46,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     //Apply velocity to player
     private void moveLogic()
     {
-        if (canMove)
+        if (canMove || !playerControl)
         {
             Vector2 val = moveVector * moveSpeed * Time.fixedDeltaTime;
             rb.velocity = val;
@@ -90,16 +94,25 @@ public class PlayerMovement : MonoBehaviour
         return moving;
     }
 
+    //This function has the purpose of enabling control of player movement apart from input
+    public void StartDevControl()
+    {
+        playerControl = false;
+    }
+
+    //This function has the purpose of disabling control of player movement apart from input
+    public void StopDevControl() 
+    {
+        playerControl = true;
+    }
     
-    //This function has the purpose of enabling the canMove boolean. 
-    //This boolean controls whether or not player input moves the player character.
+    //This function has the purpose of enabling player input to move the player character.
     public void EnableMovement()
     {
         canMove = true;
     }
 
-    //This function has the purpose of disabling the canMove boolean. 
-    //This boolean controls whether or not player input moves the player character.
+    //This function has the purpose of disabling player input to move the player character.
     public void DisableMovement()
     {
         canMove = false;

@@ -7,16 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class Encounter : MonoBehaviour
 {
-    [SerializeField]
     private float delay;
     private GameObject FadePanel;
     private GameObject player;
     private int enemyId;
     private int numberOfIds;
-    //private int enemyAmount;
+
     // Start is called before the first frame update
     void Start()
     {
+        delay = 3;
         FadePanel = GameObject.Find("FadePanel");
         numberOfIds = 4;
         enemyId = Random.Range(1, numberOfIds);
@@ -30,7 +30,7 @@ public class Encounter : MonoBehaviour
             if(rand <= 25 && !collision.gameObject.GetComponent<PlayerStatus>().IsCombatImmune())
             {
                 FadePanel.GetComponent<SceneTransition>().End();
-                collision.gameObject.GetComponent<PlayerStatus>().LeavingGameWorld(true, 3.1f);
+                collision.gameObject.GetComponent<PlayerStatus>().LeavingGameWorld(true, delay);
                 StartCoroutine("ChangeScene");
             }
         }
@@ -38,7 +38,7 @@ public class Encounter : MonoBehaviour
 
     private IEnumerator ChangeScene()
     {
-        yield return new WaitForSeconds(3.1f);
+        yield return new WaitForSeconds(delay);
         SceneManager.LoadScene("JoelTestScene");
     }
 }

@@ -4,7 +4,36 @@
 			"name": "GreatSword",
 			"type": "attack:sword",
 			"value": 10,
+			"quantity": 1,
 			"questName": "JeffQuest"
+		},
+		{
+			"name": "Cookie",
+			"type": "consumable",
+			"value": 10,
+			"quantity": 3,
+			"questName": "none"
+		},
+		{
+			"name": "Banana",
+			"type": "consumable",
+			"value": 10,
+			"quantity": 0,
+			"questName": "none"
+		},
+		{
+			"name": "Milk",
+			"type": "consumable",
+			"value": 10,
+			"quantity": 1,
+			"questName": "none"
+		},
+		{
+			"name": "Apple",
+			"type": "consumable",
+			"value": 10,
+			"quantity": 0,
+			"questName": "none"
 		}
 	]
 }
