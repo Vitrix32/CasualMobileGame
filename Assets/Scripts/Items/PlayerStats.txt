@@ -2,6 +2,7 @@
     "stats": [
         {
             "type": "health",
+            "attackTypes": [],
             "basic": 10,
             "itemEnhancement": 0,
             "itemName": "nothing",
@@ -9,6 +10,7 @@
         },
         {
             "type": "armor",
+            "attackTypes": [],
             "basic": 10,
             "itemEnhancement": 0,
             "itemName": "nothing",
@@ -38,14 +40,18 @@
                     "itemName": "nothing",
                     "boostEnhancement": 0
                 },
-                 {
+                {
                     "type": "bow",
                     "basic": 5,
                     "itemEnhancement": 0,
                     "itemName": "nothing",
                     "boostEnhancement": 0
                 }
-            ]
+            ],
+            "basic": 0,
+            "itemEnhancement": 0,
+            "itemName": "nothing",
+            "boostEnhancement": 0
         }
     ]
 }
