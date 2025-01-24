@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu/DeathScene.unity
     guid: 5d89904ec37887c498e77d915576f296
+  - enabled: 1
+    path: Assets/Scenes/MainScenes/start_thyme_trail.unity
+    guid: 9a727c31afe7a47469b01e31759febe9
   m_configObjects: {}

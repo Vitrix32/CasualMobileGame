@@ -21,7 +21,7 @@ public class SceneTransition : MonoBehaviour
     //Start is called before the first frame update
     void Start()
     {
-        delayDuration = 3;
+        delayDuration = 2;
         player = GameObject.Find("WorldPlayer");
         end = false;
         this.GetComponent<Fade>().startFade(0.0f, delayDuration);

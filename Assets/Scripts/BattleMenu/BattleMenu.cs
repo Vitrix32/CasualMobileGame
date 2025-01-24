@@ -105,7 +105,7 @@ public class BattleMenu : MonoBehaviour
     public void AllEnemiesDead()
     {
         FadePanel.GetComponent<SceneTransition>().End();
-        Invoke("ExitScene", 3.0f);
+        Invoke("ExitScene", 2.0f);
     }
 
     private void ExitScene()

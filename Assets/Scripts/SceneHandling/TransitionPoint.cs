@@ -29,19 +29,21 @@ public class TransitionPoint : MonoBehaviour
     [SerializeField]
     private GameObject travelMsg;
 
-    private GameObject joystick;
+    private GameObject FadePanel;
+    private GameObject PauseButton;
+    private GameObject QuestButton;
+    private GameObject VirtualJoystick;
     private GameObject player;
     private int delay;
 
     private void Awake()
     {
-        delay = 3;
+        delay = 2;
     }
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        joystick = GameObject.Find("JoystickPanel");
         if (player.GetComponent<PlayerStatus>().GetPrevSceneIndex() == buildIndex ) 
         {
             player.transform.position = entryPoint.position;
@@ -72,12 +74,16 @@ public class TransitionPoint : MonoBehaviour
     public void Exiting()
     {
         travelMsg.SetActive(false);
-        GameObject fadePanel = GameObject.Find("FadePanel");
-        fadePanel.GetComponent<SceneTransition>().End();
+        FadePanel = GameObject.Find("FadePanel");
+        PauseButton = GameObject.Find("PauseButton");
+        QuestButton = GameObject.Find("OpenQuests");
+        VirtualJoystick = GameObject.Find("JoystickPanel");
+        FadePanel.GetComponent<SceneTransition>().End();
+        PauseButton.SetActive(false);
+        QuestButton.SetActive(false);
+        VirtualJoystick.SetActive(false);
         Vector3 moveVector = exitPoint.position - player.transform.position;
         moveVector.Normalize();
-        Debug.Log(moveVector);
-        joystick.SetActive(false);
         player.GetComponent<PlayerMovement>().setVector(moveVector);
         player.GetComponent<PlayerMovement>().StartDevControl();
         player.GetComponent<PlayerMovement>().DisableMovement();
@@ -88,6 +94,8 @@ public class TransitionPoint : MonoBehaviour
     private void Leave()
     {
         SceneManager.LoadScene(buildIndex);
+        player.GetComponent<PlayerMovement>().StopDevControl();
+        player.GetComponent<PlayerMovement>().setVector(Vector2.zero);
     }
     
 }
