@@ -11,25 +11,24 @@ public class Joystick : MonoBehaviour
 {
     [SerializeField]
     private Vector2 joystickSize;
-    public GameObject player;
+    [SerializeField]
+    private GameObject knob;
+    [SerializeField]
+    private GameObject background;
 
     private Finger movementFinger;
-    private GameObject knob;
-    private GameObject background;
+    private GameObject player;
 
     private float elapsedTime;
     private float fadeJoystick;
     private float fadeDuration;
-    public bool inUse;
+    private bool inUse;
     private bool faded;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("WorldPlayer");
-        knob = GameObject.Find("JoystickKnob");
-        background = GameObject.Find("JoystickBackground");
-
         elapsedTime = 0.0f;
         fadeJoystick = 1.0f;
         fadeDuration = 0.5f;
@@ -75,7 +74,6 @@ public class Joystick : MonoBehaviour
         if (playerFinger != null && RectTransformUtility.RectangleContainsScreenPoint(this.GetComponent<RectTransform>(), playerFinger.screenPosition))
         {
             movementFinger = playerFinger;
-            player.GetComponent<PlayerMovement>().setVector(Vector2.zero);
             inUse = true;
             faded = false;
             elapsedTime = 0;
@@ -83,6 +81,7 @@ public class Joystick : MonoBehaviour
             knob.GetComponent<Fade>().startFade(0.7f, fadeDuration);
             background.GetComponent<Fade>().StopAllCoroutines();
             background.GetComponent<Fade>().startFade(0.7f, fadeDuration);
+            player.GetComponent<PlayerMovement>().setVector(Vector2.zero);
         }
     }
 
@@ -91,9 +90,9 @@ public class Joystick : MonoBehaviour
         if (playerFinger == movementFinger)
         {
             movementFinger = null;
+            inUse = false;
             knob.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
             player.GetComponent<PlayerMovement>().setVector(Vector2.zero);
-            inUse = false;
         }
     }
 

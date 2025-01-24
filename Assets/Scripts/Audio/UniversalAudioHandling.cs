@@ -4,12 +4,23 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+ * Name: UniversalAudioHandling
+ * Author: Isaac Drury
+ * Date: January 2025
+ * Description:
+ * This script handles all music, UI sound effects, and other universal sounds.
+ */
+
 public class UniversalAudioHandling : MonoBehaviour
 {
     [SerializeField]
     private AudioSource primaryMusicSource;
     [SerializeField]
     private AudioSource primaryUISource;
+    [SerializeField] 
+    private AudioSource primaryAmbianceSource;
+
     [SerializeField]
     private AudioClip[] backgroundMusics;
     [SerializeField]
@@ -30,9 +41,12 @@ public class UniversalAudioHandling : MonoBehaviour
     private int roadToScorchedMountIndex;
     [SerializeField]
     private int scorchedMountIndex;
+    [SerializeField]
+    private int shopIndex;
 
     private AudioClip backgroundMusic;
     private AudioClip combatMusic;
+
     // Start is called before the first frame update
     void Start()
     {

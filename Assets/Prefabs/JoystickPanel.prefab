@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 1614580054545541535}
   - component: {fileID: 547580554130327759}
   - component: {fileID: 668493421785249119}
-  - component: {fileID: 6974053550100161510}
+  - component: {fileID: 3648679504184998174}
   m_Layer: 5
   m_Name: JoystickPanel
   m_TagString: Untagged
@@ -213,9 +213,9 @@ RectTransform:
   - {fileID: 1385021928465685666}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 125, y: 125}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -317, y: -111}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &547580554130327759
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6974053550100161510
+--- !u!114 &3648679504184998174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -269,4 +269,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystickSize: {x: 115, y: 115}
-  player: {fileID: 0}
+  knob: {fileID: 4187355604258578694}
+  background: {fileID: 5513670008330056298}

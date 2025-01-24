@@ -110,8 +110,6 @@ public class PlayerStatus : MonoBehaviour
         prevSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
-
-    //Getter and setters for combat immunity
     public bool IsCombatImmune()
     {
         return combatImmunity;

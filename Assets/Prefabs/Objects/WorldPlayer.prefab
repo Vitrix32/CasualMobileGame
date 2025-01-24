@@ -292,6 +292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa34090b39d3f24da8bb39bf39da8bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prevSceneIndex: 0
+  combatImmunity: 0
 --- !u!114 &5769087803495390370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ac87e3dd74c7c479cfcc74cb484463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 200
+  moveSpeed: 350
   anim: {fileID: -6504921245304021092}
 --- !u!114 &6255971505269857786
 MonoBehaviour:
@@ -320,10 +322,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primaryMusicSource: {fileID: 6246023172572360537}
   primaryUISource: {fileID: 4849783478220354737}
+  primaryAmbianceSource: {fileID: 8416220388726890621}
   backgroundMusics:
   - {fileID: 8300000, guid: fd28691b21289aa49aa535f1de1c59f9, type: 3}
   combatMusics:
   - {fileID: 8300000, guid: a359affc666b56445991f90dbe4907bf, type: 3}
+  mainThemeIndex: 0
+  startvilleIndex: 0
+  roadToNewCastleIndex: 0
+  newCastleIndex: 0
+  roadToScorchedMountIndex: 0
+  scorchedMountIndex: 0
+  shopIndex: 0
 --- !u!114 &218864835633602463
 MonoBehaviour:
   m_ObjectHideFlags: 0
