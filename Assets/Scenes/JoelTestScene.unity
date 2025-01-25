@@ -5863,6 +5863,10 @@ MonoBehaviour:
   UniversalAudio: {fileID: 0}
   battleText: {fileID: 1454473799}
   itemManager: {fileID: 158694491}
+  appleCountText: {fileID: 837504397}
+  milkCountText: {fileID: 1222725573}
+  cookieCountText: {fileID: 941398540}
+  bananaCountText: {fileID: 1861986500}
   enemy: {fileID: 2024950893}
   attackButtonInfos:
   - attackName: sword

@@ -11,7 +11,7 @@
             "name": "Cookie",
             "type": "consumable",
             "value": 10,
-            "quantity": 0,
+            "quantity": 1,
             "questName": "none"
         },
         {

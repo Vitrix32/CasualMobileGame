@@ -33,6 +33,10 @@ public class Player : MonoBehaviour
     public GameObject UniversalAudio;
     public TextMeshProUGUI battleText;
     public ItemManager itemManager;
+    public TMP_Text appleCountText;
+    public TMP_Text milkCountText;
+    public TMP_Text cookieCountText;
+    public TMP_Text bananaCountText;
 
     public Enemy enemy;
 
@@ -132,10 +136,8 @@ public class Player : MonoBehaviour
 
         // Initialize BattleMenu reference
         battleMenu = GameObject.Find("BattleMenu").GetComponent<BattleMenu>();
-        if (battleMenu == null)
-        {
-            //Debug.logError("BattleMenu component not found on BattleMenu GameObject.");
-        }
+       
+        UpdateItemCountUI(); // Initial update
     }
 
     void AssignButtonListeners()
@@ -308,12 +310,12 @@ public class Player : MonoBehaviour
                     if (!itemManager.HasConsumable(attack))
                     {
                         UpdateText("No " + attack + " left!");
-                        Debug.Log("Item not used; turn not consumed.");
-                        return; // <-- Important: This prevents ending the turn
+                        return; 
                     }
                     else
                     {
                         PerformConsumeItem(attack);
+                        UpdateItemCountUI(); // Update after consumption
                     }
                     break;
 
@@ -377,11 +379,34 @@ public class Player : MonoBehaviour
         UpdateText("You used " + itemName + "!");
         itemManager.UseConsumable(itemName);
         //Debug.log($"Player used {itemName} and healed for {healAmount} health.");
-    }       
+    } 
+
+    // Call this whenever items change
+    private void UpdateItemCountUI()
+    {
+        if (appleCountText != null && itemManager.consumables.ContainsKey("Apple"))
+        {
+            appleCountText.text = "Apple (x" + itemManager.consumables["Apple"] + ")";
+        }
+
+        if (milkCountText != null && itemManager.consumables.ContainsKey("Milk"))
+        {
+            milkCountText.text = "Milk (x" + itemManager.consumables["Milk"] + ")";
+        }
+
+        if (cookieCountText != null && itemManager.consumables.ContainsKey("Cookie"))
+        {
+            cookieCountText.text = "Cookie (x" + itemManager.consumables["Cookie"] + ")";
+        }
+
+        if (bananaCountText != null && itemManager.consumables.ContainsKey("Banana"))
+        {
+            bananaCountText.text = "Banana (x" + itemManager.consumables["Banana"] + ")";
+        }
+    }      
 
     void PerformAttackWithDOT()
     {
-        int dotDamage = 5;
         int duration = 3;
         enemy.ApplyDOT(clawDamage, duration);
         UpdateText("You used Attack With DOT!");
