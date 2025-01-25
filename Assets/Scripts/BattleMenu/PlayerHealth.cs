@@ -314,7 +314,6 @@ public class Player : MonoBehaviour
                     else
                     {
                         PerformConsumeItem(attack);
-                        itemManager.UseConsumable(attack);
                     }
                     break;
 
