@@ -324,13 +324,15 @@ MonoBehaviour:
   primaryUISource: {fileID: 4849783478220354737}
   primaryAmbianceSource: {fileID: 8416220388726890621}
   backgroundMusics:
-  - {fileID: 8300000, guid: fd28691b21289aa49aa535f1de1c59f9, type: 3}
+  - {fileID: 8300000, guid: ff05c946e6e77734ba3a7617c3acf0ae, type: 3}
+  - {fileID: 8300000, guid: d79036c92ea88714aadae059c139ea4e, type: 3}
+  - {fileID: 8300000, guid: b8e0bcd3638bf50468b0b74ab3d7eb58, type: 3}
   combatMusics:
-  - {fileID: 8300000, guid: a359affc666b56445991f90dbe4907bf, type: 3}
+  - {fileID: 8300000, guid: 7a316dde21dba1442a7515734139fb0c, type: 3}
   mainThemeIndex: 0
-  startvilleIndex: 0
-  roadToNewCastleIndex: 0
-  newCastleIndex: 0
+  startvilleIndex: 1
+  roadToNewCastleIndex: 2
+  newCastleIndex: 3
   roadToScorchedMountIndex: 0
   scorchedMountIndex: 0
   shopIndex: 0
