@@ -16,11 +16,19 @@ public class ItemManager : MonoBehaviour
 
     private void Start()
     {
-
         itemsFilePath = Path.Combine(Application.dataPath, "Scripts/Items", "Items.txt");
 
+        if (File.Exists(itemsFilePath))
+        {
+            string fileJson = File.ReadAllText(itemsFilePath);
+            IL = JsonUtility.FromJson<ItemList>(fileJson);
+        }
+        else
+        {
+            IL = JsonUtility.FromJson<ItemList>(itemsJSON.text);
+        }
+
         PS = JsonUtility.FromJson<PlayerStats>(statsJSON.text);
-        IL = JsonUtility.FromJson<ItemList>(itemsJSON.text);
         consumables.Clear();
 
         foreach (var stat in PS.stats)
@@ -81,7 +89,6 @@ public class ItemManager : MonoBehaviour
         {
             consumables[itemName]--;
 
-            // Also update IL so that items.txt can be saved correctly.
             for (int i = 0; i < IL.items.Length; i++)
             {
                 if (IL.items[i].name == itemName && IL.items[i].type == "consumable")
@@ -91,9 +98,7 @@ public class ItemManager : MonoBehaviour
                 }
             }
 
-            // Write the updated item list to the file
             SaveItemList();
-
             return true;
         }
         Debug.Log("No consumable left or missing consumable: " + itemName);
@@ -102,7 +107,7 @@ public class ItemManager : MonoBehaviour
 
     private void SaveItemList()
     {
-        string newJson = JsonUtility.ToJson(IL, true);  // pretty-print for clarity
+        string newJson = JsonUtility.ToJson(IL, true);
         File.WriteAllText(itemsFilePath, newJson);
         Debug.Log("Updated items saved to: " + itemsFilePath);
     }
