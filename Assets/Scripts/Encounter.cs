@@ -47,6 +47,6 @@ public class Encounter : MonoBehaviour
     private IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene("JoelTestScene");
+        SceneManager.LoadScene("BattleScene");
     }
 }

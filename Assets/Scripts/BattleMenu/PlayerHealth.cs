@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private GameObject WorldPlayer;
     private AudioSource audioSource;
 
-    public int maxHealth = 100;
+    public int maxHealth = 50;
     public int currentHealth;
     public int damage = 0;
     public TMP_Text healthText;
