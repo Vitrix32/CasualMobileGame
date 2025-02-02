@@ -86,6 +86,8 @@ public class DeathMenu : MonoBehaviour
             // Reset the save and the live json files
             File.WriteAllText(Application.dataPath + "/Scripts/Items/SavePlayerStats.txt", json);
             File.WriteAllText(Application.dataPath + "/Scripts/Items/PlayerStats.txt", json);
+
+            PlayerPrefs.SetInt("Health", 50);
         }
 
         PlayerPrefs.SetFloat("XPos", 0);

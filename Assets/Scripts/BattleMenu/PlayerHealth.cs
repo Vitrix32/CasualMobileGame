@@ -74,8 +74,7 @@ public class Player : MonoBehaviour
     {
         WorldPlayer = GameObject.Find("WorldPlayer");
 
-        currentHealth = maxHealth;
-        //Debug.log("Player currentHealth set to: " + currentHealth);
+        currentHealth = PlayerPrefs.GetInt("Health");
 
         UpdateHealthUI();
         SetAttackButtonsInteractable();
@@ -249,6 +248,8 @@ public class Player : MonoBehaviour
         {
             //Debug.logWarning("healthSlider is not assigned.");
         }
+
+        PlayerPrefs.SetInt("Health", currentHealth);
     }
 
     void Die()
