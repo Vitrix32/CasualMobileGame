@@ -2532,6 +2532,18 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 350
       objectReference: {fileID: 0}
+    - target: {fileID: 6255971505269857786, guid: 2220c64b884102a45a29ccc5957dc5f8, type: 3}
+      propertyPath: newCastleIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255971505269857786, guid: 2220c64b884102a45a29ccc5957dc5f8, type: 3}
+      propertyPath: startvilleIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255971505269857786, guid: 2220c64b884102a45a29ccc5957dc5f8, type: 3}
+      propertyPath: roadToNewCastleIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6385880366928564105, guid: 2220c64b884102a45a29ccc5957dc5f8, type: 3}
       propertyPath: m_Name
       value: WorldPlayer

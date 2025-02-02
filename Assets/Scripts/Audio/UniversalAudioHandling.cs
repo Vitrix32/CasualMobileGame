@@ -104,7 +104,8 @@ public class UniversalAudioHandling : MonoBehaviour
         else if (index == startvilleIndex)
         {
             backgroundMusic = backgroundMusics[1];
-            combatMusic = combatMusics[1];
+            //combatMusic = combatMusics[1];
+            combatMusic = combatMusics[0];
         }
         else if (index == roadToNewCastleIndex)
         {
