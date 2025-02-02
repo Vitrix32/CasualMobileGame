@@ -31,6 +31,7 @@ public class MainMenu : MonoBehaviour
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         WorldPlayer.GetComponent<PlayerStatus>().EnteringGameWorld(false, 0.4f);
         WorldPlayer.GetComponent<PlayerStatus>().SetWorldPosition();
+        WorldPlayer.transform.position = new Vector3(PlayerPrefs.GetFloat("XPos"), PlayerPrefs.GetFloat("YPos"), 0);
         SceneManager.LoadScene(PlayerPrefs.GetString("SceneName"));
     }
 

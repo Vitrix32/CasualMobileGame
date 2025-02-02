@@ -22,6 +22,8 @@ public class BattleMenu : MonoBehaviour
         enemiesAmount = 1;
         FadePanel = GameObject.Find("FadePanel");
 
+        FindObjectOfType<Fade>().fadeFromCombat = true;
+
         // Initialize allButtons list by finding all Button components in the panels
         InitializeAllButtons();
     }

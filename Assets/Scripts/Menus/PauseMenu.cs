@@ -66,6 +66,8 @@ public class PauseMenu : MonoBehaviour
 
     private void SaveGame()
     {
+        SetObjectsToLiveJSON();
+
         string quest = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/Quests.txt");
         File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt", quest);
 
@@ -78,6 +80,60 @@ public class PauseMenu : MonoBehaviour
         PlayerPrefs.SetFloat("XPos", WorldPlayer.transform.position.x);
         PlayerPrefs.SetFloat("YPos", WorldPlayer.transform.position.y);
         PlayerPrefs.SetString("SceneName", SceneManager.GetActiveScene().name);
+    }
+
+    // THIS IS FOR QUEST AND DIALOGUE OBJECTS... NOT PLAYERSTATS
+    public void SetObjectsToLiveJSON()
+    {
+        // QUESTS
+        if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt"))
+        {
+
+
+            QuestList tempList = FindObjectOfType<QuestManager>().questList;
+
+            string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt");
+            QuestList questList = JsonUtility.FromJson<QuestList>(tempJson);
+            List<Quest> list = new List<Quest>();
+
+            for (int i = 0; i < questList.quests.Length; i++)
+            {
+                for (int j = 0; j < tempList.quests.Length; j++)
+                {
+                    if (tempList.quests[j].name == questList.quests[i].name)
+                    {
+                        questList.quests[i].value = tempList.quests[j].value;
+                        break;
+                    }
+                }
+                list.Add(questList.quests[i]);
+            }
+            questList.quests = list.ToArray();
+            string json = JsonUtility.ToJson(questList, true);
+            // Reset the save and the live json files
+            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Quests.txt", json);
+        }
+
+        // DIALOGUE
+        if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt"))
+        {
+            string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt");
+            NPCCollection npcList = JsonUtility.FromJson<NPCCollection>(tempJson);
+            List<NPC> list = new List<NPC>();
+            for (int i = 0; i < npcList.npc_characters.Length; i++)
+            {
+                NPC tempNPC = FindObjectOfType<DialogueManager>().FindNPCByName(npcList.npc_characters[i].name);
+                if (tempNPC != null)
+                {
+                    Debug.Log("ERROR: FIND NPC BY NAME RETURNED NULL - PAUSE MENU SCRIPT");
+                }
+                npcList.npc_characters[i].value = tempNPC.value;
+                list.Add(npcList.npc_characters[i]);
+            }
+            npcList.npc_characters = list.ToArray();
+            string json = JsonUtility.ToJson(npcList, true);
+            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt", json);
+        }
     }
 
     public void QuitGame()

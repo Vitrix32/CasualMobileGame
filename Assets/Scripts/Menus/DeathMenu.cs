@@ -20,6 +20,7 @@ public class DeathMenu : MonoBehaviour
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         WorldPlayer.GetComponent<PlayerStatus>().EnteringGameWorld(false, 0.4f);
         WorldPlayer.GetComponent<PlayerStatus>().SetWorldPosition();
+        WorldPlayer.transform.position = new Vector3(0, 0, 0);
         SceneManager.LoadScene(PlayerPrefs.GetString("SceneName"));
     }
 
@@ -79,6 +80,15 @@ public class DeathMenu : MonoBehaviour
                 statList.stats[i].itemEnhancement = 0;
                 statList.stats[i].boostEnhancement = 0;
                 statList.stats[i].itemName = "nothing";
+                if (statList.stats[i].type == "attack")
+                {
+                    for (int j = 0; j < statList.stats[i].attackTypes.Count; j++)
+                    {
+                        statList.stats[i].attackTypes[j].itemEnhancement = 0;
+                        statList.stats[i].attackTypes[j].boostEnhancement = 0;
+                        statList.stats[i].attackTypes[j].itemName = "nothing";
+                    }
+                }
                 list.Add(statList.stats[i]);
             }
             statList.stats = list.ToArray();
