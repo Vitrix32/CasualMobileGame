@@ -8,11 +8,11 @@ using System.Linq;
 public class DialogueManager : MonoBehaviour
 {
     private GameObject[] NPCs;
-    private GameObject player;
+    public GameObject player;
     public TMPro.TextMeshProUGUI continueText;
     public GameObject textPanel;
     public TextAsset dialogue;
-    private NPCCollection npcData;
+    public NPCCollection npcData;
     public TMPro.TextMeshProUGUI dialogueText;
     private bool waitForTextScroll = false;
     public bool click = false;
@@ -118,10 +118,12 @@ public class DialogueManager : MonoBehaviour
         if (npc != null && optionIndex >= 0 && optionIndex < npc.dialogue.Length)
         {
             this.GetComponent<QuestManager>().TryQuest(npcName + " " + optionIndex);
-            if (npc.dialogue[npc.value].increment != "none")
+            string inc = npc.dialogue[npc.value].increment;
+            if (inc != "none")
             {
-                NPC incNPC = FindNPCByName(npc.dialogue[npc.value].increment);
-                incNPC.value++;
+                string[] incData = inc.Split(' ');
+                NPC incNPC = FindNPCByName(incData[0]);
+                incNPC.value = int.Parse(incData[1]);
             }
             player.GetComponent<PlayerStatus>().BeginDialogue();
             StartCoroutine(displayText(npc.dialogue[optionIndex].option));
