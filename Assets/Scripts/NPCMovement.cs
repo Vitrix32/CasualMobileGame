@@ -26,16 +26,15 @@ public class NPCMovement : MonoBehaviour
     [SerializeField]
     private int lapCount; //Use -1 to specify infinite laps
     [SerializeField]
-    private float idleDuration; //Use -1.0f to specify infinite idle
+    private float idleDuration;
     [SerializeField]
     private float moveSpeed;
 
     private int iterator;
     private int movesLeft;
     private int lapsLeft;
+
     private GameObject currentNode;
-    private bool idleing;
-    private bool patrolling;
     private Vector3 originalPosition;
 
     // Start is called before the first frame update
@@ -45,11 +44,10 @@ public class NPCMovement : MonoBehaviour
         movesLeft = moveCount;
         lapsLeft = lapCount;
         currentNode = null;
-        idleing = true;
-        patrolling = false;
         originalPosition = this.transform.position;
     }
 
+    //The patrol behaviour. Can be configured using the serialized fields above.
     IEnumerator Patrol()
     {
         currentNode = patrolPath[iterator];
@@ -59,6 +57,7 @@ public class NPCMovement : MonoBehaviour
                 float distance = Vector3.Distance(originalPosition, currentNode.transform.position);
                 float duration = distance / moveSpeed;
                 float time = 0f;
+
                 while (time < duration)
                 {
                     time += Time.deltaTime;
@@ -87,9 +86,21 @@ public class NPCMovement : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator Idle(float waitTime)
+    IEnumerator RandomMove()
     {
-        yield return new WaitForSeconds(waitTime);
+        int rand = Random.Range(0, patrolPath.Count);
+        currentNode = patrolPath[rand];
+        originalPosition = this.transform.position;
+        float distance = Vector3.Distance(originalPosition, currentNode.transform.position);
+        float duration = distance / moveSpeed;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            this.transform.position = Vector2.Lerp(originalPosition, currentNode.transform.position, time / duration);
+            yield return null;
+        }
     }
 
     public void startPatrol()
@@ -98,12 +109,9 @@ public class NPCMovement : MonoBehaviour
         StartCoroutine("Patrol");
     }
 
-    public void startIdleing(float idleVal)
+    public void StartRandomMove()
     {
         StopAllCoroutines();
-        if (idleDuration != -1)
-        {
-            StartCoroutine("Idle", idleVal);
-        }
+        StartCoroutine("RandomMove");
     }
 }

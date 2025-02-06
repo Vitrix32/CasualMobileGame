@@ -25,11 +25,12 @@ public class TransitionPoint : MonoBehaviour
     [SerializeField]
     private GameObject travelMsg;
 
+    private GameObject Player;
     private GameObject FadePanel;
     private GameObject PauseButton;
     private GameObject QuestButton;
+    private GameObject Map;
     private GameObject VirtualJoystick;
-    private GameObject player;
     private int delay;
 
     private void Awake()
@@ -39,14 +40,15 @@ public class TransitionPoint : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        Player = GameObject.FindGameObjectWithTag("Player");
         FadePanel = GameObject.Find("FadePanel");
         PauseButton = GameObject.Find("PauseButton");
         QuestButton = GameObject.Find("OpenQuests");
+        Map = GameObject.Find("OpenMap");
         VirtualJoystick = GameObject.Find("JoystickPanel");
 
-        player.GetComponent<PlayerMovement>().EnableMovement();
-        player.GetComponent<UniversalAudioHandling>().NewScene();
+        Player.GetComponent<PlayerMovement>().EnableMovement();
+        Player.GetComponent<UniversalAudioHandling>().NewScene();
         travelMsg.SetActive(false);
     }
 
@@ -73,20 +75,22 @@ public class TransitionPoint : MonoBehaviour
         travelMsg.SetActive(false);
         PauseButton.SetActive(false);
         QuestButton.SetActive(false);
+        Map.SetActive(false);
         VirtualJoystick.SetActive(false);
-        player.GetComponent<PlayerMovement>().DisableMovement();
+        Player.GetComponent<PlayerMovement>().DisableMovement();
         Invoke("Leave", delay);
     }
 
     private void Leave()
     {
-        player.transform.position = destination;
+        Player.transform.position = destination;
         FadePanel.GetComponent<SceneTransition>().Begin();
         travelMsg.SetActive(true);
         PauseButton.SetActive(true);
         QuestButton.SetActive(true);
+        Map.SetActive(true);
         VirtualJoystick.SetActive(true);
-        player.GetComponent<PlayerMovement>().EnableMovement();
+        Player.GetComponent<PlayerMovement>().EnableMovement();
     }
     
 }
