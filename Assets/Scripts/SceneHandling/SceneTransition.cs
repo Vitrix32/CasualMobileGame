@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /*
  * Name: SceneTransition
@@ -23,6 +24,11 @@ public class SceneTransition : MonoBehaviour
     {
         delayDuration = 2;
         player = GameObject.Find("WorldPlayer");
+        Begin();
+    }
+
+    public void Begin()
+    {
         end = false;
         this.GetComponent<Fade>().startFade(0.0f, delayDuration);
         this.transform.position = player.transform.position;
