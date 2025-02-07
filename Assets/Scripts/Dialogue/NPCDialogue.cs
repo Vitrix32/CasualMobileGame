@@ -44,7 +44,7 @@ public class NPCDialogue : MonoBehaviour
             dialoguemanager.GetComponent<DialogueManager>().GetDialogue(this.name);
             if(this.GetComponent<NPCMovement>() != null)
             {
-                this.GetComponent<NPCMovement>().startIdleing(-1.0f);
+                // this.GetComponent<NPCMovement>().startIdleing(-1.0f);
             }
         } else
         {
