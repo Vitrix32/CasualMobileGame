@@ -40,6 +40,8 @@ public class DialogueManager : MonoBehaviour
             if (s[i] == '`')
             {
                 j = 0;
+                dialogueText.text += '\n';
+                /*
                 waitForTextScroll = false;
                 while (!waitForTextScroll)
                 {
@@ -53,6 +55,7 @@ public class DialogueManager : MonoBehaviour
                     }
                 }
                 dialogueText.text = "";
+                */
             }
             else
             {
@@ -61,6 +64,7 @@ public class DialogueManager : MonoBehaviour
                 {
                     dialogueText.text += '\n';
                     j = 0;
+                    /*
                     if (dialogueText.text.Length > 160)
                     {
                         waitForTextScroll = false;
@@ -77,6 +81,7 @@ public class DialogueManager : MonoBehaviour
                         }
                         dialogueText.text = "";
                     }
+                    */
                 }
             }
             if (!click)
