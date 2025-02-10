@@ -114,9 +114,9 @@ public class Fade : MonoBehaviour
             for (int i = 0; i < npcList.npc_characters.Length; i++)
             {
                 NPC tempNPC = FindObjectOfType<DialogueManager>().FindNPCByName(npcList.npc_characters[i].name);
-                if (tempNPC != null)
+                if (tempNPC == null)
                 {
-                    Debug.Log("ERROR: FIND NPC BY NAME RETURNED NULL - PAUSE MENU SCRIPT");
+                    Debug.Log("ERROR: FIND NPC BY NAME RETURNED NULL - FADE SCRIPT");
                 }
                 npcList.npc_characters[i].value = tempNPC.value;
                 list.Add(npcList.npc_characters[i]);
