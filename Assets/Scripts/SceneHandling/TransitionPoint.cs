@@ -24,6 +24,10 @@ public class TransitionPoint : MonoBehaviour
     private Vector2 destination;
     [SerializeField]
     private GameObject travelMsg;
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip[] noises;
 
     private GameObject Player;
     private GameObject FadePanel;
@@ -32,9 +36,15 @@ public class TransitionPoint : MonoBehaviour
     private GameObject Map;
     private GameObject VirtualJoystick;
     private int delay;
+    private int index;
 
     private void Awake()
     {
+        if (audioSource != null && noises != null)
+        {
+            index = Random.Range(0, noises.Length);
+            audioSource.clip = noises[index];
+        }
         delay = 2;
     }
 
@@ -71,6 +81,10 @@ public class TransitionPoint : MonoBehaviour
     //Handles details for exiting a scene and entering another
     public void Exiting()
     { 
+        if (audioSource != null && audioSource.clip != null)
+        {
+            audioSource.Play();
+        }
         FadePanel.GetComponent<SceneTransition>().End();
         travelMsg.SetActive(false);
         PauseButton.SetActive(false);
