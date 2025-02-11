@@ -40,11 +40,6 @@ public class TransitionPoint : MonoBehaviour
 
     private void Awake()
     {
-        if (audioSource != null && noises != null)
-        {
-            index = Random.Range(0, noises.Length);
-            audioSource.clip = noises[index];
-        }
         delay = 2;
     }
 
@@ -81,8 +76,10 @@ public class TransitionPoint : MonoBehaviour
     //Handles details for exiting a scene and entering another
     public void Exiting()
     { 
-        if (audioSource != null && audioSource.clip != null)
+        if (audioSource != null && noises != null)
         {
+            index = Random.Range(0, noises.Length);
+            audioSource.clip = noises[index];
             audioSource.Play();
         }
         FadePanel.GetComponent<SceneTransition>().End();
@@ -97,6 +94,10 @@ public class TransitionPoint : MonoBehaviour
 
     private void Leave()
     {
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+        }
         Player.transform.position = destination;
         FadePanel.GetComponent<SceneTransition>().Begin();
         travelMsg.SetActive(true);
