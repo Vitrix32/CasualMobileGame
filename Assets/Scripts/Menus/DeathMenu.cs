@@ -20,6 +20,7 @@ public class DeathMenu : MonoBehaviour
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         WorldPlayer.GetComponent<PlayerStatus>().EnteringGameWorld(false, 0.4f);
         WorldPlayer.GetComponent<PlayerStatus>().SetWorldPosition();
+        WorldPlayer.GetComponent<SpriteRenderer>().Equals(true);
         WorldPlayer.transform.position = new Vector3(0, 0, 0);
         SceneManager.LoadScene(PlayerPrefs.GetString("SceneName"));
     }
