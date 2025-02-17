@@ -325,8 +325,11 @@ MonoBehaviour:
   primaryAmbianceSource: {fileID: 8416220388726890621}
   backgroundMusics:
   - {fileID: 8300000, guid: ff05c946e6e77734ba3a7617c3acf0ae, type: 3}
-  - {fileID: 8300000, guid: d79036c92ea88714aadae059c139ea4e, type: 3}
-  - {fileID: 8300000, guid: b8e0bcd3638bf50468b0b74ab3d7eb58, type: 3}
+  - {fileID: 8300000, guid: 1047b350044f5a94392d0d6a6ee61227, type: 3}
+  - {fileID: 8300000, guid: faa1dd57e7100fc488fd28cfd4356d3f, type: 3}
+  - {fileID: 8300000, guid: 943818af1d48f544dae8ac1156a3b40b, type: 3}
+  - {fileID: 8300000, guid: 4ae25c57c54a0dd45b0079fdcc96482c, type: 3}
+  - {fileID: 8300000, guid: ebe2f88ff495d4e479c206016cae8fee, type: 3}
   combatMusics:
   - {fileID: 8300000, guid: 7a316dde21dba1442a7515734139fb0c, type: 3}
   mainThemeIndex: 0
