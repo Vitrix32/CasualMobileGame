@@ -95,7 +95,7 @@ public class UniversalAudioHandling : MonoBehaviour
 
     private void musicSelection()
     {
-        int index = SceneManager.GetActiveScene().buildIndex;
+        int index = SceneManager.GetActiveScene().buildIndex; //Switch this to SceneName?
         if (index == mainThemeIndex)
         {
             backgroundMusic = backgroundMusics[0];
