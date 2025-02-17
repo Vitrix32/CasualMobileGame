@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class ReadEnemyFromJson : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class ReadEnemyFromJson : MonoBehaviour
     // if location ID matches ID passed in
     private EnemyData[] ReturnEnemyArray()
     {
-        if (File.Exists(Application.dataPath + "/EnemyDataFile.json"))
+        print("");
+        if (File.Exists("EnemyDataFile.json"))
         {
             EnemyList enemyList = new EnemyList();
-            string tempJson = File.ReadAllText(Application.dataPath + "/EnemyDataFile.json");
+            string tempJson = File.ReadAllText("EnemyDataFile.json");
             enemyList = JsonUtility.FromJson<EnemyList>(tempJson);
             List<EnemyData> list = new List<EnemyData>();
             for (int i = 0; i < enemyList.Enemies.Length; i++)

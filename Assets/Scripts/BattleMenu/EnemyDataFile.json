@@ -1,0 +1,28 @@
+{
+    "Enemies": [
+        {
+            "Id": "1",
+            "Name": "Wolf",
+            "Hp": "50",
+            "Damage": "5"
+        },
+        {
+            "Id": "2",
+            "Name": "Chicken",
+            "Hp": "20",
+            "Damage": "2"
+        },
+        {
+            "Id": "3",
+            "Name": "Bat",
+            "Hp": "35",
+            "Damage": "3"
+        },
+        {
+            "Id": "4",
+            "Name": "Ghost",
+            "Hp": "30",
+            "Damage": "3"
+        }
+    ]
+}
