@@ -15,13 +15,13 @@ public class QuestManager : MonoBehaviour
     public Dictionary<Quest, bool> starts = new Dictionary<Quest, bool>();
     public Dictionary<Quest, bool> ends = new Dictionary<Quest, bool>();
     private ItemManager IM;
-    
+
     void Start()
     {
         player = GameObject.Find("WorldPlayer");
         IM = this.GetComponent<ItemManager>();
         questList = JsonUtility.FromJson<QuestList>(quests.text);
-        foreach(Quest q in questList.quests)
+        foreach (Quest q in questList.quests)
         {
             starts[q] = false;
             ends[q] = false;
@@ -32,7 +32,7 @@ public class QuestManager : MonoBehaviour
     {
         questActive = !questActive;
         questPanel.SetActive(questActive);
-        if(questActive)
+        if (questActive)
         {
             player.GetComponent<PlayerStatus>().BeginDialogue();
         }
@@ -40,23 +40,45 @@ public class QuestManager : MonoBehaviour
         {
             player.GetComponent<PlayerStatus>().EndDialogue();
         }
-        
+
     }
 
     public void TryQuest(string s)
     {
+        //Check to start the quests
         foreach (Quest quest in questList.quests)
         {
+            //First part
             if (quest.parts[0].increment == s && !starts[quest])
             {
                 quest.value = 1;
                 AddQuest(quest);
                 starts[quest] = true;
             }
+            //Last part
             if (quest.parts[quest.parts.Length - 1].increment == s && !ends[quest])
             {
                 RemoveQuest(quest);
                 ends[quest] = true;
+            }
+        }
+        //Increment the quest and set the next part of it to active
+        GameObject scroll = questPanel.transform.GetChild(1).gameObject;
+        for (int i = 0; i < scroll.transform.childCount; i++)
+        {
+            Transform currChild = scroll.transform.GetChild(i);
+            foreach (Quest q in currentQuests)
+            {
+                if (q.parts[q.value].increment == s)
+                {
+                    q.value++;
+                    GameObject qpPanel = currChild.GetChild(0).GetChild(0).gameObject;
+                    if (qpPanel.transform.childCount >= q.value + 1)
+                    {
+                        qpPanel.transform.GetChild(q.value + 1).gameObject.SetActive(true);
+                        qpPanel.transform.GetChild(q.value).gameObject.SetActive(false);
+                    }
+                }
             }
         }
     }
@@ -66,12 +88,13 @@ public class QuestManager : MonoBehaviour
         if (!currentQuests.Contains(q))
         {
             currentQuests.Add(q);
+            q.value = 1;
             GameObject qp = Instantiate(questPrefab);
             qp.name = q.name;
             qp.transform.SetParent(questPanel.transform.GetChild(1).GetChild(0));
             qp.transform.localScale = Vector3.one;
             GameObject qpPanel = qp.transform.GetChild(0).gameObject;
-            
+
             TMPro.TextMeshProUGUI name = Instantiate(sampleQuestText);
             TMPro.TextMeshProUGUI desc = Instantiate(sampleQuestText);
             name.text = q.name;
@@ -80,15 +103,20 @@ public class QuestManager : MonoBehaviour
             desc.transform.SetParent(qpPanel.transform);
             name.transform.localScale = Vector3.one;
             desc.transform.localScale = Vector3.one;
-            
+
             for (int i = 0; i < q.parts.Length; i++)
             {
+
                 TMPro.TextMeshProUGUI textMesh = Instantiate(sampleQuestText);
                 textMesh.text = "  " + q.parts[i].description;
                 textMesh.transform.SetParent(qpPanel.transform);
                 textMesh.transform.localScale = Vector3.one;
+                if (i > 0)
+                {
+                    textMesh.gameObject.SetActive(false);
+                }
             }
-            
+
         }
     }
 
