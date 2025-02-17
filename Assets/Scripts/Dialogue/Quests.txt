@@ -41,7 +41,7 @@
         {
             "name": "expoQuest",
             "questInfo": "A demo of our game! Enjoy!",
-            "value": 1,
+            "value": 0,
             "parts": [
                 {
                     "description": "Head down to help the inn",
