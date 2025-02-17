@@ -29,6 +29,7 @@ public class PlayerStatus : MonoBehaviour
         combatImmunity = true;
         worldPosition = this.transform.position;
         this.transform.position = combatPosition;
+        this.GetComponent<PlayerMovement>().setVector(new Vector2(0, 0));
         ToggleSprite();
     }
 
