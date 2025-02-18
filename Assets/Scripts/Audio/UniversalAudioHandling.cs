@@ -92,22 +92,7 @@ public class UniversalAudioHandling : MonoBehaviour
         primaryMusicSource.clip = backgroundMusic;
         primaryMusicSource.Play();
     }
-    void OnCollisionStay(Collision collision)
-    {
-        Debug.Log("in church"); 
-        if (collision.collider.GetComponent<Collider>().material.name == "church")
-        {
-            Debug.Log("trying to play music");
-            backgroundMusic = backgroundMusics[4];
-            primaryMusicSource.clip = backgroundMusic;
-            primaryMusicSource.Play();
-        }
-    }
 
-    private void Update()
-    {
-        ;
-    }
 
     private void musicSelection()
     {
