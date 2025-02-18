@@ -35,6 +35,27 @@ public class SceneMusicTest : MonoBehaviour
         combatMusic = combatMusics[0];
     }
 
+    public void triggerEnter(string name)
+    {
+        Debug.Log("entered trigger");
+        if(name=="churchZone")
+        {
+            primaryMusicSource.Stop();
+            backgroundMusic = backgroundMusics[1];
+            primaryMusicSource.clip = backgroundMusic;
+            primaryMusicSource.Play();
+        }
+    }
+
+    public void triggerExit(string name)
+    {
+        Debug.Log("exited trigger");
+        primaryMusicSource.Stop();
+        backgroundMusic = backgroundMusics[0];
+        primaryMusicSource.clip = backgroundMusic;
+        primaryMusicSource.Play();
+    }
+
     public void EnteringCombat()
     {
         primaryMusicSource.clip = combatMusic;
