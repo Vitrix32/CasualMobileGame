@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    //Add a "public GameObject enemyPrefab" ???
+
+
     // The name of the enemy prefab to load dynamically
     public string enemyPrefabName;
 

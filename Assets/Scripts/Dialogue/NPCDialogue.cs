@@ -22,7 +22,7 @@ public class NPCDialogue : MonoBehaviour
         {
             talkImage.SetActive(true);
             talkImage.transform.parent = this.transform;
-            talkImage.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
+            talkImage.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 4, this.transform.position.z);
             canTalk = true;
         }
     }
