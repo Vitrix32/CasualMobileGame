@@ -1,11 +1,15 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
 
 public class EnemySpawner : MonoBehaviour
 {
     //Add a "public GameObject enemyPrefab" ???
-
+    public TextAsset enemyJson;
 
     // The name of the enemy prefab to load dynamically
     public string enemyPrefabName;
@@ -39,28 +43,28 @@ public class EnemySpawner : MonoBehaviour
         Vector3 spawnOffset = new Vector3(10f, 0f, 0f); // Adjust as needed
 
         Vector3 spawnPoint = player.position + spawnOffset;
-        Debug.Log(player.position);
-        Debug.Log(spawnPoint);
-
+        //Debug.Log(player.position);
+        //Debug.Log(spawnPoint);
+        Debug.Log("text of enemy.json" + enemyJson.text);
         // Dynamically load the enemy prefab using the provided name
         GameObject enemyPrefab = Resources.Load<GameObject>("Enemies/" + enemyPrefabName);
 
         Enemy enemy = enemyPrefab.GetComponent<Enemy>();
 
         if(enemy != null) {
-            ReadEnemyFromJson reader = enemy.AddComponent<ReadEnemyFromJson>();
-            EnemyData data = reader.ReturnRandomEnemy();
+            //ReadEnemyFromJson reader = enemy.AddComponent<ReadEnemyFromJson>();
+            EnemyData data = ReturnRandomEnemy();
 
             enemy.attackDamage = Int32.Parse(data.Damage);
             enemy.maxHealth = Int32.Parse(data.Hp);
 
             Sprite newSprite = Resources.Load("EnemyArt/" + data.Name, typeof(Sprite)) as Sprite;
-            Debug.Log("EnemyArt/" + data.Name);
-            Debug.Log(newSprite);
+            //Debug.Log("EnemyArt/" + data.Name);
+            //Debug.Log(newSprite);
             SpriteRenderer spriteRenderer = enemy.GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = newSprite;
 
-            Debug.Log(data.Name);
+            //Debug.Log(data.Name);
         }
 
         if (enemyPrefab != null && spawnPoint != null)
@@ -70,7 +74,34 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Enemy prefab or spawn point is not properly set.");
+            //Debug.LogError("Enemy prefab or spawn point is not properly set.");
         }
+    }
+
+    private EnemyData[] ReturnEnemyArray()
+    {
+        EnemyList enemyList = new EnemyList();
+       // Debug.Log("text file read in: " + enemyJson.text);
+        //string tempJson = File.ReadAllText("EnemyDataFile.json");
+        enemyList = JsonUtility.FromJson<EnemyList>(enemyJson.text);
+        List<EnemyData> list = new List<EnemyData>();
+        for (int i = 0; i < enemyList.Enemies.Length; i++)
+        {
+            //Debug.Log(enemyList.Enemies[i].Name);
+            list.Add(enemyList.Enemies[i]);
+        }
+        return list.ToArray();
+
+    }
+
+    // Can easily change this function to pull random enemy for a specific
+    // location: add an integer input, pass to function above
+    public EnemyData ReturnRandomEnemy()
+    {
+        EnemyData[] enemyList = ReturnEnemyArray();
+        int min = 0;
+        int max = enemyList.Length;
+        int rand = UnityEngine.Random.Range(min, max);
+        return enemyList[rand];
     }
 }

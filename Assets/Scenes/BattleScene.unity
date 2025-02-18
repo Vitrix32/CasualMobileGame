@@ -1670,6 +1670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50539bed91cf54408b01f5bf908112d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyJson: {fileID: 4900000, guid: 2f4eac45016cb2d4eb3d9395030b0563, type: 3}
   enemyPrefabName: GenericEnemyTemplate
   spawnPoint: {fileID: 2024950895}
   player: {fileID: 1593877630}

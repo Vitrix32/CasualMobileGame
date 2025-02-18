@@ -8,29 +8,24 @@ using UnityEditor;
 public class ReadEnemyFromJson : MonoBehaviour
 {
 
-    // public TextAsset enemyJson; and attach the Enemy Data File.json stuff
+    public TextAsset enemyJson; //and attach the Enemy Data File.json stuff
 
     // To use for a specific location: integer input + check in for loop for
     // if location ID matches ID passed in
     private EnemyData[] ReturnEnemyArray()
     {
-        print("");
-        if (File.Exists("EnemyDataFile.json"))
+        EnemyList enemyList = new EnemyList();
+        Debug.Log("text file read in: "+enemyJson.text);
+        //string tempJson = File.ReadAllText("EnemyDataFile.json");
+        enemyList = JsonUtility.FromJson<EnemyList>(enemyJson.text);
+        List<EnemyData> list = new List<EnemyData>();
+        for (int i = 0; i < enemyList.Enemies.Length; i++)
         {
-            EnemyList enemyList = new EnemyList();
-            string tempJson = File.ReadAllText("EnemyDataFile.json");
-            enemyList = JsonUtility.FromJson<EnemyList>(tempJson);
-            List<EnemyData> list = new List<EnemyData>();
-            for (int i = 0; i < enemyList.Enemies.Length; i++)
-            {
-                list.Add(enemyList.Enemies[i]);
-            }
-            return list.ToArray();
-        } 
-        else
-        {
-            return null;
+            //Debug.Log(enemyList.Enemies[i].Name);
+            list.Add(enemyList.Enemies[i]);
         }
+        return list.ToArray();
+
     }
 
     // Can easily change this function to pull random enemy for a specific
