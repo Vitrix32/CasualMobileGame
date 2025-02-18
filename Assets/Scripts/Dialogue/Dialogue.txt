@@ -101,7 +101,7 @@
                 {
                     "option": "Hi Magnus!",
                     "increment": "none"
-                }  
+                }
             ]
         },
         {
@@ -111,7 +111,7 @@
                 {
                     "option": "hmm... yes... *shuffles papers*",
                     "increment": "none"
-                }  
+                }
             ]
         },
         {
