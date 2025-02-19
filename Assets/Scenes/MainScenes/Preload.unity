@@ -2676,6 +2676,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9088140619354403192, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
       propertyPath: m_Name
       value: WorldPlayer

@@ -42,7 +42,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         pauseButton.SetActive(true);
         // Needs to change if we add menu music  --  DONT BE "EXITING COMBAT"
-        WorldPlayer.GetComponent<UniversalAudioHandling>().Resume();
+        
     }
 
     public void SaveAndExitToMenu()

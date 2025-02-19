@@ -33,6 +33,9 @@ public class SceneMusicTest : MonoBehaviour
     {
         backgroundMusic = backgroundMusics[0];
         combatMusic = combatMusics[0];
+        primaryMusicSource.clip = backgroundMusic;
+        primaryMusicSource.Play();
+
     }
 
     public void triggerEnter(string name)
@@ -42,6 +45,13 @@ public class SceneMusicTest : MonoBehaviour
         {
             primaryMusicSource.Stop();
             backgroundMusic = backgroundMusics[1];
+            primaryMusicSource.clip = backgroundMusic;
+            primaryMusicSource.Play();
+        }
+        if (name == "indoorZone")
+        {
+            primaryMusicSource.Stop();
+            backgroundMusic = backgroundMusics[2];
             primaryMusicSource.clip = backgroundMusic;
             primaryMusicSource.Play();
         }

@@ -50,7 +50,6 @@ public class UniversalAudioHandling : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        backgroundMusic = backgroundMusics[0];
         combatMusic = combatMusics[0];
     }
 
@@ -62,8 +61,7 @@ public class UniversalAudioHandling : MonoBehaviour
 
     public void ExitingCombat() 
     {
-        primaryMusicSource.clip = backgroundMusic;
-        primaryMusicSource.Play();
+        primaryMusicSource.Stop();
     }
 
     public void Die()
@@ -86,12 +84,12 @@ public class UniversalAudioHandling : MonoBehaviour
         primaryUISource.Play();
     }
 
-    public void NewScene()
+    /*public void NewScene()
     {
         musicSelection();
         primaryMusicSource.clip = backgroundMusic;
         primaryMusicSource.Play();
-    }
+    }*/
 
 
     private void musicSelection()

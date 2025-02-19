@@ -53,7 +53,7 @@ public class TransitionPoint : MonoBehaviour
         VirtualJoystick = GameObject.Find("JoystickPanel");
 
         Player.GetComponent<PlayerMovement>().EnableMovement();
-        Player.GetComponent<UniversalAudioHandling>().NewScene();
+        //Player.GetComponent<UniversalAudioHandling>().NewScene();
         travelMsg.SetActive(false);
     }
 
