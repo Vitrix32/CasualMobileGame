@@ -37,39 +37,7 @@ public class DeathMenu : MonoBehaviour
     private void ResetSave()
     {
         // RESETTING THE QUESTS
-        if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt"))
-        {
-            string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt");
-            QuestList questList = JsonUtility.FromJson<QuestList>(tempJson);
-            List<Quest> list = new List<Quest>();
-            for (int i = 0; i < questList.quests.Length; i++)
-            {
-                questList.quests[i].value = 0;
-                list.Add(questList.quests[i]);
-            }
-            questList.quests = list.ToArray();
-            string json = JsonUtility.ToJson(questList, true);
-            // Reset the save and the live json files
-            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt", json);
-            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Quests.txt", json);
-        }
-        // RESETTING THE DIALOGUE
-        if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt"))
-        {
-            string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt");
-            NPCCollection npcList = JsonUtility.FromJson<NPCCollection>(tempJson);
-            List<NPC> list = new List<NPC>();
-            for (int i = 0; i < npcList.npc_characters.Length; i++)
-            {
-                npcList.npc_characters[i].value = 0;
-                list.Add(npcList.npc_characters[i]);
-            }
-            npcList.npc_characters = list.ToArray();
-            string json = JsonUtility.ToJson(npcList, true);
-            // Reset the save and the live json files
-            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt", json);
-            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt", json);
-        }
+        
         // RESETTING THE PLAYERSTATS
         if (File.Exists(Application.dataPath + "/Scripts/Items/SavePlayerStats.txt"))
         {
