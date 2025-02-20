@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
 
 public class InputEvents
 {
@@ -10,14 +11,6 @@ public class InputEvents
         this.inputEventContext = newContext;
     }
 
-    public event Action<Vector2> onMovePressed;
-    public void MovePressed(Vector2 moveDir) 
-    {
-        if (onMovePressed != null) 
-        {
-            onMovePressed(moveDir);
-        }
-    }
 
     public event Action<InputEventContext> onSubmitPressed;
     public void SubmitPressed()

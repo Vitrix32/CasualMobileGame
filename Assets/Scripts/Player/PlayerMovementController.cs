@@ -24,14 +24,12 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Start() 
     {
-        GameEventsManager.instance.inputEvents.onMovePressed += MovePressed;
         GameEventsManager.instance.playerEvents.onDisablePlayerMovement += DisablePlayerMovement;
         GameEventsManager.instance.playerEvents.onEnablePlayerMovement += EnablePlayerMovement;
     }
 
     private void OnDestroy()
     {
-        GameEventsManager.instance.inputEvents.onMovePressed -= MovePressed;
         GameEventsManager.instance.playerEvents.onDisablePlayerMovement -= DisablePlayerMovement;
         GameEventsManager.instance.playerEvents.onEnablePlayerMovement -= EnablePlayerMovement;
     }
