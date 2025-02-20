@@ -78,12 +78,14 @@ public class DialogueManager : MonoBehaviour
 
     private void EnterDialogue(string knotName) 
     {
+
+        
         // don't enter dialogue if we've already entered
         if (dialoguePlaying) 
         {
             return;
         }
-
+        Debug.Log("Enterd Dialog");
         dialoguePlaying = true;
 
         // inform other parts of our system that we've started dialogue
@@ -98,6 +100,7 @@ public class DialogueManager : MonoBehaviour
         // jump to the knot
         if (!knotName.Equals(""))
         {
+            Debug.Log("knot name exists");
             story.ChoosePathString(knotName);
         }
         else 
@@ -141,6 +144,7 @@ public class DialogueManager : MonoBehaviour
             else 
             {
                 GameEventsManager.instance.dialogueEvents.DisplayDialogue(dialogueLine, story.currentChoices);
+                Debug.Log(dialogueLine);
             }
         }
         else if (story.currentChoices.Count == 0)

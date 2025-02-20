@@ -41,6 +41,8 @@ public class QuestPoint : MonoBehaviour
 
     private void SubmitPressed(InputEventContext inputEventContext)
     {
+
+        Debug.Log("got a submit press");
         if (!playerIsNear || !inputEventContext.Equals(InputEventContext.DEFAULT))
         {
             return;
@@ -80,7 +82,10 @@ public class QuestPoint : MonoBehaviour
     {
         if (otherCollider.CompareTag("Player"))
         {
+            Debug.Log("wanna quest?");
             playerIsNear = true;
+
+            questIcon.show();
         }
     }
 
@@ -89,6 +94,8 @@ public class QuestPoint : MonoBehaviour
         if (otherCollider.CompareTag("Player"))
         {
             playerIsNear = false;
+
+            questIcon.hide();
         }
     }
 }

@@ -20,6 +20,7 @@ public class QuestInfoSO : ScriptableObject
     [Header("Rewards")]
     public int goldReward;
     public int experienceReward;
+    //add getItem sort of reward
 
     // ensure the id is always the name of the Scriptable Object asset
     private void OnValidate()

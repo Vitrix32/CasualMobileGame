@@ -9,7 +9,7 @@ public class QuestIcon : MonoBehaviour
     [SerializeField] private GameObject canStartIcon;
     [SerializeField] private GameObject requirementsNotMetToFinishIcon;
     [SerializeField] private GameObject canFinishIcon;
-
+    private GameObject activeIcon;
     public void SetState(QuestState newState, bool startPoint, bool finishPoint)
     {
         // set all to inactive
@@ -22,16 +22,16 @@ public class QuestIcon : MonoBehaviour
         switch (newState)
         {
             case QuestState.REQUIREMENTS_NOT_MET:
-                if (startPoint) { requirementsNotMetToStartIcon.SetActive(true); }
+                if (startPoint) { activeIcon=requirementsNotMetToStartIcon; }
                 break;
             case QuestState.CAN_START:
-                if (startPoint) { canStartIcon.SetActive(true); }
+                if (startPoint) { activeIcon=canStartIcon; }
                 break;
             case QuestState.IN_PROGRESS:
-                if (finishPoint) { requirementsNotMetToFinishIcon.SetActive(true); }
+                if (finishPoint) {  activeIcon = requirementsNotMetToFinishIcon; }
                 break;
             case QuestState.CAN_FINISH:
-                if (finishPoint) { canFinishIcon.SetActive(true); }
+                if (finishPoint) { activeIcon = canFinishIcon; }
                 break;
             case QuestState.FINISHED:
                 break;
@@ -39,5 +39,15 @@ public class QuestIcon : MonoBehaviour
                 Debug.LogWarning("Quest State not recognized by switch statement for quest icon: " + newState);
                 break;
         }
+    }
+
+    public void show()
+    {
+        activeIcon?.SetActive(true);
+        //canFinishIcon?.SetActive(true);//test
+    }
+    public void hide()
+    {
+        activeIcon?.SetActive(false);
     }
 }

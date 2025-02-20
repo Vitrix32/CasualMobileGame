@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5337014862612746161}
   - component: {fileID: 526516291299920847}
-  - component: {fileID: 3651112616533222583}
   - component: {fileID: 8324220378279108439}
   - component: {fileID: 8947379375879449434}
   - component: {fileID: 4114248225204638534}
@@ -88,24 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3651112616533222583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2495075205976332785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92081acd32e1b854c9b68a8e47e185b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialoguemanager: {fileID: 0}
-  questmanager: {fileID: 0}
-  talkImage: {fileID: 0}
-  increments: []
-  questStarts: []
-  questEnds: []
 --- !u!114 &8324220378279108439
 MonoBehaviour:
   m_ObjectHideFlags: 0

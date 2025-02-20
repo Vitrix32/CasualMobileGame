@@ -44,4 +44,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScenes/start_thyme_trail.unity
     guid: 9a727c31afe7a47469b01e31759febe9
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: d4bea91c84152f94fbad8a582eaa97f3, type: 2}
