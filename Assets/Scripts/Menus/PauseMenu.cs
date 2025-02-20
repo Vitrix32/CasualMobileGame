@@ -25,17 +25,17 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
+        //WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
         pauseButton.SetActive(false);
-        WorldPlayer.GetComponent<UniversalAudioHandling>().Pause();
+        //WorldPlayer.GetComponent<UniversalAudioHandling>().Pause();
     }
 
     public void ResumeGame()
     {
-        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
+        //WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         pauseMenu.SetActive(false);
         //GameMenu.SetActive(false);
         Time.timeScale = 1f;

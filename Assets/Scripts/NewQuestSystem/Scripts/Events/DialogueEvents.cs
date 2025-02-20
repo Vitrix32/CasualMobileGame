@@ -6,6 +6,7 @@ using Ink.Runtime;
 
 public class DialogueEvents
 {
+
     public event Action<string> onEnterDialogue;
     public void EnterDialogue(string knotName) 
     {
@@ -48,6 +49,15 @@ public class DialogueEvents
         if (onUpdateChoiceIndex != null) 
         {
             onUpdateChoiceIndex(choiceIndex);
+        }
+    }
+
+    public event Action<int> onSubmitChoice;
+    public void SubmitChoice(int choiceIndex)
+    {
+        if (onSubmitChoice != null)
+        {
+            onSubmitChoice(choiceIndex);
         }
     }
 

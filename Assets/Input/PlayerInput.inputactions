@@ -33,9 +33,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Submit",
+                    "name": "tempSubmit",
                     "type": "Button",
-                    "id": "72bcbeb0-6b9f-4751-b895-1fd691879942",
+                    "id": "8e43e9cf-263e-494e-9afb-e541035205c7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -144,12 +144,12 @@
                 },
                 {
                     "name": "",
-                    "id": "de2abf1b-5f21-43f3-b9f1-cae4ca01bb71",
+                    "id": "3a676374-9c84-448e-88bd-0b5f1e522bb9",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Submit",
+                    "action": "tempSubmit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

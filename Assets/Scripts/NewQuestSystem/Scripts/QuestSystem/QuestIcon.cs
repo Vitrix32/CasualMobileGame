@@ -10,6 +10,11 @@ public class QuestIcon : MonoBehaviour
     [SerializeField] private GameObject requirementsNotMetToFinishIcon;
     [SerializeField] private GameObject canFinishIcon;
     private GameObject activeIcon;
+
+    private void Start()
+    {
+        activeIcon = canStartIcon;
+    }
     public void SetState(QuestState newState, bool startPoint, bool finishPoint)
     {
         // set all to inactive
@@ -50,4 +55,5 @@ public class QuestIcon : MonoBehaviour
     {
         activeIcon?.SetActive(false);
     }
+
 }

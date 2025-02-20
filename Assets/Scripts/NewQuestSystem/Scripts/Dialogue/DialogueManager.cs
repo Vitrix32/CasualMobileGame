@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
+using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class DialogueManager : MonoBehaviour
         GameEventsManager.instance.dialogueEvents.onEnterDialogue += EnterDialogue;
         GameEventsManager.instance.inputEvents.onSubmitPressed += SubmitPressed;
         GameEventsManager.instance.dialogueEvents.onUpdateChoiceIndex += UpdateChoiceIndex;
+        GameEventsManager.instance.dialogueEvents.onSubmitChoice += SubmitChoice;
         GameEventsManager.instance.dialogueEvents.onUpdateInkDialogueVariable += UpdateInkDialogueVariable;
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
     }
@@ -43,8 +45,15 @@ public class DialogueManager : MonoBehaviour
         GameEventsManager.instance.dialogueEvents.onEnterDialogue -= EnterDialogue;
         GameEventsManager.instance.inputEvents.onSubmitPressed -= SubmitPressed;
         GameEventsManager.instance.dialogueEvents.onUpdateChoiceIndex -= UpdateChoiceIndex;
+        GameEventsManager.instance.dialogueEvents.onSubmitChoice += SubmitChoice;
         GameEventsManager.instance.dialogueEvents.onUpdateInkDialogueVariable -= UpdateInkDialogueVariable;
         GameEventsManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
+    }
+
+    private void SubmitChoice(int choice)
+    {
+        this.currentChoiceIndex = choice;
+        ContinueOrExitStory();
     }
 
     private void QuestStateChange(Quest quest) 
@@ -92,7 +101,7 @@ public class DialogueManager : MonoBehaviour
         GameEventsManager.instance.dialogueEvents.DialogueStarted();
 
         // freeze player movement
-        GameEventsManager.instance.playerEvents.DisablePlayerMovement();
+        GameEventsManager.instance.playerEvents.DisablePlayerMovement();//FIXME change to our input system
 
         // input event context
         GameEventsManager.instance.inputEvents.ChangeInputEventContext(InputEventContext.DIALOGUE);
