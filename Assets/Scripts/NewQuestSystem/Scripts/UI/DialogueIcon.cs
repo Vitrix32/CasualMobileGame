@@ -22,7 +22,7 @@ public class DialogueIcon : MonoBehaviour
 
     }
 
-    /*void Update()
+    void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -34,7 +34,7 @@ public class DialogueIcon : MonoBehaviour
             //Ray ray = m_Camera.ScreenPointToRay(mousePosition);
             Vector3 cam = new Vector3(mousePosition.x, mousePosition.y, 10);
 
-            RaycastHit2D hit = Physics2D.Raycast(cam, mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(m_Camera.transform.position, mousePosition);
 
             Debug.Log("hit " + hit.transform.gameObject.name);
             Debug.Log("this " + this.gameObject.name);
@@ -44,7 +44,7 @@ public class DialogueIcon : MonoBehaviour
                 Debug.Log("you clicked the icon!");
             }
         }
-    }*/
+    }
 
  
 
