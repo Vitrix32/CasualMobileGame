@@ -63,6 +63,8 @@ public class DialoguePanelUI : MonoBehaviour
         }
 
         // enable and set info for buttons depending on ink choice information
+        
+
         int choiceButtonIndex = 0;
         for (int inkChoiceIndex = 0; inkChoiceIndex < dialogueChoices.Count; inkChoiceIndex++)
         {
@@ -73,11 +75,11 @@ public class DialoguePanelUI : MonoBehaviour
             choiceButton.SetChoiceText(dialogueChoice.text);
             choiceButton.SetChoiceIndex(inkChoiceIndex);
 
-            if (inkChoiceIndex == 0)
+            /*if (inkChoiceIndex == 0)
             {
                 choiceButton.SelectButton();
                 GameEventsManager.instance.dialogueEvents.UpdateChoiceIndex(inkChoiceIndex);
-            }
+            }*/ 
 
             choiceButtonIndex++;
         }

@@ -105,7 +105,9 @@ public class DialogueManager : MonoBehaviour
 
         // input event context
         GameEventsManager.instance.inputEvents.ChangeInputEventContext(InputEventContext.DIALOGUE);
-        
+
+       
+
         // jump to the knot
         if (!knotName.Equals(""))
         {
@@ -129,11 +131,12 @@ public class DialogueManager : MonoBehaviour
         // make a choice, if applicable
         if (story.currentChoices.Count > 0 && currentChoiceIndex != -1)
         {
+            Debug.Log(currentChoiceIndex);
             story.ChooseChoiceIndex(currentChoiceIndex);
             // reset choice index for next time
             currentChoiceIndex = -1;
         }
-
+        
         if (story.canContinue)
         {
             string dialogueLine = story.Continue();
