@@ -15,9 +15,6 @@ public class continueButtonPress : MonoBehaviour
 
     public void Clicked()
     {
-        //Debug.Log("selected: "+eventData.selectedObject.name);
-        //GameEventsManager.instance.dialogueEvents.SubmitChoice(choiceIndex);
-        Debug.Log("Pressed");
         GameEventsManager.instance.inputEvents.SubmitPressed();
     }
 }

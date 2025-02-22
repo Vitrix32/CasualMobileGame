@@ -45,6 +45,7 @@ public class Quest
     public void MoveToNextStep()
     {
         currentQuestStepIndex++;
+        GameEventsManager.instance.questEvents.QuestStepChange(this.info.id, currentQuestStepIndex);
     }
 
     public bool CurrentStepExists()
@@ -59,6 +60,7 @@ public class Quest
         {
             QuestStep questStep = Object.Instantiate<GameObject>(questStepPrefab, parentTransform)
                 .GetComponent<QuestStep>();
+            Debug.Log(currentQuestStepIndex+" of array size "+questStepStates.Length);
             questStep.InitializeQuestStep(info.id, currentQuestStepIndex, questStepStates[currentQuestStepIndex].state);
         }
     }

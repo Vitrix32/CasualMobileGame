@@ -28,7 +28,6 @@ public class bubbleManager : MonoBehaviour
     {
         if (otherCollider.CompareTag("Player"))
         {
-            Debug.Log("wanna quest?");
 
             show();
         }

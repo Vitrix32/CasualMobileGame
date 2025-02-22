@@ -13,7 +13,7 @@ public class QuestIcon : MonoBehaviour
 
     public void OnMouseDown()
     {
-        Debug.Log("clidcked");
+        //Debug.Log("clidcked");
         this.gameObject.GetComponentInParent<QuestPoint>()
             .IconClicked(GameEventsManager.instance.inputEvents.GetInputEventContext());
     }

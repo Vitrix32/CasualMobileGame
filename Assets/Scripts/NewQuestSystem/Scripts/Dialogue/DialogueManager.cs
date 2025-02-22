@@ -38,6 +38,7 @@ public class DialogueManager : MonoBehaviour
         GameEventsManager.instance.dialogueEvents.onSubmitChoice += SubmitChoice;
         GameEventsManager.instance.dialogueEvents.onUpdateInkDialogueVariable += UpdateInkDialogueVariable;
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
+        GameEventsManager.instance.questEvents.onQuestStepChange += QuestStepChange;
     }
 
     private void OnDisable() 
@@ -48,6 +49,8 @@ public class DialogueManager : MonoBehaviour
         GameEventsManager.instance.dialogueEvents.onSubmitChoice += SubmitChoice;
         GameEventsManager.instance.dialogueEvents.onUpdateInkDialogueVariable -= UpdateInkDialogueVariable;
         GameEventsManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
+        GameEventsManager.instance.questEvents.onQuestStepChange -= QuestStepChange;
+
     }
 
     private void SubmitChoice(int choice)
@@ -61,6 +64,14 @@ public class DialogueManager : MonoBehaviour
         GameEventsManager.instance.dialogueEvents.UpdateInkDialogueVariable(
             quest.info.id + "State",
             new StringValue(quest.state.ToString())
+        );
+    }
+
+    private void QuestStepChange(string id, int stepIndex)
+    {
+        GameEventsManager.instance.dialogueEvents.UpdateInkDialogueVariable(
+            id + "Step",
+            new IntValue(stepIndex)
         );
     }
 
@@ -94,7 +105,6 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
-        Debug.Log("Enterd Dialog");
         dialoguePlaying = true;
 
         // inform other parts of our system that we've started dialogue
@@ -111,7 +121,6 @@ public class DialogueManager : MonoBehaviour
         // jump to the knot
         if (!knotName.Equals(""))
         {
-            Debug.Log("knot name exists");
             story.ChoosePathString(knotName);
         }
         else 
@@ -131,7 +140,6 @@ public class DialogueManager : MonoBehaviour
         // make a choice, if applicable
         if (story.currentChoices.Count > 0 && currentChoiceIndex != -1)
         {
-            Debug.Log(currentChoiceIndex);
             story.ChooseChoiceIndex(currentChoiceIndex);
             // reset choice index for next time
             currentChoiceIndex = -1;
@@ -156,7 +164,6 @@ public class DialogueManager : MonoBehaviour
             else 
             {
                 GameEventsManager.instance.dialogueEvents.DisplayDialogue(dialogueLine, story.currentChoices);
-                Debug.Log(dialogueLine);
             }
         }
         else if (story.currentChoices.Count == 0)

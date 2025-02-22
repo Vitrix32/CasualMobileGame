@@ -22,7 +22,7 @@ public class DialogueIcon : MonoBehaviour
 
     }
 
-    void Update()
+   /* void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -44,13 +44,12 @@ public class DialogueIcon : MonoBehaviour
                 Debug.Log("you clicked the icon!");
             }
         }
-    }
+    }*/
 
  
 
     public void OnMouseDown()
     {
-        Debug.Log("clidcked");
         GameEventsManager.instance.dialogueEvents.EnterDialogue(knotName);
 
     }

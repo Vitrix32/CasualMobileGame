@@ -24,7 +24,6 @@ public class QuestManager : MonoBehaviour
         GameEventsManager.instance.questEvents.onFinishQuest += FinishQuest;
 
         GameEventsManager.instance.questEvents.onQuestStepStateChange += QuestStepStateChange;
-
         GameEventsManager.instance.playerEvents.onPlayerLevelChange += PlayerLevelChange;
     }
 
@@ -35,7 +34,6 @@ public class QuestManager : MonoBehaviour
         GameEventsManager.instance.questEvents.onFinishQuest -= FinishQuest;
 
         GameEventsManager.instance.questEvents.onQuestStepStateChange -= QuestStepStateChange;
-
         GameEventsManager.instance.playerEvents.onPlayerLevelChange -= PlayerLevelChange;
     }
 
@@ -71,11 +69,11 @@ public class QuestManager : MonoBehaviour
         // start true and prove to be false
         bool meetsRequirements = true;
 
-        // check player level requirements
+        /*check player level requirements
         if (currentPlayerLevel < quest.info.levelRequirement)
         {
             meetsRequirements = false;
-        }
+        }*/
 
         // check quest prerequisites for completion
         foreach (QuestInfoSO prerequisiteQuestInfo in quest.info.questPrerequisites)
@@ -105,7 +103,9 @@ public class QuestManager : MonoBehaviour
     private void StartQuest(string id) 
     {
         Quest quest = GetQuestById(id);
+        Debug.Log(quest.state);
         quest.InstantiateCurrentQuestStep(this.transform);
+        GameEventsManager.instance.questEvents.QuestStepChange(id, 0);
         ChangeQuestState(quest.info.id, QuestState.IN_PROGRESS);
     }
 
@@ -147,6 +147,9 @@ public class QuestManager : MonoBehaviour
         quest.StoreQuestStepState(questStepState, stepIndex);
         ChangeQuestState(id, quest.state);
     }
+    
+
+
 
     private Dictionary<string, Quest> CreateQuestMap()
     {
@@ -175,7 +178,7 @@ public class QuestManager : MonoBehaviour
         return quest;
     }
 
-    private void OnApplicationQuit()
+    private void OnApplicationQuit()//FIXME switch this for a button
     {
         foreach (Quest quest in questMap.Values)
         {

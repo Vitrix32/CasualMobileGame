@@ -33,7 +33,7 @@ public class DialogueChoiceButton : MonoBehaviour, ISelectHandler
     {
         //Debug.Log("selected: "+eventData.selectedObject.name);
         //GameEventsManager.instance.dialogueEvents.SubmitChoice(choiceIndex);
-        Debug.Log("from DialoGueChoiiceButton: " + choiceIndex);
+        //Debug.Log("from DialoGueChoiiceButton: " + choiceIndex);
         GameEventsManager.instance.dialogueEvents.UpdateChoiceIndex(choiceIndex);
         GameEventsManager.instance.inputEvents.SubmitPressed();
     }
