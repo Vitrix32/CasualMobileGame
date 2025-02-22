@@ -76,6 +76,25 @@
                     "increment": "Cat 1"
                 }
             ]
+        },
+        {
+            "name": "Scarecrow’s Song",
+            "questInfo": "Ralph longs to hear the song of the magical scarecrow. Visit the scarecrow east of Graville and return with the tune.",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Speak to Ralph to learn about the scarecrow.",
+                    "increment": "Ralph 0"
+                },
+                {
+                    "description": "Find the Scarecrow near the cornrows east of Graville.",
+                    "increment": "Scarecrow 0"
+                },
+                {
+                    "description": "Return to Ralph and sing the scarecrow’s song.",
+                    "increment": "Scarecrow 1"
+                }
+            ]
         }
     ]
 }
