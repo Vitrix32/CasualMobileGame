@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 public class QuestPoint : MonoBehaviour
 {
-    [Header("Dialogue (optional)")]
-    [SerializeField] private string dialogueKnotName;
 
     [Header("Quest")]
     [SerializeField] private QuestInfoSO questInfoForPoint;
@@ -30,42 +28,32 @@ public class QuestPoint : MonoBehaviour
     private void OnEnable()
     {
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
-        GameEventsManager.instance.inputEvents.onSubmitPressed += SubmitPressed;
     }
 
     private void OnDisable()
     {
         GameEventsManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
-        GameEventsManager.instance.inputEvents.onSubmitPressed -= SubmitPressed;
     }
 
-    private void SubmitPressed(InputEventContext inputEventContext)
+    public void IconClicked(InputEventContext inputEventContext)
     {
 
-        Debug.Log("got a submit press");
+        Debug.Log("quest icon clicked");
         if (!playerIsNear || !inputEventContext.Equals(InputEventContext.DEFAULT))
         {
             return;
         }
 
-        // if we have a knot name defined, try to start dialogue with it
-        if (!dialogueKnotName.Equals("")) 
+        // start or finish a quest
+        if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
         {
-            GameEventsManager.instance.dialogueEvents.EnterDialogue(dialogueKnotName);
+            GameEventsManager.instance.questEvents.StartQuest(questId);
         }
-        // otherwise, start or finish the quest immediately without dialogue
-        else 
+        else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
         {
-            // start or finish a quest
-            if (currentQuestState.Equals(QuestState.CAN_START) && startPoint)
-            {
-                GameEventsManager.instance.questEvents.StartQuest(questId);
-            }
-            else if (currentQuestState.Equals(QuestState.CAN_FINISH) && finishPoint)
-            {
-                GameEventsManager.instance.questEvents.FinishQuest(questId);
-            }
+            GameEventsManager.instance.questEvents.FinishQuest(questId);
         }
+
     }
 
     private void QuestStateChange(Quest quest)
@@ -82,10 +70,8 @@ public class QuestPoint : MonoBehaviour
     {
         if (otherCollider.CompareTag("Player"))
         {
-            Debug.Log("wanna quest?");
-            playerIsNear = true;
+            questIcon.gameObject.SetActive(true);
 
-            questIcon.show();
         }
     }
 
@@ -93,9 +79,9 @@ public class QuestPoint : MonoBehaviour
     {
         if (otherCollider.CompareTag("Player"))
         {
-            playerIsNear = false;
+            questIcon.gameObject.SetActive(false);
 
-            questIcon.hide();
+
         }
     }
 }

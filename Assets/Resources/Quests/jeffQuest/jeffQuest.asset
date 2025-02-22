@@ -16,6 +16,7 @@ MonoBehaviour:
   displayName: Jeff's Little Errand
   levelRequirement: 0
   questPrerequisites: []
-  questStepPrefabs: []
+  questStepPrefabs:
+  - {fileID: 7113509148454135139, guid: f9d4f9ae6315d67499662aa062b0d923, type: 3}
   goldReward: 0
   experienceReward: 250

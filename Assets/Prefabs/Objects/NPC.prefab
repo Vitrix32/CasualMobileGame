@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 5337014862612746161}
   - component: {fileID: 526516291299920847}
   - component: {fileID: 8324220378279108439}
-  - component: {fileID: 8947379375879449434}
   - component: {fileID: 4114248225204638534}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NPC
   m_TagString: NPC
   m_Icon: {fileID: 0}
@@ -30,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 0.4, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,11 +75,11 @@ SpriteRenderer:
   m_SortingLayerID: -1407208739
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -54016357, guid: 0b12c0e9ec3a9284cbcec713a4c23bfa, type: 3}
+  m_Sprite: {fileID: -986417082, guid: 9acb34c845614cb4aadb9c02f807a1b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 1
+  m_DrawMode: 0
   m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -104,51 +103,6 @@ MonoBehaviour:
   lapCount: 0
   idleDuration: -1
   moveSpeed: 3
---- !u!61 &8947379375879449434
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2495075205976332785}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.17706108, y: 0.241781}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.52025187, y: 0.2438141}
-    oldSize: {x: 1.4375, y: 1.875}
-    newSize: {x: 4, y: 4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 1
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.303379, y: 8.748995}
-  m_EdgeRadius: 0
 --- !u!70 &4114248225204638534
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -181,6 +135,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07, y: -0.46}
-  m_Size: {x: 3.6374416, y: 1.1888009}
+  m_Offset: {x: -0.13454793, y: -0.69582826}
+  m_Size: {x: 1.3337964, y: 0.48876673}
   m_Direction: 1

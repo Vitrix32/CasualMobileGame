@@ -9,6 +9,12 @@ public class InputEvents
     public void ChangeInputEventContext(InputEventContext newContext) 
     {
         this.inputEventContext = newContext;
+        
+    }
+
+    public InputEventContext GetInputEventContext()
+    {
+        return this.inputEventContext;
     }
 
 
