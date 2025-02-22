@@ -19,7 +19,7 @@ public class Encounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        delay = 2;
+        delay = 1;
         numberOfIds = 4;
         enemyId = Random.Range(1, numberOfIds);
     }

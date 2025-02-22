@@ -40,7 +40,7 @@ public class TransitionPoint : MonoBehaviour
 
     private void Awake()
     {
-        delay = 2;
+        delay = 1;
     }
 
     private void Start()
