@@ -123,17 +123,32 @@ public class DialogueManager : MonoBehaviour
         if (npc != null && optionIndex >= 0 && optionIndex < npc.dialogue.Length)
         {
             this.GetComponent<QuestManager>().TryQuest(npcName + " " + optionIndex);
+
             string inc = npc.dialogue[npc.value].increment;
+
             if (inc != "none")
             {
-                string[] incData = inc.Split(' ');
-                NPC incNPC = FindNPCByName(incData[0]);
-                incNPC.value = int.Parse(incData[1]);
+                string[] increments = inc.Split(';');
+                foreach (string incPart in increments)
+                {
+                    string trimmed = incPart.Trim();
+                    string[] parts = trimmed.Split(' ');
+                    if (parts.Length == 2)
+                    {
+                        NPC incNPC = FindNPCByName(parts[0]);
+                        if (incNPC != null)
+                        {
+                            incNPC.value = int.Parse(parts[1]);
+                        }
+                    }
+                }
             }
+
             player.GetComponent<PlayerStatus>().BeginDialogue();
             StartCoroutine(displayText(npc.dialogue[optionIndex].option));
         }
     }
+
 
     //Finds NPC and 
     public int GetNPCValue(string npcName)

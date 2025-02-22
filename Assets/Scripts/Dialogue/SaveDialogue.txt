@@ -154,7 +154,7 @@
             "dialogue": [
                 {
                     "option": "Ralph: You! Youngster!`Player:...`Ralph: Have you heard of this land’s magical scarecrow? He lives in the valley, found in the town of Graville. Though he appears to be made of sticks and straw, he will bless curious travellers with a song. I long to hear the scarecrow’s tune, but my old legs fail me!`Player: Sir, I could go hear the song and bring it back to you.`Ralph: Oh, you would! Thank you! The scarecrow can be found near the cornrows just east of Graville.",
-                    "increment": "Scarecrow 1"
+                    "increment": "Scarecrow 1; Ralph 1"
                 },
                 {
                     "option": "The scarecrow can be found just East of Graville, in the cornfields.",
