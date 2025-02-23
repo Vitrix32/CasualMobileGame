@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private GameObject WorldPlayer;
+    [SerializeField]
+    private GameObject combatVFX;
+    [SerializeField]
+    private Sprite[] VFXSprites;
     private AudioSource audioSource;
 
     public int maxHealth = 50;
@@ -270,7 +274,6 @@ public class Player : MonoBehaviour
     public void PlayerAttack(string attack)
     {
         //Debug.log($"PlayerAttack called with attack: {attack}");
-
         if (playerTurn && enemy != null)
         {
             switch (attack)
@@ -284,6 +287,7 @@ public class Player : MonoBehaviour
                     break;
 
                 case "AttackWithDOT":
+                    PlayEffect(2);
                     PerformAttackWithDOT();
                     break;
 
@@ -292,10 +296,12 @@ public class Player : MonoBehaviour
                     break;
 
                 case "DoubleDamage":
+                    PlayEffect(1);
                     PerformDoubleDamage();
                     break;
 
                 case "WeakenEnemy":
+                    PlayEffect(3);
                     PerformWeakenEnemy();
                     break;
 
@@ -321,6 +327,7 @@ public class Player : MonoBehaviour
                     break;
 
                 default:
+                    PlayEffect(4);
                     PerformRegularAttack(attack);
                     break;
             }
@@ -638,5 +645,16 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void PlayEffect(int index)
+    {
+        combatVFX.GetComponent<Image>().sprite = VFXSprites[index];
+        Invoke("ResetEffect", 0.8f);
+    }
+
+    private void ResetEffect()
+    {
+        combatVFX.GetComponent<Image>().sprite = VFXSprites[0];
     }
 }

@@ -22,7 +22,7 @@ public class SceneTransition : MonoBehaviour
     //Start is called before the first frame update
     void Start()
     {
-        delayDuration = 2;
+        delayDuration = 1;
         player = GameObject.Find("WorldPlayer");
         Begin();
     }

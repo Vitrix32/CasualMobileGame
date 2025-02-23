@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
     // This method will spawn the enemy at a random spawn point
     void SpawnEnemy()
     {
-        Vector3 spawnOffset = new Vector3(10f, 0f, 0f); // Adjust as needed
+        Vector3 spawnOffset = new Vector3(9f, 0.25f, 0f); // Adjust as needed
 
         Vector3 spawnPoint = player.position + spawnOffset;
         //Debug.Log(player.position);

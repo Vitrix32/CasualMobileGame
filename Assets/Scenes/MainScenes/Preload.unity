@@ -2531,6 +2531,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 880448582229751916, guid: cfc3fa34daf06db448b7885e6ce2ba32, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456692242535668206, guid: cfc3fa34daf06db448b7885e6ce2ba32, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456692242535668206, guid: cfc3fa34daf06db448b7885e6ce2ba32, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1407208739
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361423121034874411, guid: cfc3fa34daf06db448b7885e6ce2ba32, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1407208739
+      objectReference: {fileID: 0}
     - target: {fileID: 3691535827709836765, guid: cfc3fa34daf06db448b7885e6ce2ba32, type: 3}
       propertyPath: m_Name
       value: GenericEnemyTemplate
@@ -2616,11 +2632,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4774849138926981395, guid: cfc3fa34daf06db448b7885e6ce2ba32, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774849138926981395, guid: cfc3fa34daf06db448b7885e6ce2ba32, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5360083205179548120, guid: cfc3fa34daf06db448b7885e6ce2ba32, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360083205179548120, guid: cfc3fa34daf06db448b7885e6ce2ba32, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360083205179548120, guid: cfc3fa34daf06db448b7885e6ce2ba32, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
