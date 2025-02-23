@@ -1,6 +1,6 @@
 === cat ===
 
-I am a cat. meow. I think jeff's quest is at state {jeffQuestStep}
+I am a cat. meow. I think jeff's quest is at state {expoQuestStep}
 {jeffQuestStep==0: 
     * [Please let Jeff pet your belly]
     Finneee

@@ -3,6 +3,8 @@ INCLUDE cat.ink
 INCLUDE samantha.ink
 INCLUDE jack.ink
 INCLUDE marlena.ink
+INCLUDE captain.ink
+
 
 
 

@@ -34,8 +34,7 @@ public class DialogueManager : MonoBehaviour
     {
         GameEventsManager.instance.dialogueEvents.onEnterDialogue += EnterDialogue;
         GameEventsManager.instance.inputEvents.onSubmitPressed += SubmitPressed;
-        GameEventsManager.instance.dialogueEvents.onUpdateChoiceIndex += UpdateChoiceIndex;
-        GameEventsManager.instance.dialogueEvents.onSubmitChoice += SubmitChoice;
+        GameEventsManager.instance.dialogueEvents.onChoose += Choose;
         GameEventsManager.instance.dialogueEvents.onUpdateInkDialogueVariable += UpdateInkDialogueVariable;
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
         GameEventsManager.instance.questEvents.onQuestStepChange += QuestStepChange;
@@ -45,19 +44,14 @@ public class DialogueManager : MonoBehaviour
     {
         GameEventsManager.instance.dialogueEvents.onEnterDialogue -= EnterDialogue;
         GameEventsManager.instance.inputEvents.onSubmitPressed -= SubmitPressed;
-        GameEventsManager.instance.dialogueEvents.onUpdateChoiceIndex -= UpdateChoiceIndex;
-        GameEventsManager.instance.dialogueEvents.onSubmitChoice += SubmitChoice;
+        GameEventsManager.instance.dialogueEvents.onChoose -= Choose;
         GameEventsManager.instance.dialogueEvents.onUpdateInkDialogueVariable -= UpdateInkDialogueVariable;
         GameEventsManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
         GameEventsManager.instance.questEvents.onQuestStepChange -= QuestStepChange;
 
     }
 
-    private void SubmitChoice(int choice)
-    {
-        this.currentChoiceIndex = choice;
-        ContinueOrExitStory();
-    }
+   
 
     private void QuestStateChange(Quest quest) 
     {
@@ -80,9 +74,10 @@ public class DialogueManager : MonoBehaviour
         inkDialogueVariables.UpdateVariableState(name, value);
     }
 
-    private void UpdateChoiceIndex(int choiceIndex) 
+    private void Choose(int choiceIndex) 
     {
         this.currentChoiceIndex = choiceIndex;
+        ContinueOrExitStory();
     }
 
     private void SubmitPressed(InputEventContext inputEventContext) 

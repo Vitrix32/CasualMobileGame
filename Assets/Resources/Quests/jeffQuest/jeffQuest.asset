@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: jeffQuest
   m_EditorClassIdentifier: 
   <id>k__BackingField: jeffQuest
-  displayName: Jeff's Little Errand
+  displayName: Jeff's Request
   levelRequirement: 0
   questPrerequisites: []
   questStepPrefabs:

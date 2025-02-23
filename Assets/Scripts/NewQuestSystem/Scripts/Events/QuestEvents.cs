@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class QuestEvents
 {
@@ -16,6 +17,7 @@ public class QuestEvents
     {
         if (onAdvanceQuest != null)
         {
+            Debug.Log(id);
             onAdvanceQuest(id);
         }
     }

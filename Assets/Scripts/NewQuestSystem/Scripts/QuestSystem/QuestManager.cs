@@ -46,6 +46,7 @@ public class QuestManager : MonoBehaviour
             if (quest.state == QuestState.IN_PROGRESS)
             {
                 quest.InstantiateCurrentQuestStep(this.transform);
+                Debug.Log(quest.info.id);
             }
             // broadcast the initial state of all quests on startup
             GameEventsManager.instance.questEvents.QuestStateChange(quest);
@@ -111,6 +112,7 @@ public class QuestManager : MonoBehaviour
 
     private void AdvanceQuest(string id)
     {
+        Debug.Log("ID: " + id);
         Quest quest = GetQuestById(id);
 
         // move on to the next step

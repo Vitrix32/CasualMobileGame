@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294185b0eafd7954bb208b6f004d2616, type: 3}
+  m_Name: expoQuest
+  m_EditorClassIdentifier: 
+  <id>k__BackingField: expoQuest
+  displayName: Jeff's Errand
+  levelRequirement: 0
+  questPrerequisites:
+  - {fileID: 11400000, guid: c4f88103b1b3b4444b960075c85f5dc5, type: 2}
+  questStepPrefabs:
+  - {fileID: 3565267013551077449, guid: 2254550ed22fcff47b0fb9e2c6d6ab7e, type: 3}
+  - {fileID: 3565267013551077449, guid: b05dcf280224219459dd91acb371a0d9, type: 3}
+  - {fileID: 3565267013551077449, guid: 189d7f511ab266f42b5cb324912763d0, type: 3}
+  - {fileID: 3565267013551077449, guid: d43a4147053bee04688f1e824cd453f9, type: 3}
+  - {fileID: 3565267013551077449, guid: f488cf95e4c0d314b8744ee87cf3492f, type: 3}
+  - {fileID: 3565267013551077449, guid: 983df5f63eb237141a5c8dbccb5f605e, type: 3}
+  - {fileID: 3565267013551077449, guid: bee31b17d5799b04583df25fce7cb683, type: 3}
+  - {fileID: 3565267013551077449, guid: 6786c479e05861c41aa8096af744f0c6, type: 3}
+  goldReward: 0
+  experienceReward: 0

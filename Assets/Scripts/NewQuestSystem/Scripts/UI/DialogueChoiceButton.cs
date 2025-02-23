@@ -5,10 +5,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class DialogueChoiceButton : MonoBehaviour, ISelectHandler
+public class DialogueChoiceButton : Button
 {
     [Header("Components")]
-    [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI choiceText;
 
     private int choiceIndex = -1;
@@ -23,18 +22,10 @@ public class DialogueChoiceButton : MonoBehaviour, ISelectHandler
         this.choiceIndex = choiceIndex;
     }
 
-    public void SelectButton()
-    {
-        
-        button.Select();
-    }
 
-    public void OnSelect(BaseEventData eventData)
+
+    public void OnPointerDown()
     {
-        //Debug.Log("selected: "+eventData.selectedObject.name);
-        //GameEventsManager.instance.dialogueEvents.SubmitChoice(choiceIndex);
-        //Debug.Log("from DialoGueChoiiceButton: " + choiceIndex);
-        GameEventsManager.instance.dialogueEvents.UpdateChoiceIndex(choiceIndex);
-        GameEventsManager.instance.inputEvents.SubmitPressed();
+        GameEventsManager.instance.dialogueEvents.Choose(choiceIndex);
     }
 }

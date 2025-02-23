@@ -43,12 +43,12 @@ public class DialogueEvents
         }
     }
 
-    public event Action<int> onUpdateChoiceIndex;
-    public void UpdateChoiceIndex(int choiceIndex) 
+    public event Action<int> onChoose;
+    public void Choose(int choiceIndex) 
     {
-        if (onUpdateChoiceIndex != null) 
+        if (onChoose != null) 
         {
-            onUpdateChoiceIndex(choiceIndex);
+            onChoose(choiceIndex);
         }
     }
 
