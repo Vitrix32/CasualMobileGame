@@ -95,6 +95,25 @@
                     "increment": "Scarecrow 1"
                 }
             ]
+        },
+        {
+            "name": "Heights",
+            "questInfo": "Ezra is afraid of heights and needs your help delivering seeds to Lily at the plateau.",
+            "value": 0,
+            "parts": [
+                {
+                "description": "Talk to Ezra about delivering seeds.",
+                "increment": "Ezra 0"
+                },
+                {
+                "description": "Take the seeds up to Lily’s garden.",
+                "increment": "Lily 1"
+                },
+                {
+                "description": "Return Lily’s flower to Ezra.",
+                "increment": "Ezra 2"
+                }
+            ]
         }
     ]
 }
