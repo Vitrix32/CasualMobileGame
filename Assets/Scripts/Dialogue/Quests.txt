@@ -102,16 +102,16 @@
             "value": 0,
             "parts": [
                 {
-                "description": "Talk to Ezra about delivering seeds.",
-                "increment": "Ezra 0"
+                    "description": "Talk to Ezra about delivering seeds.",
+                    "increment": "Ezra 0"
                 },
                 {
-                "description": "Take the seeds up to Lily’s garden.",
-                "increment": "Lily 1"
+                    "description": "Take the seeds up to Lily’s garden.",
+                    "increment": "Lily 1"
                 },
                 {
-                "description": "Return Lily’s flower to Ezra.",
-                "increment": "Ezra 2"
+                    "description": "Return Lily’s flower to Ezra.",
+                    "increment": "Ezra 2"
                 }
             ]
         }

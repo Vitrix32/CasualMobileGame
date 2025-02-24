@@ -185,44 +185,44 @@
             ]
         },
         {
-      "name": "Ezra",
-      "value": 0,
-      "dialogue": [
-        {
-          "option": "Ezra: Hey you! Could you, uh, help me please? My friend, Lily, tends a garden on that plateau up north. *shudder* I’m supposed to deliver these seeds to her, but I can’t fathom going that high up. And, I hear there might be monsters surrounding the garden! Would you be willing to, um, take them to her for me?",
-          "increment": "Ezra 1; Lily 1"
+            "name": "Ezra",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Ezra: Hey you! Could you, uh, help me please? My friend, Lily, tends a garden on that plateau up north. *shudder* I’m supposed to deliver these seeds to her, but I can’t fathom going that high up. And, I hear there might be monsters surrounding the garden! Would you be willing to, um, take them to her for me?",
+                    "increment": "Ezra 1; Lily 1"
+                },
+                {
+                    "option": "Ezra: So high up…",
+                    "increment": "none"
+                },
+                {
+                    "option": "Ezra: Did you get them to her? Oh, what a relief! And, she sent me a flower? Oh, boy!",
+                    "increment": "Ezra 3"
+                },
+                {
+                    "option": "Ezra: Ghee, thanks a lot!",
+                    "increment": "none"
+                }
+            ]
         },
         {
-          "option": "Ezra: So high up…",
-          "increment": "none"
-        },
-        {
-          "option": "Ezra: Did you get them to her? Oh, what a relief! And, she sent me a flower? Oh, boy!",
-          "increment": "Ezra 3"
-        },
-        {
-          "option": "Ezra: Ghee, thanks a lot!",
-          "increment": "none"
+            "name": "Lily",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Lily: Welcome to my garden!",
+                    "increment": "none"
+                },
+                {
+                    "option": "Player: I was asked to bring you these seeds.`Lily: Did Ezra send you? Oh that coward! He’s such a dear, but so timid. Anyways, thanks for making the hike up here. Would you mind delivering this flower back to him?",
+                    "increment": "Ezra 2; Lily 2"
+                },
+                {
+                    "option": "Lily: I can’t wait to plant my new seeds!",
+                    "increment": "none"
+                }
+            ]
         }
-      ]
-    },
-    {
-      "name": "Lily",
-      "value": 0,
-      "dialogue": [
-        {
-          "option": "Lily: Welcome to my garden!",
-          "increment": "none"
-        },
-        {
-          "option": "Player: I was asked to bring you these seeds.`Lily: Did Ezra send you? Oh that coward! He’s such a dear, but so timid. Anyways, thanks for making the hike up here. Would you mind delivering this flower back to him?",
-          "increment": "Ezra 2; Lily 2"
-        },
-        {
-          "option": "Lily: I can’t wait to plant my new seeds!",
-          "increment": "none"
-        }
-      ]
-    }
     ]
 }
