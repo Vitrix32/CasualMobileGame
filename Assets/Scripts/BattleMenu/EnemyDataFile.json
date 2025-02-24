@@ -1,28 +1,46 @@
 {
-    "Enemies": [
-        {
-            "Id": "1",
-            "Name": "Wolf",
-            "Hp": "50",
-            "Damage": "5"
-        },
-        {
-            "Id": "2",
-            "Name": "Chicken",
-            "Hp": "20",
-            "Damage": "2"
-        },
-        {
-            "Id": "3",
-            "Name": "Bat",
-            "Hp": "35",
-            "Damage": "3"
-        },
-        {
-            "Id": "4",
-            "Name": "Ghost",
-            "Hp": "30",
-            "Damage": "3"
-        }
-    ]
+  "Enemies": [
+    {
+      "Id": "1",
+      "Name": "Wolf",
+      "Hp": "50",
+      "Damage": "5",
+      "LocID": "0"
+    },
+    {
+      "Id": "2",
+      "Name": "Chicken",
+      "Hp": "20",
+      "Damage": "2",
+      "LocID": "0"
+    },
+    {
+      "Id": "3",
+      "Name": "Bat",
+      "Hp": "35",
+      "Damage": "3",
+      "LocID": "0"
+    },
+    {
+      "Id": "4",
+      "Name": "Ghost",
+      "Hp": "30",
+      "Damage": "3",
+      "LocID": "0"
+    },
+    {
+      "Id": "5",
+      "Name": "Spider",
+      "Hp": "70",
+      "Damage": "12",
+      "LocID": "2"
+    },
+    {
+      "Id": "6",
+      "Name": "DungeonBoss",
+      "Hp": "130",
+      "Damage": "20",
+      "LocID": "3"
+    }
+  ]
 }

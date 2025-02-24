@@ -85,11 +85,8 @@ public class EnemySpawner : MonoBehaviour
         //string tempJson = File.ReadAllText("EnemyDataFile.json");
         enemyList = JsonUtility.FromJson<EnemyList>(enemyJson.text);
         List<EnemyData> list = new List<EnemyData>();
-        Debug.Log(enemyList);
         for (int i = 0; i < enemyList.Enemies.Length; i++)
         {
-            //Debug.Log(enemyList.Enemies[i].Name);
-
             // ADDING FUNCTIONALITY - IF STATEMENT - GET ENEMIES BASED ON LOCATION
             int locationID = PlayerPrefs.GetInt("LocID");
             if (locationID == Int32.Parse(enemyList.Enemies[i].LocID))
