@@ -649,12 +649,12 @@ public class Player : MonoBehaviour
 
     private void PlayEffect(int index)
     {
-        combatVFX.GetComponent<Image>().sprite = VFXSprites[index];
+        combatVFX.GetComponent<SpriteRenderer>().sprite = VFXSprites[index];
         Invoke("ResetEffect", 0.8f);
     }
 
     private void ResetEffect()
     {
-        combatVFX.GetComponent<Image>().sprite = VFXSprites[0];
+        combatVFX.GetComponent<SpriteRenderer>().sprite = VFXSprites[0];
     }
 }
