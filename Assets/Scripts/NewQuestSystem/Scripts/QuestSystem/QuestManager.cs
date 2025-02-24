@@ -22,7 +22,7 @@ public class QuestManager : MonoBehaviour
         GameEventsManager.instance.questEvents.onStartQuest += StartQuest;
         GameEventsManager.instance.questEvents.onAdvanceQuest += AdvanceQuest;
         GameEventsManager.instance.questEvents.onFinishQuest += FinishQuest;
-
+        GameEventsManager.instance.dialogueEvents.onInitializeVariables += InitializeVariables;
         GameEventsManager.instance.questEvents.onQuestStepStateChange += QuestStepStateChange;
         GameEventsManager.instance.playerEvents.onPlayerLevelChange += PlayerLevelChange;
     }
@@ -32,6 +32,7 @@ public class QuestManager : MonoBehaviour
         GameEventsManager.instance.questEvents.onStartQuest -= StartQuest;
         GameEventsManager.instance.questEvents.onAdvanceQuest -= AdvanceQuest;
         GameEventsManager.instance.questEvents.onFinishQuest -= FinishQuest;
+        GameEventsManager.instance.dialogueEvents.onInitializeVariables -= InitializeVariables;
 
         GameEventsManager.instance.questEvents.onQuestStepStateChange -= QuestStepStateChange;
         GameEventsManager.instance.playerEvents.onPlayerLevelChange -= PlayerLevelChange;
@@ -64,7 +65,16 @@ public class QuestManager : MonoBehaviour
     {
         currentPlayerLevel = level;
     }
-
+    private void InitializeVariables()
+    {
+        
+        foreach (KeyValuePair<string, Quest> entry in questMap)
+        {
+            Debug.Log("Initializing variables");
+            GameEventsManager.instance.questEvents.QuestStateChange(entry.Value);
+            GameEventsManager.instance.questEvents.QuestStepChange(entry.Value.info.id, entry.Value.GetQuestStepIndex());
+        }
+    }
     private bool CheckRequirementsMet(Quest quest)
     {
         // start true and prove to be false
@@ -78,13 +88,15 @@ public class QuestManager : MonoBehaviour
 
         // check quest prerequisites for completion
         foreach (QuestInfoSO prerequisiteQuestInfo in quest.info.questPrerequisites)
-        {
+        {                
             if (GetQuestById(prerequisiteQuestInfo.id).state != QuestState.FINISHED)
-            {
+            { 
+                
                 meetsRequirements = false;
             }
         }
-
+        if (quest.info.id == "jeffQuest" &&meetsRequirements)
+            Debug.Log("Setting jeff quest to can_start");
         return meetsRequirements;
     }
 
@@ -93,7 +105,7 @@ public class QuestManager : MonoBehaviour
         // loop through ALL quests
         foreach (Quest quest in questMap.Values)
         {
-            Debug.Log("Quest "+quest.info.id);
+
             // if we're now meeting the requirements, switch over to the CAN_START state
             if (quest.state == QuestState.REQUIREMENTS_NOT_MET && CheckRequirementsMet(quest))
             {

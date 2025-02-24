@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
         inkExternalFunctions = new InkExternalFunctions();
         inkExternalFunctions.Bind(story);
         inkDialogueVariables = new InkDialogueVariables(story);
+        
     }
 
     private void OnDestroy() 
@@ -38,6 +39,8 @@ public class DialogueManager : MonoBehaviour
         GameEventsManager.instance.dialogueEvents.onUpdateInkDialogueVariable += UpdateInkDialogueVariable;
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
         GameEventsManager.instance.questEvents.onQuestStepChange += QuestStepChange;
+
+        GameEventsManager.instance.dialogueEvents.InitializeVariables();
     }
 
     private void OnDisable() 
@@ -55,14 +58,17 @@ public class DialogueManager : MonoBehaviour
 
     private void QuestStateChange(Quest quest) 
     {
+        Debug.Log("Initializing variables");
         GameEventsManager.instance.dialogueEvents.UpdateInkDialogueVariable(
             quest.info.id + "State",
             new StringValue(quest.state.ToString())
         );
+        //Debug.Log("Setting ink values " + quest.info.id+" "+quest.state.ToString());
     }
 
     private void QuestStepChange(string id, int stepIndex)
     {
+        Debug.Log("Initializing variables");
         GameEventsManager.instance.dialogueEvents.UpdateInkDialogueVariable(
             id + "Step",
             new IntValue(stepIndex)
@@ -94,7 +100,7 @@ public class DialogueManager : MonoBehaviour
     private void EnterDialogue(string knotName) 
     {
 
-        
+        Debug.Log("entering knot "+knotName);
         // don't enter dialogue if we've already entered
         if (dialoguePlaying) 
         {
@@ -124,6 +130,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         // start listening for variables
+        Debug.Log("Calling SyncDialogVarialbes");
         inkDialogueVariables.SyncVariablesAndStartListening(story);
 
         // kick off the story

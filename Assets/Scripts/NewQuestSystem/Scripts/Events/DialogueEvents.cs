@@ -61,6 +61,16 @@ public class DialogueEvents
         }
     }
 
+    public event Action onInitializeVariables;
+    public void InitializeVariables()
+    {
+        if (onInitializeVariables != null)
+        {
+            
+            onInitializeVariables();
+        }
+    }
+
     public event Action<string, Ink.Runtime.Object> onUpdateInkDialogueVariable;
     public void UpdateInkDialogueVariable(string name, Ink.Runtime.Object value) 
     {
