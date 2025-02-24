@@ -3,7 +3,7 @@
 {expoQuestStep:
     - 1 : 
     Oh hello Player! It s so good to see you! Are you staying warm today?
-    * [Jeff said you needed some help]
+    * [Samantha said you needed some help]
     -> takeJacklunch
     - 3 :
     Oh hello Player! Did you give Jackie his lunch?

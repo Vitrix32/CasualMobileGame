@@ -58,7 +58,6 @@ public class DialogueManager : MonoBehaviour
 
     private void QuestStateChange(Quest quest) 
     {
-        Debug.Log("Initializing variables");
         GameEventsManager.instance.dialogueEvents.UpdateInkDialogueVariable(
             quest.info.id + "State",
             new StringValue(quest.state.ToString())
@@ -68,7 +67,6 @@ public class DialogueManager : MonoBehaviour
 
     private void QuestStepChange(string id, int stepIndex)
     {
-        Debug.Log("Initializing variables");
         GameEventsManager.instance.dialogueEvents.UpdateInkDialogueVariable(
             id + "Step",
             new IntValue(stepIndex)
