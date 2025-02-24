@@ -2,21 +2,12 @@ using System;
 
 public class MiscEvents
 {
-    public event Action onCoinCollected;
-    public void CoinCollected() 
+    public event Action onEnterCombat;
+    public void EnterCombat() 
     {
-        if (onCoinCollected != null) 
+        if (onEnterCombat != null) 
         {
-            onCoinCollected();
-        }
-    }
-
-    public event Action onGemCollected;
-    public void GemCollected() 
-    {
-        if (onGemCollected != null) 
-        {
-            onGemCollected();
+            EnterCombat();
         }
     }
 }

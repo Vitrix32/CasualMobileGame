@@ -13,9 +13,13 @@ public class PlayerStatus : MonoBehaviour
     private Vector2 combatPosition;
     private Vector2 worldPosition;
     private Rigidbody2D rb;
+    private GameObject sceneMusicHandler;
     // Start is called before the first frame update
     void Start()
     {
+        GameEventsManager.instance.dialogueEvents.onDialogueStarted += BeginDialogue;
+        GameEventsManager.instance.dialogueEvents.onDialogueFinished += EndDialogue;
+
         inCombat = false;
         combatImmunity = false;
         combatPosition = new Vector2(0.0f, 0.0f);
@@ -23,8 +27,15 @@ public class PlayerStatus : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
     }
 
+    private void OnDestroy()
+    {
+        GameEventsManager.instance.dialogueEvents.onDialogueStarted -= BeginDialogue;
+        GameEventsManager.instance.dialogueEvents.onDialogueFinished -= EndDialogue;
+    }
     private void EnteringCombat()
     {
+        sceneMusicHandler=GameObject.Find("MusicHandler");
+        sceneMusicHandler.GetComponent<SceneMusicTest>().EnterCombat();
         inCombat = true;
         combatImmunity = true;
         worldPosition = this.transform.position;
@@ -58,6 +69,7 @@ public class PlayerStatus : MonoBehaviour
     public void LeavingGameWorld(bool isCombat, float delay)
     {
         this.GetComponent<FootstepAudioHandling>().StopAllCoroutines();
+        
         this.GetComponent<UniversalAudioHandling>().EnteringCombat();
         DisableControl();
         Invoke("EnteringCombat", delay);

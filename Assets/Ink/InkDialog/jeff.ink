@@ -1,5 +1,5 @@
-
-
+===jeff===
+EHllo
 VAR jeffQuestId="jeffQuest"
 VAR jeffQuestStep=-1
 VAR jeffQuestState="REQUIREMENTS_NOT_MET"
@@ -8,7 +8,6 @@ VAR expoQuestId="expoQuest"
 VAR expoQuestStep=-1
 VAR expoQuestState= "REQUIREMENTS_NOT_MET"
 
-=== jeff ===
 { jeffQuestState :  ///THIS IS HOW TO DO THE MULTIPLE STEPS AND STUFFFFF!!
     - "REQUIREMENTS_NOT_MET": -> requirementsNotMet
     - "CAN_START" : -> canStart
@@ -83,7 +82,7 @@ but if you want a slower warm up to your day I hear old miss Marlena has some er
 Don't you already have somewhere to be right now, brother?
 ->END
 
-->END
+
 
 
 

@@ -31,6 +31,7 @@ public class SceneMusicTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         backgroundMusic = backgroundMusics[0];
         combatMusic = combatMusics[0];
         primaryMusicSource.clip = backgroundMusic;
@@ -66,10 +67,10 @@ public class SceneMusicTest : MonoBehaviour
         primaryMusicSource.Play();
     }
 
-    public void EnteringCombat()
+    public void EnterCombat()
     {
-        primaryMusicSource.clip = combatMusic;
-        primaryMusicSource.Play();
+        //primaryMusicSource.clip = combatMusic;
+        primaryMusicSource.Stop();
     }
 
     public void ExitingCombat() 

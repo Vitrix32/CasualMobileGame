@@ -41,6 +41,7 @@ public class Encounter : MonoBehaviour
                 QuestButton.SetActive(false);
                 MapButton.SetActive(false);
                 VirtualJoystick.SetActive(false);
+                
                 collision.gameObject.GetComponent<PlayerStatus>().LeavingGameWorld(true, delay);
                 StartCoroutine("ChangeScene");
             }
