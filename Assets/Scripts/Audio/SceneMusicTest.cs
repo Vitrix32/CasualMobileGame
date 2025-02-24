@@ -56,6 +56,13 @@ public class SceneMusicTest : MonoBehaviour
             primaryMusicSource.clip = backgroundMusic;
             primaryMusicSource.Play();
         }
+        if (name == "groveZone")
+        {
+            primaryMusicSource.Stop();
+            backgroundMusic = backgroundMusics[3];
+            primaryMusicSource.clip = backgroundMusic;
+            primaryMusicSource.Play();
+        }
     }
 
     public void triggerExit(string name)
