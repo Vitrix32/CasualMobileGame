@@ -6,4 +6,5 @@ public class EnemyData
     public string Name;
     public string Hp;
     public string Damage;
+    public string LocID;
 }

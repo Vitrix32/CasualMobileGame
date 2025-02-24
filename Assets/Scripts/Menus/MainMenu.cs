@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,21 +10,25 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField]
     private GameObject WorldPlayer;
+    public GameObject LoadGameButton;
+    public GameObject NewGameButton;
+    public GameObject OptionsButton;
+    public GameObject QuitButton;
 
     void Start()
     {
-        /*
-        if (!PlayerPrefs.HasKey("MusicVolume"))
-        {
-            PlayerPrefs.SetFloat("MusicVolume", 1);
-            Load();
-        }
-        else
-        {
-            Load();
-        }*/
         WorldPlayer = GameObject.Find("WorldPlayer");
+        Invoke("TurnButtonsOn", 3);
     }
+
+    private void TurnButtonsOn()
+    {
+        LoadGameButton.SetActive(true);
+        NewGameButton.SetActive(true);
+        OptionsButton.SetActive(true);
+        QuitButton.SetActive(true);
+    }
+
     public void LoadGame()
     {
         SetLiveJSONToSave();

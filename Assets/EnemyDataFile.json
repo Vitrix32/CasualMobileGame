@@ -4,25 +4,43 @@
             "Id": "1",
             "Name": "Wolf",
             "Hp": "50",
-            "Damage": "5"
+            "Damage": "5",
+            "LocID": "0"
         },
         {
             "Id": "2",
             "Name": "Chicken",
             "Hp": "20",
-            "Damage": "2"
+            "Damage": "2",
+            "LocID": "0"
         },
         {
             "Id": "3",
             "Name": "Bat",
             "Hp": "35",
-            "Damage": "3"
+            "Damage": "3",
+            "LocID": "0"
         },
         {
             "Id": "4",
             "Name": "Ghost",
             "Hp": "30",
-            "Damage": "3"
+            "Damage": "3",
+            "LocID": "0"
+        },
+        {
+            "Id": "5",
+            "Name": "Spider",
+            "Hp": "70",
+            "Damage": "12",
+            "LocId": "2"
+        },
+        {
+            "Id": "6",
+            "Name": "DungeonBoss",
+            "Hp": "130",
+            "Damage": "20",
+            "LocId": "3"
         }
     ]
 }
