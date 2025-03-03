@@ -80,7 +80,6 @@ public class EnemySpawner : MonoBehaviour
             if (locationID == Int32.Parse(enemyList.Enemies[i].LocID))
             {
                 list.Add(enemyList.Enemies[i]);
-                Debug.Log(list[i].Attacks[0]);
             }
         }
         return list.ToArray();

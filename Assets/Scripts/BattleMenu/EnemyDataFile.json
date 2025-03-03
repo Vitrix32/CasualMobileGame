@@ -6,7 +6,7 @@
       "Hp": "50",
       "Damage": "5",
       "LocID": "0",
-      "Attacks": ["Crit", "Shield", "Reg"],
+      "Attacks": ["Crit", "Reg", "Heal"],
       "AttackNames": ["Bite", "Claw", "Howl"]
     },
     {
@@ -16,7 +16,7 @@
       "Damage": "2",
       "LocID": "0",
       "Attacks": ["Crit", "Shield", "Reg"],
-      "AttackNames": ["Peck", "Scratch", "Cluck"]
+      "AttackNames": ["Peck", "Protective Shell", "Cluck"]
     },
     {
       "Id": "3",
@@ -24,8 +24,8 @@
       "Hp": "35",
       "Damage": "3",
       "LocID": "0",
-      "Attacks": ["Crit", "Shield", "Reg"],
-      "AttackNames": ["Bite", "Claw", "Screech"]
+      "Attacks": ["Crit", "Heal", "Reg"],
+      "AttackNames": ["Bite", "Screech", "Scratch"]
     },
     {
       "Id": "4",
@@ -34,7 +34,7 @@
       "Damage": "3",
       "LocID": "0",
       "Attacks": ["Crit", "Shield", "Reg"],
-      "AttackNames": ["Haunt", "Dissipate", "Scare"]
+      "AttackNames": ["Haunt", "Phantom Shield", "Scare"]
     },
     {
       "Id": "5",
@@ -43,7 +43,7 @@
       "Damage": "12",
       "LocID": "2",
       "Attacks": ["Crit", "Shield", "Reg"],
-      "AttackNames": ["Bite", "Web", "Venom"]
+      "AttackNames": ["Bite", "Protective Web", "Venom"]
     },
     {
       "Id": "6",

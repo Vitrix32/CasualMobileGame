@@ -127,10 +127,17 @@ public class Enemy : MonoBehaviour
         player.TakeDamage(damageToDeal);
     }
 
-    public void shield(Player player)
+    public void shield(Player player, string shieldName)
     {
         isShieldActive = true;
-        player.UpdateText("The " + name + " raised a shield!");
+        player.UpdateText("The " + name + " raised a " + shieldName);
+    }
+
+    public void heal(Player player, int healAmount)
+    {
+        currentHealth += healAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        player.UpdateText("The " + name + " healed!");
     }
 
     public void EnemyAttack(Player player)
@@ -147,15 +154,57 @@ public class Enemy : MonoBehaviour
 
         if (actionRoll <= 0.15f)
         {
-            CritAttack(damageToDeal, player);
+            switch(attacks[0])
+            {
+                case "CritAttack":
+                    CritAttack(damageToDeal, player);
+                    break;
+                case "Shield":
+                    shield(player, attackNames[0]);
+                    break;
+                case "Heal":
+                    heal(player, 15);
+                    break;
+                default:
+                    regAttack(damageToDeal, player);
+                    break;
+            }
         }
         else if (actionRoll <= 0.35f)
         {
-            shield(player);
+            switch(attacks[1])
+            {
+                case "CritAttack":
+                    CritAttack(damageToDeal, player);
+                    break;
+                case "Shield":
+                    shield(player, attackNames[1]);
+                    break;
+                case "Heal":
+                    heal(player, 10);
+                    break;
+                default:
+                    regAttack(damageToDeal, player);
+                    break;
+            }
         }
         else
         {
-            regAttack(damageToDeal, player);
+            switch(attacks[2])
+            {
+                case "CritAttack":
+                    CritAttack(damageToDeal, player);
+                    break;
+                case "Shield":
+                    shield(player, attackNames[2]);
+                    break;
+                case "Heal":
+                    heal(player, 5);
+                    break;
+                default:
+                    regAttack(damageToDeal, player);
+                    break;
+            }
         }
     }
 
