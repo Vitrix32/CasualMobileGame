@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     public string name;
 
     public string[] attacks;
-
     public string[] attackNames;
 
     public TMP_Text healthText;
@@ -32,7 +31,6 @@ public class Enemy : MonoBehaviour
 
     private bool isWeakened = false;
     private float weakenedDamageMultiplier = 0.5f;
-
 
     void Start()
     {
@@ -112,17 +110,17 @@ public class Enemy : MonoBehaviour
         rectTransform.anchoredPosition = originalPosition;
     }
 
-    public void CritAttack(int damageToDeal, Player player)
+    public void CritAttack(int damageToDeal, Player player, string attackName)
     {
         int criticalDamage = Mathf.RoundToInt(damageToDeal * 1.5f);
-        player.UpdateText("The" + name + " performed a critical hit!");
+        player.UpdateText("The " + name + " performed a critical hit with " + attackName + "!");
         audioSource.PlayOneShot(attackSound);
         player.TakeDamage(criticalDamage);  
     }
 
-    public void regAttack(int damageToDeal, Player player)
+    public void regAttack(int damageToDeal, Player player, string attackName)
     {
-        player.UpdateText("The " + name + " attacked!");
+        player.UpdateText("The " + name + " attacked with " + attackName + "!");
         audioSource.PlayOneShot(attackSound);
         player.TakeDamage(damageToDeal);
     }
@@ -133,11 +131,11 @@ public class Enemy : MonoBehaviour
         player.UpdateText("The " + name + " raised a " + shieldName);
     }
 
-    public void heal(Player player, int healAmount)
+    public void heal(Player player, int healAmount, string attackName)
     {
         currentHealth += healAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        player.UpdateText("The " + name + " healed!");
+        player.UpdateText("The " + name + " used " + attackName + " to heal!");
     }
 
     public void EnemyAttack(Player player)
@@ -157,16 +155,16 @@ public class Enemy : MonoBehaviour
             switch(attacks[0])
             {
                 case "CritAttack":
-                    CritAttack(damageToDeal, player);
+                    CritAttack(damageToDeal, player, attackNames[0]);
                     break;
                 case "Shield":
                     shield(player, attackNames[0]);
                     break;
                 case "Heal":
-                    heal(player, 15);
+                    heal(player, 15, attackNames[0]);
                     break;
                 default:
-                    regAttack(damageToDeal, player);
+                    regAttack(damageToDeal, player, attackNames[0]);
                     break;
             }
         }
@@ -175,16 +173,16 @@ public class Enemy : MonoBehaviour
             switch(attacks[1])
             {
                 case "CritAttack":
-                    CritAttack(damageToDeal, player);
+                    CritAttack(damageToDeal, player, attackNames[1]);
                     break;
                 case "Shield":
                     shield(player, attackNames[1]);
                     break;
                 case "Heal":
-                    heal(player, 10);
+                    heal(player, 10, attackNames[1]);
                     break;
                 default:
-                    regAttack(damageToDeal, player);
+                    regAttack(damageToDeal, player, attackNames[1]);
                     break;
             }
         }
@@ -193,16 +191,16 @@ public class Enemy : MonoBehaviour
             switch(attacks[2])
             {
                 case "CritAttack":
-                    CritAttack(damageToDeal, player);
+                    CritAttack(damageToDeal, player, attackNames[2]);
                     break;
                 case "Shield":
                     shield(player, attackNames[2]);
                     break;
                 case "Heal":
-                    heal(player, 5);
+                    heal(player, 5, attackNames[2]);
                     break;
                 default:
-                    regAttack(damageToDeal, player);
+                    regAttack(damageToDeal, player, attackNames[2]);
                     break;
             }
         }
@@ -248,7 +246,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Method to set the weakened status
     public void SetWeakened(bool status)
     {
         isWeakened = status;
