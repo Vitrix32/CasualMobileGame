@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     private GameObject MenuManager;
     public int maxHealth = 100;
     public int currentHealth;
+    public string name;
 
     public TMP_Text healthText;
     public Slider healthBar;
@@ -23,11 +24,10 @@ public class Enemy : MonoBehaviour
     public AudioClip attackSound;
 
     public bool isShieldActive = false;
-    public float shieldReduction = 0.5f; // Reduces damage by 50%
+    public float shieldReduction = 0.5f;
 
-    // New flag to indicate if the enemy is weakened
     private bool isWeakened = false;
-    private float weakenedDamageMultiplier = 0.5f; // Reduces damage by 50%
+    private float weakenedDamageMultiplier = 0.5f;
 
     void Start()
     {
@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
         if (isShieldActive)
         {
             damage = Mathf.RoundToInt(damage * shieldReduction);
-            isShieldActive = false; // Shield only lasts for one attack
+            isShieldActive = false;
             Debug.Log("Enemy's shield reduced damage to " + damage);
         }
 
@@ -113,17 +113,15 @@ public class Enemy : MonoBehaviour
         if (isWeakened)
         {
             damageToDeal = Mathf.RoundToInt(damageToDeal * weakenedDamageMultiplier);
-            isWeakened = false; // Reset weakened status after one attack
-            Debug.Log("Enemy's attack is weakened! Damage reduced to " + damageToDeal);
-            player.UpdateText("Enemy's attack was weakened!");
+            isWeakened = false;
+            player.UpdateText("The " + name + "'s attack is weakened! Damage reduced to " + damageToDeal);
         }
 
         if (actionRoll <= 0.15f)
         {
             // Critical hit
-            int criticalDamage = Mathf.RoundToInt(damageToDeal * 1.5f); // 50% more damage
-            Debug.Log("Enemy performs a critical hit!");
-            player.UpdateText("Enemy performs a critical hit!");
+            int criticalDamage = Mathf.RoundToInt(damageToDeal * 1.5f);
+            player.UpdateText("The" + name + " performed a critical hit!");
             audioSource.PlayOneShot(attackSound);
             player.TakeDamage(criticalDamage);
         }
@@ -131,15 +129,12 @@ public class Enemy : MonoBehaviour
         {
             // Raise shield
             isShieldActive = true;
-            Debug.Log("Enemy raises a shield!");
-            player.UpdateText("Enemy raises a shield!");
-            // Optional: Add visual effect here
+            player.UpdateText("The " + name + " raised a shield!");
         }
         else
         {
             // Normal attack
-            Debug.Log("Enemy attacks!");
-            player.UpdateText("Enemy attacks!");
+            player.UpdateText("The " + name + " attacked!");
             audioSource.PlayOneShot(attackSound);
             player.TakeDamage(damageToDeal);
         }

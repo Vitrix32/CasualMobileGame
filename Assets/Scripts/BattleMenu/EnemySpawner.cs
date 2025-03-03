@@ -25,11 +25,6 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        string[] enemyTypes = { "Goblin", "Lion", "Wolf" };
-        int randomIndex = Random.Range(0, enemyTypes.Length);
-        enemyPrefabName = enemyTypes[randomIndex];
-        */
         enemyPrefabName = "GenericEnemyTemplate";
 
         // Call the Spawn method repeatedly, you can also use your logic for conditional spawns
@@ -57,14 +52,11 @@ public class EnemySpawner : MonoBehaviour
 
             enemy.attackDamage = Int32.Parse(data.Damage);
             enemy.maxHealth = Int32.Parse(data.Hp);
+            enemy.name = data.Name;
 
             Sprite newSprite = Resources.Load("EnemyArt/" + data.Name, typeof(Sprite)) as Sprite;
-            //Debug.Log("EnemyArt/" + data.Name);
-            //Debug.Log(newSprite);
             SpriteRenderer spriteRenderer = enemy.GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = newSprite;
-
-            //Debug.Log(data.Name);
         }
 
         if (enemyPrefab != null && spawnPoint != null)
@@ -72,26 +64,21 @@ public class EnemySpawner : MonoBehaviour
             // Instantiate the enemy at the spawn point's position and rotation
             Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
         }
-        else
-        {
-            //Debug.LogError("Enemy prefab or spawn point is not properly set.");
-        }
     }
 
     private EnemyData[] ReturnEnemyArray()
     {
         EnemyList enemyList = new EnemyList();
-       // Debug.Log("text file read in: " + enemyJson.text);
-        //string tempJson = File.ReadAllText("EnemyDataFile.json");
         enemyList = JsonUtility.FromJson<EnemyList>(enemyJson.text);
         List<EnemyData> list = new List<EnemyData>();
         for (int i = 0; i < enemyList.Enemies.Length; i++)
         {
-            // ADDING FUNCTIONALITY - IF STATEMENT - GET ENEMIES BASED ON LOCATION
+            // GET ENEMIES BASED ON LOCATION
             int locationID = PlayerPrefs.GetInt("LocID");
             if (locationID == Int32.Parse(enemyList.Enemies[i].LocID))
             {
                 list.Add(enemyList.Enemies[i]);
+                Debug.Log(list[i].Attacks[0]);
             }
         }
         return list.ToArray();

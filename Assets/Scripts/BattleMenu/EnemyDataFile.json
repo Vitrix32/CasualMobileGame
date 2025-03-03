@@ -5,42 +5,48 @@
       "Name": "Wolf",
       "Hp": "50",
       "Damage": "5",
-      "LocID": "0"
+      "LocID": "0",
+      "Attacks": ["Bite", "Claw", "Howl"]
     },
     {
       "Id": "2",
       "Name": "Chicken",
       "Hp": "20",
       "Damage": "2",
-      "LocID": "0"
+      "LocID": "0",
+      "Attacks": ["Peck", "Scratch", "Cluck"]
     },
     {
       "Id": "3",
       "Name": "Bat",
       "Hp": "35",
       "Damage": "3",
-      "LocID": "0"
+      "LocID": "0",
+      "Attacks": ["Bite", "Claw", "Screech"]
     },
     {
       "Id": "4",
       "Name": "Ghost",
       "Hp": "30",
       "Damage": "3",
-      "LocID": "0"
+      "LocID": "0",
+      "Attacks": ["Haunt", "Dissipate", "Scare"]
     },
     {
       "Id": "5",
       "Name": "Spider",
       "Hp": "70",
       "Damage": "12",
-      "LocID": "2"
+      "LocID": "2",
+      "Attacks": ["Bite", "Web", "Venom"]
     },
     {
       "Id": "6",
       "Name": "DungeonBoss",
       "Hp": "130",
       "Damage": "20",
-      "LocID": "3"
+      "LocID": "3",
+      "Attacks": ["placeholder"]
     }
   ]
 }

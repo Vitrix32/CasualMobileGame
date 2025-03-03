@@ -21,8 +21,7 @@ public class ReadEnemyFromJson : MonoBehaviour
         List<EnemyData> list = new List<EnemyData>();
         for (int i = 0; i < enemyList.Enemies.Length; i++)
         {
-            //Debug.Log(enemyList.Enemies[i].Name);
-            list.Add(enemyList.Enemies[i]);
+            list.Add(enemyList.Enemies[i]);        
         }
         return list.ToArray();
 
