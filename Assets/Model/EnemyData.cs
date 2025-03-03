@@ -8,4 +8,6 @@ public class EnemyData
     public string Damage;
     public string LocID;
     public string[] Attacks;
+
+    public string[] AttackNames;
 }

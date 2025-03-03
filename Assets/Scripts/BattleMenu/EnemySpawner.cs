@@ -53,6 +53,8 @@ public class EnemySpawner : MonoBehaviour
             enemy.attackDamage = Int32.Parse(data.Damage);
             enemy.maxHealth = Int32.Parse(data.Hp);
             enemy.name = data.Name;
+            enemy.attacks = data.Attacks;
+            enemy.attackNames = data.AttackNames;
 
             Sprite newSprite = Resources.Load("EnemyArt/" + data.Name, typeof(Sprite)) as Sprite;
             SpriteRenderer spriteRenderer = enemy.GetComponent<SpriteRenderer>();

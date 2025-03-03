@@ -10,6 +10,10 @@ public class Enemy : MonoBehaviour
     public int currentHealth;
     public string name;
 
+    public string[] attacks;
+
+    public string[] attackNames;
+
     public TMP_Text healthText;
     public Slider healthBar;
     public int attackDamage = 20;
@@ -29,6 +33,7 @@ public class Enemy : MonoBehaviour
     private bool isWeakened = false;
     private float weakenedDamageMultiplier = 0.5f;
 
+
     void Start()
     {
         MenuManager = GameObject.Find("BattleMenu");
@@ -46,6 +51,8 @@ public class Enemy : MonoBehaviour
         {
             originalPosition = rectTransform.anchoredPosition;
         }
+
+        Debug.Log(attackNames);
     }
 
     public int GetDOTTurn()
@@ -105,6 +112,27 @@ public class Enemy : MonoBehaviour
         rectTransform.anchoredPosition = originalPosition;
     }
 
+    public void CritAttack(int damageToDeal, Player player)
+    {
+        int criticalDamage = Mathf.RoundToInt(damageToDeal * 1.5f);
+        player.UpdateText("The" + name + " performed a critical hit!");
+        audioSource.PlayOneShot(attackSound);
+        player.TakeDamage(criticalDamage);  
+    }
+
+    public void regAttack(int damageToDeal, Player player)
+    {
+        player.UpdateText("The " + name + " attacked!");
+        audioSource.PlayOneShot(attackSound);
+        player.TakeDamage(damageToDeal);
+    }
+
+    public void shield(Player player)
+    {
+        isShieldActive = true;
+        player.UpdateText("The " + name + " raised a shield!");
+    }
+
     public void EnemyAttack(Player player)
     {
         float actionRoll = Random.Range(0f, 1f);
@@ -114,29 +142,20 @@ public class Enemy : MonoBehaviour
         {
             damageToDeal = Mathf.RoundToInt(damageToDeal * weakenedDamageMultiplier);
             isWeakened = false;
-            player.UpdateText("The " + name + "'s attack is weakened! Damage reduced to " + damageToDeal);
+            player.UpdateText("The " + name + "'s attack is weakened!");
         }
 
         if (actionRoll <= 0.15f)
         {
-            // Critical hit
-            int criticalDamage = Mathf.RoundToInt(damageToDeal * 1.5f);
-            player.UpdateText("The" + name + " performed a critical hit!");
-            audioSource.PlayOneShot(attackSound);
-            player.TakeDamage(criticalDamage);
+            CritAttack(damageToDeal, player);
         }
         else if (actionRoll <= 0.35f)
         {
-            // Raise shield
-            isShieldActive = true;
-            player.UpdateText("The " + name + " raised a shield!");
+            shield(player);
         }
         else
         {
-            // Normal attack
-            player.UpdateText("The " + name + " attacked!");
-            audioSource.PlayOneShot(attackSound);
-            player.TakeDamage(damageToDeal);
+            regAttack(damageToDeal, player);
         }
     }
 
