@@ -148,13 +148,13 @@ public class Player : MonoBehaviour
                 float roll = Random.Range(0f, 1f);
                 if (roll <= shieldBlockChance)
                 {
-                    UpdateText("Shield blocked the attack!");
+                    UpdateText("Your shield blocked the attack!");
                     isShieldActive = false;
                     return;
                 }
                 else
                 {
-                    UpdateText("Shield failed to block the attack.");
+                    UpdateText("Your shield failed to block the attack.");
                     isShieldActive = false;
                 }
             }
@@ -351,7 +351,7 @@ public class Player : MonoBehaviour
         }
 
         enemy.TakeDamage(actualDamage);
-        UpdateText("You used " + attackName + "!");
+        UpdateText("You used Slash to deal damage!");
     }
 
     private void PerformConsumeItem(string itemName)
@@ -366,7 +366,7 @@ public class Player : MonoBehaviour
     {
         int duration = 3;
         enemy.ApplyDOT(clawDamage, duration);
-        UpdateText("You used Attack With DOT!");
+        UpdateText("You used Shadow Scratch to deal DOT!");
     }
 
     private void PerformEmpower()
@@ -374,7 +374,7 @@ public class Player : MonoBehaviour
         damageMultiplier = 1.5f;
         isEmpowered = true;
 
-        int healAmount = 10;
+        int healAmount = 5;
         HealPlayer(healAmount);
 
         UpdateText("You empowered yourself!");
@@ -388,8 +388,16 @@ public class Player : MonoBehaviour
 
     private void PerformSkipEnemyTurn()
     {
+        int actualDamage = Mathf.RoundToInt(bowDamage);
+
+        if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
+        {
+            actualDamage = 10000;
+        }
+
+        enemy.TakeDamage(actualDamage);
         skipEnemyTurn = true;
-        UpdateText("You used Skip Enemy Turn!");
+        UpdateText("You used Time Skip to skip the enemies turn!");
     }
 
     private void PerformDoubleDamage()
@@ -402,7 +410,7 @@ public class Player : MonoBehaviour
         }
 
         enemy.TakeDamage(actualDamage);
-        UpdateText("You used Double Damage!");
+        UpdateText("You used Heavy Axe for double damage!");
     }
 
     private void PerformWeakenEnemy()
@@ -416,14 +424,14 @@ public class Player : MonoBehaviour
 
         enemy.TakeDamage(actualDamage);
         enemy.SetWeakened(true);
-        UpdateText("You used Weaken Enemy!");
+        UpdateText("You used Sharp Shot to weaken the enemy!");
     }
 
     private void PerformHealSelf()
     {
         int healAmount = 10;
         HealPlayer(healAmount);
-        UpdateText("You used Heal Self!");
+        UpdateText("You used Healing Winds to heal yourself!");
     }
 
     private void HealPlayer(int health)

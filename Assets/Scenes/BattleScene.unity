@@ -5697,26 +5697,21 @@ MonoBehaviour:
   - {fileID: 727089890, guid: ec0a49ddbd85aff4a96882e81adcb6b2, type: 3}
   - {fileID: -2743600, guid: 906cd07d55f66114aa8576f41ca975b2, type: 3}
   - {fileID: -1604902479, guid: 4d5653b9f706fe947991e825885a75dc, type: 3}
-  maxHealth: 100
-  currentHealth: 0
-  damage: 0
-  healthText: {fileID: 921649186}
-  healthSlider: {fileID: 1792121099}
-  attackPanel: {fileID: 1726642942}
-  spellPanel: {fileID: 1696959848}
-  itemPanel: {fileID: 2063693335}
-  mainMenuPanel: {fileID: 2037871565}
-  shakeDuration: 0.5
-  shakeMagnitude: 0.9
   healParticleEffect: {fileID: 1683082255}
   UniversalAudio: {fileID: 0}
-  battleText: {fileID: 1454473799}
   itemManager: {fileID: 158694491}
+  enemy: {fileID: 0}
+  healthText: {fileID: 921649186}
+  healthSlider: {fileID: 1792121099}
   appleCountText: {fileID: 837504397}
   milkCountText: {fileID: 1222725573}
   cookieCountText: {fileID: 941398540}
   bananaCountText: {fileID: 1861986500}
-  enemy: {fileID: 0}
+  battleText: {fileID: 1454473799}
+  attackPanel: {fileID: 1726642942}
+  spellPanel: {fileID: 1696959848}
+  itemPanel: {fileID: 2063693335}
+  mainMenuPanel: {fileID: 2037871565}
   attackButtonInfos:
   - attackName: sword
     button: {fileID: 82284952}
@@ -5750,10 +5745,15 @@ MonoBehaviour:
     button: {fileID: 1952811053}
     cooldown: 0
     maxCooldown: 2
+  maxHealth: 50
+  currentHealth: 0
+  damage: 0
   swordDamage: 0
   axeDamage: 0
   clawDamage: 0
   bowDamage: 0
+  shakeDuration: 0.5
+  shakeMagnitude: 0.9
 --- !u!224 &1593877630
 RectTransform:
   m_ObjectHideFlags: 0
