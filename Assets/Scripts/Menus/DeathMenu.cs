@@ -119,6 +119,7 @@ public class DeathMenu : MonoBehaviour
          */
         PlayerPrefs.SetInt("LocID", 0);
         PlayerPrefs.SetString("SceneName", "GameplayScene");
+        PlayerPrefs.SetInt("DunBoss", 0);
 
         return;
     }

@@ -22,8 +22,6 @@ public class BattleMenu : MonoBehaviour
         enemiesAmount = 1;
         FadePanel = GameObject.Find("FadePanel");
 
-        FindObjectOfType<Fade>().fadeFromCombat = true;
-
         // Initialize allButtons list by finding all Button components in the panels
         InitializeAllButtons();
     }
@@ -92,7 +90,20 @@ public class BattleMenu : MonoBehaviour
 
     public void Flee()
     {
-        AllEnemiesDead();
+        if (PlayerPrefs.GetInt("LocID") == 3)
+        {
+            FadePanel.GetComponent<SceneTransition>().End();
+
+            PlayerPrefs.SetInt("TempYVal", 4);
+            //WorldPlayer.transform.position = new Vector3(WorldPlayer.transform.position.x, WorldPlayer.transform.position.y + 2, WorldPlayer.transform.position.z);
+            PlayerPrefs.SetInt("LocID", 2);
+
+            Invoke("ExitScene", 2.0f);
+        } 
+        else
+        {
+            AllEnemiesDead();
+        }
     }
 
     public void EnemyNeutralized()
@@ -107,6 +118,12 @@ public class BattleMenu : MonoBehaviour
     public void AllEnemiesDead()
     {
         FadePanel.GetComponent<SceneTransition>().End();
+        if (PlayerPrefs.GetInt("LocID") == 3)
+        {
+            //FindObjectOfType<DungeonBossEncounter>().IsDungeonBossEncounter = false;
+            PlayerPrefs.SetInt("LocID", 2);
+            PlayerPrefs.SetInt("DunBoss", 1);
+        }
         Invoke("ExitScene", 2.0f);
     }
 

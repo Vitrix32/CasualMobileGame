@@ -83,7 +83,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     // THIS IS FOR QUEST AND DIALOGUE OBJECTS... NOT PLAYERSTATS
-    public void SetObjectsToLiveJSON()
+    private void SetObjectsToLiveJSON()
     {
         // QUESTS
         if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt"))
