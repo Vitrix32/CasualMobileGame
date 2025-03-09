@@ -223,6 +223,16 @@
                     "increment": "none"
                 }
             ]
+        },
+        {
+            "name": "Snowman",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "I hear a weapon that enhances its user's power lies buried in these snowy peaks.",
+                    "increment": "none"
+                }
+            ]
         }
     ]
 }
