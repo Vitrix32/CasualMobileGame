@@ -51,8 +51,17 @@
       "Hp": "130",
       "Damage": "20",
       "LocID": "3",
-      "Attacks": ["Crit", "Shield", "Reg"],
-      "AttackNames": ["placeholder", "Placeholder", "Placeholder"]
+      "Attacks": [ "Crit", "Shield", "Reg" ],
+      "AttackNames": [ "placeholder", "Placeholder", "Placeholder" ]
+    },
+    {
+      "Id": "7",
+      "Name": "Skeleton",
+      "Hp": "80",
+      "Damage": "23",
+      "LocID": "2",
+      "Attacks": [ "Crit", "Reg", "Heal" ],
+      "AttackNames": [ "Stab", "Slash", "Rejuvination" ]
     }
   ]
 }
