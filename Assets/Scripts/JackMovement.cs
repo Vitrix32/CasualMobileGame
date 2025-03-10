@@ -9,7 +9,7 @@ using UnityEngine;
  * Description:
  * This file will contain code specific to the movement logic of Jeff. It will utilize
  * the methods from the NPCMovement to achieve movement and idling, but the logic
- * related to how and when Jeff should move are in this file.
+ * related to how and when Jack should move are in this file.
  */
 
 public class JackMovement : MonoBehaviour
@@ -26,7 +26,7 @@ public class JackMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Cat") == 11 && currentStep == 0)
+        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Jack") == 4 && currentStep == 0)
         {
             currentStep++;
         }

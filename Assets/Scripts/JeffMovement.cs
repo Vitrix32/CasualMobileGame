@@ -26,7 +26,7 @@ public class JeffMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Jeff") == 1 && currentStep == 0)
+        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Marlena") == 1 && currentStep == 0)
         {
             currentStep++;
         }

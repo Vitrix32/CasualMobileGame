@@ -9,7 +9,7 @@ using UnityEngine;
  * Description:
  * This file will contain code specific to the movement logic of Jeff. It will utilize
  * the methods from the NPCMovement to achieve movement and idling, but the logic
- * related to how and when Jeff should move are in this file.
+ * related to how and when Samantha should move are in this file.
  */
 
 public class SamanthaMovement : MonoBehaviour
@@ -26,14 +26,21 @@ public class SamanthaMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Jack") == 11 && currentStep == 0)
+        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Samantha") == 3 && currentStep == 0) //want this to trigger at Samantha == 1 then stop then go to next point at Samantha == 3
         {
             currentStep++;
         }
         else if (currentStep == 1)
         {
             this.GetComponent<NPCMovement>().startPatrol();
-            currentStep++;
+            if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Samantha") == 3)
+            {
+                currentStep++;
+            }
+        }
+        else if (currentStep == 2)
+        {
+            this.GetComponent<NPCMovement>().startPatrol();
         }
     }
 }

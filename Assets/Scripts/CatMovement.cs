@@ -9,7 +9,7 @@ using UnityEngine;
  * Description:
  * This file will contain code specific to the movement logic of Jeff. It will utilize
  * the methods from the NPCMovement to achieve movement and idling, but the logic
- * related to how and when Jeff should move are in this file.
+ * related to how and when Cat should move are in this file.
  */
 
 public class CatMovement : MonoBehaviour
@@ -26,14 +26,21 @@ public class CatMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Jeff") == 1 && currentStep == 0)
+        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Marlena") == 1 && currentStep == 0) //want this to trigger at Marlena == 1 then stop then go to next point at Cat == 2
         {
             currentStep++;
         }
         else if (currentStep == 1)
         {
             this.GetComponent<NPCMovement>().startPatrol();
-            currentStep++;
+            if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Cat") == 2)
+            {
+                currentStep++;
+            }
+        }
+        else if (currentStep == 2)
+        {
+            this.GetComponent<NPCMovement>().startPatrol();
         }
     }
 }

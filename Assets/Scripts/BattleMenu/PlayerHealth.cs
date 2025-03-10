@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System;
 using Random = UnityEngine.Random;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;
 
 public class Player : MonoBehaviour
 {
@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     public float shakeMagnitude = 0.9f;
 
     [SerializeField]
-    private AnimatorController[] animatorControllers;
+    private RuntimeAnimatorController[] animatorControllers;
     #endregion
 
     #region Private Fields
@@ -89,6 +89,7 @@ public class Player : MonoBehaviour
     {
         WorldPlayer = GameObject.Find("WorldPlayer");
 
+        PlayerPrefs.SetInt("Health", maxHealth);
         currentHealth = PlayerPrefs.GetInt("Health");
         UpdateHealthUI();
         SetAttackButtonsInteractable();

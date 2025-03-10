@@ -1,20 +1,20 @@
 {
     "quests": [
         {
-            "name": "testQuest",
-            "questInfo": "This is the first quest ever wrote! An easter egg for the expo!",
+            "name": "Guards' Quest",
+            "questInfo": "These guards seem to need a bit of entertainment",
             "value": 0,
             "parts": [
                 {
-                    "description": "Talk to the first NPC",
+                    "description": "Ask the left guard what time it is",
                     "increment": "NPC_1 0"
                 },
                 {
-                    "description": "Talk to the second NPC",
-                    "increment": "NPC_2 0"
+                    "description": "Tell the right guard a fake time",
+                    "increment": "NPC_2 1"
                 },
                 {
-                    "description": "Return to the first NPC",
+                    "description": "Quest complete",
                     "increment": "NPC_1 1"
                 }
             ]
@@ -39,8 +39,55 @@
             ]
         },
         {
-            "name": "expoQuest",
-            "questInfo": "A demo of our game! Enjoy!",
+            "name": "Jeff's Scrolls",
+            "questInfo": "Jeff seems to have misplaced his scrolls",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Find all Jeff's scrolls (0/8)",
+                    "increment": "Jeff 1"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (1/8)",
+                    "increment": "Scroll 1"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (2/8)",
+                    "increment": "Scroll 2"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (3/8)",
+                    "increment": "Scroll 3"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (4/8)",
+                    "increment": "Scroll 4"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (5/8)",
+                    "increment": "Scroll 5"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (6/8)",
+                    "increment": "Scroll 6"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (7/8)",
+                    "increment": "Scroll 7"
+                },
+                {
+                    "description": "Return to Jeff and give him his scrolls",
+                    "increment": "Scroll 8"
+                },
+                {
+                    "description": "Quest Complete",
+                    "increment": "Jeff 3"
+                }
+            ]
+        },
+        {
+            "name": "Main Quest",
+            "questInfo": "Today is going to be an adventure, you can feel it!",
             "value": 0,
             "parts": [
                 {
@@ -49,31 +96,35 @@
                 },
                 {
                     "description": "Talk to Marlena on the north east side of town",
-                    "increment": "Samantha 0"
-                },
-                {
-                    "description": "Bring Jack his lunch outside the eastern forest",
-                    "increment": "Marlena 0"
-                },
-                {
-                    "description": "Check back with Marlena",
-                    "increment": "Jack 0"
-                },
-                {
-                    "description": "Check if Samantha's seen the magic cat",
-                    "increment": "Marlena 1"
-                },
-                {
-                    "description": "Check the forest for the magic cat",
                     "increment": "Samantha 1"
                 },
                 {
-                    "description": "Find the mystic lake through the forest",
+                    "description": "Bring Jack his lunch outside the eastern forest",
+                    "increment": "Marlena 1"
+                },
+                {
+                    "description": "Check back with Marlena",
                     "increment": "Jack 1"
                 },
                 {
-                    "description": "Demo Over",
+                    "description": "Check if Samantha's seen the magic cat",
+                    "increment": "Marlena 2"
+                },
+                {
+                    "description": "Check the forest for the magic cat",
+                    "increment": "Samantha 2"
+                },
+                {
+                    "description": "Find the mystic lake through the forest",
+                    "increment": "Jack 3"
+                },
+                {
+                    "description": "Explore the mountain trail",
                     "increment": "Cat 1"
+                },
+                {
+                    "description": "Explore the New Castle trail",
+                    "increment": "Cat 3"
                 }
             ]
         },
@@ -83,16 +134,16 @@
             "value": 0,
             "parts": [
                 {
-                    "description": "Speak to Ralph to learn about the scarecrow.",
-                    "increment": "Ralph 0"
-                },
-                {
                     "description": "Find the Scarecrow near the cornrows east of Graville.",
-                    "increment": "Scarecrow 0"
+                    "increment": "Ralph 0"
                 },
                 {
                     "description": "Return to Ralph and sing the scarecrow’s song.",
                     "increment": "Scarecrow 1"
+                },
+                {
+                    "description": "Quest Complete",
+                    "increment": "Ralph 2"
                 }
             ]
         },
@@ -102,15 +153,15 @@
             "value": 0,
             "parts": [
                 {
-                    "description": "Talk to Ezra about delivering seeds.",
+                    "description": "Take the seeds up to Lily’s garden.",
                     "increment": "Ezra 0"
                 },
                 {
-                    "description": "Take the seeds up to Lily’s garden.",
+                    "description": "Return Lily’s flower to Ezra.",
                     "increment": "Lily 1"
                 },
                 {
-                    "description": "Return Lily’s flower to Ezra.",
+                    "description": "Quest Complete",
                     "increment": "Ezra 2"
                 }
             ]
