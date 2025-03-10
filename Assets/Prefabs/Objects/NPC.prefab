@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 2495075205976332785}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 0.4, y: 0.5, z: 1}
+  m_LocalPosition: {x: -0.02, y: -0.34, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: -1407208739
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -54016357, guid: 0b12c0e9ec3a9284cbcec713a4c23bfa, type: 3}
+  m_Sprite: {fileID: -1329731172, guid: 5b19936ebb6b955478b020578b4de784, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 1
-  m_Size: {x: 4, y: 4}
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -118,11 +118,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbec2aa32a6ff7648b8c35bd161cffed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPath: []
+  patrolPath:
+  - {fileID: 0}
+  - {fileID: 0}
   moveCount: 2
-  lapCount: 0
+  lapCount: 1
   idleDuration: -1
-  moveSpeed: 3
+  moveSpeed: 99
 --- !u!61 &8947379375879449434
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -155,18 +157,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.17706108, y: 0.241781}
+  m_Offset: {x: 0.14006424, y: -0.07}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.52025187, y: 0.2438141}
-    oldSize: {x: 1.4375, y: 1.875}
-    newSize: {x: 4, y: 4}
+    pivot: {x: 0.5060077, y: 0.2093255}
+    oldSize: {x: 1.5625, y: 1.9375}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
-    drawMode: 1
+    drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.303379, y: 8.748995}
+  m_Size: {x: 4.229388, y: 3.6750069}
   m_EdgeRadius: 0
 --- !u!70 &4114248225204638534
 CapsuleCollider2D:
@@ -200,6 +202,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07, y: -0.46}
-  m_Size: {x: 3.6374416, y: 1.1888009}
+  m_Offset: {x: 0.009282501, y: -0.09}
+  m_Size: {x: 1.0778092, y: 0.56}
   m_Direction: 1
