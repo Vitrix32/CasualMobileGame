@@ -47,18 +47,19 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveAndExitToMenu()
     {
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         SaveGame();
-        GoToMainMenu();
+        Invoke("GoToMainMenu", 0.4f);
     }
 
     public void DontSaveAndExitToMenu()
     {
-        GoToMainMenu();
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
+        Invoke("GoToMainMenu", 0.4f);
     }
 
     private void GoToMainMenu()
     {
-        WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
         isPaused = false;

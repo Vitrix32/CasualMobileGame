@@ -58,7 +58,7 @@ public class FootstepAudioHandling : MonoBehaviour
             }
             audioSource.clip = currentFootsteps[random];
             audioSource.Play();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.4f);
         }
     }
 
