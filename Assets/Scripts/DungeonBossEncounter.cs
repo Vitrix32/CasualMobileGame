@@ -35,7 +35,7 @@ public class DungeonBossEncounter : MonoBehaviour
         }
         if (PlayerPrefs.GetInt("TempYVal") != 0)
         {
-            WorldPlayer.transform.position = new Vector3(WorldPlayer.transform.position.x, WorldPlayer.transform.position.y + PlayerPrefs.GetInt("TempYVal"), WorldPlayer.transform.position.z);
+            WorldPlayer.transform.position = new Vector3((float)296.3, (float)83.3, WorldPlayer.transform.position.z);
             PlayerPrefs.SetInt("TempYVal", 0);
         }
     }
