@@ -200,7 +200,7 @@ SpriteRenderer:
   m_SortingLayerID: -1407208739
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9113971938b89456ea9cfb7274dbe574, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 02d3dd7037f4041f7b418fac68830cba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -223,20 +223,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5817c1fd9f33e400c9208032ec001acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 50
   currentHealth: 0
-  name: Chicken
+  name: Wolf
   attacks:
   - Crit
-  - Shield
   - Reg
+  - Heal
   attackNames:
-  - Peck
-  - Protective Shell
-  - Cluck
+  - Bite
+  - Claw
+  - Howl
   healthText: {fileID: 2860557351010993533}
   healthBar: {fileID: 3734570033287303679}
-  attackDamage: 2
+  attackDamage: 5
   shakeDuration: 0.5
   shakeMagnitude: 0.9
   attackSound: {fileID: 8300000, guid: b64728f271e3a984e842e3f6ea0cf840, type: 3}

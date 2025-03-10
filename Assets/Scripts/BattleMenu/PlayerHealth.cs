@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System;
 using Random = UnityEngine.Random;
+using UnityEditor.Animations;
 
 public class Player : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class Player : MonoBehaviour
     public float shakeDuration = 0.5f;
     public float shakeMagnitude = 0.9f;
 
+    [SerializeField]
+    private AnimatorController[] animatorControllers;
     #endregion
 
     #region Private Fields
@@ -226,7 +229,7 @@ public class Player : MonoBehaviour
                     break;
 
                 default:
-                    PlayEffect(4);
+                    PlayEffect(0);
                     PerformRegularAttack(attack);
                     break;
             }
@@ -505,13 +508,30 @@ public class Player : MonoBehaviour
 
     private void PlayEffect(int index)
     {
-        combatVFX.GetComponent<SpriteRenderer>().sprite = VFXSprites[index];
-        Invoke("ResetEffect", 0.8f);
+        combatVFX.SetActive(true);
+        combatVFX.GetComponent<Animator>().runtimeAnimatorController = animatorControllers[index];
+        if (index == 0)
+        {
+            combatVFX.GetComponent<Animator>().Play("Sword_Animation");
+        }
+        else if (index == 1) 
+        {
+            combatVFX.GetComponent<Animator>().Play("Axe_Animation");
+        }
+        else if (index == 2)
+        {
+            combatVFX.GetComponent<Animator>().Play("Scratch_Animation");
+        }
+        else if (index == 3)
+        {
+            combatVFX.GetComponent<Animator>().Play("Slingshot_Animation");
+        }
+        Invoke("ResetEffect", 0.55f);
     }
 
     private void ResetEffect()
     {
-        combatVFX.GetComponent<SpriteRenderer>().sprite = VFXSprites[0];
+        combatVFX.SetActive(false);
     }
 
     #endregion

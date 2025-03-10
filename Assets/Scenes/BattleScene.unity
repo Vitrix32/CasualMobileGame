@@ -5754,6 +5754,16 @@ MonoBehaviour:
   bowDamage: 0
   shakeDuration: 0.5
   shakeMagnitude: 0.9
+  animatorControllers:
+  - {fileID: 9100000, guid: 56bce3aba7d9b7744b5f0ec043528cfa, type: 2}
+  - {fileID: 9100000, guid: 5449ab9ae1577bd479016c9423d27653, type: 2}
+  - {fileID: 9100000, guid: 2b6b42d0fb3e1da449bba20a2d20faad, type: 2}
+  - {fileID: 9100000, guid: df05f4721688a1c43bfff6410de9e615, type: 2}
+  animations:
+  - {fileID: 7400000, guid: d1d7bd02df86c0d40917db924d5bf80d, type: 2}
+  - {fileID: 7400000, guid: 25916ab3890e3fd4c8a74104a7cb87ad, type: 2}
+  - {fileID: 7400000, guid: ae41dbbb1de0c7f449628aaa3f607d5f, type: 2}
+  - {fileID: 7400000, guid: 8f1d240715108de4bac8abb52134cbc2, type: 2}
 --- !u!224 &1593877630
 RectTransform:
   m_ObjectHideFlags: 0
