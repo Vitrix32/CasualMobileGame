@@ -124,6 +124,13 @@ public class BattleMenu : MonoBehaviour
             PlayerPrefs.SetInt("LocID", 2);
             PlayerPrefs.SetInt("DunBoss", 1);
         }
+        if (PlayerPrefs.GetInt("LocID") == 4)
+        {
+            //FindObjectOfType<DungeonBossEncounter>().IsDungeonBossEncounter = false;
+            PlayerPrefs.SetInt("LocID", 0);
+            PlayerPrefs.SetInt("DunBoss", 1);
+            // DO SOMETHING HERE FOR GAME OVER
+        }
         Invoke("ExitScene", 2.0f);
     }
 

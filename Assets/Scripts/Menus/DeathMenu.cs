@@ -120,6 +120,7 @@ public class DeathMenu : MonoBehaviour
         PlayerPrefs.SetInt("LocID", 0);
         PlayerPrefs.SetString("SceneName", "GameplayScene");
         PlayerPrefs.SetInt("DunBoss", 0);
+        PlayerPrefs.SetInt("FinBoss", 0);
 
         return;
     }

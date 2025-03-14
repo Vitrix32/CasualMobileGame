@@ -6,8 +6,8 @@
       "Hp": "50",
       "Damage": "5",
       "LocID": "0",
-      "Attacks": ["Crit", "Reg", "Heal"],
-      "AttackNames": ["Bite", "Claw", "Howl"]
+      "Attacks": [ "Crit", "Reg", "Heal" ],
+      "AttackNames": [ "Bite", "Claw", "Howl" ]
     },
     {
       "Id": "2",
@@ -15,8 +15,8 @@
       "Hp": "20",
       "Damage": "2",
       "LocID": "0",
-      "Attacks": ["Crit", "Shield", "Reg"],
-      "AttackNames": ["Peck", "Protective Shell", "Cluck"]
+      "Attacks": [ "Crit", "Shield", "Reg" ],
+      "AttackNames": [ "Peck", "Protective Shell", "Cluck" ]
     },
     {
       "Id": "3",
@@ -24,8 +24,8 @@
       "Hp": "35",
       "Damage": "3",
       "LocID": "0",
-      "Attacks": ["Crit", "Heal", "Reg"],
-      "AttackNames": ["Bite", "Screech", "Scratch"]
+      "Attacks": [ "Crit", "Heal", "Reg" ],
+      "AttackNames": [ "Bite", "Screech", "Scratch" ]
     },
     {
       "Id": "4",
@@ -33,8 +33,8 @@
       "Hp": "30",
       "Damage": "3",
       "LocID": "0",
-      "Attacks": ["Crit", "Shield", "Reg"],
-      "AttackNames": ["Haunt", "Phantom Shield", "Scare"]
+      "Attacks": [ "Crit", "Shield", "Reg" ],
+      "AttackNames": [ "Haunt", "Phantom Shield", "Scare" ]
     },
     {
       "Id": "5",
@@ -42,8 +42,8 @@
       "Hp": "70",
       "Damage": "12",
       "LocID": "2",
-      "Attacks": ["Crit", "Shield", "Reg"],
-      "AttackNames": ["Bite", "Protective Web", "Venom"]
+      "Attacks": [ "Crit", "Shield", "Reg" ],
+      "AttackNames": [ "Bite", "Protective Web", "Venom" ]
     },
     {
       "Id": "6",
@@ -52,7 +52,7 @@
       "Damage": "20",
       "LocID": "3",
       "Attacks": [ "Crit", "Shield", "Reg" ],
-      "AttackNames": [ "placeholder", "Placeholder", "Placeholder" ]
+      "AttackNames": [ "Placeholder", "Placeholder", "Placeholder" ]
     },
     {
       "Id": "7",
@@ -62,6 +62,15 @@
       "LocID": "2",
       "Attacks": [ "Crit", "Reg", "Heal" ],
       "AttackNames": [ "Stab", "Slash", "Rejuvination" ]
+    },
+    {
+      "Id": "7",
+      "Name": "FinalBoss",
+      "Hp": "200",
+      "Damage": "30",
+      "LocID": "4",
+      "Attacks": [ "Crit", "Reg", "Heal" ],
+      "AttackNames": [ "Placeholder", "Placeholder", "Placeholder" ]
     }
   ]
 }
