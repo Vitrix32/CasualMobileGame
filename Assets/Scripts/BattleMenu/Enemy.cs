@@ -5,6 +5,10 @@ using TMPro;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject combatStats;
+
+    private GameObject playerCombatStats;
     private GameObject MenuManager;
     public int maxHealth = 100;
     public int currentHealth;
@@ -35,6 +39,8 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         MenuManager = GameObject.Find("BattleMenu");
+        combatStats = GameObject.Find("EnemyCombatStats");
+        playerCombatStats = GameObject.Find("CombatStats");
         currentHealth = maxHealth;
         UpdateHealthUI();
         audioSource = GetComponent<AudioSource>();
@@ -64,6 +70,7 @@ public class Enemy : MonoBehaviour
         {
             damage = Mathf.RoundToInt(damage * shieldReduction);
             isShieldActive = false;
+            combatStats.GetComponent<CombatStats>().UnsetStat(0);
             Debug.Log("Enemy's shield reduced damage to " + damage);
         }
 
@@ -128,6 +135,7 @@ public class Enemy : MonoBehaviour
     public void shield(Player player, string shieldName)
     {
         isShieldActive = true;
+        combatStats.GetComponent<CombatStats>().SetStat(0);
         player.UpdateText("The " + name + " raised a " + shieldName);
     }
 
@@ -135,6 +143,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth += healAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHealthUI();
         player.UpdateText("The " + name + " used " + attackName + " to heal!");
     }
 
@@ -147,6 +156,7 @@ public class Enemy : MonoBehaviour
         {
             damageToDeal = Mathf.RoundToInt(damageToDeal * weakenedDamageMultiplier);
             isWeakened = false;
+            combatStats.GetComponent<CombatStats>().UnsetStat(2);
             player.UpdateText("The " + name + "'s attack is weakened!");
         }
 
@@ -215,6 +225,8 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy died!");
+        combatStats.SetActive(false);
+        playerCombatStats.SetActive(false);
         MenuManager.GetComponent<BattleMenu>().EnemyNeutralized();
         gameObject.SetActive(false);
     }
@@ -239,6 +251,15 @@ public class Enemy : MonoBehaviour
             }
             Debug.Log("Enemy took " + dotDamage + " damage! Health remaining: " + currentHealth);
 
+            if (dotTurnsRemaining > 0)
+            {
+                combatStats.GetComponent<CombatStats>().SetStat(3);
+            }
+            else
+            {
+                combatStats.GetComponent<CombatStats>().UnsetStat(3);
+            }
+
             if (currentHealth <= 0)
             {
                 Die();
@@ -251,6 +272,7 @@ public class Enemy : MonoBehaviour
         isWeakened = status;
         if (isWeakened)
         {
+            combatStats.GetComponent<CombatStats>().SetStat(2);
             Debug.Log("Enemy has been weakened. Their next attack will deal reduced damage.");
         }
     }

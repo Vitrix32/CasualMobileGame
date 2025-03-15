@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System;
 using Random = UnityEngine.Random;
+using JetBrains.Annotations;
 //using UnityEditor.Animations;
 
 public class Player : MonoBehaviour
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject WorldPlayer;
     [SerializeField] private GameObject combatVFX;
+    [SerializeField] private GameObject combatStats;
     [SerializeField] private Sprite[] VFXSprites;
     [SerializeField] private ParticleSystem healParticleEffect;
     [SerializeField] private GameObject UniversalAudio;
@@ -154,12 +156,14 @@ public class Player : MonoBehaviour
                 {
                     UpdateText("Your shield blocked the attack!");
                     isShieldActive = false;
+                    combatStats.GetComponent<CombatStats>().UnsetStat(0);
                     return;
                 }
                 else
                 {
                     UpdateText("Your shield failed to block the attack.");
                     isShieldActive = false;
+                    combatStats.GetComponent<CombatStats>().UnsetStat(0);
                 }
             }
 
@@ -282,6 +286,11 @@ public class Player : MonoBehaviour
         mainMenuPanel.SetActive(true);
     }
 
+    public void EnemyDead()
+    {
+        combatStats.SetActive(false);
+    }
+
     #endregion
 
     #region Private Methods
@@ -347,7 +356,7 @@ public class Player : MonoBehaviour
 
     private void PerformRegularAttack(string attackName)
     {
-        int actualDamage = Mathf.RoundToInt(swordDamage);
+        int actualDamage = Mathf.RoundToInt(swordDamage * damageMultiplier);
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
@@ -355,6 +364,9 @@ public class Player : MonoBehaviour
         }
 
         enemy.TakeDamage(actualDamage);
+        damageMultiplier = 1.0f;
+        isEmpowered = false;
+        combatStats.GetComponent<CombatStats>().UnsetStat(1);
         UpdateText("You used Slash to deal damage!");
     }
 
@@ -368,8 +380,19 @@ public class Player : MonoBehaviour
 
     private void PerformAttackWithDOT()
     {
+        int actualDamage = Mathf.RoundToInt(clawDamage * damageMultiplier);
+
+        if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
+        {
+            actualDamage = 10000;
+        }
+
+        enemy.TakeDamage(actualDamage);
         int duration = 3;
+        damageMultiplier = 1.0f;
+        isEmpowered = false;
         enemy.ApplyDOT(clawDamage, duration);
+        combatStats.GetComponent<CombatStats>().UnsetStat(1);
         UpdateText("You used Shadow Scratch to deal DOT!");
     }
 
@@ -381,53 +404,61 @@ public class Player : MonoBehaviour
         int healAmount = 5;
         HealPlayer(healAmount);
 
+        combatStats.GetComponent<CombatStats>().SetStat(1);
         UpdateText("You empowered yourself!");
     }
 
     private void PerformShield()
     {
         isShieldActive = true;
+        combatStats.GetComponent<CombatStats>().SetStat(0);
         UpdateText("You raised a shield!");
     }
 
     private void PerformSkipEnemyTurn()
     {
-        int actualDamage = Mathf.RoundToInt(bowDamage);
+        int actualDamage = Mathf.RoundToInt(bowDamage * damageMultiplier);
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
             actualDamage = 10000;
         }
-
+        damageMultiplier = 1.0f;
+        isEmpowered = false;
         enemy.TakeDamage(actualDamage);
         skipEnemyTurn = true;
+        combatStats.GetComponent<CombatStats>().UnsetStat(1);
         UpdateText("You used Time Skip to skip the enemies turn!");
     }
 
     private void PerformDoubleDamage()
     {
-        int actualDamage = Mathf.RoundToInt(axeDamage);
+        int actualDamage = Mathf.RoundToInt(axeDamage * damageMultiplier);
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
             actualDamage = 10000;
         }
-
+        damageMultiplier = 1.0f;
+        isEmpowered = false;
         enemy.TakeDamage(actualDamage);
+        combatStats.GetComponent<CombatStats>().UnsetStat(1);
         UpdateText("You used Heavy Axe for double damage!");
     }
 
     private void PerformWeakenEnemy()
     {
-        int actualDamage = Mathf.RoundToInt(bowDamage);
+        int actualDamage = Mathf.RoundToInt(bowDamage * damageMultiplier);
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
             actualDamage = 10000;
         }
-
+        damageMultiplier = 1.0f;
+        isEmpowered = false;
         enemy.TakeDamage(actualDamage);
         enemy.SetWeakened(true);
+        combatStats.GetComponent<CombatStats>().UnsetStat(1);
         UpdateText("You used Sharp Shot to weaken the enemy!");
     }
 
@@ -527,14 +558,7 @@ public class Player : MonoBehaviour
         {
             combatVFX.GetComponent<Animator>().Play("Slingshot_Animation");
         }
-        Invoke("ResetEffect", 0.55f);
     }
-
-    private void ResetEffect()
-    {
-        combatVFX.SetActive(false);
-    }
-
     #endregion
 
     #region Coroutines
