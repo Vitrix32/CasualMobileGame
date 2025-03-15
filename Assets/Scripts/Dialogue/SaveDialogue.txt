@@ -331,7 +331,17 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "I hear a weapon that enhances its user's power lies buried in these snowy peaks.",
+                    "option": "I hear a weapon that enhances its user's power lies in the ruins of these snowy peaks.",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "SnowChest",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "You found the legendary sword!",
                     "increment": "none"
                 }
             ]
