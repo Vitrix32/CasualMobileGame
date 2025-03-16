@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
     {
         WorldPlayer = GameObject.Find("WorldPlayer");
 
-        PlayerPrefs.SetInt("Health", maxHealth);
+        // PlayerPrefs.SetInt("Health", maxHealth);
         currentHealth = PlayerPrefs.GetInt("Health");
         UpdateHealthUI();
         SetAttackButtonsInteractable();
