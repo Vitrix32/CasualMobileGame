@@ -55,6 +55,41 @@ public class SceneMusicTest : MonoBehaviour
             primaryMusicSource.clip = backgroundMusic;
             primaryMusicSource.Play();
         }
+        if (name == "groveZone")
+        {
+            primaryMusicSource.Stop();
+            backgroundMusic = backgroundMusics[6];
+            primaryMusicSource.clip = backgroundMusic;
+            primaryMusicSource.Play();
+        }
+        if (name == "trailZone")
+        {
+            primaryMusicSource.Stop();
+            backgroundMusic = backgroundMusics[3];
+            primaryMusicSource.clip = backgroundMusic;
+            primaryMusicSource.Play();
+        }
+        if (name == "dungeonZone")
+        {
+            primaryMusicSource.Stop();
+            backgroundMusic = backgroundMusics[7];
+            primaryMusicSource.clip = backgroundMusic;
+            primaryMusicSource.Play();
+        }
+        if (name == "desertZone")
+        {
+            primaryMusicSource.Stop();
+            backgroundMusic = backgroundMusics[5];
+            primaryMusicSource.clip = backgroundMusic;
+            primaryMusicSource.Play();
+        }
+        if (name == "mountainZone")
+        {
+            primaryMusicSource.Stop();
+            backgroundMusic = backgroundMusics[4];
+            primaryMusicSource.clip = backgroundMusic;
+            primaryMusicSource.Play();
+        }
     }
 
     public void triggerExit(string name)
@@ -66,11 +101,6 @@ public class SceneMusicTest : MonoBehaviour
         primaryMusicSource.Play();
     }
 
-    public void EnteringCombat()
-    {
-        primaryMusicSource.clip = combatMusic;
-        primaryMusicSource.Play();
-    }
 
     public void ExitingCombat() 
     {
