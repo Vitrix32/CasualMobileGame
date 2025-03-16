@@ -342,7 +342,7 @@
             "dialogue": [
                 {
                     "option": "You found the legendary sword!",
-                    "increment": "none"
+                    "increment": "SwordofPower"
                 }
             ]
         },

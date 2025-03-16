@@ -3,7 +3,7 @@
         {
             "name": "GreatSword",
             "type": "attack:sword",
-            "value": 10,
+            "value": 0,
             "quantity": 1,
             "questName": "JeffQuest"
         },
@@ -34,6 +34,13 @@
             "value": 10,
             "quantity": 0,
             "questName": "none"
+        },
+        {
+            "name": "Sword of Power",
+            "type": "attack:sword",
+            "value": 5,
+            "quantity": 1,
+            "questName": "SwordofPower"
         }
     ]
 }

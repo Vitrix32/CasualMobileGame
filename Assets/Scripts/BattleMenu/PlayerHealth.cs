@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
 
         // Setup Attack Damage from ItemManager
         ItemManager im = itemManager;
-        swordDamage = im.attack.attackTypes[0].basic;
+        swordDamage = im.attack.attackTypes[0].basic + im.attack.attackTypes[0].itemEnhancement;
         axeDamage   = im.attack.attackTypes[1].basic;
         clawDamage  = im.attack.attackTypes[2].basic;
         bowDamage   = im.attack.attackTypes[3].basic;

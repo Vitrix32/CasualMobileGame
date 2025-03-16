@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
         Vector3 spawnPoint = player.position + spawnOffset;
         //Debug.Log(player.position);
         //Debug.Log(spawnPoint);
-        Debug.Log("text of enemy.json" + enemyJson.text);
+        //Debug.Log("text of enemy.json" + enemyJson.text);
         // Dynamically load the enemy prefab using the provided name
         GameObject enemyPrefab = Resources.Load<GameObject>("Enemies/" + enemyPrefabName);
 

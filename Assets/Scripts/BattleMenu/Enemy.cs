@@ -55,8 +55,6 @@ public class Enemy : MonoBehaviour
         {
             originalPosition = rectTransform.anchoredPosition;
         }
-
-        Debug.Log(attackNames);
     }
 
     public int GetDOTTurn()

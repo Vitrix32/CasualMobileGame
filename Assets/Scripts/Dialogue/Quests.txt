@@ -165,6 +165,17 @@
                     "increment": "Ezra 2"
                 }
             ]
+        },
+        {
+            "name": "SwordofPower",
+            "questInfo": "Find the legendary Sword of Power in the Northern Peaks",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Locate the sword of power",
+                    "increment": "SnowChest 0"
+                }
+            ]
         }
     ]
 }
