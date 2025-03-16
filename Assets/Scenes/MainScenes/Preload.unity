@@ -2907,9 +2907,45 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: baseSceneMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 20de5546cabb92d439e41620d3162b42, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
       propertyPath: backgroundMusics.Array.size
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cd7775ac57090864d901114b6999481b, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 10ed082ddfd64824d92344ccd54b1a0a, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 42b6b77e5337a654bbfd5cfe44531b30, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 703264ffbd3819d4fade586eee43ef47, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 81e19ad96ba305041913a7c95dd305fe, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: b1ef7ca3efba2a94bbafe47959efea7e, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: eee18f8f724269048943252c835ec7fa, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4ae25c57c54a0dd45b0079fdcc96482c, type: 3}
     - target: {fileID: 9088140619354403192, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
       propertyPath: m_Name
       value: WorldPlayer

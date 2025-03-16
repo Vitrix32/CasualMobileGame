@@ -321,24 +321,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primaryMusicSource: {fileID: 5663870419614992553}
-  primaryUISource: {fileID: 4755645231051835601}
+  primaryUISource: {fileID: 5663870419614992553}
   primaryAmbianceSource: {fileID: 4343004555665219395}
+  primaryFXSource: {fileID: 4343004555665219395}
   backgroundMusics:
-  - {fileID: 8300000, guid: ff05c946e6e77734ba3a7617c3acf0ae, type: 3}
-  - {fileID: 8300000, guid: 1047b350044f5a94392d0d6a6ee61227, type: 3}
-  - {fileID: 8300000, guid: faa1dd57e7100fc488fd28cfd4356d3f, type: 3}
-  - {fileID: 8300000, guid: 943818af1d48f544dae8ac1156a3b40b, type: 3}
+  - {fileID: 8300000, guid: 20de5546cabb92d439e41620d3162b42, type: 3}
+  - {fileID: 8300000, guid: cd7775ac57090864d901114b6999481b, type: 3}
+  - {fileID: 8300000, guid: 42b6b77e5337a654bbfd5cfe44531b30, type: 3}
+  - {fileID: 8300000, guid: 703264ffbd3819d4fade586eee43ef47, type: 3}
   - {fileID: 8300000, guid: 4ae25c57c54a0dd45b0079fdcc96482c, type: 3}
-  - {fileID: 8300000, guid: ebe2f88ff495d4e479c206016cae8fee, type: 3}
+  - {fileID: 8300000, guid: 81e19ad96ba305041913a7c95dd305fe, type: 3}
+  - {fileID: 8300000, guid: b1ef7ca3efba2a94bbafe47959efea7e, type: 3}
+  - {fileID: 8300000, guid: eee18f8f724269048943252c835ec7fa, type: 3}
   combatMusics:
-  - {fileID: 8300000, guid: 7a316dde21dba1442a7515734139fb0c, type: 3}
-  mainThemeIndex: 0
-  startvilleIndex: 3
-  roadToNewCastleIndex: 0
-  newCastleIndex: 0
-  roadToScorchedMountIndex: 0
-  scorchedMountIndex: 0
-  shopIndex: 0
+  - {fileID: 8300000, guid: c9aac6035c9c49841835a8da6c4f101d, type: 3}
+  - {fileID: 8300000, guid: 1170ec774d16d464cbfd1626e99ff1e4, type: 3}
+  baseSceneMusic: {fileID: 0}
 --- !u!114 &514263291322199684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +373,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7a316dde21dba1442a7515734139fb0c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.528
   m_Pitch: 1
@@ -567,7 +565,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d04f225edaea71e429d137d29694f77c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

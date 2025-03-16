@@ -19,12 +19,16 @@ public class triggerPassToParent : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("entered trigger");
-        gameObject.GetComponentInParent<SceneMusicTest>().triggerEnter(gameObject.name);
+        if(other.gameObject.name == "WorldPlayer")
+        {
+            gameObject.GetComponentInParent<SceneMusicTest>().triggerEnter(gameObject.name); 
+        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        gameObject.GetComponentInParent<SceneMusicTest>().triggerExit(gameObject.name);
+        if (other.gameObject.name == "WorldPlayer")
+            gameObject.GetComponentInParent<SceneMusicTest>().triggerExit(gameObject.name);
     }
 }

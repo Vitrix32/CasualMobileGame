@@ -20,41 +20,31 @@ public class UniversalAudioHandling : MonoBehaviour
     private AudioSource primaryUISource;
     [SerializeField] 
     private AudioSource primaryAmbianceSource;
+    [SerializeField]
+    private AudioSource primaryFXSource;
 
     [SerializeField]
     private AudioClip[] backgroundMusics;
     [SerializeField]
     private AudioClip[] combatMusics;
 
-    //The build indexes of each scene in the game.
-    //The order of these indexes below indicates the order the audio clips are
-    //stored in the backgroundMusics and combatMusics arrays.
-    [SerializeField]
-    private int mainThemeIndex;
-    [SerializeField]
-    private int startvilleIndex;
-    [SerializeField]
-    private int roadToNewCastleIndex;
-    [SerializeField]
-    private int newCastleIndex;
-    [SerializeField]
-    private int roadToScorchedMountIndex;
-    [SerializeField]
-    private int scorchedMountIndex;
-    [SerializeField]
-    private int shopIndex;
+    private GameObject musicHandler;
 
+    [SerializeField]
+    private AudioClip baseSceneMusic;
     private AudioClip backgroundMusic;
     private AudioClip combatMusic;
 
     // Start is called before the first frame update
     void Start()
     {
+        backgroundMusic = backgroundMusics[0];
         combatMusic = combatMusics[0];
     }
 
     public void EnteringCombat()
     {
+        primaryMusicSource.Stop();
         primaryMusicSource.clip = combatMusic;
         primaryMusicSource.Play();
     }
@@ -62,6 +52,8 @@ public class UniversalAudioHandling : MonoBehaviour
     public void ExitingCombat() 
     {
         primaryMusicSource.Stop();
+        primaryMusicSource.clip = backgroundMusic;
+        primaryMusicSource.Play();
     }
 
     public void Die()
@@ -84,47 +76,95 @@ public class UniversalAudioHandling : MonoBehaviour
         primaryUISource.Play();
     }
 
-    /*public void NewScene()
+    public void NewScene()
     {
         musicSelection();
         primaryMusicSource.clip = backgroundMusic;
         primaryMusicSource.Play();
-    }*/
+
+        //Find a music handler if it exists
+        musicHandler=GameObject.Find("MusicHandler");
+
+
+    }
 
 
     private void musicSelection()
     {
-        int index = SceneManager.GetActiveScene().buildIndex; //Switch this to SceneName?
-        if (index == mainThemeIndex)
+        string sceneName = SceneManager.GetActiveScene().name; //Switch this to SceneName?
+        if (sceneName == "GameplayScene")
+        {
+            backgroundMusic = baseSceneMusic;
+            combatMusic = combatMusics[0];
+        }
+        else if (sceneName == "MainMenu")
         {
             backgroundMusic = backgroundMusics[0];
             combatMusic = combatMusics[0];
         }
-        else if (index == startvilleIndex)
+        
+    }
+
+    public void enteredZone(string name)
+    {
+        Debug.Log("entered trigger thing in UAH");
+        if(name == "groveZone")
         {
-            backgroundMusic = backgroundMusics[1];
-            //combatMusic = combatMusics[1];
-            combatMusic = combatMusics[0];
+            switchMusic(4);
         }
-        else if (index == roadToNewCastleIndex)
+        if (name == "dungeonZone")
         {
-            backgroundMusic = backgroundMusics[2];
-            combatMusic = combatMusics[2];
+            switchMusic(2);
         }
-        else if (index == newCastleIndex)
+        if (name == "mountainZone")
         {
-            backgroundMusic = backgroundMusics[3];
-            combatMusic = combatMusics[3];
+            switchMusic(1);
         }
-        else if (index == roadToScorchedMountIndex)
+        if (name == "desertZone")
         {
-            backgroundMusic = backgroundMusics[4];
-            combatMusic = combatMusics[4];
+            switchMusic(3);
         }
-        else if (index == scorchedMountIndex)
+        if (name == "churchZone")
         {
-            backgroundMusic = backgroundMusics[5];
-            combatMusic = combatMusics[5];
+            switchMusic(7);
+        }
+        if (name == "indoorZone")
+        {
+            switchMusic(5);
+        }
+        if (name == "trailZone")
+        {
+            switchMusic(6);
         }
     }
+
+    public void exitedZone()
+    {
+        backgroundMusic = baseSceneMusic;
+        primaryMusicSource.Stop();
+        primaryMusicSource.clip = baseSceneMusic;
+        primaryMusicSource.Play();
+    }
+
+    private void switchMusic(int index)
+    {
+        Debug.Log("switching Music");
+        backgroundMusic=backgroundMusics[index];
+        primaryMusicSource.Stop();
+        primaryMusicSource.clip = backgroundMusic;
+        primaryMusicSource.Play();
+    }
+
+    public void ChangeSourceVolume(string source, float level)
+    {
+        if(source =="Music")
+            primaryMusicSource.volume = level;
+        if(source=="Ambiance")
+            primaryAmbianceSource.volume = level;
+        if(source=="SFX")
+            primaryFXSource.volume = level;
+        if(source == "UI")
+            primaryUISource.volume = level;
+    }
+
 }

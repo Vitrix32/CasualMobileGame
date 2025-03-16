@@ -200,7 +200,7 @@ SpriteRenderer:
   m_SortingLayerID: -1407208739
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9c3dae49e3c2341c389885948850113e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d66a3012e215a477faa3eeacce4e60c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -224,20 +224,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatStats: {fileID: 0}
-  maxHealth: 35
+  maxHealth: 80
   currentHealth: 0
-  name: Bat
+  name: Skeleton
   attacks:
   - Crit
-  - Heal
   - Reg
+  - Heal
   attackNames:
-  - Bite
-  - Screech
-  - Scratch
+  - Stab
+  - Slash
+  - Rejuvination
   healthText: {fileID: 2860557351010993533}
   healthBar: {fileID: 3734570033287303679}
-  attackDamage: 3
+  attackDamage: 23
   shakeDuration: 0.5
   shakeMagnitude: 0.9
   attackSound: {fileID: 8300000, guid: b64728f271e3a984e842e3f6ea0cf840, type: 3}
