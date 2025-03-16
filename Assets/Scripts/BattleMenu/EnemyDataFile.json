@@ -64,13 +64,31 @@
       "AttackNames": [ "Stab", "Slash", "Rejuvination" ]
     },
     {
-      "Id": "7",
+      "Id": "8",
       "Name": "FinalBoss",
       "Hp": "200",
       "Damage": "30",
       "LocID": "4",
       "Attacks": [ "Crit", "Reg", "Heal" ],
       "AttackNames": [ "Placeholder", "Placeholder", "Placeholder" ]
+    },
+    {
+      "Id": "9",
+      "Name": "Slime",
+      "Hp": "20",
+      "Damage": "10",
+      "LocID": "1",
+      "Attacks": [ "Shield", "Heal", "Reg" ],
+      "AttackNames": [ "Absorb", "Regrow", "Spore Attack" ]
+    },
+    {
+      "Id": "9",
+      "Name": "Golem",
+      "Hp": "60",
+      "Damage": "20",
+      "LocID": "1",
+      "Attacks": [ "Crit", "Shield", "Reg" ],
+      "AttackNames": [ "Avalanche", "Stone Wall", "Heavy Fist" ]
     }
   ]
 }
