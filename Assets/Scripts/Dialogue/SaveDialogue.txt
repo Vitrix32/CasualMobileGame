@@ -345,6 +345,16 @@
                     "increment": "none"
                 }
             ]
+        },
+        {
+            "name": "DungeonSign",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Dungeon! Beware!",
+                    "increment": "none"
+                }
+            ]
         }
     ]
 }
