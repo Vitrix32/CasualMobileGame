@@ -49,35 +49,35 @@
                 },
                 {
                     "description": "Find all Jeff's scrolls (1/8)",
-                    "increment": "Scroll 1"
+                    "increment": "Scroll"
                 },
                 {
                     "description": "Find all Jeff's scrolls (2/8)",
-                    "increment": "Scroll 2"
+                    "increment": "Scroll"
                 },
                 {
                     "description": "Find all Jeff's scrolls (3/8)",
-                    "increment": "Scroll 3"
+                    "increment": "Scroll"
                 },
                 {
                     "description": "Find all Jeff's scrolls (4/8)",
-                    "increment": "Scroll 4"
+                    "increment": "Scroll"
                 },
                 {
                     "description": "Find all Jeff's scrolls (5/8)",
-                    "increment": "Scroll 5"
+                    "increment": "Scroll"
                 },
                 {
                     "description": "Find all Jeff's scrolls (6/8)",
-                    "increment": "Scroll 6"
+                    "increment": "Scroll"
                 },
                 {
                     "description": "Find all Jeff's scrolls (7/8)",
-                    "increment": "Scroll 7"
+                    "increment": "Scroll"
                 },
                 {
                     "description": "Return to Jeff and give him his scrolls",
-                    "increment": "Scroll 8"
+                    "increment": "Scroll"
                 },
                 {
                     "description": "Quest Complete",
