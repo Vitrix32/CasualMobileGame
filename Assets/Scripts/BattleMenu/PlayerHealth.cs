@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject WorldPlayer;
     [SerializeField] private GameObject combatVFX;
+    [SerializeField] private GameObject spellVFX;
     [SerializeField] private GameObject combatStats;
     [SerializeField] private Sprite[] VFXSprites;
     [SerializeField] private ParticleSystem healParticleEffect;
@@ -187,10 +188,12 @@ public class Player : MonoBehaviour
             switch (attack)
             {
                 case "Empower":
+                    PlayEffect(5);
                     PerformEmpower();
                     break;
 
                 case "Shield":
+                    PlayEffect(7);
                     PerformShield();
                     break;
 
@@ -200,6 +203,7 @@ public class Player : MonoBehaviour
                     break;
 
                 case "SkipEnemyTurn":
+                    PlayEffect(4);
                     PerformSkipEnemyTurn();
                     break;
 
@@ -215,6 +219,7 @@ public class Player : MonoBehaviour
 
                 case "HealSelf":
                     PerformHealSelf();
+                    PlayEffect(6);
                     break;
 
                 case "Apple":
@@ -272,7 +277,7 @@ public class Player : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
         UpdateText("You healed!");
-        PlayHealingEffect();
+        //PlayHealingEffect();
 
         playerTurn = false;
         if (battleMenu != null)
@@ -398,7 +403,7 @@ public class Player : MonoBehaviour
 
     private void PerformEmpower()
     {
-        damageMultiplier = 1.5f;
+        damageMultiplier = 2.0f;
         isEmpowered = true;
 
         int healAmount = 5;
@@ -464,7 +469,7 @@ public class Player : MonoBehaviour
 
     private void PerformHealSelf()
     {
-        int healAmount = 10;
+        int healAmount = 15;
         HealPlayer(healAmount);
         UpdateText("You used Healing Winds to heal yourself!");
     }
@@ -474,7 +479,7 @@ public class Player : MonoBehaviour
         currentHealth += health;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
-        PlayHealingEffect();
+        //PlayHealingEffect();
     }
 
     private void PlayHealingEffect()
@@ -540,24 +545,53 @@ public class Player : MonoBehaviour
 
     private void PlayEffect(int index)
     {
-        combatVFX.SetActive(true);
-        combatVFX.GetComponent<Animator>().runtimeAnimatorController = animatorControllers[index];
-        if (index == 0)
+        if (index < 5)
         {
-            combatVFX.GetComponent<Animator>().Play("Sword_Animation");
+            combatVFX.GetComponent<Animator>().runtimeAnimatorController = animatorControllers[index];
+            if (index == 0)
+            {
+                combatVFX.GetComponent<Animator>().Play("Sword_Animation");
+            }
+            else if (index == 1)
+            {
+                combatVFX.GetComponent<Animator>().Play("Axe_Animation");
+            }
+            else if (index == 2)
+            {
+                combatVFX.GetComponent<Animator>().Play("Scratch_Animation");
+            }
+            else if (index == 3)
+            {
+                combatVFX.GetComponent<Animator>().Play("Slingshot_Animation");
+            }
+            else if (index == 4)
+            {
+                combatVFX.GetComponent<Animator>().Play("Time_Skip_Animation");
+            }
         }
-        else if (index == 1) 
+        else
         {
-            combatVFX.GetComponent<Animator>().Play("Axe_Animation");
+            spellVFX.GetComponent<Animator>().runtimeAnimatorController = animatorControllers[index];
+            if (index == 5)
+            {
+                spellVFX.GetComponent<Animator>().Play("Empower_Animation");
+            }
+            else if (index == 6)
+            {
+                spellVFX.GetComponent<Animator>().Play("Healing_Animation");
+            }
+            else if (index == 7)
+            {
+                spellVFX.GetComponent<Animator>().Play("Shield_Animation");
+            }
         }
-        else if (index == 2)
-        {
-            combatVFX.GetComponent<Animator>().Play("Scratch_Animation");
-        }
-        else if (index == 3)
-        {
-            combatVFX.GetComponent<Animator>().Play("Slingshot_Animation");
-        }
+        Invoke("ResetEffect", 1.0f);
+    }
+
+    private void ResetEffect()
+    {
+        combatVFX.GetComponent<Animator>().runtimeAnimatorController = null;
+        spellVFX.GetComponent<Animator>().runtimeAnimatorController = null;
     }
     #endregion
 
