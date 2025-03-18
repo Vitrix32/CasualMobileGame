@@ -152,6 +152,6 @@
       "LocID": "5",
       "Attacks": [ "Crit", "Shield", "Reg" ],
       "AttackNames": [ "Spike Shot", "Ice Barrier", "Icicle" ]
-    },
+    }
   ]
 }
