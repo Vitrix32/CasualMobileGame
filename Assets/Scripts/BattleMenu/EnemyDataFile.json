@@ -68,7 +68,7 @@
       "Name": "FinalBoss",
       "Hp": "200",
       "Damage": "30",
-      "LocID": "4",
+      "LocID": "6",
       "Attacks": [ "Crit", "Reg", "Heal" ],
       "AttackNames": [ "Placeholder", "Placeholder", "Placeholder" ]
     },
@@ -82,13 +82,76 @@
       "AttackNames": [ "Absorb", "Regrow", "Spore Attack" ]
     },
     {
-      "Id": "9",
+      "Id": "10",
       "Name": "Golem",
       "Hp": "60",
       "Damage": "20",
       "LocID": "1",
       "Attacks": [ "Crit", "Shield", "Reg" ],
       "AttackNames": [ "Avalanche", "Stone Wall", "Heavy Fist" ]
-    }
+    },
+    {
+      "Id": "12",
+      "Name": "Duneshifter",
+      "Hp": "60",
+      "Damage": "10",
+      "LocID": "4",
+      "Attacks": [ "Crit", "Shield", "Reg" ],
+      "AttackNames": [ "Sinkhole", "Sand Veil", "Sandstorm" ]
+    },
+    {
+      "Id": "12",
+      "Name": "Raider",
+      "Hp": "40",
+      "Damage": "15",
+      "LocID": "4",
+      "Attacks": [ "Shield", "Heal", "Reg" ],
+      "AttackNames": [ "Dune Shield", "Bone Rattle", "Stab" ]
+    },
+    {
+      "Id": "13",
+      "Name": "Snake",
+      "Hp": "35",
+      "Damage": "20",
+      "LocID": "4",
+      "Attacks": [ "Crit", "Heal", "Reg" ],
+      "AttackNames": [ "Venom", "Coil", "Quick Strike" ]
+    },
+    {
+      "Id": "14",
+      "Name": "Rat",
+      "Hp": "15",
+      "Damage": "5",
+      "LocID": "1",
+      "Attacks": [ "Crit", "Reg", "Reg" ],
+      "AttackNames": [ "Chomp", "Chew", "Tail Whip" ]
+    },
+    {
+      "Id": "15",
+      "Name": "Coldsnap",
+      "Hp": "60",
+      "Damage": "15",
+      "LocID": "5",
+      "Attacks": [ "Crit", "Shield", "Reg" ],
+      "AttackNames": [ "Shell Bash", "Shell", "Snap" ]
+    },
+    {
+      "Id": "16",
+      "Name": "Chillchimp",
+      "Hp": "35",
+      "Damage": "10",
+      "LocID": "5",
+      "Attacks": [ "Heal", "Reg", "Reg" ],
+      "AttackNames": [ "Vital Chill", "Frostbite", "Shiver Slash" ]
+    },
+    {
+      "Id": "17",
+      "Name": "Cyrospike",
+      "Hp": "45",
+      "Damage": "20",
+      "LocID": "5",
+      "Attacks": [ "Crit", "Shield", "Reg" ],
+      "AttackNames": [ "Spike Shot", "Ice Barrier", "Icicle" ]
+    },
   ]
 }
