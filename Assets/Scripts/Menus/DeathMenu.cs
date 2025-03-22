@@ -98,7 +98,7 @@ public class DeathMenu : MonoBehaviour
             File.WriteAllText(Application.dataPath + "/Scripts/Items/SavePlayerStats.txt", json);
             File.WriteAllText(Application.dataPath + "/Scripts/Items/PlayerStats.txt", json);
 
-            PlayerPrefs.SetInt("Health", 50);
+            // PlayerPrefs.SetInt("Health", 50);
         }
 
         PlayerPrefs.SetFloat("XPos", 0);
@@ -121,6 +121,9 @@ public class DeathMenu : MonoBehaviour
         PlayerPrefs.SetString("SceneName", "GameplayScene");
         PlayerPrefs.SetInt("DunBoss", 0);
         PlayerPrefs.SetInt("FinBoss", 0);
+
+        // Reset current health
+        HealthManager.Instance.SetHealth(HealthManager.MAX_HEALTH);
 
         return;
     }

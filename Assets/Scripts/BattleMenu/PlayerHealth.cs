@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
         WorldPlayer = GameObject.Find("WorldPlayer");
 
         // PlayerPrefs.SetInt("Health", maxHealth);
-        currentHealth = PlayerPrefs.GetInt("Health");
+        currentHealth = (int)HealthManager.Instance.GetHealth();
         UpdateHealthUI();
         SetAttackButtonsInteractable();
 
@@ -346,7 +346,7 @@ public class Player : MonoBehaviour
             healthSlider.value = (float)currentHealth / maxHealth;
         }
 
-        PlayerPrefs.SetInt("Health", currentHealth);
+        HealthManager.Instance.SetHealth(currentHealth);
     }
 
     private void Die()

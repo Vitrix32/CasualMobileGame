@@ -6,7 +6,7 @@ public class statueHealTrigger : MonoBehaviour
     {
         if (collision.gameObject.name == "WorldPlayer")
         {
-            PlayerPrefs.SetInt("Health", 50);
+            HealthManager.Instance.SetHealth(HealthManager.MAX_HEALTH);
             Debug.Log("Player healed");
         }
     }
