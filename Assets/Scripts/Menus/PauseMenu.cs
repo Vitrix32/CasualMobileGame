@@ -23,6 +23,11 @@ public class PauseMenu : MonoBehaviour
         pauseButton.SetActive(true);
     }
 
+    void Update()
+    {
+        
+    }
+
     public void PauseGame()
     {
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
@@ -47,22 +52,46 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveAndExitToMenu()
     {
+        Debug.Log("SaveAndExitToMenu called");
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         SaveGame();
-        Invoke("GoToMainMenu", 0.4f);
+        StartCoroutine(LoadMainMenuWithDelay());
     }
 
     public void DontSaveAndExitToMenu()
     {
+        Debug.Log("DontSaveAndExitToMenu called");
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
-        Invoke("GoToMainMenu", 0.4f);
+        StartCoroutine(LoadMainMenuWithDelay());
+    }
+
+    private IEnumerator LoadMainMenuWithDelay()
+    {
+        Debug.Log("Starting delay before scene load");
+        yield return new WaitForSecondsRealtime(0.4f);
+        Debug.Log("Delay complete, calling GoToMainMenu");
+        GoToMainMenu();
     }
 
     private void GoToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
-        isPaused = false;
+        Debug.Log("GoToMainMenu called");
+        
+        try 
+        {
+            string currentScene = SceneManager.GetActiveScene().name;
+            string targetScene = "MainMenu";
+            Debug.Log($"Current scene: {currentScene}, attempting to load: {targetScene}");
+            
+            // Try loading synchronously first as a test
+            SceneManager.LoadScene(targetScene);
+            Debug.Log("Scene load initiated");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to load MainMenu scene: {e.Message}\nStack trace: {e.StackTrace}");
+        }
     }
 
     private void SaveGame()
