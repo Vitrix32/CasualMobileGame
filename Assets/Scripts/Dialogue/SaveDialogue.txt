@@ -355,6 +355,66 @@
                     "increment": "none"
                 }
             ]
+        },
+        {
+            "name": "InnSign",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Welcome to the Inn!",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "CaptainHouseSign",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Captain's House",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "ChurchSign",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Come unto me, all ye that labour and are heavy laden, and I will give you rest.",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "TrailSign",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Trail to New Castle on the Thyme",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "CaveSign",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "^ Garden`> Mountain Pass`Beware! Monsters ahead!",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "SanctuarySign",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Welcome to the sanctuary!",
+                    "increment": "none"
+                }
+            ]
         }
     ]
 }
