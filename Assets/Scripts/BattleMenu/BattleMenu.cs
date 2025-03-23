@@ -93,15 +93,41 @@ public class BattleMenu : MonoBehaviour
         if (PlayerPrefs.GetInt("LocID") == 3)
         {
             FadePanel.GetComponent<SceneTransition>().End();
+            // Fade out all enemies
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                // Add Fade component if it doesn't exist
+                Fade fadeComponent = enemy.GetComponent<Fade>();
+                if (fadeComponent == null)
+                {
+                    fadeComponent = enemy.AddComponent<Fade>();
+                }
+                // Start fade out over 1 second
+                fadeComponent.startFade(0f, 1f);
+                // Deactivate after fade
+                Destroy(enemy, 1f);
+            }
 
             PlayerPrefs.SetInt("TempYVal", 4);
-            //WorldPlayer.transform.position = new Vector3(WorldPlayer.transform.position.x, WorldPlayer.transform.position.y + 2, WorldPlayer.transform.position.z);
             PlayerPrefs.SetInt("LocID", 2);
 
             Invoke("ExitScene", 2.0f);
         } 
         else
         {
+            // Fade out all enemies
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                Fade fadeComponent = enemy.GetComponent<Fade>();
+                if (fadeComponent == null)
+                {
+                    fadeComponent = enemy.AddComponent<Fade>();
+                }
+                fadeComponent.startFade(0f, 1f);
+                Destroy(enemy, 1f);
+            }
             AllEnemiesDead();
         }
     }
