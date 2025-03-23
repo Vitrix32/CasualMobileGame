@@ -245,6 +245,10 @@ public class Player : MonoBehaviour
                     }
                     break;
 
+                case "Flee":
+                    PerformFlee();
+                    return; // Add this to prevent the battle sequence from starting
+
                 default:
                     PlayEffect(0);
                     PerformRegularAttack(attack);
@@ -615,6 +619,45 @@ public class Player : MonoBehaviour
         combatVFX.GetComponent<Animator>().runtimeAnimatorController = null;
         spellVFX.GetComponent<Animator>().runtimeAnimatorController = null;
     }
+
+    private void PerformFlee()
+    {
+        float healthPercentage = (float)currentHealth / maxHealth;
+        float baseChance = 0.8f; // 80% max success rate
+        float fleeChance = baseChance * healthPercentage;
+        
+        float roll = Random.Range(0f, 1f);
+        Debug.Log($"Flee chance: {fleeChance}, roll: {roll}");
+        
+        if (roll <= fleeChance)
+        {
+            UpdateText("You successfully fled from battle!");
+            StartCoroutine(DelayedFleeSuccess());
+        }
+        else
+        {
+            int stumbleDamage = Mathf.RoundToInt(maxHealth * 0.1f);
+            UpdateText($"You stumbled and took damage!");
+            TakeDamage(stumbleDamage);
+            
+            playerTurn = false;
+            if (battleMenu != null)
+            {
+                battleMenu.SetMenusInteractable(false);
+            }
+            StartCoroutine(BattleSequence());
+        }
+    }
+
+    private IEnumerator DelayedFleeSuccess()
+    {
+        yield return new WaitForSeconds(2.0f);
+        if (battleMenu != null)
+        {
+            battleMenu.Flee();
+        }
+    }
+
     #endregion
 
     #region Coroutines
