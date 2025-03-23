@@ -342,7 +342,11 @@
             "dialogue": [
                 {
                     "option": "You found the legendary sword!",
-                    "increment": "SwordofPower"
+                    "increment": "SwordofPower; SnowChest 1"
+                },
+                {
+                    "option": "The chest is empty",
+                    "increment": "none"
                 }
             ]
         },
