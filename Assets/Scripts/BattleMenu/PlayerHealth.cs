@@ -176,8 +176,15 @@ public class Player : MonoBehaviour
         StartCoroutine(Shake());
         if (currentHealth <= 0)
         {
-            Die();
-            mainMenuPanel.SetActive(false);
+            // Immediately stop all battle interactions
+            playerTurn = false;
+            if (battleMenu != null)
+            {
+                battleMenu.SetMenusInteractable(false);
+            }
+            StopAllCoroutines(); // Stop any ongoing battle sequences
+            StartCoroutine(DelayedDeath());
+            return;
         }
     }
 
@@ -349,9 +356,24 @@ public class Player : MonoBehaviour
         HealthManager.Instance.SetHealth(currentHealth);
     }
 
-    private void Die()
+    private IEnumerator DelayedDeath()
     {
-        Destroy(gameObject);
+        // Wait to show the attack effects
+        yield return new WaitForSeconds(2.0f);
+        
+        // Show death message
+        UpdateText("You died!");
+        
+        // Wait briefly to show death message
+        yield return new WaitForSeconds(2.0f);
+        
+        // Now hide the UI and transition
+        mainMenuPanel.SetActive(false);
+        attackPanel.SetActive(false);
+        spellPanel.SetActive(false);
+        itemPanel.SetActive(false);
+        
+        // Clean up and transition
         if (WorldPlayer != null)
         {
             WorldPlayer.GetComponent<UniversalAudioHandling>().Die();

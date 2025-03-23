@@ -76,7 +76,7 @@ public class TransitionPoint : MonoBehaviour
     //Handles details for exiting a scene and entering another
     public void Exiting()
     { 
-        if (audioSource != null && noises != null)
+        if (audioSource != null && noises != null && noises.Length > 0)
         {
             index = Random.Range(0, noises.Length);
             audioSource.clip = noises[index];
