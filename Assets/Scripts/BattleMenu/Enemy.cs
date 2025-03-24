@@ -150,20 +150,19 @@ public class Enemy : MonoBehaviour
         float actionRoll = Random.Range(0f, 1f);
         int damageToDeal = attackDamage;
 
-        if (isWeakened)
-        {
-            damageToDeal = Mathf.RoundToInt(damageToDeal * weakenedDamageMultiplier);
-            isWeakened = false;
-            combatStats.GetComponent<CombatStats>().UnsetStat(2);
-            player.UpdateText("The " + name + "'s attack is weakened!");
-        }
-
         if (actionRoll <= 0.15f)
         {
             switch(attacks[0])
             {
                 case "CritAttack":
                     CritAttack(damageToDeal, player, attackNames[0]);
+                    if (isWeakened)
+                    {
+                        damageToDeal = Mathf.RoundToInt(damageToDeal * weakenedDamageMultiplier);
+                        isWeakened = false;
+                        combatStats.GetComponent<CombatStats>().UnsetStat(2);
+                        player.UpdateText("The " + name + "'s attack is weakened!");
+                    }
                     break;
                 case "Shield":
                     shield(player, attackNames[0]);
@@ -172,6 +171,13 @@ public class Enemy : MonoBehaviour
                     heal(player, 15, attackNames[0]);
                     break;
                 default:
+                    if (isWeakened)
+                    {
+                        damageToDeal = Mathf.RoundToInt(damageToDeal * weakenedDamageMultiplier);
+                        isWeakened = false;
+                        combatStats.GetComponent<CombatStats>().UnsetStat(2);
+                        player.UpdateText("The " + name + "'s attack is weakened!");
+                    }
                     regAttack(damageToDeal, player, attackNames[0]);
                     break;
             }
@@ -182,6 +188,13 @@ public class Enemy : MonoBehaviour
             {
                 case "CritAttack":
                     CritAttack(damageToDeal, player, attackNames[1]);
+                    if (isWeakened)
+                    {
+                        damageToDeal = Mathf.RoundToInt(damageToDeal * weakenedDamageMultiplier);
+                        isWeakened = false;
+                        combatStats.GetComponent<CombatStats>().UnsetStat(2);
+                        player.UpdateText("The " + name + "'s attack is weakened!");
+                    }
                     break;
                 case "Shield":
                     shield(player, attackNames[1]);
@@ -190,6 +203,13 @@ public class Enemy : MonoBehaviour
                     heal(player, 10, attackNames[1]);
                     break;
                 default:
+                    if (isWeakened)
+                    {
+                        damageToDeal = Mathf.RoundToInt(damageToDeal * weakenedDamageMultiplier);
+                        isWeakened = false;
+                        combatStats.GetComponent<CombatStats>().UnsetStat(2);
+                        player.UpdateText("The " + name + "'s attack is weakened!");
+                    }
                     regAttack(damageToDeal, player, attackNames[1]);
                     break;
             }
@@ -199,6 +219,13 @@ public class Enemy : MonoBehaviour
             switch(attacks[2])
             {
                 case "CritAttack":
+                    if (isWeakened)
+                    {
+                        damageToDeal = Mathf.RoundToInt(damageToDeal * weakenedDamageMultiplier);
+                        isWeakened = false;
+                        combatStats.GetComponent<CombatStats>().UnsetStat(2);
+                        player.UpdateText("The " + name + "'s attack is weakened!");
+                    }
                     CritAttack(damageToDeal, player, attackNames[2]);
                     break;
                 case "Shield":
@@ -208,6 +235,13 @@ public class Enemy : MonoBehaviour
                     heal(player, 5, attackNames[2]);
                     break;
                 default:
+                    if (isWeakened)
+                    {
+                        damageToDeal = Mathf.RoundToInt(damageToDeal * weakenedDamageMultiplier);
+                        isWeakened = false;
+                        combatStats.GetComponent<CombatStats>().UnsetStat(2);
+                        player.UpdateText("The " + name + "'s attack is weakened!");
+                    }
                     regAttack(damageToDeal, player, attackNames[2]);
                     break;
             }
