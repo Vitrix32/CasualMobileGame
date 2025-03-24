@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 using JetBrains.Annotations;
 //using UnityEditor.Animations;
 
-public class Player : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     #region Inspector Fields
 

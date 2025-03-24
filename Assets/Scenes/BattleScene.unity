@@ -7255,6 +7255,7 @@ MonoBehaviour:
   combatVFX: {fileID: 1096173104}
   spellVFX: {fileID: 432585891}
   combatStats: {fileID: 1900008222}
+  enemyCombatStats: {fileID: 0}
   VFXSprites:
   - {fileID: 21300000, guid: 27947ec5ffacb564fbfb5fe7fc902b42, type: 3}
   - {fileID: 14377671, guid: 343cf1a357b19ef46a26d8c24d1e0aaa, type: 3}

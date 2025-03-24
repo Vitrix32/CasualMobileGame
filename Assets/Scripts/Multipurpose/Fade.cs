@@ -18,8 +18,7 @@ using UnityEngine.UI;
  */
 public class Fade : MonoBehaviour
 {
-    [SerializeField]
-    private bool isSprite;
+    [SerializeField] private bool isSprite;
 
     public void startFade(float endVal, float duration)
     {
@@ -32,6 +31,13 @@ public class Fade : MonoBehaviour
             StartCoroutine(fadeImage(endVal, duration));
         }
     }
+
+    public void ChangeColor(Vector3 val, float duration)
+    {
+        StartCoroutine(darkenSprite(val, duration));
+    }
+
+    public 
 
     //Changes alpha value to make sprites fade in/out
     IEnumerator fadeSprite(float endVal, float duration)
@@ -57,6 +63,23 @@ public class Fade : MonoBehaviour
             counter += Time.deltaTime;
             float alpha = Mathf.Lerp(imageColor.a, endVal, counter / duration);
             this.GetComponent<Image>().color = new Color(imageColor.r, imageColor.g, imageColor.b, alpha);
+            yield return null;
+        }
+    }
+
+    //Changes the color of the sprite
+    //Enter your rgb values into a vector3 (r, g, b)
+    IEnumerator darkenSprite(Vector3 endVal, float duration)
+    {
+        float counter = 0;
+        Color spriteColor = this.GetComponent<SpriteRenderer>().material.color;
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            float red = Mathf.Lerp(spriteColor.r, endVal.x, counter / duration);
+            float green = Mathf.Lerp(spriteColor.g, endVal.y, counter / duration);
+            float blue = Mathf.Lerp(spriteColor.b, endVal.z, counter / duration);
+            this.GetComponent<SpriteRenderer>().color = new Color(red, green, blue, spriteColor.a);
             yield return null;
         }
     }

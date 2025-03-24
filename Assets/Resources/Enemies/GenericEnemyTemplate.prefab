@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 4224405206835208087}
   - component: {fileID: -5924668423770667736}
   - component: {fileID: 4440716835303220161}
+  - component: {fileID: 524555223711367226}
   m_Layer: 0
   m_Name: GenericEnemyTemplate
   m_TagString: Enemy
@@ -200,7 +201,7 @@ SpriteRenderer:
   m_SortingLayerID: -1407208739
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d66a3012e215a477faa3eeacce4e60c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae979175bac354c9b9911b1a7380ced9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -224,20 +225,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatStats: {fileID: 0}
-  maxHealth: 80
+  player: {fileID: 0}
+  maxHealth: 35
   currentHealth: 0
-  name: Skeleton
+  name: Bat
   attacks:
   - Crit
-  - Reg
   - Heal
+  - Reg
   attackNames:
-  - Stab
-  - Slash
-  - Rejuvination
+  - Bite
+  - Screech
+  - Scratch
   healthText: {fileID: 8037053343007498960}
   healthBar: {fileID: 3734570033287303679}
-  attackDamage: 23
+  attackDamage: 3
   shakeDuration: 0.5
   shakeMagnitude: 0.9
   attackSound: {fileID: 8300000, guid: b64728f271e3a984e842e3f6ea0cf840, type: 3}
@@ -573,6 +575,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyJson: {fileID: 0}
+--- !u!114 &524555223711367226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3691535827709836765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933b84c1ab36d084894d58097c38900d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSprite: 1
 --- !u!1 &4359734959409257677
 GameObject:
   m_ObjectHideFlags: 0

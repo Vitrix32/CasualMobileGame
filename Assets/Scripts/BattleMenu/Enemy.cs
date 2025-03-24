@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private GameObject combatStats;
+    [SerializeField] private GameObject player;
 
     private GameObject playerCombatStats;
     private GameObject MenuManager;
@@ -38,13 +39,14 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.Find("Player");
         MenuManager = GameObject.Find("BattleMenu");
         combatStats = GameObject.Find("EnemyCombatStats");
         playerCombatStats = GameObject.Find("CombatStats");
         currentHealth = maxHealth;
         UpdateHealthUI();
         audioSource = GetComponent<AudioSource>();
-
+        this.GetComponent<Fade>().ChangeColor(new Vector3(255, 255, 255), 1.0f);
         rectTransform = GetComponentInChildren<RectTransform>();
 
         if (rectTransform == null)
@@ -115,7 +117,7 @@ public class Enemy : MonoBehaviour
         rectTransform.anchoredPosition = originalPosition;
     }
 
-    public void CritAttack(int damageToDeal, Player player, string attackName)
+    public void CritAttack(int damageToDeal, PlayerHealth player, string attackName)
     {
         int criticalDamage = Mathf.RoundToInt(damageToDeal * 1.5f);
         player.UpdateText("The " + name + " performed a critical hit with " + attackName + "!");
@@ -123,21 +125,21 @@ public class Enemy : MonoBehaviour
         player.TakeDamage(criticalDamage);  
     }
 
-    public void regAttack(int damageToDeal, Player player, string attackName)
+    public void regAttack(int damageToDeal, PlayerHealth player, string attackName)
     {
         player.UpdateText("The " + name + " attacked with " + attackName + "!");
         audioSource.PlayOneShot(attackSound);
         player.TakeDamage(damageToDeal);
     }
 
-    public void shield(Player player, string shieldName)
+    public void shield(PlayerHealth player, string shieldName)
     {
         isShieldActive = true;
         combatStats.GetComponent<CombatStats>().SetStat(0);
         player.UpdateText("The " + name + " raised a " + shieldName);
     }
 
-    public void heal(Player player, int healAmount, string attackName)
+    public void heal(PlayerHealth player, int healAmount, string attackName)
     {
         currentHealth += healAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -145,7 +147,7 @@ public class Enemy : MonoBehaviour
         player.UpdateText("The " + name + " used " + attackName + " to heal!");
     }
 
-    public void EnemyAttack(Player player)
+    public void EnemyAttack(PlayerHealth player)
     {
         float actionRoll = Random.Range(0f, 1f);
         int damageToDeal = attackDamage;
@@ -248,7 +250,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void EnemySkip(Player player)
+    public void EnemySkip(PlayerHealth player)
     {
         Debug.Log("Enemy skipped their turn!");
         player.UpdateText("Enemy skipped their turn!");
@@ -257,6 +259,7 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy died!");
+        player.GetComponent<PlayerHealth>().EnemyDead();
         combatStats.SetActive(false);
         playerCombatStats.SetActive(false);
         MenuManager.GetComponent<BattleMenu>().EnemyNeutralized();

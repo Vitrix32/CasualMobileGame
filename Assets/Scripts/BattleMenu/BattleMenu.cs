@@ -90,24 +90,17 @@ public class BattleMenu : MonoBehaviour
 
     public void Flee()
     {
+        GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
         if (PlayerPrefs.GetInt("LocID") == 3)
         {
             FadePanel.GetComponent<SceneTransition>().End();
-            // Fade out all enemies
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject enemy in enemies)
-            {
-                // Add Fade component if it doesn't exist
-                Fade fadeComponent = enemy.GetComponent<Fade>();
-                if (fadeComponent == null)
-                {
-                    fadeComponent = enemy.AddComponent<Fade>();
-                }
-                // Start fade out over 1 second
-                fadeComponent.startFade(0f, 1.0f);
-                // Deactivate after fade
-                Destroy(enemy, 1f);
-            }
+
+            // Fade out enemy
+            
+            enemy.GetComponent<Fade>().ChangeColor(Vector3.zero, 1.3f);
+
+            // Deactivate after fade
+            Destroy(enemy, 1.0f);
 
             PlayerPrefs.SetInt("TempYVal", 4);
             PlayerPrefs.SetInt("LocID", 2);
@@ -116,18 +109,10 @@ public class BattleMenu : MonoBehaviour
         } 
         else
         {
-            // Fade out all enemies
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject enemy in enemies)
-            {
-                Fade fadeComponent = enemy.GetComponent<Fade>();
-                if (fadeComponent == null)
-                {
-                    fadeComponent = enemy.AddComponent<Fade>();
-                }
-                fadeComponent.startFade(0f, 1f);
-                Destroy(enemy, 1f);
-            }
+            // Fade out enemy
+            enemy.GetComponent<Fade>().ChangeColor(Vector3.zero, 1.3f);
+            // Deactivate after fade
+            Destroy(enemy, 1f);
             AllEnemiesDead();
         }
     }
