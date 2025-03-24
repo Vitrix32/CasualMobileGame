@@ -156,6 +156,7 @@ public class Player : MonoBehaviour
                 if (roll <= shieldBlockChance)
                 {
                     UpdateText("Your shield blocked the attack!");
+                    enemy.TakeDamage(bowDamage);
                     isShieldActive = false;
                     combatStats.GetComponent<CombatStats>().UnsetStat(0);
                     return;
