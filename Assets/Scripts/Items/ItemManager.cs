@@ -53,28 +53,42 @@ public class ItemManager : MonoBehaviour
             {
                 consumables[item.name] = item.quantity;
             }
-            else if (item.type.StartsWith("attack:"))
+            // Only apply non-quest items or items with "none" as questName
+            else if (item.questName == "none")
             {
-                string attackTypeKey = item.type.Split(':')[1];
-                foreach (var attackType in attack.attackTypes)
+                ApplyItemBuff(item);
+            }
+        }
+        
+        // Load already completed quests' items
+        LoadCompletedQuestItems();
+    }
+
+    // Helper method to apply an item's buff
+    private void ApplyItemBuff(Item item)
+    {
+        if (item.type.StartsWith("attack:"))
+        {
+            string attackTypeKey = item.type.Split(':')[1];
+            foreach (var attackType in attack.attackTypes)
+            {
+                if (attackType.type == attackTypeKey)
                 {
-                    if (attackType.type == attackTypeKey)
-                    {
-                        attackType.itemEnhancement = item.value;
-                        attackType.itemName = item.name;
-                    }
+                    attackType.itemEnhancement = item.value;
+                    attackType.itemName = item.name;
+                    Debug.Log($"Applied {item.name} to {attackTypeKey} attack (+{item.value})");
                 }
             }
-            else if (item.type == "health")
-            {
-                health.itemEnhancement = item.value;
-                health.itemName = item.name;
-            }
-            else if (item.type == "defense")
-            {
-                defense.itemEnhancement = item.value;
-                defense.itemName = item.name;
-            }
+        }
+        else if (item.type == "health")
+        {
+            health.itemEnhancement = item.value;
+            health.itemName = item.name;
+        }
+        else if (item.type == "defense")
+        {
+            defense.itemEnhancement = item.value;
+            defense.itemName = item.name;
         }
     }
 
@@ -112,35 +126,65 @@ public class ItemManager : MonoBehaviour
         Debug.Log("Updated items saved to: " + itemsFilePath);
     }
 
-    public void checkItemAquire(string s)
+    public void checkItemAquire(string questName)
     {
         foreach (var item in IL.items)
         {
-            if (item.questName == s)
+            if (item.questName == questName)
             {
-                Debug.Log("Aquired Item: " + item.name);
-                if (item.type.StartsWith("attack:"))
+                Debug.Log("Acquired Item: " + item.name);
+                ApplyItemBuff(item);
+                
+                // If it's a consumable, you might want to increment the count
+                if (item.type == "consumable")
                 {
-                    string attackTypeKey = item.type.Split(':')[1];
-                    foreach (var attackType in attack.attackTypes)
+                    if (consumables.ContainsKey(item.name))
                     {
-                        if (attackType.type == attackTypeKey)
+                        consumables[item.name] += item.quantity;
+                    }
+                    else
+                    {
+                        consumables[item.name] = item.quantity;
+                    }
+                    
+                    // Update the item in IL to match
+                    for (int i = 0; i < IL.items.Length; i++)
+                    {
+                        if (IL.items[i].name == item.name && IL.items[i].type == "consumable")
                         {
-                            attackType.itemEnhancement = item.value;
-                            attackType.itemName = item.name;
-                            Debug.Log($"Enhanced {attackTypeKey} attack with {item.name}");
+                            IL.items[i].quantity = consumables[item.name];
+                            break;
                         }
                     }
+                    
+                    SaveItemList();
                 }
-                else if (item.type == "health")
+            }
+        }
+    }
+
+    private void LoadCompletedQuestItems()
+    {
+        // Load quests.txt to check which quests are completed
+        string questsPath = Path.Combine(Application.dataPath, "Scripts/Dialogue/Quests.txt");
+        if (File.Exists(questsPath))
+        {
+            string questJson = File.ReadAllText(questsPath);
+            QuestList questList = JsonUtility.FromJson<QuestList>(questJson);
+            
+            foreach (var quest in questList.quests)
+            {
+                // Check if quest is completed (value > 0)
+                if (quest.value > 0)
                 {
-                    health.itemEnhancement = item.value;
-                    health.itemName = item.name;
-                }
-                else if (item.type == "defense")
-                {
-                    defense.itemEnhancement = item.value;
-                    defense.itemName = item.name;
+                    // Apply items for completed quests
+                    foreach (var item in IL.items)
+                    {
+                        if (item.questName == quest.name)
+                        {
+                            ApplyItemBuff(item);
+                        }
+                    }
                 }
             }
         }
