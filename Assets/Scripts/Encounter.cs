@@ -61,11 +61,11 @@ public class Encounter : MonoBehaviour
     // Daniel -- Saving Fixes
     private void SetObjectsToLiveJSON()
     {
+        Debug.Log("Here1");
         // QUESTS
         if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt"))
         {
-
-
+            Debug.Log("Here2");
             QuestList tempList = FindObjectOfType<QuestManager>().questList;
 
             string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt");
@@ -93,6 +93,7 @@ public class Encounter : MonoBehaviour
         // DIALOGUE
         if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt"))
         {
+            Debug.Log("Here3");
             string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt");
             NPCCollection npcList = JsonUtility.FromJson<NPCCollection>(tempJson);
             List<NPC> list = new List<NPC>();
