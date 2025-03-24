@@ -104,7 +104,7 @@ public class BattleMenu : MonoBehaviour
                     fadeComponent = enemy.AddComponent<Fade>();
                 }
                 // Start fade out over 1 second
-                fadeComponent.startFade(0f, 1f);
+                fadeComponent.startFade(0f, 1.0f);
                 // Deactivate after fade
                 Destroy(enemy, 1f);
             }

@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject combatVFX;
     [SerializeField] private GameObject spellVFX;
     [SerializeField] private GameObject combatStats;
+    [SerializeField] private GameObject enemyCombatStats;
     [SerializeField] private Sprite[] VFXSprites;
     [SerializeField] private ParticleSystem healParticleEffect;
     [SerializeField] private GameObject UniversalAudio;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private Slider healthSlider;
+    [SerializeField] private GameObject enemyHealthSlider;
     [SerializeField] private TMP_Text appleCountText;
     [SerializeField] private TMP_Text milkCountText;
     [SerializeField] private TMP_Text cookieCountText;
@@ -70,6 +72,7 @@ public class Player : MonoBehaviour
     private float shieldBlockChance = 0.8f;
     private bool skipEnemyTurn = false;
     private BattleMenu battleMenu;
+    private GameObject debugMenu;
 
     #endregion
 
@@ -91,6 +94,9 @@ public class Player : MonoBehaviour
     private void Start()
     {
         WorldPlayer = GameObject.Find("WorldPlayer");
+        debugMenu = GameObject.Find("DebugMenu");
+        enemyHealthSlider = GameObject.Find("EnemyHealthSlider");
+        enemyCombatStats = GameObject.Find("EnemyCombatStats");
 
         // PlayerPrefs.SetInt("Health", maxHealth);
         currentHealth = (int)HealthManager.Instance.GetHealth();
@@ -148,7 +154,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        if (!GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
+        if (!debugMenu.GetComponent<DebugMenu>().inGodMode())
         {
             if (isShieldActive)
             {
@@ -305,7 +311,9 @@ public class Player : MonoBehaviour
 
     public void EnemyDead()
     {
+        healthSlider.gameObject.SetActive(false);
         combatStats.SetActive(false);
+        enemyCombatStats.SetActive(false);
     }
 
     #endregion
@@ -653,6 +661,10 @@ public class Player : MonoBehaviour
     private IEnumerator DelayedFleeSuccess()
     {
         yield return new WaitForSeconds(2.0f);
+        healthSlider.gameObject.SetActive(false);
+        enemyHealthSlider.gameObject.SetActive(false);
+        combatStats.SetActive(false);
+        enemyCombatStats.SetActive(false);
         if (battleMenu != null)
         {
             battleMenu.Flee();
