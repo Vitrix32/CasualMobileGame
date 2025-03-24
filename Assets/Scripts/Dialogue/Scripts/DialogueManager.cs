@@ -28,6 +28,11 @@ public class DialogueManager : MonoBehaviour
         NPCs = GameObject.FindGameObjectsWithTag("NPC");
     }
 
+    void OnEnable()
+    {
+        LoadDialogueProgress();
+    }
+
     private IEnumerator displayText(string s)
     {
         clickBox.SetActive(true);
@@ -146,6 +151,7 @@ public class DialogueManager : MonoBehaviour
                         }
                     }
                 }
+                SaveDialogueProgress(); // Save when dialogue state changes
             }
 
             player.GetComponent<PlayerStatus>().BeginDialogue();
@@ -171,5 +177,32 @@ public class DialogueManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private void SaveDialogueProgress()
+    {
+        string path = Application.dataPath + "/Scripts/Dialogue/Dialogue.txt";
+        string json = JsonUtility.ToJson(npcData, true);
+        File.WriteAllText(path, json);
+    }
+
+    private void LoadDialogueProgress()
+    {
+        string path = Application.dataPath + "/Scripts/Dialogue/Dialogue.txt";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            NPCCollection savedProgress = JsonUtility.FromJson<NPCCollection>(json);
+            
+            // Restore dialogue progress
+            foreach (NPC savedNPC in savedProgress.npc_characters)
+            {
+                NPC currentNPC = FindNPCByName(savedNPC.name);
+                if (currentNPC != null)
+                {
+                    currentNPC.value = savedNPC.value;
+                }
+            }
+        }
     }
 }

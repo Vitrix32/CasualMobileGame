@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class QuestManager : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class QuestManager : MonoBehaviour
             starts[q] = false;
             ends[q] = false;
         }
+    }
+
+    void OnEnable()
+    {
+        LoadQuestProgress();
     }
 
     public void OpenQuests()
@@ -56,6 +62,7 @@ public class QuestManager : MonoBehaviour
                 quest.value = 1;
                 AddQuest(quest);
                 starts[quest] = true;
+                SaveQuestProgress(); // Save when quest starts
             }
             //Last part
             if (quest.parts[quest.parts.Length - 1].increment == s && !ends[quest])
@@ -63,6 +70,7 @@ public class QuestManager : MonoBehaviour
                 r = true;
                 RemoveQuest(quest);
                 ends[quest] = true;
+                SaveQuestProgress(); // Save when quest ends
             }
         }
         //Increment the quest and set the next part of it to active
@@ -86,6 +94,9 @@ public class QuestManager : MonoBehaviour
                     }
                 }
             }
+        }
+        if (r) {
+            SaveQuestProgress(); // Save when quest progresses
         }
         return r;
     }
@@ -145,6 +156,41 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    private void SaveQuestProgress()
+    {
+        string path = Application.dataPath + "/Scripts/Dialogue/Quests.txt";
+        QuestList currentProgress = new QuestList();
+        currentProgress.quests = questList.quests;
+        string json = JsonUtility.ToJson(currentProgress, true);
+        File.WriteAllText(path, json);
+    }
+
+    private void LoadQuestProgress()
+    {
+        string path = Application.dataPath + "/Scripts/Dialogue/Quests.txt";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            QuestList savedProgress = JsonUtility.FromJson<QuestList>(json);
+            
+            // Restore quest progress
+            foreach (Quest savedQuest in savedProgress.quests)
+            {
+                foreach (Quest currentQuest in questList.quests)
+                {
+                    if (savedQuest.name == currentQuest.name)
+                    {
+                        currentQuest.value = savedQuest.value;
+                        if (currentQuest.value > 0)
+                        {
+                            starts[currentQuest] = true;
+                            AddQuest(currentQuest);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     /*
     // These should all 3 be seperate files
