@@ -351,6 +351,20 @@
             ]
         },
         {
+            "name": "DungeonChest",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "You found the magical collar!",
+                    "increment": "MagicalCollar; DungeonChest 1"
+                },
+                {
+                    "option": "The chest is empty",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
             "name": "DungeonSign",
             "value": 0,
             "dialogue": [

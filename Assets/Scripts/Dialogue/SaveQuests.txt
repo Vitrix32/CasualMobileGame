@@ -176,6 +176,17 @@
                     "increment": "SnowChest 0"
                 }
             ]
+        },
+        {
+            "name": "MagicalCollar",
+            "questInfo": "Find the Magical Collar in the Dungeon to the West of Graville",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Locate the Magical Collar",
+                    "increment": "DungeonChest 0"
+                }
+            ]
         }
     ]
 }
