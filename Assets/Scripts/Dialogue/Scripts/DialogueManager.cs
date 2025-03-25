@@ -24,7 +24,31 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("WorldPlayer");
-        npcData = JsonUtility.FromJson<NPCCollection>(dialogue.text);
+        
+        // Try to load from save file first, if it exists
+        string path = Application.dataPath + "/Scripts/Dialogue/Dialogue.txt";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            if (!string.IsNullOrEmpty(json))
+            {
+                npcData = JsonUtility.FromJson<NPCCollection>(json);
+                Debug.Log("Loaded dialogue from save file");
+            }
+            else
+            {
+                // Fallback to default dialogue
+                npcData = JsonUtility.FromJson<NPCCollection>(dialogue.text);
+                Debug.Log("Loaded default dialogue (save file was empty)");
+            }
+        }
+        else
+        {
+            // No save file, use default
+            npcData = JsonUtility.FromJson<NPCCollection>(dialogue.text);
+            Debug.Log("Loaded default dialogue (no save file found)");
+        }
+        
         NPCs = GameObject.FindGameObjectsWithTag("NPC");
     }
 

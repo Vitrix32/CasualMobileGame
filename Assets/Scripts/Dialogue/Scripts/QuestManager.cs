@@ -170,8 +170,31 @@ public class QuestManager : MonoBehaviour
         string path = Application.dataPath + "/Scripts/Dialogue/Quests.txt";
         if (File.Exists(path))
         {
+            Debug.Log("Loading quest progress");
             string json = File.ReadAllText(path);
+            Debug.Log("Loaded Quest JSON: " + json);
+            
+            if (string.IsNullOrEmpty(json)) {
+                Debug.LogError("Loaded Quest JSON is empty!");
+                return;
+            }
+            
             QuestList savedProgress = JsonUtility.FromJson<QuestList>(json);
+            
+            if (savedProgress == null) {
+                Debug.LogError("Failed to deserialize QuestList!");
+                return;
+            }
+            
+            if (savedProgress.quests == null || savedProgress.quests.Length == 0) {
+                Debug.LogError("No quests in saved data!");
+                return;
+            }
+            
+            Debug.Log("Found " + savedProgress.quests.Length + " quests in saved data");
+            
+            // Clear current quests
+            currentQuests.Clear();
             
             // Restore quest progress
             foreach (Quest savedQuest in savedProgress.quests)
@@ -184,11 +207,20 @@ public class QuestManager : MonoBehaviour
                         if (currentQuest.value > 0)
                         {
                             starts[currentQuest] = true;
-                            AddQuest(currentQuest);
+                            if (currentQuest.value == currentQuest.parts.Length) {
+                                ends[currentQuest] = true;
+                            } else {
+                                AddQuest(currentQuest);
+                            }
                         }
                     }
                 }
             }
+            Debug.Log(currentQuests);
+        }
+        else
+        {
+            Debug.LogWarning("No saved quest progress found at: " + path);
         }
     }
 
