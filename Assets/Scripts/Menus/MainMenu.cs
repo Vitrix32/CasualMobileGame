@@ -37,6 +37,12 @@ public class MainMenu : MonoBehaviour
         WorldPlayer.GetComponent<PlayerStatus>().EnteringGameWorld(false, 0.4f);
         WorldPlayer.GetComponent<PlayerStatus>().SetWorldPosition();
         WorldPlayer.transform.position = new Vector3(PlayerPrefs.GetFloat("XPos"), PlayerPrefs.GetFloat("YPos"), 0);
+
+        if ((int)HealthManager.Instance.GetHealth() <= 0)
+        {
+            HealthManager.Instance.SetHealth(10);
+        }
+
         SceneManager.LoadScene(PlayerPrefs.GetString("SceneName"));
     }
 
