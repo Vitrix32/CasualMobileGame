@@ -90,6 +90,9 @@ public class ItemManager : MonoBehaviour
             defense.itemEnhancement = item.value;
             defense.itemName = item.name;
         }
+        
+        // Save the changes to the files
+        SavePlayerStats();
     }
 
     public bool HasConsumable(string itemName)
@@ -128,12 +131,14 @@ public class ItemManager : MonoBehaviour
 
     public void checkItemAquire(string questName)
     {
+        bool itemAcquired = false;
         foreach (var item in IL.items)
         {
             if (item.questName == questName)
             {
                 Debug.Log("Acquired Item: " + item.name);
                 ApplyItemBuff(item);
+                itemAcquired = true;
                 
                 // If it's a consumable, you might want to increment the count
                 if (item.type == "consumable")
@@ -161,6 +166,26 @@ public class ItemManager : MonoBehaviour
                 }
             }
         }
+        
+        // Save player stats after applying buffs
+        if (itemAcquired)
+        {
+            SavePlayerStats();
+        }
+    }
+
+    // Add this new method to save player stats
+    private void SavePlayerStats()
+    {
+        string statsPath = Path.Combine(Application.dataPath, "Scripts/Items", "PlayerStats.txt");
+        string json = JsonUtility.ToJson(PS, true);
+        File.WriteAllText(statsPath, json);
+        
+        // Also update the save file
+        string saveStatsPath = Path.Combine(Application.dataPath, "Scripts/Items", "SavePlayerStats.txt");
+        File.WriteAllText(saveStatsPath, json);
+        
+        Debug.Log("Player stats saved with new item buffs");
     }
 
     private void LoadCompletedQuestItems()
