@@ -14,7 +14,7 @@ public class CaveSoldierMovement : MonoBehaviour
     void Update()
     {
         // Check for specific dialogue value
-        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Jeff") == 1 && currentStep == 0)
+        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Jeff") >= 1 && currentStep == 0)
         {
             currentStep++;
             // Start movement
