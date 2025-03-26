@@ -16,6 +16,7 @@ public class QuestManager : MonoBehaviour
     public Dictionary<Quest, bool> starts = new Dictionary<Quest, bool>();
     public Dictionary<Quest, bool> ends = new Dictionary<Quest, bool>();
     private ItemManager IM;
+    private bool hasLoadedQuests = false;
 
     void Start()
     {
@@ -27,11 +28,23 @@ public class QuestManager : MonoBehaviour
             starts[q] = false;
             ends[q] = false;
         }
+        LoadQuestProgress();
+        hasLoadedQuests = true;
     }
 
     void OnEnable()
     {
-        LoadQuestProgress();
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+        if (!hasLoadedQuests)
+        {
+            LoadQuestProgress();
+            hasLoadedQuests = true;
+        }
+    }
+
+    void OnDisable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void OpenQuests()
@@ -172,7 +185,6 @@ public class QuestManager : MonoBehaviour
         {
             Debug.Log("Loading quest progress");
             string json = File.ReadAllText(path);
-            Debug.Log("Loaded Quest JSON: " + json);
             
             if (string.IsNullOrEmpty(json)) {
                 Debug.LogError("Loaded Quest JSON is empty!");
@@ -191,10 +203,14 @@ public class QuestManager : MonoBehaviour
                 return;
             }
             
-            Debug.Log("Found " + savedProgress.quests.Length + " quests in saved data");
-            
             // Clear current quests
             currentQuests.Clear();
+            
+            // First, clear any existing quest UI elements
+            GameObject scrollContent = questPanel.transform.GetChild(1).GetChild(0).gameObject;
+            foreach (Transform child in scrollContent.transform) {
+                Destroy(child.gameObject);
+            }
             
             // Restore quest progress
             foreach (Quest savedQuest in savedProgress.quests)
@@ -211,16 +227,50 @@ public class QuestManager : MonoBehaviour
                                 ends[currentQuest] = true;
                             } else {
                                 AddQuest(currentQuest);
+                                
+                                // Make sure the correct quest step is visible
+                                GameObject qp = null;
+                                foreach (Transform child in scrollContent.transform) {
+                                    if (child.name == currentQuest.name) {
+                                        qp = child.gameObject;
+                                        break;
+                                    }
+                                }
+                                
+                                if (qp != null) {
+                                    GameObject qpPanel = qp.transform.GetChild(0).GetChild(0).gameObject;
+                                    
+                                    // Hide all steps except the current one
+                                    for (int i = 0; i < currentQuest.parts.Length; i++) {
+                                        // Account for name and description (first 2 children)
+                                        if (i + 2 < qpPanel.transform.childCount) {
+                                            qpPanel.transform.GetChild(i + 2).gameObject.SetActive(i == currentQuest.value);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
-            Debug.Log(currentQuests);
         }
         else
         {
             Debug.LogWarning("No saved quest progress found at: " + path);
+        }
+    }
+
+    public void ReloadQuests()
+    {
+        LoadQuestProgress();
+        hasLoadedQuests = true;
+    }
+
+    void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        if (scene.name == "GameplayScene")
+        {
+            ReloadQuests();
         }
     }
 
