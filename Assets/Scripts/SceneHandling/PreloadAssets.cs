@@ -35,7 +35,7 @@ public class PreloadAssets : MonoBehaviour
         StartCoroutine(FadeVerse(0.0f, fadeDuration));
         yield return new WaitForSeconds(fadeDuration + additionalDelay);
         SceneManager.LoadScene("MainMenu");
-        player.GetComponent<UniversalAudioHandling>().NewScene();
+        player.GetComponent<UniversalAudioHandling>().NewScene("MainMenu");
     }
 
     IEnumerator FadeVerse(float endVal, float duration)

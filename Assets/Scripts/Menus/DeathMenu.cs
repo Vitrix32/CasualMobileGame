@@ -136,11 +136,15 @@ public class DeathMenu : MonoBehaviour
 
     private void Menu()
     {
+        WorldPlayer.GetComponent<UniversalAudioHandling>().NewScene("MainMenu");
+         
         SceneManager.LoadScene("MainMenu");
     }
 
     private void Play()
     {
+        WorldPlayer.GetComponent<UniversalAudioHandling>().NewScene("GameplayScene");
+
         SceneManager.LoadScene("GameplayScene");
     }
 

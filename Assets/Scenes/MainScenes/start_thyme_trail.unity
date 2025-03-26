@@ -19604,9 +19604,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2ca51d66dbb13439bfb3f7dc4e9b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   continueText: {fileID: 1606067040}
   textPanel: {fileID: 712465673}
+  clickBox: {fileID: 0}
   dialogue: {fileID: 4900000, guid: b9dd1a5ce64e79549be75829e31e9f13, type: 3}
+  npcData:
+    npc_characters: []
   dialogueText: {fileID: 739816508}
   click: 0
   talking: 0

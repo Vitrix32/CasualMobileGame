@@ -76,9 +76,9 @@ public class UniversalAudioHandling : MonoBehaviour
         primaryUISource.Play();
     }
 
-    public void NewScene()
+    public void NewScene(string s)
     {
-        musicSelection();
+        musicSelection(s);
         primaryMusicSource.clip = backgroundMusic;
         primaryMusicSource.Play();
 
@@ -89,9 +89,8 @@ public class UniversalAudioHandling : MonoBehaviour
     }
 
 
-    private void musicSelection()
+    private void musicSelection(string sceneName)
     {
-        string sceneName = SceneManager.GetActiveScene().name; //Switch this to SceneName?
         if (sceneName == "GameplayScene")
         {
             backgroundMusic = baseSceneMusic;

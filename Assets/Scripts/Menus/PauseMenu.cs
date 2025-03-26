@@ -83,9 +83,11 @@ public class PauseMenu : MonoBehaviour
             string currentScene = SceneManager.GetActiveScene().name;
             string targetScene = "MainMenu";
             Debug.Log($"Current scene: {currentScene}, attempting to load: {targetScene}");
-            
+            WorldPlayer.GetComponent<UniversalAudioHandling>().NewScene(targetScene);
             // Try loading synchronously first as a test
             SceneManager.LoadScene(targetScene);
+            
+
             Debug.Log("Scene load initiated");
         }
         catch (Exception e)

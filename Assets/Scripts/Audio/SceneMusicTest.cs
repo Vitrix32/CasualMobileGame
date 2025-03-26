@@ -31,7 +31,7 @@ public class SceneMusicTest : MonoBehaviour
     public void Start()
     {
         player = GameObject.Find("WorldPlayer");
-        player.GetComponent<UniversalAudioHandling>().NewScene();
+        player.GetComponent<UniversalAudioHandling>().NewScene("GameplayScene");
     }
 
     public void triggerEnter(string name)

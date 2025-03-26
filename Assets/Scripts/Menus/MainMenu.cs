@@ -42,8 +42,9 @@ public class MainMenu : MonoBehaviour
         {
             HealthManager.Instance.SetHealth(10);
         }
-
-        SceneManager.LoadScene(PlayerPrefs.GetString("SceneName"));
+        String sceneName = PlayerPrefs.GetString("SceneName");
+        WorldPlayer.GetComponent<UniversalAudioHandling>().NewScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
     public void QuitGame()
