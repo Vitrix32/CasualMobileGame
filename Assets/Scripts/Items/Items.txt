@@ -41,6 +41,13 @@
             "value": 5,
             "quantity": 1,
             "questName": "SwordofPower"
+        },
+        {
+            "name": "Magical Collar",
+            "type": "attack:claw",
+            "value": 5,
+            "quantity": 1,
+            "questName": "MagicalCollar"
         }
     ]
 }

@@ -975,7 +975,6 @@ MonoBehaviour:
   NewGameButton: {fileID: 1588893770}
   OptionsButton: {fileID: 1856386588}
   QuitButton: {fileID: 2043661802}
-  SettingsMenu: {fileID: 553999538}
 --- !u!1 &254326482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,12 +1359,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326219963}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7a7e9c0321b18e4e81e668d2ddb68fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   VolumeSlider: {fileID: 326219966}
+  MusicVolumeSlider: {fileID: 0}
+  SFXVolumeSlider: {fileID: 0}
+  UIVolumeSlider: {fileID: 0}
 --- !u!114 &326219966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,7 +1419,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 326219965}
+      - m_Target: {fileID: 2075245677}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: ChangeMusicVolume
         m_Mode: 1
@@ -1513,12 +1515,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365201502}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7a7e9c0321b18e4e81e668d2ddb68fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   VolumeSlider: {fileID: 365201505}
+  MusicVolumeSlider: {fileID: 0}
+  SFXVolumeSlider: {fileID: 0}
+  UIVolumeSlider: {fileID: 0}
 --- !u!114 &365201505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1570,7 +1575,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 365201504}
+      - m_Target: {fileID: 2075245677}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: ChangeUIVolume
         m_Mode: 1
@@ -2320,12 +2325,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740256538}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7a7e9c0321b18e4e81e668d2ddb68fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   VolumeSlider: {fileID: 740256541}
+  MusicVolumeSlider: {fileID: 0}
+  SFXVolumeSlider: {fileID: 0}
+  UIVolumeSlider: {fileID: 0}
 --- !u!114 &740256541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2377,7 +2385,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 740256540}
+      - m_Target: {fileID: 2075245677}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: ChangeSFXVolume
         m_Mode: 1
@@ -5278,12 +5286,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966919181}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7a7e9c0321b18e4e81e668d2ddb68fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   VolumeSlider: {fileID: 1966919184}
+  MusicVolumeSlider: {fileID: 0}
+  SFXVolumeSlider: {fileID: 0}
+  UIVolumeSlider: {fileID: 0}
 --- !u!114 &1966919184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5335,7 +5346,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1966919183}
+      - m_Target: {fileID: 2075245677}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: ChangeVolume
         m_Mode: 1
@@ -5600,7 +5611,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a7e9c0321b18e4e81e668d2ddb68fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VolumeSlider: {fileID: 0}
+  VolumeSlider: {fileID: 1966919184}
+  MusicVolumeSlider: {fileID: 326219966}
+  SFXVolumeSlider: {fileID: 740256541}
+  UIVolumeSlider: {fileID: 365201505}
 --- !u!82 &2075245678
 AudioSource:
   m_ObjectHideFlags: 0
