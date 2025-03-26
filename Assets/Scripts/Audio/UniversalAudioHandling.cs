@@ -53,7 +53,7 @@ public class UniversalAudioHandling : MonoBehaviour
     {
         primaryMusicSource.Stop();
         primaryMusicSource.clip = backgroundMusic;
-        primaryMusicSource.Play();
+        //primaryMusicSource.Play();
     }
 
     public void Die()

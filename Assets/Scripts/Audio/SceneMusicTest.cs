@@ -14,16 +14,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneMusicTest : MonoBehaviour
 {
-    [SerializeField]
-    private AudioSource primaryMusicSource;
-    [SerializeField]
-    private AudioClip[] backgroundMusics;
-    [SerializeField]
-    private AudioClip[] combatMusics;
-
-    [SerializeField]
     private GameObject player;
-
     //The build indexes of each scene in the game.
     //The order of these indexes below indicates the order the audio clips are
     //stored in the backgroundMusics and combatMusics arrays.
@@ -31,7 +22,7 @@ public class SceneMusicTest : MonoBehaviour
     public void Start()
     {
         player = GameObject.Find("WorldPlayer");
-        player.GetComponent<UniversalAudioHandling>().NewScene("GameplayScene");
+
     }
 
     public void triggerEnter(string name)
