@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
+    [SerializeField] GameObject WorldPlayer;
     [SerializeField] Slider VolumeSlider;
+    [SerializeField] Slider MusicVolumeSlider;
+    [SerializeField] Slider SFXVolumeSlider;
+    [SerializeField] Slider UIVolumeSlider;
 
     // Start is called before the first frame update
     void Start()
     {
+        WorldPlayer = GameObject.Find("WorldPlayer");
         if (!PlayerPrefs.HasKey("Volume"))
         {
             PlayerPrefs.SetFloat("Volume", 1);
@@ -40,6 +45,7 @@ public class SoundManager : MonoBehaviour
     private void SaveVolume()
     {
         PlayerPrefs.SetFloat("Volume", VolumeSlider.value);
+        Debug.Log("VOLUME SAVE");
     }
 
     private void LoadVolume()
@@ -52,18 +58,19 @@ public class SoundManager : MonoBehaviour
     {
         //Not Audio Listener
         GameObject player = GameObject.Find("WorldPlayer");
-        player.GetComponent<UniversalAudioHandling>().ChangeSourceVolume("Music", VolumeSlider.value);
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ChangeSourceVolume("Music", MusicVolumeSlider.value);
         SaveMusicVolume();
     }
 
     private void SaveMusicVolume()
     {
-        PlayerPrefs.SetFloat("MusicVolume", VolumeSlider.value);
+        PlayerPrefs.SetFloat("MusicVolume", MusicVolumeSlider.value);
+        Debug.Log("MUSIC VOLUME SAVE");
     }
 
     private void LoadMusicVolume()
     {
-        VolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        MusicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
     }
 
     //effects
@@ -71,18 +78,19 @@ public class SoundManager : MonoBehaviour
     {
         //Not Audio Listener
         GameObject player = GameObject.Find("WorldPlayer");
-        player.GetComponent<UniversalAudioHandling>().ChangeSourceVolume("SFX", VolumeSlider.value);
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ChangeSourceVolume("SFX", SFXVolumeSlider.value);
         SaveSFXVolume();
     }
 
     private void SaveSFXVolume()
     {
-        PlayerPrefs.SetFloat("SFXVolume", VolumeSlider.value);
+        PlayerPrefs.SetFloat("SFXVolume", SFXVolumeSlider.value);
+        Debug.Log("SFX VOLUME SAVE");
     }
 
     private void LoadSFXVolume()
     {
-        VolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
     }
 
     //UI
@@ -90,17 +98,18 @@ public class SoundManager : MonoBehaviour
     {
         //Not Audio Listener
         GameObject player = GameObject.Find("WorldPlayer");
-        player.GetComponent<UniversalAudioHandling>().ChangeSourceVolume("UI", VolumeSlider.value);
+        WorldPlayer.GetComponent<UniversalAudioHandling>().ChangeSourceVolume("UI", UIVolumeSlider.value);
         SaveUIVolume();
     }
 
     private void SaveUIVolume()
     {
-        PlayerPrefs.SetFloat("UIVolume", VolumeSlider.value);
+        PlayerPrefs.SetFloat("UIVolume", UIVolumeSlider.value);
+        Debug.Log("UI VOLUME SAVE");
     }
 
     private void LoadUIVolume()
     {
-        VolumeSlider.value = PlayerPrefs.GetFloat("UIVolume");
+        UIVolumeSlider.value = PlayerPrefs.GetFloat("UIVolume");
     }
 }
