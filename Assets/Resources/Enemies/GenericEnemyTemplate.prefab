@@ -201,7 +201,7 @@ SpriteRenderer:
   m_SortingLayerID: -1407208739
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ae979175bac354c9b9911b1a7380ced9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80806d28a8a7040e7b99979cc043e0ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -226,20 +226,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatStats: {fileID: 0}
   player: {fileID: 0}
-  maxHealth: 35
+  maxHealth: 15
   currentHealth: 0
-  name: Bat
+  name: Rat
   attacks:
   - Crit
-  - Heal
+  - Reg
   - Reg
   attackNames:
-  - Bite
-  - Screech
-  - Scratch
+  - Chomp
+  - Chew
+  - Tail Whip
   healthText: {fileID: 8037053343007498960}
   healthBar: {fileID: 3734570033287303679}
-  attackDamage: 3
+  attackDamage: 5
   shakeDuration: 0.5
   shakeMagnitude: 0.9
   attackSound: {fileID: 8300000, guid: b64728f271e3a984e842e3f6ea0cf840, type: 3}

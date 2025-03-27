@@ -4353,6 +4353,7 @@ GameObject:
   - component: {fileID: 985119435}
   - component: {fileID: 985119437}
   - component: {fileID: 985119436}
+  - component: {fileID: 985119438}
   m_Layer: 5
   m_Name: BackgroundPanel
   m_TagString: Untagged
@@ -4417,6 +4418,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985119434}
   m_CullTransparentMesh: 1
+--- !u!114 &985119438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985119434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792a339c0e0b7f745aa43d1d590cda09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 985119436}
+  backgrounds:
+  - {fileID: 21300000, guid: d71b73be82f3e2842bf1c3e3c254013a, type: 3}
+  - {fileID: 21300000, guid: da7f79546d16f624995e47fe06d9e45c, type: 3}
+  - {fileID: 21300000, guid: d5b40ec0d6b6a0a4890d5907e2827287, type: 3}
+  - {fileID: 21300000, guid: b795bb6ecc1f6424788d69ef63e0d610, type: 3}
+  - {fileID: 21300000, guid: f2b4c8898df6b8d42a331d27d1766d22, type: 3}
 --- !u!1 &1031101908
 GameObject:
   m_ObjectHideFlags: 0
