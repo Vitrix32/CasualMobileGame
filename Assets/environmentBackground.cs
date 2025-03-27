@@ -12,7 +12,7 @@ public class environmentBackground : MonoBehaviour
     private Sprite[] backgrounds;
     void Start()
     {
-        int loc = PlayerPrefs.GetInt("LocId");
+        int loc = PlayerPrefs.GetInt("LocID");
         Debug.Log("location ID: " + loc);
         Sprite locSprite = backgrounds[0];
 
