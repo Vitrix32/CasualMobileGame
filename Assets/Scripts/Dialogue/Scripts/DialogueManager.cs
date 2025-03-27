@@ -133,12 +133,21 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         while (!waitForTextScroll)
         {
-            yield return null;
             if (click)
             {
-                continueText.gameObject.SetActive(false);
-                waitForTextScroll = true;
+                float x = 0;
+                while (x < .1f)
+                {
+                    x += Time.deltaTime;
+                    if (!click) {
+                        continueText.gameObject.SetActive(false);
+                        waitForTextScroll = true;
+                        break;
+                    }
+                    yield return null;
+                }
             }
+            yield return null;
         }
         textPanel.SetActive(false);
         clickBox.SetActive(false);
