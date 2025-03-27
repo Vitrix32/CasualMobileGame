@@ -17,6 +17,11 @@ public class ClickBoxBehavior : MonoBehaviour
         DM.click = true;
     }
 
+    private void OnMouseUp()
+    {
+        DM.click = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
