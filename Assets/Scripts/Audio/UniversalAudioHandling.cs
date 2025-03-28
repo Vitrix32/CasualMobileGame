@@ -42,18 +42,30 @@ public class UniversalAudioHandling : MonoBehaviour
         combatMusic = combatMusics[0];
     }
 
+    public void BossFight()
+    {
+
+        primaryMusicSource.Stop();
+        primaryMusicSource.clip = combatMusics[1];
+        primaryMusicSource.Play();
+    }
     public void EnteringCombat()
     {
-        primaryMusicSource.Stop();
-        primaryMusicSource.clip = combatMusic;
-        primaryMusicSource.Play();
+        if(primaryMusicSource.clip != combatMusics[1])
+        {
+            primaryMusicSource.Stop();
+            primaryMusicSource.clip = combatMusic;
+            primaryMusicSource.Play(); 
+        }
+            
     }
 
     public void ExitingCombat() 
     {
+        Debug.Log("exiting combat music");
         primaryMusicSource.Stop();
         primaryMusicSource.clip = backgroundMusic;
-        //primaryMusicSource.Play();
+        primaryMusicSource.Play();
     }
 
     public void Die()
@@ -111,7 +123,7 @@ public class UniversalAudioHandling : MonoBehaviour
         {
             switchMusic(4);
         }
-        if (name == "dungeonZone")
+        if (name == "dungeonZone" || name == "caveZone") //make these different eventually?
         {
             switchMusic(2);
         }
@@ -139,6 +151,7 @@ public class UniversalAudioHandling : MonoBehaviour
 
     public void exitedZone()
     {
+        Debug.Log("exited zone");
         backgroundMusic = baseSceneMusic;
         primaryMusicSource.Stop();
         primaryMusicSource.clip = baseSceneMusic;
@@ -148,10 +161,13 @@ public class UniversalAudioHandling : MonoBehaviour
     private void switchMusic(int index)
     {
         Debug.Log("switching Music");
-        backgroundMusic=backgroundMusics[index];
-        primaryMusicSource.Stop();
-        primaryMusicSource.clip = backgroundMusic;
-        primaryMusicSource.Play();
+        if (backgroundMusic != backgroundMusics[index])
+        {
+            backgroundMusic = backgroundMusics[index];
+            primaryMusicSource.Stop();
+            primaryMusicSource.clip = backgroundMusic;
+            primaryMusicSource.Play();
+        }
     }
 
     public void ChangeSourceVolume(string source, float level)

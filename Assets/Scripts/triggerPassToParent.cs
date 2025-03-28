@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +29,14 @@ public class triggerPassToParent : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "WorldPlayer")
+        try { 
+            if (other.gameObject.name == "WorldPlayer")
             gameObject.GetComponentInParent<SceneMusicTest>().triggerExit(gameObject.name);
+        
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log(e.ToString());
+        }
     }
 }

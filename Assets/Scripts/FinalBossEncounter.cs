@@ -59,6 +59,7 @@ public class FinalBossEncounter : MonoBehaviour
                 QuestButton.SetActive(false);
                 MapButton.SetActive(false);
                 VirtualJoystick.SetActive(false);
+                collision.gameObject.GetComponent<UniversalAudioHandling>().BossFight();
                 collision.gameObject.GetComponent<PlayerStatus>().LeavingGameWorld(true, delay);
                 StartCoroutine("ChangeScene");
             }
@@ -71,7 +72,7 @@ public class FinalBossEncounter : MonoBehaviour
         SetObjectsToLiveJSON();
 
         //IsDungeonBossEncounter = true;
-        PlayerPrefs.SetInt("LocID", 4);
+        PlayerPrefs.SetInt("LocID", 3);
 
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene("BattleScene");

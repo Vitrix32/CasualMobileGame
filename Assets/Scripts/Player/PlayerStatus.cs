@@ -26,15 +26,19 @@ public class PlayerStatus : MonoBehaviour
     private void EnteringCombat()
     {
         inCombat = true;
+        Debug.Log("we are in combat");
         combatImmunity = true;
         worldPosition = this.transform.position;
         this.transform.position = combatPosition;
         this.GetComponent<PlayerMovement>().setVector(new Vector2(0, 0));
+
         ToggleSprite();
     }
 
     private void ExitingCombat()
     {
+        this.GetComponent<UniversalAudioHandling>().ExitingCombat();
+
         inCombat = false;
         this.transform.position = worldPosition;
         Invoke("ToggleSprite", 0.01f);
@@ -59,6 +63,7 @@ public class PlayerStatus : MonoBehaviour
     {
         this.GetComponent<FootstepAudioHandling>().StopAllCoroutines();
         this.GetComponent<UniversalAudioHandling>().EnteringCombat();
+
         DisableControl();
         Invoke("EnteringCombat", delay);
     }
@@ -72,11 +77,14 @@ public class PlayerStatus : MonoBehaviour
         // We could add a "isDeath" and a "isMenu" bool or something along those lines
         if (isCombat)
         {
+            this.GetComponent<UniversalAudioHandling>().ExitingCombat();
             Invoke("ExitingCombat", delay);
+            
+
         }
         EnableControl();
         Invoke("EndImmunity", 3.0f);
-        this.GetComponent<UniversalAudioHandling>().ExitingCombat();
+
     }
 
     //This function has the purpose of disabling control of the player.
@@ -114,6 +122,11 @@ public class PlayerStatus : MonoBehaviour
     public bool IsCombatImmune()
     {
         return combatImmunity;
+    }
+
+    public bool IsInCombat()
+    {
+        return inCombat;
     }
 
     public void EnableImmunity()

@@ -32,14 +32,40 @@ public class SceneMusicTest : MonoBehaviour
         {
             player.GetComponent<UniversalAudioHandling>().enteredZone(name);
         }
+        switch(name)
+        {
+            case "caveZone":
+                PlayerPrefs.SetInt("LocID", 1);
+                break;
+            case "dungeonZone":
+                PlayerPrefs.SetInt("LocID", 2);
+                break;
+            case "desertZone":
+                PlayerPrefs.SetInt("LocID", 4);
+                break;
+            case "churchZone":
+                PlayerPrefs.SetInt("LocID", 3);
+                break;
+            case "mountainZone":
+                PlayerPrefs.SetInt("LocID", 5);
+                break;
+            default:
+                break;
+
+        }
+        Debug.Log("Zone " + PlayerPrefs.GetInt("LocID"));
+
     }
 
     public void triggerExit(string name)
     {
-        Debug.Log("exited trigger");
-        if (player != null)
+        
+        if (player != null && player.GetComponent<PlayerStatus>().IsInCombat())
         {
+            Debug.Log("exited trigger");
             player.GetComponent<UniversalAudioHandling>().exitedZone();
+            PlayerPrefs.SetInt("LocID", 0);
         }
+        
     }
 }
