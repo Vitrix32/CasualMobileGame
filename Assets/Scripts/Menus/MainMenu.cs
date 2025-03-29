@@ -68,11 +68,15 @@ public class MainMenu : MonoBehaviour
             string sceneName = PlayerPrefs.GetString("SceneName");
             WorldPlayer.GetComponent<UniversalAudioHandling>().NewScene(sceneName);
             SceneManager.LoadScene(sceneName);
+            WorldPlayer.GetComponent<SpriteRenderer>().enabled = true;
         }
         else
         {
             // No saved game found, load default scene
             SceneManager.LoadScene(gameSceneName);
+            WorldPlayer.GetComponent<UniversalAudioHandling>().NewScene(gameSceneName);
+            WorldPlayer.GetComponent<SpriteRenderer>().enabled = true;
+
         }
     }
 

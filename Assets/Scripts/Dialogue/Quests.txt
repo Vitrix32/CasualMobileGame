@@ -88,7 +88,7 @@
         {
             "name": "Main Quest",
             "questInfo": "Today is going to be an adventure, you can feel it!",
-            "value": 0,
+            "value": 1,
             "parts": [
                 {
                     "description": "Head down to help the inn",
@@ -185,6 +185,28 @@
                 {
                     "description": "Locate the Magical Collar",
                     "increment": "DungeonChest 0"
+                }
+            ]
+        },
+        {
+            "name": "AwesomeAxe",
+            "questInfo": "Brave the dunes to find the legendary Axe",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Locate the Awesome Axe",
+                    "increment": "DesertChest 0"
+                }
+            ]
+        },
+        {
+            "name": "FungusFlinger",
+            "questInfo": "Go talk to the odd hermit on the trail to Newcastle",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Talk to the hermit",
+                    "increment": "MushroomLady 0"
                 }
             ]
         }

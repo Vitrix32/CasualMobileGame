@@ -337,6 +337,46 @@
             ]
         },
         {
+            "name": "oldOasisGuy",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Hmmm... yes... water flowing... hmm...",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "YoungOasisGuy",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "I don't get why gramps wants to come here every time we travel. It's just as stupid fountain!",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "CaravanOasisGuy",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "I hear there's a really cool artefact over to the east of this trail. Too bad you have to get through the monster infested dunes to get there! HA no thank you!",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "OasisGirl",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Ugh, it's soooo hottttt...",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
             "name": "SnowChest",
             "value": 0,
             "dialogue": [
@@ -373,7 +413,7 @@
                     "increment": "FungusFlinger; MushroomLady 1"
                 },
                 {
-                    "option": "The chest is empty",
+                    "option": "We're in a mush room, hehe get it...",
                     "increment": "none"
                 }
             ]

@@ -60,7 +60,7 @@ public class SceneMusicTest : MonoBehaviour
     public void triggerExit(string name)
     {
         
-        if (player != null && player.GetComponent<PlayerStatus>().IsInCombat())
+        if (player != null && !player.GetComponent<PlayerStatus>().IsInCombat())
         {
             Debug.Log("exited trigger");
             player.GetComponent<UniversalAudioHandling>().exitedZone();

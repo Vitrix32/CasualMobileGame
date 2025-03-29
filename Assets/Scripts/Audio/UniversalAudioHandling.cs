@@ -147,6 +147,10 @@ public class UniversalAudioHandling : MonoBehaviour
         {
             switchMusic(6);
         }
+        if(name =="mushroomZone")
+        {
+            switchMusic(8);
+        }
     }
 
     public void exitedZone()

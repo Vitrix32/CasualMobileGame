@@ -209,6 +209,46 @@
             ]
         },
         {
+            "name": "oldOasisGuy",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Hmmm... yes... water flowing... hmm...",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "YoungOasisGuy",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "I don't get why gramps wants to come here every time we travel. It's just as stupid fountain!",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "CaravanOasisGuy",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "I hear there's a really cool artefact over to the east of this trail. Too bad you have to get through the monster infested dunes to get there! HA no thank you!",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "OasisGirl",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Ugh, it's soooo hottttt...",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
             "name": "Scrolls",
             "value": 0,
             "dialogue": [
@@ -346,6 +386,34 @@
                 },
                 {
                     "option": "The chest is empty",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "DesertChest",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "You found the Awesome Axe!",
+                    "increment": "BigAxe; DesertChest 1"
+                },
+                {
+                    "option": "The chest is empty",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "MushroomLady",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Hey you! Why are you in my house? Because you like MUSHROOMS?! Yes, that must be it... Because of your fellow love of mushrooms, I shall give you the Fungus Flinger!",
+                    "increment": "FungusFlinger; MushroomLady 1"
+                },
+                {
+                    "option": "We're in a Mush room hehe, get it...",
                     "increment": "none"
                 }
             ]

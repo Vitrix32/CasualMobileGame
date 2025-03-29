@@ -48,6 +48,20 @@
             "value": 5,
             "quantity": 1,
             "questName": "MagicalCollar"
+        },
+        {
+            "name": "Awesome Axe",
+            "type": "attack:axe",
+            "value": 5,
+            "quantity": 1,
+            "questName": "AwesomeAxe"
+        },
+        {
+            "name": "Fungus Flinger",
+            "type": "attack:bow",
+            "value": 5,
+            "quantity": 1,
+            "questName": "FungusFlinger"
         }
     ]
 }

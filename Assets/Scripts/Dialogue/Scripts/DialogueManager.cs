@@ -179,6 +179,7 @@ public class DialogueManager : MonoBehaviour
 
     public void GetDialogue(string npcName)
     {
+        Debug.Log(npcName);
         NPC npc = FindNPCByName(npcName);
         int optionIndex = npc.value;
 

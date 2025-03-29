@@ -9,6 +9,7 @@ public class PlayerStatus : MonoBehaviour
     private int prevSceneIndex;
     [SerializeField]
     private bool combatImmunity;
+    [SerializeField]
     private bool inCombat;
     private Vector2 combatPosition;
     private Vector2 worldPosition;
