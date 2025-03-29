@@ -38,9 +38,9 @@ public class DeathMenu : MonoBehaviour
     private void ResetSave()
     {
         // RESETTING THE QUESTS
-        if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt"))
+        if (File.Exists(Path.Combine(Application.persistentDataPath, "SaveQuests.txt")))
         {
-            string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt");
+            string tempJson = File.ReadAllText(Path.Combine(Application.persistentDataPath, "SaveQuests.txt"));
             QuestList questList = JsonUtility.FromJson<QuestList>(tempJson);
             List<Quest> list = new List<Quest>();
             for (int i = 0; i < questList.quests.Length; i++)
@@ -51,13 +51,13 @@ public class DeathMenu : MonoBehaviour
             questList.quests = list.ToArray();
             string json = JsonUtility.ToJson(questList, true);
             // Reset the save and the live json files
-            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt", json);
-            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Quests.txt", json);
+            File.WriteAllText(Path.Combine(Application.persistentDataPath, "SaveQuests.txt"), json);
+            File.WriteAllText(Path.Combine(Application.persistentDataPath, "Quests.txt"), json);
         }
         // RESETTING THE DIALOGUE
-        if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt"))
+        if (File.Exists(Path.Combine(Application.persistentDataPath, "SaveDialogue.txt")))
         {
-            string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt");
+            string tempJson = File.ReadAllText(Path.Combine(Application.persistentDataPath, "SaveDialogue.txt"));
             NPCCollection npcList = JsonUtility.FromJson<NPCCollection>(tempJson);
             List<NPC> list = new List<NPC>();
             for (int i = 0; i < npcList.npc_characters.Length; i++)
@@ -68,13 +68,13 @@ public class DeathMenu : MonoBehaviour
             npcList.npc_characters = list.ToArray();
             string json = JsonUtility.ToJson(npcList, true);
             // Reset the save and the live json files
-            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt", json);
-            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt", json);
+            File.WriteAllText(Path.Combine(Application.persistentDataPath, "SaveDialogue.txt"), json);
+            File.WriteAllText(Path.Combine(Application.persistentDataPath, "Dialogue.txt"), json);
         }
         // RESETTING THE PLAYERSTATS
-        if (File.Exists(Application.dataPath + "/Scripts/Items/SavePlayerStats.txt"))
+        if (File.Exists(Path.Combine(Application.persistentDataPath, "SavePlayerStats.txt")))
         {
-            string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Items/SavePlayerStats.txt");
+            string tempJson = File.ReadAllText(Path.Combine(Application.persistentDataPath, "SavePlayerStats.txt"));
             PlayerStats statList = JsonUtility.FromJson<PlayerStats>(tempJson);
             List<StatType> list = new List<StatType>();
             for (int i = 0; i < statList.stats.Length; i++)
@@ -96,8 +96,8 @@ public class DeathMenu : MonoBehaviour
             statList.stats = list.ToArray();
             string json = JsonUtility.ToJson(statList, true);
             // Reset the save and the live json files
-            File.WriteAllText(Application.dataPath + "/Scripts/Items/SavePlayerStats.txt", json);
-            File.WriteAllText(Application.dataPath + "/Scripts/Items/PlayerStats.txt", json);
+            File.WriteAllText(Path.Combine(Application.persistentDataPath, "SavePlayerStats.txt"), json);
+            File.WriteAllText(Path.Combine(Application.persistentDataPath, "PlayerStats.txt"), json);
 
             // PlayerPrefs.SetInt("Health", 50);
         }

@@ -1,0 +1,53 @@
+{
+    "items": [
+        {
+            "name": "GreatSword",
+            "type": "attack:sword",
+            "value": 0,
+            "quantity": 1,
+            "questName": "JeffQuest"
+        },
+        {
+            "name": "Cookie",
+            "type": "consumable",
+            "value": 10,
+            "quantity": 0,
+            "questName": "none"
+        },
+        {
+            "name": "Banana",
+            "type": "consumable",
+            "value": 10,
+            "quantity": 0,
+            "questName": "none"
+        },
+        {
+            "name": "Milk",
+            "type": "consumable",
+            "value": 10,
+            "quantity": 0,
+            "questName": "none"
+        },
+        {
+            "name": "Apple",
+            "type": "consumable",
+            "value": 10,
+            "quantity": 0,
+            "questName": "none"
+        },
+        {
+            "name": "Sword of Power",
+            "type": "attack:sword",
+            "value": 5,
+            "quantity": 1,
+            "questName": "SwordofPower"
+        },
+        {
+            "name": "Magical Collar",
+            "type": "attack:claw",
+            "value": 5,
+            "quantity": 1,
+            "questName": "MagicalCollar"
+        }
+    ]
+}

@@ -16,7 +16,7 @@ public class ItemManager : MonoBehaviour
 
     private void Start()
     {
-        itemsFilePath = Path.Combine(Application.dataPath, "Scripts/Items", "Items.txt");
+        itemsFilePath = Path.Combine(Application.persistentDataPath, "Items.txt");
 
         if (File.Exists(itemsFilePath))
         {
@@ -125,7 +125,7 @@ public class ItemManager : MonoBehaviour
     private void SaveItemList()
     {
         string newJson = JsonUtility.ToJson(IL, true);
-        File.WriteAllText(itemsFilePath, newJson);
+        File.WriteAllText(Path.Combine(Application.persistentDataPath, "Items.txt"), newJson);
         Debug.Log("Updated items saved to: " + itemsFilePath);
     }
 
@@ -177,12 +177,12 @@ public class ItemManager : MonoBehaviour
     // Add this new method to save player stats
     private void SavePlayerStats()
     {
-        string statsPath = Path.Combine(Application.dataPath, "Scripts/Items", "PlayerStats.txt");
+        string statsPath = Path.Combine(Application.persistentDataPath, "PlayerStats.txt");
         string json = JsonUtility.ToJson(PS, true);
         File.WriteAllText(statsPath, json);
         
         // Also update the save file
-        string saveStatsPath = Path.Combine(Application.dataPath, "Scripts/Items", "SavePlayerStats.txt");
+        string saveStatsPath = Path.Combine(Application.persistentDataPath, "SavePlayerStats.txt");
         File.WriteAllText(saveStatsPath, json);
         
         Debug.Log("Player stats saved with new item buffs");

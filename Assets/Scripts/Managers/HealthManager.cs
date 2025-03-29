@@ -23,7 +23,9 @@ public class HealthManager : MonoBehaviour
 
     public const float MAX_HEALTH = 50f;
     private float _currentHealth;
-    private readonly string SAVE_PATH = "/Scripts/Managers/CurrentHealth.json";
+    
+    // Update the path to use a filename without a directory structure
+    private readonly string SAVE_FILENAME = "CurrentHealth.json";
 
     private void Awake()
     {
@@ -54,24 +56,53 @@ public class HealthManager : MonoBehaviour
 
     private void LoadHealth()
     {
-        string path = Application.dataPath + SAVE_PATH;
+        // Use persistentDataPath instead of dataPath
+        string path = Path.Combine(Application.persistentDataPath, SAVE_FILENAME);
+        
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             _currentHealth = data.currentHealth;
+            Debug.Log($"Loaded health: {_currentHealth} from {path}");
         }
         else
         {
-            _currentHealth = MAX_HEALTH;
+            // If file doesn't exist in persistentDataPath, check Resources for default
+            TextAsset defaultHealthJson = Resources.Load<TextAsset>("CurrentHealth");
+            if (defaultHealthJson != null)
+            {
+                SaveData data = JsonUtility.FromJson<SaveData>(defaultHealthJson.text);
+                _currentHealth = data.currentHealth;
+                Debug.Log($"Loaded default health: {_currentHealth} from Resources");
+                
+                // Save this to persistentDataPath for future use
+                SaveHealth();
+            }
+            else
+            {
+                _currentHealth = MAX_HEALTH;
+                Debug.Log($"Set default max health: {_currentHealth}");
+                SaveHealth();
+            }
         }
     }
 
     private void SaveHealth()
     {
-        string path = Application.dataPath + SAVE_PATH;
+        // Use persistentDataPath instead of dataPath
+        string path = Path.Combine(Application.persistentDataPath, SAVE_FILENAME);
         SaveData data = new SaveData { currentHealth = _currentHealth };
         string json = JsonUtility.ToJson(data);
+        
+        // Ensure the directory exists
+        string directory = Path.GetDirectoryName(path);
+        if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+        
         File.WriteAllText(path, json);
+        Debug.Log($"Saved health: {_currentHealth} to {path}");
     }
 }

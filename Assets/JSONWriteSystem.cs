@@ -11,6 +11,28 @@ public class JSONWriteSystem : MonoBehaviour
     public TMPro.TMP_InputField HpInputField;
     public TMPro.TMP_InputField DamageInputField;
 
+    private string enemyDataPath;
+
+    private void Awake()
+    {
+        // Set up path
+        enemyDataPath = Path.Combine(Application.persistentDataPath, "EnemyDataFile.json");
+        
+        // Check if the file exists in persistent data path, if not, copy default
+        if (!File.Exists(enemyDataPath))
+        {
+            // Check if default exists in dataPath
+            string defaultPath = Path.Combine(Application.dataPath, "EnemyDataFile.json");
+            if (File.Exists(defaultPath))
+            {
+                // Copy from dataPath to persistentDataPath
+                string defaultJson = File.ReadAllText(defaultPath);
+                File.WriteAllText(enemyDataPath, defaultJson);
+                Debug.Log("Copied default enemy data to: " + enemyDataPath);
+            }
+        }
+    }
+
     public void SaveToJson()
     {
         EnemyData data = new EnemyData();
@@ -20,10 +42,9 @@ public class JSONWriteSystem : MonoBehaviour
         data.Damage = DamageInputField.text;
 
         EnemyList enemyList = new EnemyList();
-        string tempJson = "";
-        if (File.Exists(Application.dataPath + "/EnemyDataFile.json"))
+        if (File.Exists(enemyDataPath))
         {
-            tempJson = File.ReadAllText(Application.dataPath + "/EnemyDataFile.json");
+            string tempJson = File.ReadAllText(enemyDataPath);
             enemyList = JsonUtility.FromJson<EnemyList>(tempJson);
             List<EnemyData> list = new List<EnemyData>();
             for (int i = 0; i < enemyList.Enemies.Length; i++)
@@ -38,7 +59,7 @@ public class JSONWriteSystem : MonoBehaviour
             list.Add(data);
             enemyList.Enemies = list.ToArray();
             string json = JsonUtility.ToJson(enemyList, true);
-            File.WriteAllText(Application.dataPath + "/EnemyDataFile.json", json);
+            File.WriteAllText(enemyDataPath, json);
         }
         else
         {
@@ -46,7 +67,9 @@ public class JSONWriteSystem : MonoBehaviour
             enemies[0] = data;
             enemyList.Enemies = enemies;
             string json = JsonUtility.ToJson(enemyList, true);
-            File.WriteAllText(Application.dataPath + "/EnemyDataFile.json", json);
+            File.WriteAllText(enemyDataPath, json);
         }
+        
+        Debug.Log("Saved enemy data to: " + enemyDataPath);
     }
 }

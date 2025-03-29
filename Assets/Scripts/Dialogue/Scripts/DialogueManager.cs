@@ -19,6 +19,27 @@ public class DialogueManager : MonoBehaviour
     public bool click = false;
     public bool talking = false;
 
+    void Awake()
+    {
+        // Create directory if it doesn't exist
+        string directory = Path.Combine(Application.persistentDataPath);
+        if (!Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+
+        // Check if dialogue file exists, if not copy from default
+        string dialoguePath = Path.Combine(Application.persistentDataPath, "Dialogue.txt");
+        if (!File.Exists(dialoguePath))
+        {
+            string defaultPath = Path.Combine(Application.dataPath, "Scripts/Dialogue", "SaveDialogue.txt");
+            if (File.Exists(defaultPath))
+            {
+                File.Copy(defaultPath, dialoguePath);
+                Debug.Log("Copied default dialogue to: " + dialoguePath);
+            }
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +47,7 @@ public class DialogueManager : MonoBehaviour
         player = GameObject.Find("WorldPlayer");
         
         // Try to load from save file first, if it exists
-        string path = Application.dataPath + "/Scripts/Dialogue/Dialogue.txt";
+        string path = Path.Combine(Application.persistentDataPath, "Dialogue.txt");
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
@@ -214,14 +235,14 @@ public class DialogueManager : MonoBehaviour
 
     private void SaveDialogueProgress()
     {
-        string path = Application.dataPath + "/Scripts/Dialogue/Dialogue.txt";
+        string path = Path.Combine(Application.persistentDataPath, "Dialogue.txt");
         string json = JsonUtility.ToJson(npcData, true);
         File.WriteAllText(path, json);
     }
 
     private void LoadDialogueProgress()
     {
-        string path = Application.dataPath + "/Scripts/Dialogue/Dialogue.txt";
+        string path = Path.Combine(Application.persistentDataPath, "Dialogue.txt");
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);

@@ -1,0 +1,57 @@
+{
+    "stats": [
+        {
+            "type": "health",
+            "attackTypes": [],
+            "basic": 10,
+            "itemEnhancement": 0,
+            "itemName": "nothing",
+            "boostEnhancement": 0
+        },
+        {
+            "type": "armor",
+            "attackTypes": [],
+            "basic": 10,
+            "itemEnhancement": 0,
+            "itemName": "nothing",
+            "boostEnhancement": 0
+        },
+        {
+            "type": "attack",
+            "attackTypes": [
+                {
+                    "type": "sword",
+                    "basic": 10,
+                    "itemEnhancement": 0,
+                    "itemName": "nothing",
+                    "boostEnhancement": 0
+                },
+                {
+                    "type": "axe",
+                    "basic": 20,
+                    "itemEnhancement": 0,
+                    "itemName": "nothing",
+                    "boostEnhancement": 0
+                },
+                {
+                    "type": "claw",
+                    "basic": 5,
+                    "itemEnhancement": 0,
+                    "itemName": "nothing",
+                    "boostEnhancement": 0
+                },
+                {
+                    "type": "bow",
+                    "basic": 5,
+                    "itemEnhancement": 0,
+                    "itemName": "nothing",
+                    "boostEnhancement": 0
+                }
+            ],
+            "basic": 0,
+            "itemEnhancement": 0,
+            "itemName": "nothing",
+            "boostEnhancement": 0
+        }
+    ]
+}

@@ -18,6 +18,36 @@ public class QuestManager : MonoBehaviour
     private ItemManager IM;
     private bool hasLoadedQuests = false;
 
+    private string questsPath;
+    private string saveQuestsPath;
+
+    private void Awake()
+    {
+        // Set the paths
+        questsPath = Path.Combine(Application.persistentDataPath, "Quests.txt");
+        saveQuestsPath = Path.Combine(Application.persistentDataPath, "SaveQuests.txt");
+
+        // Check if the files exist, log information for debugging
+        Debug.Log($"Quests.txt exists: {File.Exists(questsPath)}");
+        Debug.Log($"SaveQuests.txt exists: {File.Exists(saveQuestsPath)}");
+
+        // Force load from saved file if it exists
+        if (File.Exists(saveQuestsPath))
+        {
+            try
+            {
+                string json = File.ReadAllText(saveQuestsPath);
+                Debug.Log($"SaveQuests.txt content length: {json.Length}");
+                // Load quests from this file
+                // ...
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"Error loading SaveQuests.txt: {e.Message}");
+            }
+        }
+    }
+
     void Start()
     {
         player = GameObject.Find("WorldPlayer");
@@ -96,7 +126,7 @@ public class QuestManager : MonoBehaviour
                 Debug.Log(q.parts[q.value].increment + " " + s);
                 if (q.parts[q.value].increment == s)
                 {
-                    
+
                     r = true;
                     q.value++;
                     GameObject qpPanel = currChild.GetChild(0).GetChild(0).gameObject;
@@ -108,7 +138,8 @@ public class QuestManager : MonoBehaviour
                 }
             }
         }
-        if (r) {
+        if (r)
+        {
             SaveQuestProgress(); // Save when quest progresses
         }
         return r;
@@ -171,7 +202,7 @@ public class QuestManager : MonoBehaviour
 
     private void SaveQuestProgress()
     {
-        string path = Application.dataPath + "/Scripts/Dialogue/Quests.txt";
+        string path = Path.Combine(Application.persistentDataPath, "Quests.txt");
         QuestList currentProgress = new QuestList();
         currentProgress.quests = questList.quests;
         string json = JsonUtility.ToJson(currentProgress, true);
@@ -185,33 +216,37 @@ public class QuestManager : MonoBehaviour
         {
             Debug.Log("Loading quest progress");
             string json = File.ReadAllText(path);
-            
-            if (string.IsNullOrEmpty(json)) {
+
+            if (string.IsNullOrEmpty(json))
+            {
                 Debug.LogError("Loaded Quest JSON is empty!");
                 return;
             }
-            
+
             QuestList savedProgress = JsonUtility.FromJson<QuestList>(json);
-            
-            if (savedProgress == null) {
+
+            if (savedProgress == null)
+            {
                 Debug.LogError("Failed to deserialize QuestList!");
                 return;
             }
-            
-            if (savedProgress.quests == null || savedProgress.quests.Length == 0) {
+
+            if (savedProgress.quests == null || savedProgress.quests.Length == 0)
+            {
                 Debug.LogError("No quests in saved data!");
                 return;
             }
-            
+
             // Clear current quests
             currentQuests.Clear();
-            
+
             // First, clear any existing quest UI elements
             GameObject scrollContent = questPanel.transform.GetChild(1).GetChild(0).gameObject;
-            foreach (Transform child in scrollContent.transform) {
+            foreach (Transform child in scrollContent.transform)
+            {
                 Destroy(child.gameObject);
             }
-            
+
             // Restore quest progress
             foreach (Quest savedQuest in savedProgress.quests)
             {
@@ -223,27 +258,35 @@ public class QuestManager : MonoBehaviour
                         if (currentQuest.value > 0)
                         {
                             starts[currentQuest] = true;
-                            if (currentQuest.value == currentQuest.parts.Length) {
+                            if (currentQuest.value == currentQuest.parts.Length)
+                            {
                                 ends[currentQuest] = true;
-                            } else {
+                            }
+                            else
+                            {
                                 AddQuest(currentQuest);
-                                
+
                                 // Make sure the correct quest step is visible
                                 GameObject qp = null;
-                                foreach (Transform child in scrollContent.transform) {
-                                    if (child.name == currentQuest.name) {
+                                foreach (Transform child in scrollContent.transform)
+                                {
+                                    if (child.name == currentQuest.name)
+                                    {
                                         qp = child.gameObject;
                                         break;
                                     }
                                 }
-                                
-                                if (qp != null) {
+
+                                if (qp != null)
+                                {
                                     GameObject qpPanel = qp.transform.GetChild(0).GetChild(0).gameObject;
-                                    
+
                                     // Hide all steps except the current one
-                                    for (int i = 0; i < currentQuest.parts.Length; i++) {
+                                    for (int i = 0; i < currentQuest.parts.Length; i++)
+                                    {
                                         // Account for name and description (first 2 children)
-                                        if (i + 2 < qpPanel.transform.childCount) {
+                                        if (i + 2 < qpPanel.transform.childCount)
+                                        {
                                             qpPanel.transform.GetChild(i + 2).gameObject.SetActive(i == currentQuest.value);
                                         }
                                     }

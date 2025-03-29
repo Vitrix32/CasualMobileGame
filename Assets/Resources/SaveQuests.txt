@@ -1,0 +1,192 @@
+{
+    "quests": [
+        {
+            "name": "Guards' Quest",
+            "questInfo": "These guards seem to need a bit of entertainment",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Ask the left guard what time it is",
+                    "increment": "NPC_1 0"
+                },
+                {
+                    "description": "Tell the right guard a fake time",
+                    "increment": "NPC_2 1"
+                },
+                {
+                    "description": "Quest complete",
+                    "increment": "NPC_1 1"
+                }
+            ]
+        },
+        {
+            "name": "JeffQuest",
+            "questInfo": "This is Jeff's magic cat quest!",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Talk to Jeff",
+                    "increment": "Jeff -1"
+                },
+                {
+                    "description": "Find the cat and talk to it",
+                    "increment": "Cat -1"
+                },
+                {
+                    "description": "Return to Jeff and tell him what the cat said",
+                    "increment": "Jeff -2"
+                }
+            ]
+        },
+        {
+            "name": "Jeff's Scrolls",
+            "questInfo": "Jeff seems to have misplaced his scrolls",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Find all Jeff's scrolls (0/8)",
+                    "increment": "Jeff 1"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (1/8)",
+                    "increment": "Scroll"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (2/8)",
+                    "increment": "Scroll"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (3/8)",
+                    "increment": "Scroll"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (4/8)",
+                    "increment": "Scroll"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (5/8)",
+                    "increment": "Scroll"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (6/8)",
+                    "increment": "Scroll"
+                },
+                {
+                    "description": "Find all Jeff's scrolls (7/8)",
+                    "increment": "Scroll"
+                },
+                {
+                    "description": "Return to Jeff and give him his scrolls",
+                    "increment": "Scroll"
+                },
+                {
+                    "description": "Quest Complete",
+                    "increment": "Jeff 3"
+                }
+            ]
+        },
+        {
+            "name": "Main Quest",
+            "questInfo": "Today is going to be an adventure, you can feel it!",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Head down to help the inn",
+                    "increment": "Jeff 0"
+                },
+                {
+                    "description": "Talk to Marlena on the north east side of town",
+                    "increment": "Samantha 1"
+                },
+                {
+                    "description": "Bring Jack his lunch outside the eastern forest",
+                    "increment": "Marlena 1"
+                },
+                {
+                    "description": "Check back with Marlena",
+                    "increment": "Jack 1"
+                },
+                {
+                    "description": "Check if Samantha's seen the magic cat",
+                    "increment": "Marlena 2"
+                },
+                {
+                    "description": "Check the forest for the magic cat",
+                    "increment": "Samantha 2"
+                },
+                {
+                    "description": "Find the mystic lake through the forest",
+                    "increment": "Jack 3"
+                },
+                {
+                    "description": "Explore the mountain trail",
+                    "increment": "Cat 1"
+                },
+                {
+                    "description": "Explore the New Castle trail",
+                    "increment": "Cat 3"
+                }
+            ]
+        },
+        {
+            "name": "Scarecrow’s Song",
+            "questInfo": "Ralph longs to hear the song of the magical scarecrow. Visit the scarecrow east of Graville and return with the tune.",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Find the Scarecrow near the cornrows east of Graville.",
+                    "increment": "Ralph 0"
+                },
+                {
+                    "description": "Return to Ralph and sing the scarecrow’s song.",
+                    "increment": "Scarecrow 1"
+                },
+                {
+                    "description": "Quest Complete",
+                    "increment": "Ralph 2"
+                }
+            ]
+        },
+        {
+            "name": "Heights",
+            "questInfo": "Ezra is afraid of heights and needs your help delivering seeds to Lily at the plateau.",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Take the seeds up to Lily’s garden.",
+                    "increment": "Ezra 0"
+                },
+                {
+                    "description": "Return Lily’s flower to Ezra.",
+                    "increment": "Lily 1"
+                },
+                {
+                    "description": "Quest Complete",
+                    "increment": "Ezra 2"
+                }
+            ]
+        },
+        {
+            "name": "SwordofPower",
+            "questInfo": "Find the legendary Sword of Power in the Northern Peaks",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Locate the sword of power",
+                    "increment": "SnowChest 0"
+                }
+            ]
+        },
+        {
+            "name": "MagicalCollar",
+            "questInfo": "Find the Magical Collar in the Dungeon to the West of Graville",
+            "value": 0,
+            "parts": [
+                {
+                    "description": "Locate the Magical Collar",
+                    "increment": "DungeonChest 0"
+                }
+            ]
+        }
+    ]
+}

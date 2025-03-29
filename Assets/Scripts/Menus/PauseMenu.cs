@@ -14,6 +14,14 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject pauseButton;
     public bool isPaused;
+    
+    // File paths
+    private string dialoguePath;
+    private string saveDialoguePath;
+    private string questsPath;
+    private string saveQuestsPath;
+    private string playerStatsPath;
+    private string savePlayerStatsPath;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +29,17 @@ public class PauseMenu : MonoBehaviour
         WorldPlayer = GameObject.Find("WorldPlayer");
         pauseMenu.SetActive(false);
         pauseButton.SetActive(true);
+        
+        // Initialize file paths
+        dialoguePath = Path.Combine(Application.persistentDataPath, "Dialogue.txt");
+        saveDialoguePath = Path.Combine(Application.persistentDataPath, "SaveDialogue.txt");
+        questsPath = Path.Combine(Application.persistentDataPath, "Quests.txt");
+        saveQuestsPath = Path.Combine(Application.persistentDataPath, "SaveQuests.txt");
+        playerStatsPath = Path.Combine(Application.persistentDataPath, "PlayerStats.txt");
+        savePlayerStatsPath = Path.Combine(Application.persistentDataPath, "SavePlayerStats.txt");
+        
+        // Ensure directories exist
+        Directory.CreateDirectory(Path.GetDirectoryName(dialoguePath));
     }
 
     void Update()
@@ -100,14 +119,23 @@ public class PauseMenu : MonoBehaviour
     {
         SetObjectsToLiveJSON();
 
-        string quest = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/Quests.txt");
-        File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt", quest);
+        if (File.Exists(questsPath))
+        {
+            string quest = File.ReadAllText(questsPath);
+            File.WriteAllText(saveQuestsPath, quest);
+        }
 
-        string dialogue = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt");
-        File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt", dialogue);
+        if (File.Exists(dialoguePath))
+        {
+            string dialogue = File.ReadAllText(dialoguePath);
+            File.WriteAllText(saveDialoguePath, dialogue);
+        }
 
-        string stats = File.ReadAllText(Application.dataPath + "/Scripts/Items/PlayerStats.txt");
-        File.WriteAllText(Application.dataPath + "/Scripts/Items/SavePlayerStats.txt", stats);
+        if (File.Exists(playerStatsPath))
+        {
+            string stats = File.ReadAllText(playerStatsPath);
+            File.WriteAllText(savePlayerStatsPath, stats);
+        }
 
         PlayerPrefs.SetFloat("XPos", WorldPlayer.transform.position.x);
         PlayerPrefs.SetFloat("YPos", WorldPlayer.transform.position.y);
@@ -118,13 +146,11 @@ public class PauseMenu : MonoBehaviour
     private void SetObjectsToLiveJSON()
     {
         // QUESTS
-        if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt"))
+        if (File.Exists(saveQuestsPath))
         {
-
-
             QuestList tempList = FindObjectOfType<QuestManager>().questList;
 
-            string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt");
+            string tempJson = File.ReadAllText(saveQuestsPath);
             QuestList questList = JsonUtility.FromJson<QuestList>(tempJson);
             List<Quest> list = new List<Quest>();
 
@@ -143,13 +169,13 @@ public class PauseMenu : MonoBehaviour
             questList.quests = list.ToArray();
             string json = JsonUtility.ToJson(questList, true);
             // Reset the save and the live json files
-            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Quests.txt", json);
+            File.WriteAllText(questsPath, json);
         }
 
         // DIALOGUE
-        if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt"))
+        if (File.Exists(saveDialoguePath))
         {
-            string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt");
+            string tempJson = File.ReadAllText(dialoguePath);
             NPCCollection npcList = JsonUtility.FromJson<NPCCollection>(tempJson);
             List<NPC> list = new List<NPC>();
             for (int i = 0; i < npcList.npc_characters.Length; i++)
@@ -164,7 +190,7 @@ public class PauseMenu : MonoBehaviour
             }
             npcList.npc_characters = list.ToArray();
             string json = JsonUtility.ToJson(npcList, true);
-            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt", json);
+            File.WriteAllText(dialoguePath, json);
         }
     }
 

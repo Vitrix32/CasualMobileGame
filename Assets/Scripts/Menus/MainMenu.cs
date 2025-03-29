@@ -14,11 +14,26 @@ public class MainMenu : MonoBehaviour
     public GameObject NewGameButton;
     public GameObject OptionsButton;
     public GameObject QuitButton;
+    public string gameSceneName;
+    private string dialoguePath;
+    private string saveDialoguePath;
+    private string questsPath;
+    private string saveQuestsPath;
+    private string playerStatsPath;
+    private string savePlayerStatsPath;
 
     void Start()
     {
         WorldPlayer = GameObject.Find("WorldPlayer");
         Invoke("TurnButtonsOn", 3);
+
+        // Initialize file paths with persistentDataPath
+        dialoguePath = Path.Combine(Application.persistentDataPath, "Dialogue.txt");
+        saveDialoguePath = Path.Combine(Application.persistentDataPath, "SaveDialogue.txt");
+        questsPath = Path.Combine(Application.persistentDataPath, "Quests.txt");
+        saveQuestsPath = Path.Combine(Application.persistentDataPath, "SaveQuests.txt");
+        playerStatsPath = Path.Combine(Application.persistentDataPath, "PlayerStats.txt");
+        savePlayerStatsPath = Path.Combine(Application.persistentDataPath, "SavePlayerStats.txt");
     }
 
     private void TurnButtonsOn()
@@ -27,6 +42,11 @@ public class MainMenu : MonoBehaviour
         NewGameButton.SetActive(true);
         OptionsButton.SetActive(true);
         QuitButton.SetActive(true);
+    }
+
+    public void StartNewGame()
+    {
+        SceneManager.LoadScene(gameSceneName);
     }
 
     public void LoadGame()
@@ -42,9 +62,18 @@ public class MainMenu : MonoBehaviour
         {
             HealthManager.Instance.SetHealth(10);
         }
-        String sceneName = PlayerPrefs.GetString("SceneName");
-        WorldPlayer.GetComponent<UniversalAudioHandling>().NewScene(sceneName);
-        SceneManager.LoadScene(sceneName);
+
+        if (PlayerPrefs.HasKey("SceneName"))
+        {
+            string sceneName = PlayerPrefs.GetString("SceneName");
+            WorldPlayer.GetComponent<UniversalAudioHandling>().NewScene(sceneName);
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            // No saved game found, load default scene
+            SceneManager.LoadScene(gameSceneName);
+        }
     }
 
     public void QuitGame()
@@ -55,14 +84,48 @@ public class MainMenu : MonoBehaviour
 
     private void SetLiveJSONToSave()
     {
-        string quest = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt");
-        File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Quests.txt", quest);
+        try
+        {
+            // Load quest data
+            if (File.Exists(saveQuestsPath))
+            {
+                string quests = File.ReadAllText(saveQuestsPath);
+                File.WriteAllText(questsPath, quests);
+                Debug.Log($"Quest data loaded successfully from {saveQuestsPath}");
+            }
+            else
+            {
+                Debug.LogWarning($"SaveQuests.txt not found at {saveQuestsPath}");
+            }
 
-        string dialogue = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt");
-        File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt", dialogue);
+            // Load dialogue data
+            if (File.Exists(saveDialoguePath))
+            {
+                string dialogue = File.ReadAllText(saveDialoguePath);
+                File.WriteAllText(dialoguePath, dialogue);
+                Debug.Log($"Dialogue data loaded successfully from {saveDialoguePath}");
+            }
+            else
+            {
+                Debug.LogWarning($"SaveDialogue.txt not found at {saveDialoguePath}");
+            }
 
-        string stats = File.ReadAllText(Application.dataPath + "/Scripts/Items/SavePlayerStats.txt");
-        File.WriteAllText(Application.dataPath + "/Scripts/Items/PlayerStats.txt", stats);
+            // Load player stats
+            if (File.Exists(savePlayerStatsPath))
+            {
+                string stats = File.ReadAllText(savePlayerStatsPath);
+                File.WriteAllText(playerStatsPath, stats);
+                Debug.Log($"Player stats loaded successfully from {savePlayerStatsPath}");
+            }
+            else
+            {
+                Debug.LogWarning($"SavePlayerStats.txt not found at {savePlayerStatsPath}");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Error in SetLiveJSONToSave: {e.Message}\n{e.StackTrace}");
+        }
     }
 
     private void Quit()
