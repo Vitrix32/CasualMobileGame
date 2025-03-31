@@ -31,10 +31,13 @@ public class environmentBackground : MonoBehaviour
                 locSprite = getSpriteByName("desert");
                 break;
             case 3:
-                locSprite = getSpriteByName("church");
+                locSprite = getSpriteByName("cave"); // Should be dungeon -- dungeon boss
                 break;
             case 5:
                 locSprite = getSpriteByName("mountain");
+                break;
+            case 6:
+                locSprite = getSpriteByName("church");
                 break;
         }
 

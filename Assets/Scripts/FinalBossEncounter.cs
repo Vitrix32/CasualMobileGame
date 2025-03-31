@@ -72,7 +72,7 @@ public class FinalBossEncounter : MonoBehaviour
         SetObjectsToLiveJSON();
 
         //IsDungeonBossEncounter = true;
-        PlayerPrefs.SetInt("LocID", 3);
+        PlayerPrefs.SetInt("LocID", 6);
 
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene("BattleScene");
