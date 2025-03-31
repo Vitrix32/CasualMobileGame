@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
         playerStatsPath = Path.Combine(Application.persistentDataPath, "PlayerStats.txt");
         savePlayerStatsPath = Path.Combine(Application.persistentDataPath, "SavePlayerStats.txt");
 
-        Debug.LogError("Backup: " + File.ReadAllText(Path.Combine(Application.persistentDataPath, "TestSaveQuests.txt")));
+        //Debug.LogError("Backup: " + File.ReadAllText(Path.Combine(Application.persistentDataPath, "TestSaveQuests.txt")));
 
     }
 
