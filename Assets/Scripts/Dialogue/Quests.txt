@@ -189,10 +189,6 @@
             "parts": [
                 {
                     "description": "Locate the sword of power",
-                    "increment": "MushroomLady 0"
-                },
-                {
-                    "description": "Quest Complete",
                     "increment": "SnowChest 0"
                 }
             ]
@@ -204,10 +200,6 @@
             "parts": [
                 {
                     "description": "Locate the Magical Collar",
-                    "increment": "DesertChest 0"
-                },
-                {
-                    "description": "Quest Complete",
                     "increment": "DungeonChest 0"
                 }
             ]
@@ -219,10 +211,6 @@
             "parts": [
                 {
                     "description": "Locate the Awesome Axe",
-                    "increment": "SnowChest 0"
-                },
-                {
-                    "description": "Quest Complete",
                     "increment": "DesertChest 0"
                 }
             ]
@@ -234,10 +222,6 @@
             "parts": [
                 {
                     "description": "Talk to the hermit",
-                    "increment": "Cat 1"
-                },
-                {
-                    "description": "Quest Complete",
                     "increment": "MushroomLady 0"
                 }
             ]

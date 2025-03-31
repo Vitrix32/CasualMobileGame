@@ -40,7 +40,6 @@ public class DataInitializer : MonoBehaviour
     private void CopyDefaultIfNotExists(string fileName, bool forceCopy = false)
     {
         string destPath = Path.Combine(Application.persistentDataPath, fileName);
-        string extension = Path.GetExtension(fileName);
         string fileNameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
         
         Debug.Log($"Checking for {fileName} at {destPath}");
@@ -49,49 +48,9 @@ public class DataInitializer : MonoBehaviour
         {
             Debug.Log($"File doesn't exist or force copy requested: {destPath}");
             
-            // Try variations of the filename in Resources
-            TextAsset defaultAsset = null;
-            
-            // First try without extension (Unity's default)
-            defaultAsset = Resources.Load<TextAsset>(fileNameWithoutExt);
-            Debug.Log($"Attempt 1: Loading '{fileNameWithoutExt}' - Result: {(defaultAsset != null ? "Found" : "Not found")}");
-            
-            // If not found, try with extension
-            if (defaultAsset == null)
-            {
-                defaultAsset = Resources.Load<TextAsset>(fileName);
-                Debug.Log($"Attempt 2: Loading '{fileName}' - Result: {(defaultAsset != null ? "Found" : "Not found")}");
-            }
-            
-            // Try alternate folders
-            if (defaultAsset == null)
-            {
-                string[] possiblePaths = {
-                    $"Data/{fileNameWithoutExt}",
-                    $"JSON/{fileNameWithoutExt}",
-                    $"Defaults/{fileNameWithoutExt}"
-                };
-                
-                foreach (string path in possiblePaths)
-                {
-                    defaultAsset = Resources.Load<TextAsset>(path);
-                    Debug.Log($"Attempt 3: Loading '{path}' - Result: {(defaultAsset != null ? "Found" : "Not found")}");
-                    if (defaultAsset != null) break;
-                }
-            }
-            
-            // As a fallback, try loading directly from dataPath then copy
-            if (defaultAsset == null)
-            {
-                string editorPath = Path.Combine(Application.dataPath, fileName);
-                if (File.Exists(editorPath))
-                {
-                    Debug.Log($"Found file at editor path: {editorPath}");
-                    File.Copy(editorPath, destPath);
-                    Debug.Log($"Copied from editor path to: {destPath}");
-                    return;
-                }
-            }
+            // Only try loading directly from Resources without extension (Unity's standard)
+            TextAsset defaultAsset = Resources.Load<TextAsset>(fileNameWithoutExt);
+            Debug.Log($"Loading '{fileNameWithoutExt}' from Resources - Result: {(defaultAsset != null ? "Found" : "Not found")}");
             
             if (defaultAsset != null)
             {
@@ -107,7 +66,8 @@ public class DataInitializer : MonoBehaviour
             }
             else
             {
-                // Create empty default files with proper structure based on type
+                Debug.LogWarning($"Could not find {fileNameWithoutExt} in Resources folder.");
+                // Create empty default files with proper structure
                 CreateEmptyDefaultFile(fileName, destPath);
             }
         }
