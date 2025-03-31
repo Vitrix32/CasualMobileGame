@@ -8261,7 +8261,7 @@ TextureImporter:
         width: 17
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -8269,6 +8269,27 @@ TextureImporter:
       bones: []
       spriteID: 1d8827824e5024e4c8f174650ea33b88
       internalID: 2006734069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipoObj_389
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 2543
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83779e4ebe2993146b1f7fcd3213868f
+      internalID: -1973627506
       vertices: []
       indices: 
       edges: []
@@ -8606,6 +8627,7 @@ TextureImporter:
       pipoObj_386: -1191591259
       pipoObj_387: 1191004676
       pipoObj_388: 2006734069
+      pipoObj_389: -1973627506
       pipoObj_39: 1583867357
       pipoObj_4: -876680260
       pipoObj_40: -1664271006
