@@ -31,7 +31,7 @@ public class QuestManager : MonoBehaviour
         Debug.Log($"Quests.txt exists: {File.Exists(questsPath)}");
         Debug.Log($"SaveQuests.txt exists: {File.Exists(saveQuestsPath)}");
 
-        // Force load from saved file if it exists
+        /*// Force load from saved file if it exists
         if (File.Exists(saveQuestsPath))
         {
             try
@@ -45,7 +45,7 @@ public class QuestManager : MonoBehaviour
             {
                 Debug.LogError($"Error loading SaveQuests.txt: {e.Message}");
             }
-        }
+        }*/
     }
 
     void Start()
@@ -60,6 +60,8 @@ public class QuestManager : MonoBehaviour
         }
         LoadQuestProgress();
         hasLoadedQuests = true;
+
+        Debug.LogError(questList.ToString());
     }
 
     void OnEnable()
@@ -150,7 +152,14 @@ public class QuestManager : MonoBehaviour
         if (!currentQuests.Contains(q))
         {
             currentQuests.Add(q);
-            q.value = 1;
+        
+            // Don't reset the quest value if it's already set
+            // Only initialize to 1 if it's not already set
+            if (q.value <= 0)
+            {
+                q.value = 1;
+            }
+        
             GameObject qp = Instantiate(questPrefab);
             qp.name = q.name;
             qp.transform.SetParent(questPanel.transform.GetChild(1).GetChild(0));
@@ -168,17 +177,14 @@ public class QuestManager : MonoBehaviour
 
             for (int i = 0; i < q.parts.Length; i++)
             {
-
                 TMPro.TextMeshProUGUI textMesh = Instantiate(sampleQuestText);
                 textMesh.text = "  " + q.parts[i].description;
                 textMesh.transform.SetParent(qpPanel.transform);
                 textMesh.transform.localScale = Vector3.one;
-                if (i > 0)
-                {
-                    textMesh.gameObject.SetActive(false);
-                }
+                
+                // Only show the current step based on quest value
+                textMesh.gameObject.SetActive(i == q.value - 1);
             }
-
         }
     }
 
@@ -211,11 +217,19 @@ public class QuestManager : MonoBehaviour
 
     private void LoadQuestProgress()
     {
-        string path = Application.dataPath + "/Scripts/Dialogue/Quests.txt";
+
+        Debug.LogError(File.ReadAllText(questsPath));
+
+        // Always use the live file, not the save file
+        // string path = Path.Combine(Application.persistentDataPath, "Quests.txt");
+        string path = questsPath;
         if (File.Exists(path))
         {
-            Debug.Log("Loading quest progress");
+            Debug.Log("Loading quest progress from: " + path);
             string json = File.ReadAllText(path);
+
+            
+            Debug.LogError("Loaded quest JSON: " + json);
 
             if (string.IsNullOrEmpty(json))
             {

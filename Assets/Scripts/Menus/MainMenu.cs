@@ -34,6 +34,9 @@ public class MainMenu : MonoBehaviour
         saveQuestsPath = Path.Combine(Application.persistentDataPath, "SaveQuests.txt");
         playerStatsPath = Path.Combine(Application.persistentDataPath, "PlayerStats.txt");
         savePlayerStatsPath = Path.Combine(Application.persistentDataPath, "SavePlayerStats.txt");
+
+        Debug.LogError("Backup: " + File.ReadAllText(Path.Combine(Application.persistentDataPath, "TestSaveQuests.txt")));
+
     }
 
     private void TurnButtonsOn()
@@ -93,9 +96,11 @@ public class MainMenu : MonoBehaviour
             // Load quest data
             if (File.Exists(saveQuestsPath))
             {
-                string quests = File.ReadAllText(saveQuestsPath);
+                //string quests = File.ReadAllText(saveQuestsPath);
+                string quests = File.ReadAllText(Path.Combine(Application.persistentDataPath, "TestSaveQuests.txt"));
                 File.WriteAllText(questsPath, quests);
                 Debug.Log($"Quest data loaded successfully from {saveQuestsPath}");
+                Debug.LogWarning(quests);
             }
             else
             {
