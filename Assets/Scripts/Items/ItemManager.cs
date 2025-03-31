@@ -190,8 +190,8 @@ public class ItemManager : MonoBehaviour
 
     private void LoadCompletedQuestItems()
     {
-        // Load quests.txt to check which quests are completed
-        string questsPath = Path.Combine(Application.dataPath, "Scripts/Dialogue/Quests.txt");
+        // Use persistentDataPath instead of direct path to Assets folder
+        string questsPath = Path.Combine(Application.persistentDataPath, "Quests.txt");
         if (File.Exists(questsPath))
         {
             string questJson = File.ReadAllText(questsPath);
@@ -208,10 +208,15 @@ public class ItemManager : MonoBehaviour
                         if (item.questName == quest.name)
                         {
                             ApplyItemBuff(item);
+                            Debug.Log($"Applied item from completed quest '{quest.name}': {item.name}");
                         }
                     }
                 }
             }
+        }
+        else
+        {
+            Debug.LogWarning($"Could not find quests file at: {questsPath}");
         }
     }
 }
