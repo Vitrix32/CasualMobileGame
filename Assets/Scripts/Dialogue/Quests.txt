@@ -39,44 +39,44 @@
             ]
         },
         {
-            "name": "Jeff's Scrolls",
-            "questInfo": "Jeff seems to have misplaced his scrolls",
+            "name": "Jeff's Scribing Stones",
+            "questInfo": "Jeff seems to have misplaced his scribing stones",
             "value": 0,
             "parts": [
                 {
-                    "description": "Find all Jeff's scrolls (0/8)",
+                    "description": "Find all Jeff's scribing stones (0/8)",
                     "increment": "Jeff 1"
                 },
                 {
-                    "description": "Find all Jeff's scrolls (1/8)",
+                    "description": "Find all Jeff's scribing stones (1/8)",
+                    "increment": "Scroll 2"
+                },
+                {
+                    "description": "Find all Jeff's scribing stones (2/8)",
                     "increment": "Scroll"
                 },
                 {
-                    "description": "Find all Jeff's scrolls (2/8)",
+                    "description": "Find all Jeff's scribing stones (3/8)",
                     "increment": "Scroll"
                 },
                 {
-                    "description": "Find all Jeff's scrolls (3/8)",
+                    "description": "Find all Jeff's scribing stones (4/8)",
                     "increment": "Scroll"
                 },
                 {
-                    "description": "Find all Jeff's scrolls (4/8)",
+                    "description": "Find all Jeff's scribing stones (5/8)",
                     "increment": "Scroll"
                 },
                 {
-                    "description": "Find all Jeff's scrolls (5/8)",
+                    "description": "Find all Jeff's scribing stones (6/8)",
                     "increment": "Scroll"
                 },
                 {
-                    "description": "Find all Jeff's scrolls (6/8)",
+                    "description": "Find all Jeff's scribing stones (7/8)",
                     "increment": "Scroll"
                 },
                 {
-                    "description": "Find all Jeff's scrolls (7/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Return to Jeff and give him his scrolls",
+                    "description": "Return to Jeff and give him his scribing stones",
                     "increment": "Scroll"
                 },
                 {
@@ -111,7 +111,7 @@
                     "increment": "Marlena 2"
                 },
                 {
-                    "description": "Check the forest for the magic cat",
+                    "description": "Check with Jack about heading through the forest",
                     "increment": "Samantha 2"
                 },
                 {
@@ -119,11 +119,27 @@
                     "increment": "Jack 3"
                 },
                 {
-                    "description": "Explore the mountain trail",
+                    "description": "Explore the New Castle trail",
                     "increment": "Cat 1"
                 },
                 {
-                    "description": "Explore the New Castle trail",
+                    "description": "Explore the Mountain trail",
+                    "increment": "MushroomLady 0"
+                },
+                {
+                    "description": "Explore the Desert trail",
+                    "increment": "SnowChest 0"
+                },
+                {
+                    "description": "Explore the Dungeon",
+                    "increment": "DesertChest 0"
+                },
+                {
+                    "description": "Defeat Cataclysm",
+                    "increment": "DungeonChest 0"
+                },
+                {
+                    "description": "Game Complete",
                     "increment": "Cat 3"
                 }
             ]
@@ -173,6 +189,10 @@
             "parts": [
                 {
                     "description": "Locate the sword of power",
+                    "increment": "MushroomLady 0"
+                },
+                {
+                    "description": "Quest Complete",
                     "increment": "SnowChest 0"
                 }
             ]
@@ -184,6 +204,10 @@
             "parts": [
                 {
                     "description": "Locate the Magical Collar",
+                    "increment": "DesertChest 0"
+                },
+                {
+                    "description": "Quest Complete",
                     "increment": "DungeonChest 0"
                 }
             ]
@@ -195,17 +219,25 @@
             "parts": [
                 {
                     "description": "Locate the Awesome Axe",
+                    "increment": "SnowChest 0"
+                },
+                {
+                    "description": "Quest Complete",
                     "increment": "DesertChest 0"
                 }
             ]
         },
         {
             "name": "FungusFlinger",
-            "questInfo": "Go talk to the odd hermit on the trail to Newcastle",
+            "questInfo": "Go talk to the odd hermit on the trail to New Castle",
             "value": 0,
             "parts": [
                 {
                     "description": "Talk to the hermit",
+                    "increment": "Cat 1"
+                },
+                {
+                    "description": "Quest Complete",
                     "increment": "MushroomLady 0"
                 }
             ]

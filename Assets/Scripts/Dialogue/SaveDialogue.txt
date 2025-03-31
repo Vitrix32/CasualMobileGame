@@ -41,7 +41,7 @@
                     "increment": "Samantha 1; Jeff 1"
                 },
                 {
-                    "option": "Jeff: Oh hey one more thing! I seem to have, misplaced some papers. If you see any scrolls lying around I get the feeling they might be mine, could you grab them for me? I think there's about 8 of them if I remember correctly.`Player: Yeah sure, but what if I don't see you again before you leave?`Jeff: I'm sure you'll see my again, there's not a lot of barristers out an about these days so somehow has to be willing to pick up their shoes and get to those in need.`Player: You say that but you seem to do a lot of sitting while you're here.`Jeff: What was that?`Player: Hm? Wasn't me, must have been the cat.`Magic Cat: Oh sure, blame it on the cat why dontcha.",
+                    "option": "Jeff: Oh hey one more thing! I seem to have, misplaced some scribing stones. If you see any blue crystals lying around I get the feeling they might be mine, could you grab them for me? I think there's about 8 of them if I remember correctly.`Player: Yeah sure, but what if I don't see you again before you leave?`Jeff: I'm sure you'll see my again, there's not a lot of barristers out an about these days so somehow has to be willing to pick up their shoes and get to those in need.`Player: You say that but you seem to do a lot of sitting while you're here.`Jeff: What was that?`Player: Hm? Wasn't me, must have been the cat.`Magic Cat: Oh sure, blame it on the cat why dontcha.",
                     "increment": "Jeff 2; Scrolls 1"
                 },
                 {
@@ -71,7 +71,7 @@
                     "increment": "none"
                 },
                 {
-                    "option": "Samantha: Ok, maybe I owe you an apology Jack, that was a bit more dangerous than I expected.`Jack: That's why I came with you fellas, didn't want to let anything happen to you.`Player: Yeah, phew, thanks Jack. Wait, cat, why did we have to come here? Is there something special about this lake?`Magic Cat: I just needed to check something' Oh no'`Player: Is everything alright?`Magic Cat: I've been around that village a long time, hoping this day wouldn't come'`Samantha: What are you talking about?`Magic Cat: I've been around that village since before it was a village. Remember that 'statue' the village was built around?`Player: Yeah? Some heroic looking guy that commemorates the end of The Cataclysm, right?`Magic Cat: Not quite. You see, I'm a bit more than your average cat as you might have noticed, but that doesn't just include the ability to talk. I've lived a very long time, I remember Cataclysm, I saw him.`Samantha: You mean 'it'?`Magic Cat: No. Cataclysm was a crazy but powerful warrior. The wizard that gave me my magicalness lured him out to an empty plain and imprisoned him in stone. He tasked me with watching to make sure he stayed imprisoned but a town popped up around 'a cool looking statue', that town being Graville.`Jack: Wait, are you saying that big statue in town is a PERSON?`Magic Cat: I wish that was the end of it, but I've noticed cracks in the stone, he's breaking free and I've got to be ready for when he comes. I thought I could draw some magical energy from this mystic lake and its magical water, but I can't remember how.`Player: Hey, don't worry, you've got something better than magic: us! And we're going to help you!`Magic Cat: Well if that's the case we should check the trails around town for some enchanted items that will help us defeat him when he breaks out. Our best bet to start is probably the mountains, so I hope you're dressed warmly!",
+                    "option": "Samantha: Ok, maybe I owe you an apology Jack, that was a bit more dangerous than I expected.`Jack: That's why I came with you fellas, didn't want to let anything happen to you.`Player: Yeah, phew, thanks Jack. Wait, cat, why did we have to come here? Is there something special about this lake?`Magic Cat: I just needed to check something' Oh no'`Player: Is everything alright?`Magic Cat: I've been around that village a long time, hoping this day wouldn't come'`Samantha: What are you talking about?`Magic Cat: I've been around that village since before it was a village. Remember that 'statue' the village was built around?`Player: Yeah? Some heroic looking guy that commemorates the end of The Cataclysm, right?`Magic Cat: Not quite. You see, I'm a bit more than your average cat as you might have noticed, but that doesn't just include the ability to talk. I've lived a very long time, I remember Cataclysm, I saw him.`Samantha: You mean 'it'?`Magic Cat: No. Cataclysm was a crazy but powerful warrior. The wizard that gave me my magicalness lured him out to an empty plain and imprisoned him in stone. He tasked me with watching to make sure he stayed imprisoned but a town popped up around 'a cool looking statue', that town being Graville.`Jack: Wait, are you saying that big statue in town is a PERSON?`Magic Cat: I wish that was the end of it, but I've noticed cracks in the stone, he's breaking free and I've got to be ready for when he comes. I thought I could draw some magical energy from this mystic lake and its magical water, but I can't remember how.`Player: Hey, don't worry, you've got something better than magic: us! And we're going to help you!`Magic Cat: Well if that's the case we should check the trails around town for some enchanted items that will help us defeat him when he breaks out. Our best bet to start is probably the forest on the way to New Castle, I've heard there's someone there that collects those sorts of things.!",
                     "increment": "Cat 2"
                 }
             ]
@@ -214,7 +214,7 @@
             "dialogue": [
                 {
                     "option": "Huh? What's a scroll doing sitting here? It looks important, I'll just leave it here",
-                    "increment": "Scrolls 1"
+                    "increment": "none"
                 },
                 {
                     "option": "First scroll acquired! Only seven more to go...",
@@ -229,11 +229,11 @@
                     "increment": "Scrolls 4"
                 },
                 {
-                    "option": "First scroll acquired! Only four more to go...",
+                    "option": "Fourth scroll acquired! Only four more to go...",
                     "increment": "Scrolls 5"
                 },
                 {
-                    "option": "First scroll acquired! Only three more to go...",
+                    "option": "Fifth scroll acquired! Only three more to go...",
                     "increment": "Scrolls 6"
                 },
                 {
@@ -246,7 +246,7 @@
                 },
                 {
                     "option": "Eigth scroll acquired! Now I can go back to Jeff and give him these... whatever legal documents these are.",
-                    "increment": "Quartermaster 3; Jeff"
+                    "increment": "Quartermaster 3; Jeff 3"
                 }
             ]
         },
@@ -376,7 +376,6 @@
                 }
             ]
         },
-
         {
             "name": "SnowChest",
             "value": 0,
