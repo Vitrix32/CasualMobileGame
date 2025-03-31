@@ -60,8 +60,6 @@ public class QuestManager : MonoBehaviour
         }
         LoadQuestProgress();
         hasLoadedQuests = true;
-
-        Debug.LogError(questList.ToString());
     }
 
     void OnEnable()
@@ -217,9 +215,6 @@ public class QuestManager : MonoBehaviour
 
     private void LoadQuestProgress()
     {
-
-        Debug.LogError(File.ReadAllText(questsPath));
-
         // Always use the live file, not the save file
         // string path = Path.Combine(Application.persistentDataPath, "Quests.txt");
         string path = questsPath;
@@ -227,9 +222,6 @@ public class QuestManager : MonoBehaviour
         {
             Debug.Log("Loading quest progress from: " + path);
             string json = File.ReadAllText(path);
-
-            
-            Debug.LogError("Loaded quest JSON: " + json);
 
             if (string.IsNullOrEmpty(json))
             {
