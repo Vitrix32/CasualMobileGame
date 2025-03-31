@@ -31,7 +31,7 @@ public class QuestManager : MonoBehaviour
         Debug.Log($"Quests.txt exists: {File.Exists(questsPath)}");
         Debug.Log($"SaveQuests.txt exists: {File.Exists(saveQuestsPath)}");
 
-        // Force load from saved file if it exists
+        /*// Force load from saved file if it exists
         if (File.Exists(saveQuestsPath))
         {
             try
@@ -45,7 +45,7 @@ public class QuestManager : MonoBehaviour
             {
                 Debug.LogError($"Error loading SaveQuests.txt: {e.Message}");
             }
-        }
+        }*/
     }
 
     void Start()
@@ -60,6 +60,8 @@ public class QuestManager : MonoBehaviour
         }
         LoadQuestProgress();
         hasLoadedQuests = true;
+
+        Debug.LogError(questList.ToString());
     }
 
     void OnEnable()
@@ -211,11 +213,18 @@ public class QuestManager : MonoBehaviour
 
     private void LoadQuestProgress()
     {
-        string path = Application.dataPath + "/Scripts/Dialogue/Quests.txt";
+
+        Debug.LogError(File.ReadAllText(questsPath));
+
+        // Always use the live file, not the save file
+        // string path = Path.Combine(Application.persistentDataPath, "Quests.txt");
+        string path = questsPath;
         if (File.Exists(path))
         {
-            Debug.Log("Loading quest progress");
+            Debug.Log("Loading quest progress from: " + path);
             string json = File.ReadAllText(path);
+
+            Debug.LogError(json);
 
             if (string.IsNullOrEmpty(json))
             {

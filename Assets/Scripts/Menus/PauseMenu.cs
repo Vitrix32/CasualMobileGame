@@ -123,6 +123,7 @@ public class PauseMenu : MonoBehaviour
         {
             string quest = File.ReadAllText(questsPath);
             File.WriteAllText(saveQuestsPath, quest);
+            File.WriteAllText(Path.Combine(Application.persistentDataPath, "TestSaveQuests.txt"), quest);
         }
 
         if (File.Exists(dialoguePath))
