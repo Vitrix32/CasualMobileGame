@@ -294,6 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prevSceneIndex: 0
   combatImmunity: 0
+  inCombat: 0
 --- !u!114 &2240676987501012472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,12 +354,9 @@ MonoBehaviour:
   currentFootsteps: []
   brushFootsteps: []
   grassFootsteps:
-  - {fileID: 8300000, guid: 55367cfb8ae716b4a94cdfb9faa33104, type: 3}
-  - {fileID: 8300000, guid: 406c9cd93fa60414791159859ed8ccc8, type: 3}
-  - {fileID: 8300000, guid: 980aee5c3387f034fb64c6c76b7de30e, type: 3}
-  - {fileID: 8300000, guid: 7afa9b0f8c083d04a9bc891779580496, type: 3}
-  - {fileID: 8300000, guid: d04f225edaea71e429d137d29694f77c, type: 3}
-  - {fileID: 8300000, guid: 3d5feff5ccac2944cba92e2cede8eb18, type: 3}
+  - {fileID: 8300000, guid: 7caedb4bcb7389947a41753825afaa35, type: 3}
+  - {fileID: 8300000, guid: 0a9dbee4eeac11e4babf089f4e7fbe35, type: 3}
+  - {fileID: 8300000, guid: d612a50e438452f4c9e1e1b902b45b35, type: 3}
   sandFootsteps: []
   stoneFootsteps: []
   waterFootsteps: []
@@ -375,7 +373,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a316dde21dba1442a7515734139fb0c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.528
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -573,7 +571,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
