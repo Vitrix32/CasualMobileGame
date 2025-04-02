@@ -6,8 +6,9 @@
       "Hp": "50",
       "Damage": "5",
       "LocID": "0",
-      "Attacks": [ "Crit", "Reg", "Heal" ],
-      "AttackNames": [ "Bite", "Claw", "Howl" ]
+      "Attacks": [ "Crit", "Heal", "Reg" ],
+      "AttackNames": [ "Bite", "Howl", "Claw" ],
+      "AudioClips": ["SoundEffects/Creatures/zapsplat_horror_monster_soft_growl_grunt_exhale_66489", "SoundEffects/Creatures/Howl", "SoundEffects/Creatures/zapsplat_horror_monster_soft_growl_grunt_exhale_66489"]
     },
     {
       "Id": "2",
@@ -16,7 +17,8 @@
       "Damage": "2",
       "LocID": "0",
       "Attacks": [ "Crit", "Shield", "Reg" ],
-      "AttackNames": [ "Peck", "Protective Shell", "Cluck" ]
+      "AttackNames": [ "Peck", "Protective Shell", "Cluck" ],
+      "AudioClips": ["SoundEffects/Creatures/zapsplat_animals_cockrel_single_cluck_002_17623", "SoundEffects/Creatures/zapsplat_animals_cockrel_single_cluck_001_17622", "SoundEffects/Creatures/zapsplat_animals_cockrel_single_cluck_001_17622"]
     },
     {
       "Id": "3",
@@ -25,7 +27,8 @@
       "Damage": "3",
       "LocID": "0",
       "Attacks": [ "Crit", "Heal", "Reg" ],
-      "AttackNames": [ "Bite", "Screech", "Scratch" ]
+      "AttackNames": [ "Bite", "Screech", "Scratch" ],
+      "AudioClips": ["SoundEffects/Creatures/zapsplat_science_fiction_baby_alien_or_dinosaur_cry_sreech_single_012_72270", "SoundEffects/Creatures/zapsplat_science_fiction_baby_alien_or_dinosaur_cry_sreech_single_010_72267", "SoundEffects/Creatures/zapsplat_science_fiction_baby_alien_or_dinosaur_cry_sreech_single_012_72270"]
     },
     {
       "Id": "4",
@@ -34,7 +37,8 @@
       "Damage": "3",
       "LocID": "0",
       "Attacks": [ "Crit", "Shield", "Reg" ],
-      "AttackNames": [ "Haunt", "Phantom Shield", "Scare" ]
+      "AttackNames": [ "Haunt", "Phantom Shield", "Scare" ],
+      "AudioClips": ["SoundEffects/Creatures/Haunt", "SoundEffects/Fire/gma_fireball_blast_projectile_spell_01_354", "SoundEffects/Creatures/zapsplat_horror_monster_very_aggressive_loud_scary_roar_scream_growl_006_73687"]
     },
     {
       "Id": "5",
@@ -43,7 +47,8 @@
       "Damage": "12",
       "LocID": "2",
       "Attacks": [ "Crit", "Shield", "Reg" ],
-      "AttackNames": [ "Bite", "Protective Web", "Venom" ]
+      "AttackNames": [ "Bite", "Protective Web", "Venom" ],
+      "AudioClips": ["SoundEffects/Creatures/zapsplat_science_fiction_small_creature_tiny_insect_scream_screech_pain_001_51450", "SoundEffects/Creatures/zapsplat_science_fiction_small_creature_tiny_insect_scream_screech_pain_002_51451", "SoundEffects/Creatures/zapsplat_horror_acid_burn_001_14869"]
     },
     {
       "Id": "6",
@@ -52,7 +57,8 @@
       "Damage": "20",
       "LocID": "3",
       "Attacks": [ "Crit", "Shield", "Reg" ],
-      "AttackNames": [ "Placeholder", "Placeholder", "Placeholder" ]
+      "AttackNames": [ "Placeholder", "Placeholder", "Placeholder" ],
+      "AudioClips": ["SoundEffects/Creatures/", "SoundEffects/Creatures/", "SoundEffects/Creatures/"]
     },
     {
       "Id": "7",
@@ -60,8 +66,9 @@
       "Hp": "80",
       "Damage": "23",
       "LocID": "2",
-      "Attacks": [ "Crit", "Reg", "Heal" ],
-      "AttackNames": [ "Stab", "Slash", "Rejuvination" ]
+      "Attacks": [ "Crit", "Heal", "Reg" ],
+      "AttackNames": [ "Stab", "Rejuvination", "Slash" ],
+      "AudioClips": ["SoundEffects/BladedWeapons/Stab", "SoundEffects/Other/esm_magic_essence_poof_fantasy_cast_craft_mobile_app_special_touch_pickup", "SoundEffects/BladedWeapons/warfare_sword_pulled_from_sheath_british_naval_cutlass_19thc_001 (1)"]
     },
     {
       "Id": "8",
@@ -69,8 +76,9 @@
       "Hp": "200",
       "Damage": "30",
       "LocID": "6",
-      "Attacks": [ "Crit", "Reg", "Heal" ],
-      "AttackNames": [ "Placeholder", "Placeholder", "Placeholder" ]
+      "Attacks": [ "Crit", "Heal", "Reg" ],
+      "AttackNames": [ "Placeholder", "Placeholder", "Placeholder" ],
+      "AudioClips": ["SoundEffects/Creatures/", "SoundEffects/Creatures/", "SoundEffects/Creatures/"]
     },
     {
       "Id": "9",
@@ -79,7 +87,8 @@
       "Damage": "10",
       "LocID": "1",
       "Attacks": [ "Shield", "Heal", "Reg" ],
-      "AttackNames": [ "Absorb", "Regrow", "Spore Attack" ]
+      "AttackNames": [ "Absorb", "Regrow", "Spore Attack" ],
+      "AudioClips": ["SoundEffects/Creatures/zapsplat_cartoon_slime_hit_008_89581", "SoundEffects/Creatures/zapsplat_cartoon_slime_hit_009_89582", "SoundEffects/Creatures/zapsplat_cartoon_slime_hit_005_89578"]
     },
     {
       "Id": "10",
@@ -88,16 +97,18 @@
       "Damage": "20",
       "LocID": "1",
       "Attacks": [ "Crit", "Shield", "Reg" ],
-      "AttackNames": [ "Avalanche", "Stone Wall", "Heavy Fist" ]
+      "AttackNames": [ "Avalanche", "Stone Wall", "Heavy Fist" ],
+      "AudioClips": ["SoundEffects/Creatures/zapsplat_foley_bricks_and_rocks_falling_several_hot_ground_together_hard_impact_113079", "SoundEffects/Ice/esm_ancient_game_magic_freeze_spell_2_fantasy_tonal_accent_hit_stab", "SoundEffects/Punch/punch_trim"]
     },
     {
-      "Id": "12",
+      "Id": "11",
       "Name": "Duneshifter",
       "Hp": "60",
       "Damage": "10",
       "LocID": "4",
       "Attacks": [ "Crit", "Shield", "Reg" ],
-      "AttackNames": [ "Sinkhole", "Sand Veil", "Sandstorm" ]
+      "AttackNames": [ "Sinkhole", "Sand Veil", "Sandstorm" ],
+      "AudioClips": ["SoundEffects/Ice/esm_ancient_game_magic_fireball_cast_4_fantasy_tonal_accent_hit_stab", "SoundEffects/Fire/esm_ancient_game_magic_fireball_cast_3_fantasy_tonal_accent_hit_stab", "SoundEffects/Fire/esm_ancient_game_magic_fireball_cast_4_fantasy_tonal_accent_hit_stab"]
     },
     {
       "Id": "12",
@@ -106,7 +117,8 @@
       "Damage": "15",
       "LocID": "4",
       "Attacks": [ "Shield", "Heal", "Reg" ],
-      "AttackNames": [ "Dune Shield", "Bone Rattle", "Stab" ]
+      "AttackNames": [ "Dune Shield", "Bone Rattle", "Stab" ],
+      "AudioClips": ["SoundEffects/Fire/esm_ancient_game_magic_fireball_cast_3_fantasy_tonal_accent_hit_stab", "SoundEffects/Other/esm_magic_essence_poof_fantasy_cast_craft_mobile_app_special_touch_pickup", "SoundEffects/BladedWeapons/Stab"]
     },
     {
       "Id": "13",
@@ -115,7 +127,8 @@
       "Damage": "20",
       "LocID": "4",
       "Attacks": [ "Crit", "Heal", "Reg" ],
-      "AttackNames": [ "Venom", "Coil", "Quick Strike" ]
+      "AttackNames": [ "Venom", "Coil", "Quick Strike" ],
+      "AudioClips": ["SoundEffects/Creatures/zapsplat_horror_acid_burn_001_14869", "SoundEffects/Other/zapsplat_multimedia_sound_clicking_fluttering_hiss_102876", "SoundEffects/BladedWeapons/warfare_medieval_sabre_swing_001"]
     },
     {
       "Id": "14",
@@ -124,7 +137,8 @@
       "Damage": "5",
       "LocID": "1",
       "Attacks": [ "Crit", "Reg", "Reg" ],
-      "AttackNames": [ "Chomp", "Chew", "Tail Whip" ]
+      "AttackNames": [ "Chomp", "Chew", "Tail Whip" ],
+      "AudioClips": ["SoundEffects/Creatures/zapsplat_science_fiction_baby_alien_or_dinosaur_cry_sreech_single_010_72267", "SoundEffects/Creatures/zapsplat_science_fiction_baby_alien_or_dinosaur_cry_sreech_single_010_72267", "SoundEffects/Creatures/zapsplat_science_fiction_baby_alien_or_dinosaur_cry_sreech_single_010_72267"]
     },
     {
       "Id": "15",
@@ -133,7 +147,8 @@
       "Damage": "15",
       "LocID": "5",
       "Attacks": [ "Crit", "Shield", "Reg" ],
-      "AttackNames": [ "Shell Bash", "Shell", "Snap" ]
+      "AttackNames": [ "Shell Bash", "Shell", "Snap" ],
+      "AudioClips": ["SoundEffects/Punch/punch_trim", "SoundEffects/Ice/esm_ancient_game_magic_instant_cast_ice_3_fantasy_tonal_accent_hit_stab", "SoundEffects/Punch/punch_trim"]
     },
     {
       "Id": "16",
@@ -141,8 +156,9 @@
       "Hp": "35",
       "Damage": "10",
       "LocID": "5",
-      "Attacks": [ "Heal", "Reg", "Reg" ],
-      "AttackNames": [ "Vital Chill", "Frostbite", "Shiver Slash" ]
+      "Attacks": [ "Crit", "Heal", "Reg" ],
+      "AttackNames": [ "Frostbite", "Vital Chill", "Shiver Slash" ],
+      "AudioClips": ["SoundEffects/Ice/gma_ice_spell_freeze_frost_02_603", "SoundEffects/Ice/esm_ancient_game_magic_instant_cast_ice_3_fantasy_tonal_accent_hit_stab", "SoundEffects/BladedWeapons/warfare_sword_pulled_from_sheath_british_naval_cutlass_19thc_001 (1)"]
     },
     {
       "Id": "17",
@@ -151,7 +167,8 @@
       "Damage": "20",
       "LocID": "5",
       "Attacks": [ "Crit", "Shield", "Reg" ],
-      "AttackNames": [ "Spike Shot", "Ice Barrier", "Icicle" ]
+      "AttackNames": [ "Spike Shot", "Ice Barrier", "Icicle" ],
+      "AudioClips": ["SoundEffects/Ice/SP_ICEImpt_Designed_Ice_Impact_With_Freeze_01_CMI_081", "SoundEffects/Ice/gma_ice_spell_freeze_frost_01_602","SoundEffects/Ice/SP_ICEImpt_Designed_Ice_Impact_With_Freeze_05_CMI_082"]
     }
   ]
 }

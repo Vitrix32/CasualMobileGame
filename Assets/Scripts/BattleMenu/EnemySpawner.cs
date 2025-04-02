@@ -55,6 +55,7 @@ public class EnemySpawner : MonoBehaviour
             enemy.name = data.Name;
             enemy.attacks = data.Attacks;
             enemy.attackNames = data.AttackNames;
+            enemy.attackSounds = data.AudioClips;
 
             Sprite newSprite = Resources.Load("EnemyArt/" + data.Name, typeof(Sprite)) as Sprite;
             SpriteRenderer spriteRenderer = enemy.GetComponent<SpriteRenderer>();

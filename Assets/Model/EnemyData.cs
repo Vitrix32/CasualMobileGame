@@ -10,4 +10,5 @@ public class EnemyData
     public string[] Attacks;
 
     public string[] AttackNames;
+    public string[] AudioClips;
 }

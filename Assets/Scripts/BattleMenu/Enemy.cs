@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     private Vector2 originalPosition;
     private RectTransform rectTransform;
     private AudioSource audioSource;
-    public AudioClip attackSound;
+    public string[] attackSounds;
 
     public bool isShieldActive = false;
     public float shieldReduction = 0.5f;
@@ -121,14 +121,14 @@ public class Enemy : MonoBehaviour
     {
         int criticalDamage = Mathf.RoundToInt(damageToDeal * 1.5f);
         player.UpdateText("The " + name + " performed a critical hit with " + attackName + "!");
-        audioSource.PlayOneShot(attackSound);
+        audioSource.PlayOneShot(Resources.Load<AudioClip>(attackSounds[0]));
         player.TakeDamage(criticalDamage);  
     }
 
     public void regAttack(int damageToDeal, PlayerHealth player, string attackName)
     {
         player.UpdateText("The " + name + " attacked with " + attackName + "!");
-        audioSource.PlayOneShot(attackSound);
+        audioSource.PlayOneShot(Resources.Load<AudioClip>(attackSounds[2]));
         player.TakeDamage(damageToDeal);
     }
 
@@ -137,6 +137,7 @@ public class Enemy : MonoBehaviour
         isShieldActive = true;
         combatStats.GetComponent<CombatStats>().SetStat(0);
         player.UpdateText("The " + name + " raised a " + shieldName);
+        audioSource.PlayOneShot(Resources.Load<AudioClip>(attackSounds[1]));
     }
 
     public void heal(PlayerHealth player, int healAmount, string attackName)
@@ -145,6 +146,7 @@ public class Enemy : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
         player.UpdateText("The " + name + " used " + attackName + " to heal!");
+        audioSource.PlayOneShot(Resources.Load<AudioClip>(attackSounds[1]));
     }
 
     public void EnemyAttack(PlayerHealth player)
