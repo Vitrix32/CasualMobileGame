@@ -396,7 +396,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void PerformRegularAttack(string attackName)
     {
-        int actualDamage = Mathf.RoundToInt(swordDamage * damageMultiplier);
+        //Randomizer
+        int var = Random.Range(0, 5) - 2;
+        Debug.Log("Random Number Added: " + var);
+        int actualDamage = Mathf.RoundToInt(swordDamage * damageMultiplier + var);
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
@@ -412,7 +415,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void PerformConsumeItem(string itemName)
     {
-        int healAmount = 10;
+        //Randomizer
+        int var = Random.Range(0, 3) - 1;
+        Debug.Log("Random Number Added: " + var);
+        int healAmount = 10 + var;
         HealPlayer(healAmount);
         UpdateText("You used " + itemName + "!");
         itemManager.UseConsumable(itemName);
@@ -420,7 +426,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void PerformAttackWithDOT()
     {
-        int actualDamage = Mathf.RoundToInt(clawDamage * damageMultiplier);
+        //Randomizer
+        int var = Random.Range(0, 3) - 1;
+        Debug.Log("Random Number Added: " + var);
+        int actualDamage = Mathf.RoundToInt(clawDamage * damageMultiplier + var);
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
@@ -441,7 +450,10 @@ public class PlayerHealth : MonoBehaviour
         damageMultiplier = 2.0f;
         isEmpowered = true;
 
-        int healAmount = 10;
+        //Randomizer
+        int var = Random.Range(0, 3) - 1;
+        Debug.Log("Random Number Added: " + var);
+        int healAmount = 10 + var;
         HealPlayer(healAmount);
 
         combatStats.GetComponent<CombatStats>().SetStat(1);
@@ -473,7 +485,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void PerformDoubleDamage()
     {
-        int actualDamage = Mathf.RoundToInt(axeDamage * damageMultiplier);
+        //Randomizer
+        int var = Random.Range(0, 9) - 4;
+        Debug.Log("Random Number Added: " + var);
+        int actualDamage = Mathf.RoundToInt(axeDamage * damageMultiplier + var);
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
@@ -488,7 +503,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void PerformWeakenEnemy()
     {
-        int actualDamage = Mathf.RoundToInt(bowDamage * damageMultiplier);
+        //Randomizer
+        int var = Random.Range(0, 3) - 1;
+        int actualDamage = Mathf.RoundToInt(bowDamage * damageMultiplier + var);
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
@@ -504,7 +521,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void PerformHealSelf()
     {
-        int healAmount = 30;
+        //Randomizer
+        int var = Random.Range(0, 7) - 3;
+        Debug.Log("Random Number Added: " + var);
+        int healAmount = 30 + var;
         HealPlayer(healAmount);
         UpdateText("You used Healing Winds to heal yourself!");
     }
