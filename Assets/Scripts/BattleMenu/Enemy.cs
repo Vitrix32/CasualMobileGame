@@ -120,13 +120,23 @@ public class Enemy : MonoBehaviour
     public void CritAttack(int damageToDeal, PlayerHealth player, string attackName)
     {
         // Variability to enemy attacks added
+        Debug.Log("ENEMY CRIT ATTACK");
         int var = 0;
-        if (damageToDeal >= 10)
+        bool even = false;
+        if ((damageToDeal/10) % 2 == 0)
+        {
+            even = true;
+        }
+        if (damageToDeal >= 10 && !even)
         {
             var = Random.Range(0, (damageToDeal / 10)) - ((damageToDeal / 10) / 2);
             Debug.Log(" -----    ENEMYY ---------  Random Number Added: " + var);
+        } else if (damageToDeal >= 10 && even)
+        {
+            var = Random.Range(0, ((damageToDeal + 10) / 10)) - (((damageToDeal+10) / 10) / 2);
+            Debug.Log(" -----    ENEMYY ---------  Random Number Added: " + var);
         }
-        int criticalDamage = Mathf.RoundToInt((damageToDeal + var) * 1.5f);
+            int criticalDamage = Mathf.RoundToInt((damageToDeal + var) * 1.5f);
         player.UpdateText("The " + name + " performed a critical hit with " + attackName + "!");
         audioSource.PlayOneShot(Resources.Load<AudioClip>(attackSounds[0]));
         player.TakeDamage(criticalDamage);  
@@ -135,10 +145,21 @@ public class Enemy : MonoBehaviour
     public void regAttack(int damageToDeal, PlayerHealth player, string attackName)
     {
         // Variability to enemy attacks added
+        Debug.Log("ENEMY RED ATTACK");
         int var = 0;
-        if (damageToDeal >= 10)
+        bool even = false;
+        if ((damageToDeal / 10) % 2 == 0)
+        {
+            even = true;
+        }
+        if (damageToDeal >= 10 && !even)
         {
             var = Random.Range(0, (damageToDeal / 10)) - ((damageToDeal / 10) / 2);
+            Debug.Log(" -----    ENEMYY ---------  Random Number Added: " + var);
+        }
+        else if (damageToDeal >= 10 && even)
+        {
+            var = Random.Range(0, ((damageToDeal + 10) / 10)) - (((damageToDeal + 10) / 10) / 2);
             Debug.Log(" -----    ENEMYY ---------  Random Number Added: " + var);
         }
         player.UpdateText("The " + name + " attacked with " + attackName + "!");
@@ -157,10 +178,21 @@ public class Enemy : MonoBehaviour
     public void heal(PlayerHealth player, int healAmount, string attackName)
     {
         // Variability to enemy attacks added
+        Debug.Log("ENEMY HEAL");
         int var = 0;
-        if (healAmount >= 10)
+        bool even = false;
+        if ((healAmount / 10) % 2 == 0)
+        {
+            even = true;
+        }
+        if (healAmount >= 10 && !even)
         {
             var = Random.Range(0, (healAmount / 10)) - ((healAmount / 10) / 2);
+            Debug.Log(" -----    ENEMYY ---------  Random Number Added: " + var);
+        }
+        else if (healAmount >= 10 && even)
+        {
+            var = Random.Range(0, ((healAmount + 10) / 10)) - (((healAmount + 10) / 10) / 2);
             Debug.Log(" -----    ENEMYY ---------  Random Number Added: " + var);
         }
         currentHealth += healAmount + var;
