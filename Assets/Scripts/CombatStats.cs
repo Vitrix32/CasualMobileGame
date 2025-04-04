@@ -36,6 +36,8 @@ public class CombatStats : MonoBehaviour
     [SerializeField]
     private int activeStatDisplay;
 
+    [SerializeField] private string[] clips;
+
     public void SetStat(int stat)
     {
         switch (stat) 

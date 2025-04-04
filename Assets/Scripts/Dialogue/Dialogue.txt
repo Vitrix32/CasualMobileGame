@@ -219,7 +219,7 @@
                     "increment": "Captain 1"
                 },
                 {
-                    "option": "huh? Did you need something?",
+                    "option": "Huh? Did you need something?",
                     "increment": "Captain 0"
                 }
             ]
