@@ -441,7 +441,7 @@ public class PlayerHealth : MonoBehaviour
         damageMultiplier = 2.0f;
         isEmpowered = true;
 
-        int healAmount = 5;
+        int healAmount = 10;
         HealPlayer(healAmount);
 
         combatStats.GetComponent<CombatStats>().SetStat(1);
@@ -504,7 +504,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void PerformHealSelf()
     {
-        int healAmount = 15;
+        int healAmount = 30;
         HealPlayer(healAmount);
         UpdateText("You used Healing Winds to heal yourself!");
     }
