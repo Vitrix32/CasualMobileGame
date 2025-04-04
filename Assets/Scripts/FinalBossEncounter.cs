@@ -77,58 +77,38 @@ public class FinalBossEncounter : MonoBehaviour
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene("BattleScene");
     }
-
-    // Daniel -- Saving Fixes
     private void SetObjectsToLiveJSON()
     {
-        // QUESTS
-        if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt"))
+        Debug.Log("Setting objects to live JSON (Encounter)");
+
+        // Define paths using Application.persistentDataPath
+        string questsPath = Path.Combine(Application.persistentDataPath, "Quests.txt");
+        string dialoguePath = Path.Combine(Application.persistentDataPath, "Dialogue.txt");
+
+        // QUESTS - Save current quest progress directly
+        QuestList tempList = FindObjectOfType<QuestManager>()?.questList;
+        if (tempList != null)
         {
-
-
-            QuestList tempList = FindObjectOfType<QuestManager>().questList;
-
-            string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/SaveQuests.txt");
-            QuestList questList = JsonUtility.FromJson<QuestList>(tempJson);
-            List<Quest> list = new List<Quest>();
-
-            for (int i = 0; i < questList.quests.Length; i++)
-            {
-                for (int j = 0; j < tempList.quests.Length; j++)
-                {
-                    if (tempList.quests[j].name == questList.quests[i].name)
-                    {
-                        questList.quests[i].value = tempList.quests[j].value;
-                        break;
-                    }
-                }
-                list.Add(questList.quests[i]);
-            }
-            questList.quests = list.ToArray();
-            string json = JsonUtility.ToJson(questList, true);
-            // Reset the save and the live json files
-            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Quests.txt", json);
+            string json = JsonUtility.ToJson(tempList, true);
+            File.WriteAllText(questsPath, json);
+            Debug.Log($"Updated quests data at: {questsPath}");
+        }
+        else
+        {
+            Debug.LogError("Could not find QuestManager or questList is null");
         }
 
-        // DIALOGUE
-        if (File.Exists(Application.dataPath + "/Scripts/Dialogue/SaveDialogue.txt"))
+        // DIALOGUE - Access the npcData field directly
+        DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
+        if (dialogueManager != null && dialogueManager.npcData != null)
         {
-            string tempJson = File.ReadAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt");
-            NPCCollection npcList = JsonUtility.FromJson<NPCCollection>(tempJson);
-            List<NPC> list = new List<NPC>();
-            for (int i = 0; i < npcList.npc_characters.Length; i++)
-            {
-                NPC tempNPC = FindObjectOfType<DialogueManager>().FindNPCByName(npcList.npc_characters[i].name);
-                if (tempNPC == null)
-                {
-                    Debug.Log("ERROR: FIND NPC BY NAME RETURNED NULL - PAUSE MENU SCRIPT");
-                }
-                npcList.npc_characters[i].value = tempNPC.value;
-                list.Add(npcList.npc_characters[i]);
-            }
-            npcList.npc_characters = list.ToArray();
-            string json = JsonUtility.ToJson(npcList, true);
-            File.WriteAllText(Application.dataPath + "/Scripts/Dialogue/Dialogue.txt", json);
+            string json = JsonUtility.ToJson(dialogueManager.npcData, true);
+            File.WriteAllText(dialoguePath, json);
+            Debug.Log($"Updated dialogue data at: {dialoguePath}");
+        }
+        else
+        {
+            Debug.LogError("Could not find DialogueManager or npcData is null");
         }
     }
 }
