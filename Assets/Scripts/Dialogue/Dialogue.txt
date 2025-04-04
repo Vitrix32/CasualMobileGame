@@ -37,27 +37,27 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Player: Once again in the fresh air of this tiny, tiny town. Well, at least there's Jeff here, he usually knows what can be done around here. Helping is better than laying in a wheat field all day. And it's not like Samantha needs any help at the inn with just one caravan passing through, she's handled plenty more than that before.`Jeff: Oh hey Player! Haven't seen you since, well, yesterday! How're you doing?`Player: Oh, well you know, just trying to find something to do today. Have you heard anything today?`Jeff: You bet there's stuff to do in this busy town! Always something going on yessiree! Let me see if I can remember, Well I heard the at the south west part of the town has some sort of pest problem, if you're looking for a bit of action, but if you want a slower warm up to your day I hear old miss Marlena has some errands that she could probably use a hand with.`Player: Ok thanks. It ain't much but I suppose it should keep me busy for a little bit.`Player: Hey wait, if you know all these things that need done, why don't you do them?`Jeff: Well look, I've got my hands full with uh, legal stuff, like I always do! Plus I think I'm gonna be heading to New Castle upon the Thyme soon, there wasn't a lot of legal business to attend to here so I think my thyme might be better used elsewhere. I mean time.`Magic Cat: And I mean someone's gotta pet me.`Player: Oh yeah, magic talking cat that you've been 'doing legal business' with while you've been here. Don't know why he hangs around you so much, he normally sticks to himself.`Magic Cat: Meow don't go concerning yourself with cat business.`Player: Well I would hate to imagine what would happen if a caravan had bad things to say about Startville, I should probably head up to the Inn.",
+                    "option": "What a wonderful day in Graville, isn't it? I heard Samantha at the inn might need some help, you should go check that out!",
                     "increment": "Samantha 1; Jeff 1"
                 },
                 {
-                    "option": "Jeff: Oh hey one more thing! I seem to have, misplaced some scribing stones. If you see any blue crystals lying around I get the feeling they might be mine, could you grab them for me? I think there's about 8 of them if I remember correctly.`Player: Yeah sure, but what if I don't see you again before you leave?`Jeff: I'm sure you'll see my again, there's not a lot of barristers out an about these days so somehow has to be willing to pick up their shoes and get to those in need.`Player: You say that but you seem to do a lot of sitting while you're here.`Jeff: What was that?`Player: Hm? Wasn't me, must have been the cat.`Magic Cat: Oh sure, blame it on the cat why dontcha.",
+                    "option": "Also, if you see any blue crystals around those are my scribing stones, could you bring them to me once you find them all please?",
                     "increment": "Jeff 2; Scrolls 1"
                 },
                 {
-                    "option": "Jeff: I don't think we have any more business right now, do we?",
+                    "option": "I don't think we have any more business right now, do we?",
                     "increment": "none"
                 },
                 {
-                    "option": "Jeff: Oh thanks! My very important legal documents! What would I do without you?`Player: Well hopefully you'd stop losing things.`Jeff: Ah yes, very true!",
+                    "option": "Oh thanks! My very important scribing stones! What would I do without you?",
                     "increment": "Jeff 5"
                 },
                 {
-                    "option": "Jeff: Oh thanks! My very important legal documents! What would I do without you?`Player: Mhm, right, 'legal documents'.`Jeff: Hmm? These are very important papers no self respecting barrister could do without!`Player: I suppose no self respecting barrister would do without a chocolate cake.`Jeff: ...I already said thanks.",
+                    "option": "Oh thanks! My very important scribing stones! Now I can make a chocolate cake!",
                     "increment": "Jeff 5"
                 },
                 {
-                    "option": "Jeff: Thanks for your help, but I don't think we have any more business right now, do we?",
+                    "option": "Thanks for your help, but I don't think we have any more business right now, do we?",
                     "increment": "none"
                 }
             ]
@@ -71,8 +71,12 @@
                     "increment": "none"
                 },
                 {
-                    "option": "Samantha: Ok, maybe I owe you an apology Jack, that was a bit more dangerous than I expected.`Jack: That's why I came with you fellas, didn't want to let anything happen to you.`Player: Yeah, phew, thanks Jack. Wait, cat, why did we have to come here? Is there something special about this lake?`Magic Cat: I just needed to check something' Oh no'`Player: Is everything alright?`Magic Cat: I've been around that village a long time, hoping this day wouldn't come'`Samantha: What are you talking about?`Magic Cat: I've been around that village since before it was a village. Remember that 'statue' the village was built around?`Player: Yeah? Some heroic looking guy that commemorates the end of The Cataclysm, right?`Magic Cat: Not quite. You see, I'm a bit more than your average cat as you might have noticed, but that doesn't just include the ability to talk. I've lived a very long time, I remember Cataclysm, I saw him.`Samantha: You mean 'it'?`Magic Cat: No. Cataclysm was a crazy but powerful warrior. The wizard that gave me my magicalness lured him out to an empty plain and imprisoned him in stone. He tasked me with watching to make sure he stayed imprisoned but a town popped up around 'a cool looking statue', that town being Graville.`Jack: Wait, are you saying that big statue in town is a PERSON?`Magic Cat: I wish that was the end of it, but I've noticed cracks in the stone, he's breaking free and I've got to be ready for when he comes. I thought I could draw some magical energy from this mystic lake and its magical water, but I can't remember how.`Player: Hey, don't worry, you've got something better than magic: us! And we're going to help you!`Magic Cat: Well if that's the case we should check the trails around town for some enchanted items that will help us defeat him when he breaks out. Our best bet to start is probably the forest on the way to New Castle, I've heard there's someone there that collects those sorts of things.!",
+                    "option": "Oh man, I hoped this wouldn't be true when I felt a strange magical vibration but it is; This mystic lake's power is running out! The statue in town is not a statue but a dangerous giant petrified in stone, once the magic in this lake runs out he'll break free! We need to be ready, I heard there's a collector of magic artifacts near the trail that heads north west out of town, we should ask them for help.",
                     "increment": "Cat 2"
+                },
+                {
+                    "option": "You shouldn't be able to see me now, I'm in your party!",
+                    "increment": "none"
                 }
             ]
         },
@@ -81,17 +85,25 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Samantha: Hey sorry I'm a bit busy right now but if you come back later I'll have a second to talk`Player: Oh ok, sorry for bothering you.",
+                    "option": "Hey sorry I'm a bit busy right now but if you come back later I'll have a second to talk",
                     "increment": "none"
                 },
                 {
-                    "option": "Samantha: Oh look who decided to get up today! Get a good rest?`Player: I mean the sarcasm isn't necessary but since you asked, I did sleep well. I take it you didn't? I heard there was a pest problem I came to help with.`Samantha: Yeah, sorry, just got finished dealing with them. They were quick little critters! Couldn't use the trusty old broom so I had to whip out my slingshot!`Player: Hey watch where you're pointing that thing!`Samantha: Ha! If I was trying to hit you I would have.`Player: Oh ha ha Sam. Well since you don't need help with the inn, i'm going to go help Marlena now.`Samantha: Oh my, feeling productive are we!`Player: Listen here! I am often productive!`Samantha: ...`Player: ...`Player: Well you didn't have to point it out at least.`Samantha: Whatever, you've got your work to do and I'm busy with my sammich break. You'd better get heading to Marlena, north east, right?`Player: I'm going, I'm going.",
-                    "increment": "Marlena 1"
+                    "option": "Oh hey! Thanks for coming to help but I got those bugs all taken care of. I heard old miss Marlena could use some help at the house that's on the north east corner of the town square though!",
+                    "increment": "Marlena 1; Samantha 3"
                 },
                 {
-                    "option": "Samantha: Oh you're back, do you need something?`Player: The cat is missing. Marlena said he was heading this way, have you seen him?`Samantha: Oh yeah, I saw him running around the statue and then into the church but after that he ran away, probably towards the forest.`Player: Aw man, that's weird, he's usually pretty chill, as long as I can remember he's just kinda lounging around the town not doing much.`Samantha: Huh, now that you mention it, he was kind of a boring cat when I tried to play with him when we were kids. Well, I've finished my sammich, I'm coming with you to find this cat and you can't stop me! This caravan is mostly just old guys trading spices or something lame anyways, I want a little adventure at least heh.`Player: Ok then, hopefully he just went to see Jack, you've heard about how dangerous that forest can be, right?`Samantha: Oh you coward, come on already. Adventure awaits! Are you inspired now?`Player: Suurreeee.",
-                    "increment": "Jack 3; Samantha 3"
-                }
+                    "option": "Oh you're looking for the cat? I think I saw him heading towards the forest north east of town, I bet Jack saw where it went! I'll come with you, I need a little adventure today!",
+                    "increment": "Jack 3; Samantha 4"
+                },
+                {
+                    "option": "You're such a handy helper to have around town! Thanks!",
+                    "increment": "none"
+                },
+                {
+                    "option": "You shouldn't be able to see me! I'm in your party!",
+                    "increment": "none"
+                },
             ]
         },
         {
@@ -99,15 +111,15 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Player: Hey Marlena.`Marlena: Oh hello dearie! It's so good to see you! Are you staying warm today?`Player: It's pretty sunny- I mean yes I am!`Marlena: Oh good! Well it's so nice of you to say hi to an old lady on this cold day!",
+                    "option": "Oh it's so nice of you to say hi to an old lady on this cold day! Do stay warm dearie!",
                     "increment": "none"
                 },
                 {
-                    "option": "Player: Hey Marlena.`Marlena: Oh hello dearie! It's so good to see you! Are you staying warm today?`Player: It's pretty sunny- I mean yes I am! But I heard you needed some help with things, I'm here to help as needed.`Marlena: Oh that's so sweet of you youngster! I do have a few things I needed to do but if you want to help I'll make sure to give you some of my nice and fresh cookies when you get back!`Player: Sounds good Marlena, what can I do for you?`Marlena: Well, I packed lunch for little Jacky but he must have forgotten it on his way east to the forest. Could you take it to him?`Player: Sure thing Marlena, I shouldn't be too long.`Marlena: Be careful Player! And don't catch a cold!`Player: I'll do my best.",
+                    "option": "Oh thank you for visiting me! If you've got a second, my dear grandson Jack forgot his lunch, could you bring it to him for me? He's probably chopping trees in the forest to the east.",
                     "increment": "Jack 1"
                 },
                 {
-                    "option": "Player: Hey Marlena I'm back, delivered all the things you asked for. Oh hey Jeff, have you come to eat Marlena's cookies?`Jeff: Hm? No no, I'm currently discussing some legal business with Marlena.`Player: You've got crumbs on your shirt.`Jeff: ...`Marlena: Oh thanks for your help Player! You're so kind as to lend an old woman a hand! Here, have some cookies!`Jeff: I thought those were for me'`Player: Thanks Marlena. Well Jeff, since you're here, have you heard of anything else that needs help around here?`Jeff: I can't think of anything but I think the cat said something was bothering him.`Player: ... well where is the cat then?`Jeff: He's right here.`Player: ...`Player: ...No he's not.`Marlena: Oh I saw the little kitty running off up west, probably to go get a glass of milk from the inn.`Player: Well I guess I gotta go check if Samantha's seen him then, I'll be back in a second.",
+                    "option": "Oh welcome back! Thanks again for taking Jack his lunch! Jeff has come to eat my cookies now, apparently the cat ran off towards the inn and Jeff thinks it's his fault.",
                     "increment": "Samantha 2"
                 }
             ]
@@ -117,20 +129,24 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Jack: Oh hey there fella, what brings you to my neck of the woods?`Player: Um, nothing right now, just thought I'd say hi so uh, hi!`Jack: Well hello then! Just don't head into the woods, they're pretty dangerous!`Player: Aw ok then, thanks for the warning.",
+                    "option": "Well hello there! Hope you're having a swell day! Just don't head into the woods, they're pretty dangerous!",
                     "increment": "none"
                 },
                 {
-                    "option": "Jack: Oh hey there fella, what brings back you to my neck of the woods?`Player: Is there a part of these woods that isn't your neck?`Jack: What was that?`Player: Oh uh just that Marlena packed you a lunch and you forgot it so I've got it here for you.`Jack: Aw man I forgot it again?! I hope Marlena doesn't think I don't like her food, I'm always just so pumped up to come to the forest again I rush out the door.`Player: Ah yes, I can understand having a busy day, definitely. Running around with all my work to do and busyness and such.`Jack: Well if you wouldn't mind handing that over, I am quite hungry!`Player: Oh yeah, of course, here you go.`Jack: Ahhh, Marlena's lunch, one of the best parts of everyday.`Player: Well enjoy that then, I'm gonna get going.`Jack: Hame Fum!",
+                    "option": "Oh man! I forgot my lunch again? Well thanks for bringing it to me! A hearty breakfast always help",
                     "increment": "Marlena 2; Jack 2"
                 },
                 {
-                    "option": "Jack: Mmmm, lunch. Best part of my day! Well, at least until dinner.",
+                    "option": "Mmmm, lunch. Best part of my day! Well, at least until dinner.",
                     "increment": "none"
                 },
                 {
-                    "option": "Player: Hey Jack, have you seen that cat around here?`Jack: ...zzzzZZZzzz`Player: Oh he's asleep, do you think we should just wait or?`Samantha: HEY LUMBER HEAD!`Jack: Huh? Oh hey guys how's it going?`Player: Lunch hit you that hard?`Jack: Oh I'm guessing I fell asleep? Yeah, Marlena's cooking is just so good, and chopping trees is hard work you know? I figure a nap can't hurt, and it's not like I'm actually IN the forest, that's where it starts to get dangerous.`Samantha: Well anyways, we're looking for that cat, have you seen him?`Jack: No I don't think so-`Magic Cat: Oh hey, you people are here, perfect! I need help getting through the forest!`Player: Huh, what are you going in there for?`Magic Cat: I need to get to the lake. It's magic dontcha know? Come on, we don't have much time!`Samantha: I wish this cat was this interesting when I was younger!`Jack: Woah guys! If you're going in there you need to be careful, there's dangerous creatures in there, unlike ones you've seen elsewhere. You're gonna need to be able to protect yourself just in case, but I'm going to come with you as well. Here, Player, I've got a spare axe you can use. Sam I think I might have another one-`Samantha: No thanks, I think I'll manage with this here slingshot.`Jack: Are you a good shot with that?`Samantha: Better than you are at throwing that axe.`Jack: Well it's not a throwing axe it's a tree felling axe, and then there's your log splitting axe, your little hatchets for-`Magic Cat: Are you all done? We gotta go!`Jack: Ok sure! We can talk about the different types of axes later!`Samantha: Sure`Player: Jack, do you know the way?`Jack: Um, no. I mean, it's dangerous in there, and there's perfectly good trees right here.`Player: Ok, I guess I'll lead the way, but I don't know which way I'm going so I make no promises to the speed of our arrival.",
+                    "option": "...zzzZZZzzz huh? Oh hey there! I was just napping on this soft orange pillow- oh it's the cat! I guess that wasn't a dream when the cat said we need to go to the lake to check something important there! Let's go! I'm coming with you, and I'm guessing the cat is too!",
                     "increment": "Cat 1; Jack 4"
+                },
+                {
+                    "option": "You shouldn't be able to see me now, I'm in your party!",
+                    "increment": "none"
                 }
             ]
         },
@@ -149,23 +165,23 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Quartermaster: hmm... yes...",
+                    "option": "hmm... yes...",
                     "increment": "Quartermaster 1"
                 },
                 {
-                    "option": "Quartermaster: *shuffles papers*",
+                    "option": "*shuffles some glowing stones around*",
                     "increment": "Quartermaster 0"
                 },
                 {
-                    "option": "Player: Hey um, quartermaster guy?`Quartermaster: Hm? Did you say something?`Player: Yeah, I was just wondering since I'm guessing you know about legal documents, what are these scrolls about?`Quartermaster: Hm... oh my goodness!`Player: What?! What are they?!`Quartermaster: They seem to be a very complex and delicious recipe for a chocolate cake!`Player: ...I should have guessed knowing Jeff. Well, thanks for your help.`Quartermaster: Yes yes, hmm... *shuffles papers*",
+                    "option": "Oh? You're asking me what's inscribed into these scribing stones? Well let's see... Oh! It's a chocolate cake recipe!",
                     "increment": "Quartermaster 3; Jeff 4"
                 },
                 {
-                    "option": "Quartermaster: hmm... yes... chocolate cake...",
+                    "option": "hmm... yes... chocolate cake...",
                     "increment": "Quartermaster 4"
                 },
                 {
-                    "option": "Quartermaster: *stomach growls*",
+                    "option": "*stomach growls*",
                     "increment": "Quartermaster 3"
                 }
             ]
@@ -175,11 +191,11 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Caravan Carl: uh? Carl trying to sleep, maybe Carl talk later",
+                    "option": "Cuh? Carl trying to sleep, maybe Carl talk later",
                     "increment": "Caravan_Carl 1"
                 },
                 {
-                    "option": "Caravan Carl: *loud snore*",
+                    "option": "*loud snore*",
                     "increment": "Caravan_Carl 0"
                 }
             ]
@@ -199,7 +215,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Oh howdy Player! Have you seen those guards at the gate lately? They don't know how easy they have it here, you know back in my day...",
+                    "option": "Oh howdy! Have you seen those guards at the gate lately? They don't know how easy they have it here, you know back in my day...",
                     "increment": "Captain 1"
                 },
                 {
@@ -255,7 +271,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Ralph: You! Youngster!`Player:...`Ralph: Have you heard of this land’s magical scarecrow? He lives in the valley, found in the town of Graville. Though he appears to be made of sticks and straw, he will bless curious travellers with a song. I long to hear the scarecrow’s tune, but my old legs fail me!`Player: Sir, I could go hear the song and bring it back to you.`Ralph: Oh, you would! Thank you! The scarecrow can be found near the cornrows just east of Graville.",
+                    "option": "You! Youngster! Have you heard of this land’s magical scarecrow? He lives in the valley, found in the town of Graville. Though he appears to be made of sticks and straw, he will bless curious travellers with a song. I long to hear the scarecrow’s tune, but my old legs fail me! Please go to the scarecrow near the cornrows just east of Graville and bring the song back!",
                     "increment": "Scarecrow 1; Ralph 1"
                 },
                 {
@@ -263,11 +279,11 @@
                     "increment": "none"
                 },
                 {
-                    "option": "Oh! Have you come to bring me the song?`Player: *sings song*`Ralph: What a whimsical song! Thank you, young man.",
+                    "option": "Oh! What a whimsical song! Thank you!",
                     "increment": "Ralph 3"
                 },
                 {
-                    "option": "Ralph: What a delightful song!",
+                    "option": "What a delightful song!",
                     "increment": "none"
                 }
             ]
@@ -291,19 +307,19 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Ezra: Hey you! Could you, uh, help me please? My friend, Lily, tends a garden on that plateau up north. *shudder* I’m supposed to deliver these seeds to her, but I can’t fathom going that high up. And, I hear there might be monsters surrounding the garden! Would you be willing to, um, take them to her for me?",
+                    "option": "Hey you! Could you, uh, help me please? My friend, Lily, tends a garden on that plateau up north. *shudder* I’m supposed to deliver these seeds to her, but I can’t fathom going that high up. And, I hear there might be monsters surrounding the garden! Would you be willing to, um, take them to her for me?",
                     "increment": "Ezra 1; Lily 1"
                 },
                 {
-                    "option": "Ezra: So high up…",
+                    "option": "So high up…",
                     "increment": "none"
                 },
                 {
-                    "option": "Ezra: Did you get them to her? Oh, what a relief! And, she sent me a flower? Oh, boy!",
+                    "option": "Did you get them to her? Oh, what a relief! And, she sent me a flower? Oh, boy!",
                     "increment": "Ezra 3"
                 },
                 {
-                    "option": "Ezra: Ghee, thanks a lot!",
+                    "option": "Ghee, thanks a lot!",
                     "increment": "none"
                 }
             ]
@@ -313,15 +329,15 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Lily: Welcome to my garden!",
+                    "option": "Welcome to my garden!",
                     "increment": "none"
                 },
                 {
-                    "option": "Player: I was asked to bring you these seeds.`Lily: Did Ezra send you? Oh that coward! He’s such a dear, but so timid. Anyways, thanks for making the hike up here. Would you mind delivering this flower back to him?",
+                    "option": "Oh? Ezra sent you? Oh that coward! He’s such a dear, but so timid. Anyways, thanks for making the hike up here. Would you mind delivering this flower back to him?",
                     "increment": "Ezra 2; Lily 2"
                 },
                 {
-                    "option": "Lily: I can’t wait to plant my new seeds!",
+                    "option": "I can’t wait to plant my new seeds!",
                     "increment": "none"
                 }
             ]
@@ -381,7 +397,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "You found the legendary sword!",
+                    "option": "You found the legendary sword! With you now wielding it, your slash attack will be enhanced!",
                     "increment": "SwordofPower; SnowChest 1"
                 },
                 {
@@ -395,7 +411,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "You found the Awesome Axe!",
+                    "option": "You found the Awesome Axe! With Jack now wielding it, his heavy axe attack will be enhanced!",
                     "increment": "BigAxe; DesertChest 1"
                 },
                 {
@@ -409,7 +425,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Hey you! Why are you in my house? Because you like MUSHROOMS?! Yes, that must be it... Because of your fellow love of mushrooms, I shall give you the Fungus Flinger!",
+                    "option": "Hey you! Why are you in my house? Because you like MUSHROOMS?! Yes, that must be it... Because of your fellow love of mushrooms, I shall give you the Fungus Flinger! It's much better than some other non-mushroom magical items and with Samantha wielding it, her sharp shot will be enhanced! I left that magical garbage in chests; One in the mountains north of Graville, one in the desert south of Graville, and one in the dungeon east of Graville!",
                     "increment": "FungusFlinger; MushroomLady 1"
                 },
                 {
@@ -423,8 +439,8 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "You found the magical collar!",
-                    "increment": "MagicalCollar; DungeonChest 1"
+                    "option": "You found the magical collar! With the cat now wearing it, its Shadow Scratch will be enhanced!",
+                    "increment": "MagicalCollar; DungeonChest 1; Priest 1"
                 },
                 {
                     "option": "The chest is empty",
@@ -498,6 +514,20 @@
             "dialogue": [
                 {
                     "option": "Welcome to the sanctuary!",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "Priest",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Blessed day to you. All are welcome here in church but your effort to always help the town is especially appreciated",
+                    "increment": "none"
+                },
+                {
+                    "option": "Oh my goodness! A giant barbarian broke out of the statue in town and climbed on top of the church! You help so much but I ask you to please help once more and defeat him before someone gets hurt!",
                     "increment": "none"
                 }
             ]
