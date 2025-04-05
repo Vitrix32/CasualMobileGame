@@ -20,7 +20,7 @@ public class DataInitializer : MonoBehaviour
         
         // Initialize quest data
         CopyDefaultIfNotExists("Quests.txt");
-        CopyDefaultIfNotExists("SaveQuests.txt", true); // Force copy for troubleshooting
+        CopyDefaultIfNotExists("SaveQuests.txt");
         
         // Initialize player stats
         CopyDefaultIfNotExists("PlayerStats.txt");
@@ -33,8 +33,36 @@ public class DataInitializer : MonoBehaviour
         CopyDefaultIfNotExists("CurrentHealth.json");
         
         // Log persistentDataPath contents for debugging
-        LogDirectoryContents(Application.persistentDataPath);
-        LogResourcesContents();
+        // LogDirectoryContents(Application.persistentDataPath);
+        // LogResourcesContents();
+    }
+
+    public void ForceRefresh()
+    {
+        // Initialize enemy data
+        CopyDefaultIfNotExists("EnemyDataFile.json", true);
+        
+        // Initialize dialogue data
+        CopyDefaultIfNotExists("Dialogue.txt", true);
+        CopyDefaultIfNotExists("SaveDialogue.txt", true);
+        
+        // Initialize quest data
+        CopyDefaultIfNotExists("Quests.txt", true);
+        CopyDefaultIfNotExists("SaveQuests.txt", true);
+        
+        // Initialize player stats
+        CopyDefaultIfNotExists("PlayerStats.txt", true);
+        CopyDefaultIfNotExists("SavePlayerStats.txt", true);
+        
+        // Initialize items
+        CopyDefaultIfNotExists("Items.txt", true);
+
+        // Initialize health
+        CopyDefaultIfNotExists("CurrentHealth.json", true);
+        
+        // Log persistentDataPath contents for debugging
+        // LogDirectoryContents(Application.persistentDataPath);
+        // LogResourcesContents();
     }
     
     private void CopyDefaultIfNotExists(string fileName, bool forceCopy = false)
