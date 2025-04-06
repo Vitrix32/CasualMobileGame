@@ -40,30 +40,36 @@ public class Help : MonoBehaviour
                 str = "Some actions apply status effects. These are displayed above the party and enemy healthbars and can be tapped for more information.";
                 break;
             case 3:
-                str = "There are four attacks you can choose. Each attack corresponds to a party member.";
+                str = "Most actions have a cooldown that is displayed with the action. During this cooldown, the action cannot be used.";
                 break;
             case 4:
-                str = "Slash- Deals standard damage to the enemy.\nShadow Scratch- Deals half damage to the enemy and applies the poison effect.";
+                str = "In general, actions that deal damage have a small variation in the damage they deal.";
                 break;
             case 5:
-                str = "Heavy Axe- Deals double damage to the enemy.\nSharp Shot- Deals half damage to the enemy and applies the weakeness effect.";
+                str = "There are four attacks you can choose. Each attack corresponds to a party member.";
                 break;
             case 6:
-                str = "There are four spells you can choose. Most are defensive in their nature.";
+                str = "Slash- Deals standard damage to the enemy.\nShadow Scratch- Deals half damage to the enemy and applies the poison effect.";
                 break;
             case 7:
-                str = "Inspire- Heals the party for a small amount and applies the empower effect to the party.\nHealing Winds- Heals the party for a large amount.";
+                str = "Heavy Axe- Deals double damage to the enemy.\nSharp Shot- Deals half damage to the enemy and applies the weakeness effect.";
                 break;
             case 8:
-                str = "Shield Party- Applies the shield effect to the party.\nTime rift- Deals half damage and skips the enemy's turn.";
+                str = "There are four spells you can choose. Most are defensive in their nature.";
                 break;
             case 9:
-                str = "The final action you can take is flee. Fleeing will allow the party to escape combat and return to their quest.";
+                str = "Inspire- Heals the party for a small amount and applies the empower effect to the party.\nHealing Winds- Heals the party for a large amount.";
                 break;
             case 10:
-                str = "Fleeing is not guarenteed to succeed. Failing will damage the party and forfeit their action for the round. Fleeing should be a last resort";
+                str = "Shield Party- Applies the shield effect to the party.\nTime rift- Deals half damage and skips the enemy's turn.";
                 break;
             case 11:
+                str = "The final action you can take is flee. Fleeing will allow the party to escape combat and return to their quest.";
+                break;
+            case 12:
+                str = "Fleeing is not guarenteed to succeed. Failing will damage the party and forfeit their action for the round. Fleeing should be a last resort";
+                break;
+            case 13:
                 str = "Combat will end upon a successful flee, the death of the enemy, or the death of the party.";
                 break;
         }
@@ -73,7 +79,7 @@ public class Help : MonoBehaviour
         nextColor = nextImg.color;
         prevColor = prevImg.color;
 
-        if (index == 11)
+        if (index == 13)
         {
             nextColor.a = 0.4f;
             nextImg.color = nextColor;
@@ -97,7 +103,7 @@ public class Help : MonoBehaviour
 
     public void IncrementIndex()
     {
-        if (index < 11)
+        if (index < 13)
         {
             index++;
         }

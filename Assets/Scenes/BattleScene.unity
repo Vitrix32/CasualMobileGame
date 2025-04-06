@@ -6822,7 +6822,7 @@ MonoBehaviour:
   battleText: {fileID: 1454473799}
   attackPanel: {fileID: 1726642942}
   spellPanel: {fileID: 1696959848}
-  itemPanel: {fileID: 0}
+  helpPanel: {fileID: 1629258584}
   mainMenuPanel: {fileID: 2037871565}
   attackButtonInfos:
   - attackName: sword

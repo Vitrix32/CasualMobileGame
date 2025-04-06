@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private TextMeshProUGUI battleText;
     [SerializeField] private GameObject attackPanel;
     [SerializeField] private GameObject spellPanel;
-    [SerializeField] private GameObject itemPanel;
+    [SerializeField] private GameObject helpPanel;
     [SerializeField] private GameObject mainMenuPanel;
 
     [Header("Menu & Attack Data")]
@@ -283,7 +283,7 @@ public class PlayerHealth : MonoBehaviour
 
             attackPanel.SetActive(false);
             spellPanel.SetActive(false);
-            itemPanel.SetActive(false);
+            helpPanel.SetActive(false);
             mainMenuPanel.SetActive(true);
         }
     }
@@ -383,7 +383,7 @@ public class PlayerHealth : MonoBehaviour
         mainMenuPanel.SetActive(false);
         attackPanel.SetActive(false);
         spellPanel.SetActive(false);
-        itemPanel.SetActive(false);
+        helpPanel.SetActive(false);
         
         // Clean up and transition
         if (WorldPlayer != null)
