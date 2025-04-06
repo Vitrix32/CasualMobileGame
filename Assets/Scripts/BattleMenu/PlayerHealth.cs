@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject UniversalAudio;
     [SerializeField] private ItemManager itemManager;
     [SerializeField] private Enemy enemy;
+    [SerializeField] private TMP_Text[] cooldowns;
 
     [Header("UI Elements")]
     [SerializeField] private TMP_Text healthText;
@@ -97,6 +98,12 @@ public class PlayerHealth : MonoBehaviour
         debugMenu = GameObject.Find("DebugMenu");
         enemyHealthSlider = GameObject.Find("EnemyHealthSlider");
         enemyCombatStats = GameObject.Find("EnemyCombatStats");
+
+        // Add cooldowns to UI for each action
+        for (int i = 0; i < cooldowns.Length; i++)
+        {
+            cooldowns[i].text = "Cooldown\n" + attackButtonInfos[i].maxCooldown.ToString();
+        }
 
         // PlayerPrefs.SetInt("Health", maxHealth);
         currentHealth = (int)HealthManager.Instance.GetHealth();
@@ -269,12 +276,13 @@ public class PlayerHealth : MonoBehaviour
             }
 
             // Apply cooldown to the used attack
-            foreach (var attackInfo in attackButtonInfos)
+            for (int i = 0; i< attackButtonInfos.Length; i++)
             {
-                if (attackInfo.attackName == attack)
+                if (attackButtonInfos[i].attackName == attack)
                 {
-                    attackInfo.cooldown = attackInfo.maxCooldown;
-                    attackInfo.button.interactable = false;
+                    attackButtonInfos[i].cooldown = attackButtonInfos[i].maxCooldown;
+                    attackButtonInfos[i].button.interactable = false;
+                    cooldowns[i].text = "Cooldown\n" + attackButtonInfos[i].cooldown;
                     break;
                 }
             }
@@ -584,14 +592,16 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateAttackCooldowns()
     {
-        foreach (var attackInfo in attackButtonInfos)
+        for (int i = 0; i < attackButtonInfos.Length; i++)
         {
-            if (attackInfo.cooldown > 0)
+            if (attackButtonInfos[i].cooldown > 0)
             {
-                attackInfo.cooldown--;
-                if (attackInfo.cooldown == 0)
+                attackButtonInfos[i].cooldown--;
+                cooldowns[i].text = "Cooldown\n" + attackButtonInfos[i].cooldown;
+                if (attackButtonInfos[i].cooldown == 0)
                 {
-                    attackInfo.button.interactable = playerTurn;
+                    attackButtonInfos[i].button.interactable = playerTurn;
+                    cooldowns[i].text = "Cooldown\n" + attackButtonInfos[i].maxCooldown.ToString();
                 }
             }
         }

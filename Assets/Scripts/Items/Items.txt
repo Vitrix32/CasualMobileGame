@@ -52,7 +52,7 @@
         {
             "name": "Awesome Axe",
             "type": "attack:axe",
-            "value": 5,
+            "value": 10,
             "quantity": 1,
             "questName": "AwesomeAxe"
         },

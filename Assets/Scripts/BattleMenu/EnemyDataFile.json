@@ -13,7 +13,7 @@
     {
       "Id": "2",
       "Name": "Chicken",
-      "Hp": "20",
+      "Hp": "25",
       "Damage": "2",
       "LocID": "0",
       "Attacks": [ "Crit", "Shield", "Reg" ],
@@ -83,7 +83,7 @@
     {
       "Id": "9",
       "Name": "Slime",
-      "Hp": "20",
+      "Hp": "40",
       "Damage": "10",
       "LocID": "1",
       "Attacks": [ "Shield", "Heal", "Reg" ],
@@ -133,7 +133,7 @@
     {
       "Id": "14",
       "Name": "Rat",
-      "Hp": "15",
+      "Hp": "25",
       "Damage": "5",
       "LocID": "1",
       "Attacks": [ "Crit", "Reg", "Reg" ],
