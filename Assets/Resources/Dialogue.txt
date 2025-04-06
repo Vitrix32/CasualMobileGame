@@ -531,6 +531,36 @@
                     "increment": "none"
                 }
             ]
+        },
+        {
+            "name": "CaveSoldier",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "...",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "DesertSoldier",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "...",    
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "DungeonSoldier",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "...",
+                    "increment": "none"
+                }
+            ]
         }
     ]
 }
