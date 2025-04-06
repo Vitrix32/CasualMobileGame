@@ -119,24 +119,8 @@ public class Enemy : MonoBehaviour
 
     public void CritAttack(int damageToDeal, PlayerHealth player, string attackName)
     {
-        // Variability to enemy attacks added
-        Debug.Log("ENEMY CRIT ATTACK");
-        int var = 0;
-        bool even = false;
-        if ((damageToDeal/10) % 2 == 0)
-        {
-            even = true;
-        }
-        if (damageToDeal >= 10 && !even)
-        {
-            var = Random.Range(0, (damageToDeal / 10)) - ((damageToDeal / 10) / 2);
-            Debug.Log(" -----    ENEMYY ---------  Random Number Added: " + var);
-        } else if (damageToDeal >= 10 && even)
-        {
-            var = Random.Range(0, ((damageToDeal + 10) / 10)) - (((damageToDeal+10) / 10) / 2);
-            Debug.Log(" -----    ENEMYY ---------  Random Number Added: " + var);
-        }
-            int criticalDamage = Mathf.RoundToInt((damageToDeal + var) * 1.5f);
+        int var = GetVar(damageToDeal);
+        int criticalDamage = Mathf.RoundToInt(damageToDeal * 1.5f + var);
         player.UpdateText("The " + name + " performed a critical hit with " + attackName + "!");
         audioSource.PlayOneShot(Resources.Load<AudioClip>(attackSounds[0]));
         player.TakeDamage(criticalDamage);  
@@ -144,24 +128,7 @@ public class Enemy : MonoBehaviour
 
     public void regAttack(int damageToDeal, PlayerHealth player, string attackName)
     {
-        // Variability to enemy attacks added
-        Debug.Log("ENEMY RED ATTACK");
-        int var = 0;
-        bool even = false;
-        if ((damageToDeal / 10) % 2 == 0)
-        {
-            even = true;
-        }
-        if (damageToDeal >= 10 && !even)
-        {
-            var = Random.Range(0, (damageToDeal / 10)) - ((damageToDeal / 10) / 2);
-            Debug.Log(" -----    ENEMYY ---------  Random Number Added: " + var);
-        }
-        else if (damageToDeal >= 10 && even)
-        {
-            var = Random.Range(0, ((damageToDeal + 10) / 10)) - (((damageToDeal + 10) / 10) / 2);
-            Debug.Log(" -----    ENEMYY ---------  Random Number Added: " + var);
-        }
+        int var = GetVar(damageToDeal);
         player.UpdateText("The " + name + " attacked with " + attackName + "!");
         audioSource.PlayOneShot(Resources.Load<AudioClip>(attackSounds[2]));
         player.TakeDamage(damageToDeal + var);
@@ -177,24 +144,7 @@ public class Enemy : MonoBehaviour
 
     public void heal(PlayerHealth player, int healAmount, string attackName)
     {
-        // Variability to enemy attacks added
-        Debug.Log("ENEMY HEAL");
-        int var = 0;
-        bool even = false;
-        if ((healAmount / 10) % 2 == 0)
-        {
-            even = true;
-        }
-        if (healAmount >= 10 && !even)
-        {
-            var = Random.Range(0, (healAmount / 10)) - ((healAmount / 10) / 2);
-            Debug.Log(" -----    ENEMYY ---------  Random Number Added: " + var);
-        }
-        else if (healAmount >= 10 && even)
-        {
-            var = Random.Range(0, ((healAmount + 10) / 10)) - (((healAmount + 10) / 10) / 2);
-            Debug.Log(" -----    ENEMYY ---------  Random Number Added: " + var);
-        }
+        int var = GetVar(healAmount);
         currentHealth += healAmount + var;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
@@ -365,5 +315,32 @@ public class Enemy : MonoBehaviour
             combatStats.GetComponent<CombatStats>().SetStat(2);
             Debug.Log("Enemy has been weakened. Their next attack will deal reduced damage.");
         }
+    }
+
+
+    // INPUT - Damage/Health to be done - get variance based on damage
+    private int GetVar(int dmg)
+    {
+        int inp = 0;
+        if (dmg <= 7)
+        {
+            inp = 1;
+        }
+        else if (dmg <= 14)
+        {
+            inp = 2;
+        }
+        else if (dmg <= 21)
+        {
+            inp = 3;
+        }
+        else
+        {
+            inp = 4;
+        }
+        int right = inp * 2 + 1; // give 3 - right = 7
+        int rand = Random.Range(0, right); // anywhere from 0 - 6
+        rand = rand - inp; // subtract 3 - -3 -2 -1 0 1 2 3
+        return rand;
     }
 }

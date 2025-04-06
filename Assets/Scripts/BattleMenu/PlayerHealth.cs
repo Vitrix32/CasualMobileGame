@@ -396,7 +396,7 @@ public class PlayerHealth : MonoBehaviour
     private void PerformRegularAttack(string attackName)
     {
         //Randomizer
-        int var = Random.Range(0, 5) - 2;
+        int var = GetVar(2);
         Debug.Log("Random Number Added: " + var);
         int actualDamage = Mathf.RoundToInt(swordDamage * damageMultiplier + var);
 
@@ -415,7 +415,7 @@ public class PlayerHealth : MonoBehaviour
     private void PerformConsumeItem(string itemName)
     {
         //Randomizer
-        int var = Random.Range(0, 3) - 1;
+        int var = GetVar(1);
         Debug.Log("Random Number Added: " + var);
         int healAmount = 10 + var;
         HealPlayer(healAmount);
@@ -426,7 +426,7 @@ public class PlayerHealth : MonoBehaviour
     private void PerformAttackWithDOT()
     {
         //Randomizer
-        int var = Random.Range(0, 3) - 1;
+        int var = GetVar(1);
         Debug.Log("Random Number Added: " + var);
         int actualDamage = Mathf.RoundToInt(clawDamage * damageMultiplier + var);
 
@@ -485,7 +485,7 @@ public class PlayerHealth : MonoBehaviour
     private void PerformDoubleDamage()
     {
         //Randomizer
-        int var = Random.Range(0, 9) - 4;
+        int var = GetVar(4);
         Debug.Log("Random Number Added: " + var);
         int actualDamage = Mathf.RoundToInt(axeDamage * damageMultiplier + var);
 
@@ -521,7 +521,7 @@ public class PlayerHealth : MonoBehaviour
     private void PerformHealSelf()
     {
         //Randomizer
-        int var = Random.Range(0, 7) - 3;
+        int var = GetVar(3);
         Debug.Log("Random Number Added: " + var);
         int healAmount = 30 + var;
         HealPlayer(healAmount);
@@ -755,6 +755,15 @@ public class PlayerHealth : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
         }
+    }
+
+    // INPUT - order of magnitude of variance - 2 gives any number from -2 through 2
+    private int GetVar(int inp)
+    {
+        int right = inp * 2 + 1; // give 3 - right = 7
+        int rand = Random.Range(0, right); // anywhere from 0 - 6
+        rand = rand - inp; // subtract 3 - -3 -2 -1 0 1 2 3
+        return rand;
     }
 
     #endregion
