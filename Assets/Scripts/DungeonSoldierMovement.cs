@@ -14,7 +14,7 @@ public class DungeonSoldierMovement : MonoBehaviour
     void Update()
     {
         // Check for specific dialogue value
-        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("SnowChest") >= 1 && currentStep == 0)
+        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("DesertChest") >= 1 && currentStep == 0)
         {
             currentStep++;
             // Start movement
