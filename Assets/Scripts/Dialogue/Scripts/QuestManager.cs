@@ -118,22 +118,24 @@ public class QuestManager : MonoBehaviour
         }
         //Increment the quest and set the next part of it to active
         GameObject scroll = questPanel.transform.GetChild(1).gameObject;
-        for (int i = 0; i < scroll.transform.childCount; i++)
+        for (int i = 0; i < scroll.transform.GetChild(0).childCount; i++)
         {
-            Transform currChild = scroll.transform.GetChild(i);
+            Transform currChild = scroll.transform.GetChild(0).GetChild(i);
             foreach (Quest q in currentQuests)
             {
-                Debug.Log(q.parts[q.value].increment + " " + s);
-                if (q.parts[q.value].increment == s)
+                if (q.name == currChild.name)
                 {
-
-                    r = true;
-                    q.value++;
-                    GameObject qpPanel = currChild.GetChild(0).GetChild(0).gameObject;
-                    if (qpPanel.transform.childCount >= q.value + 1)
+                    if (q.parts[q.value].increment == s)
                     {
-                        qpPanel.transform.GetChild(q.value + 1).gameObject.SetActive(true);
-                        qpPanel.transform.GetChild(q.value).gameObject.SetActive(false);
+
+                        r = true;
+                        q.value++;
+                        GameObject qpPanel = currChild.GetChild(0).gameObject;
+                        if (qpPanel.transform.childCount >= q.value + 1)
+                        {
+                            qpPanel.transform.GetChild(q.value + 1).gameObject.SetActive(true);
+                            qpPanel.transform.GetChild(q.value).gameObject.SetActive(false);
+                        }
                     }
                 }
             }
