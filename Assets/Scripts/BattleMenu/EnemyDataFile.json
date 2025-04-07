@@ -8,7 +8,7 @@
       "LocID": "0",
       "Attacks": [ "Crit", "Heal", "Reg" ],
       "AttackNames": [ "Bite", "Howl", "Claw" ],
-      "AudioClips": ["SoundEffects/Creatures/zapsplat_horror_monster_soft_growl_grunt_exhale_66489", "SoundEffects/Creatures/Howl", "SoundEffects/Creatures/zapsplat_horror_monster_soft_growl_grunt_exhale_66489"]
+      "AudioClips": ["SoundEffects/Creatures/zapsplat_horror_monster_soft_growl_grunt_exhale_66489", "SoundEffects/Creatures/Howl", "SoundEffects/BladedWeapons/warfare_sword_pulled_from_sheath_british_naval_cutlass_19thc_002"]
     },
     {
       "Id": "2",
@@ -137,8 +137,8 @@
       "Damage": "5",
       "LocID": "1",
       "Attacks": [ "Crit", "Reg", "Reg" ],
-      "AttackNames": [ "Chomp", "Chew", "Tail Whip" ],
-      "AudioClips": ["SoundEffects/Creatures/zapsplat_science_fiction_baby_alien_or_dinosaur_cry_sreech_single_010_72267", "SoundEffects/Creatures/zapsplat_science_fiction_baby_alien_or_dinosaur_cry_sreech_single_010_72267", "SoundEffects/Creatures/zapsplat_science_fiction_baby_alien_or_dinosaur_cry_sreech_single_010_72267"]
+      "AttackNames": [ "Tail Whip", "Chew", "Chomp" ],
+      "AudioClips": ["SoundEffects/Other/zapsplat_foley_stick_thin_small_swing_in_air_fast_whip_whoosh_003_110417", "SoundEffects/Creatures/zapsplat_science_fiction_baby_alien_or_dinosaur_cry_sreech_single_010_72267", "SoundEffects/Creatures/zapsplat_science_fiction_baby_alien_or_dinosaur_cry_sreech_single_010_72267"]
     },
     {
       "Id": "15",

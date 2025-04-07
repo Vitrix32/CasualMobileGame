@@ -8771,7 +8771,7 @@ MonoBehaviour:
   statName: {fileID: 1133450888}
   statDescription: {fileID: 683142313}
   statImages:
-  - {fileID: 21300000, guid: f52c118ac2a39064487e6ac29334f60d, type: 3}
+  - {fileID: 21300000, guid: 59266a1571f9f0f43a9f4c31fe435fec, type: 3}
   - {fileID: 21300000, guid: 5e9b6b381e923ec4c9de03e614f24cba, type: 3}
   - {fileID: 21300000, guid: bea874afbf191fa47aa965993ea55a7e, type: 3}
   - {fileID: 21300000, guid: c87c96ecfe693264680d719c9af78f5b, type: 3}
