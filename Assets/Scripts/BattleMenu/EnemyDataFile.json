@@ -37,7 +37,7 @@
       "Damage": "3",
       "LocID": "0",
       "Attacks": [ "Crit", "Shield", "Reg" ],
-      "AttackNames": [ "Haunt", "Phantom Shield", "Scare" ],
+      "AttackNames": [ "Haunt", "Phantom Ward", "Scare" ],
       "AudioClips": ["SoundEffects/Creatures/Haunt", "SoundEffects/Fire/gma_fireball_blast_projectile_spell_01_354", "SoundEffects/Creatures/zapsplat_horror_monster_very_aggressive_loud_scary_roar_scream_growl_006_73687"]
     },
     {
@@ -57,7 +57,7 @@
       "Damage": "20",
       "LocID": "3",
       "Attacks": [ "Crit", "Shield", "Reg" ],
-      "AttackNames": [ "Placeholder", "Placeholder", "Placeholder" ],
+      "AttackNames": [ "Disquieting Affront", "Ghastly Apparition", "Dreadful Spectre" ],
       "AudioClips": ["SoundEffects/Creatures/", "SoundEffects/Creatures/", "SoundEffects/Creatures/"]
     },
     {
@@ -77,7 +77,7 @@
       "Damage": "30",
       "LocID": "6",
       "Attacks": [ "Crit", "Heal", "Reg" ],
-      "AttackNames": [ "Placeholder", "Placeholder", "Placeholder" ],
+      "AttackNames": [ "Crushing Blow", "Terrifying Prescence", "Cleave" ],
       "AudioClips": ["SoundEffects/Creatures/", "SoundEffects/Creatures/", "SoundEffects/Creatures/"]
     },
     {
@@ -87,7 +87,7 @@
       "Damage": "10",
       "LocID": "1",
       "Attacks": [ "Shield", "Heal", "Reg" ],
-      "AttackNames": [ "Absorb", "Regrow", "Spore Attack" ],
+      "AttackNames": [ "Absorb", "Regrow", "Deadly Spores" ],
       "AudioClips": ["SoundEffects/Creatures/zapsplat_cartoon_slime_hit_008_89581", "SoundEffects/Creatures/zapsplat_cartoon_slime_hit_009_89582", "SoundEffects/Creatures/zapsplat_cartoon_slime_hit_005_89578"]
     },
     {
