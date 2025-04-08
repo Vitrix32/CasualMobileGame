@@ -9,15 +9,15 @@ public class DialogueManager : MonoBehaviour
 {
     private GameObject[] NPCs;
     public GameObject player;
-    public TMPro.TextMeshProUGUI continueText;
     public GameObject textPanel;
-    public GameObject clickBox;
+    public Scrollbar SB;
     public TextAsset dialogue;
     public NPCCollection npcData;
     public TMPro.TextMeshProUGUI dialogueText;
     private bool waitForTextScroll = false;
     public bool click = false;
     public bool talking = false;
+    public PauseMenu pauseMenu;
 
     void Awake()
     {
@@ -78,12 +78,16 @@ public class DialogueManager : MonoBehaviour
         LoadDialogueProgress();
     }
 
+    public void setClick()
+    {
+        click = true;
+    }
+
     private IEnumerator displayText(string s)
     {
-        clickBox.SetActive(true);
         talking = true;
         textPanel.SetActive(true);
-        continueText.gameObject.SetActive(false);
+        SB.gameObject.SetActive(false);
         dialogueText.text = "";
         int j = 0;
         for (int i = 0; i < s.Length; i++)
@@ -92,7 +96,19 @@ public class DialogueManager : MonoBehaviour
             if (s[i] == '`')
             {
                 j = 0;
-                dialogueText.text += '\n';
+                click = false;
+
+                while(!waitForTextScroll)
+                {
+                    if (click)
+                    {
+                        waitForTextScroll = true;
+                    }
+                    yield return null;
+                }
+
+                click = false;
+                dialogueText.text = "";
                 /*
                 waitForTextScroll = false;
                 while (!waitForTextScroll)
@@ -111,29 +127,34 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
+                int lines = 0;
                 dialogueText.text += s[i];
                 if (j >= 80 && s[i] == ' ')
                 {
                     dialogueText.text += '\n';
                     j = 0;
+                    lines++;
                     /*
-                    if (dialogueText.text.Length > 160)
+                    if (lines == 4)
                     {
                         waitForTextScroll = false;
                         while (!waitForTextScroll)
                         {
                             click = false;
-                            continueText.gameObject.SetActive(true);
                             yield return null;
-                            if (Input.GetKeyDown(KeyCode.Space))
+                            if (click)
                             {
-                                continueText.gameObject.SetActive(false);
                                 waitForTextScroll = true;
+                                lines = 0;
                             }
                         }
                         dialogueText.text = "";
                     }
                     */
+                }
+                if (lines > 4)
+                {
+                    SB.gameObject.SetActive(true);
                 }
             }
             if (!click)
@@ -149,29 +170,17 @@ public class DialogueManager : MonoBehaviour
             }
         }
         waitForTextScroll = false;
-        continueText.gameObject.SetActive(true);
         click = false;
         yield return new WaitForSeconds(.1f);
         while (!waitForTextScroll)
         {
             if (click)
             {
-                float x = 0;
-                while (x < .1f)
-                {
-                    x += Time.deltaTime;
-                    if (!click) {
-                        continueText.gameObject.SetActive(false);
-                        waitForTextScroll = true;
-                        break;
-                    }
-                    yield return null;
-                }
+                waitForTextScroll = true;
             }
             yield return null;
         }
         textPanel.SetActive(false);
-        clickBox.SetActive(false);
         player.GetComponent<PlayerStatus>().EndDialogue();
         talking = false;
         yield return null;
@@ -179,6 +188,10 @@ public class DialogueManager : MonoBehaviour
 
     public void GetDialogue(string npcName)
     {
+        if (pauseMenu.isPaused)
+        {
+            return;
+        }
         Debug.Log(npcName);
         NPC npc = FindNPCByName(npcName);
         int optionIndex = npc.value;

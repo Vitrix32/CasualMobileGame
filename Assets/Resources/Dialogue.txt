@@ -69,11 +69,11 @@
                     "increment": "none"
                 },
                 {
-                    "option": "Oh hey! Thanks for coming to help but I got those bugs all taken care of. I heard old miss Marlena could use some help at the house that's on the north east corner of the town square though!",
+                    "option": "Oh hey! Thanks for coming to help but I got those bugs all taken care of. I heard old miss Marlena could use some help at the house that's on the north east corner... `of the town square though!",
                     "increment": "Marlena 1; Samantha 3"
                 },
                 {
-                    "option": "Oh you're looking for the cat? I think I saw him heading towards the forest north east of town, I bet Jack saw where it went! I'll come with you, I need a little adventure today!",
+                    "option": "Oh you're looking for the cat? I think I saw him heading towards the forest north east of town, I bet Jack saw where it went! I'll come with you, I need a... `little adventure today!",
                     "increment": "Jack 3; Samantha 4"
                 },
                 {
@@ -95,7 +95,7 @@
                     "increment": "none"
                 },
                 {
-                    "option": "Oh thank you for visiting me! If you've got a second, my dear grandson Jack forgot his lunch, could you bring it to him for me? He's probably chopping trees in the forest to the east.",
+                    "option": "Oh thank you for visiting me! If you've got a second, my dear grandson Jack forgot his lunch, could you bring it to him for me? He's probably chopping trees in the... `forest to the east.",
                     "increment": "Jack 1"
                 },
                 {
@@ -121,7 +121,7 @@
                     "increment": "none"
                 },
                 {
-                    "option": "...zzzZZZzzz huh? Oh hey there! I was just napping on this soft orange pillow- oh it's the cat! I guess that wasn't a dream when the cat said we need to go to the lake to check something important there! Let's go! I'm coming with you, and I'm guessing the cat is too!",
+                    "option": "...zzzZZZzzz huh? Oh hey there! I was just napping on this soft orange pillow- oh it's the cat! I guess that wasn't a dream when the cat said we need to go to the... `lake to check something important there! Let's go! I'm coming with you, and I'm guessing the cat is too!",
                     "increment": "Cat 1; Jack 4"
                 },
                 {
@@ -205,7 +205,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "You! Youngster! Have you heard of this land’s magical scarecrow? He lives in the valley, found in the town of Graville. Though he appears to be made of sticks and straw, he will bless curious travellers with a song. I long to hear the scarecrow’s tune, but my old legs fail me! Please go to the scarecrow near the cornrows just east of Graville and bring the song back!",
+                    "option": "You! Youngster! Have you heard of this land’s magical scarecrow? He lives in the valley, found in the town of Graville. Though he appears to be made of sticks... `and straw, he will bless curious travellers with a song. I long to hear the scarecrow’s tune, but my old legs fail me! Please go to the scarecrow near the cornrows just east of Graville... `and bring the song back!",
                     "increment": "Scarecrow 1; Ralph 1"
                 },
                 {
@@ -241,7 +241,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Hey you! Could you, uh, help me please? My friend, Lily, tends a garden on that plateau up north. *shudder* I’m supposed to deliver these seeds to her, but I can’t fathom going that high up. And, I hear there might be monsters surrounding the garden! Would you be willing to, um, take them to her for me?",
+                    "option": "Hey you! Could you, uh, help me please? My friend, Lily, tends a garden on that plateau up north. *shudder* I’m supposed to deliver these seeds to her, but I can’t... `fathom going that high up. And, I hear there might be monsters surrounding the garden! Would you be willing to, um, take them to her for me?",
                     "increment": "Ezra 1; Lily 1"
                 },
                 {
@@ -359,7 +359,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Hey you! Why are you in my house? Because you like MUSHROOMS?! Yes, that must be it... Because of your fellow love of mushrooms, I shall give you the Fungus Flinger! It's much better than some other non-mushroom magical items and with Samantha wielding it, her sharp shot will be enhanced! I left that magical garbage in chests; One in the mountains north of Graville, one in the desert south of Graville, and one in the dungeon east of Graville!",
+                    "option": "Hey you! Why are you in my house? Because you like MUSHROOMS?! Yes, that must be it... Because of your fellow love of mushrooms, I shall give you the Fungus Flinger! It's... `much better than some other non-mushroom magical items and with Samantha wielding it, her sharp shot will be enhanced! I left that magical garbage in chests; One in the... `mountains north of Graville, one in the desert south of Graville, and one in the dungeon east of Graville!",
                     "increment": "FungusFlinger; MushroomLady 1; LoreDump 2"
                 },
                 {
@@ -461,7 +461,7 @@
                     "increment": "Priest 2"
                 },
                 {
-                    "option": "Oh my goodness! A giant barbarian broke out of the statue in town and climbed on top of the church! You help so much but I ask you to please help once more and defeat him before someone gets hurt! Head through the doorway I was standing in front of to the right inside the church to get to the roof!",
+                    "option": "Oh my goodness! A giant barbarian broke out of the statue in town and climbed on top of the church! You help so much but I ask you to please help once more and defeat him... `before someone gets hurt! Head through the doorway I was standing in front of to the right inside the church to get to the roof!",
                     "increment": "none"
                 },
                 {
@@ -475,7 +475,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Oh, you've brought me my loyal cat who's been watching the statue for me. He must have sensed what's happened, this mystic lake's power is running out! The statue in town is not a statue but a dangerous giant who I petrified in stone long ago, but once the magic in this lake runs out he'll break free! You four need to defeat him, an old and crazy friend of mine who was collector of magic artifacts near the trail that heads north west out of town, you should ask them for help. I'll hold the spell as long as I can to buy you time!",
+                    "option": "Oh, you've brought me my loyal cat who's been watching the statue for me. He must have sensed what's happened, this mystic lake's power is running out! The statue in town... `is not a statue but a dangerous giant who I petrified in stone long ago, but once the magic in this lake runs out he'll break free! You four need to defeat him, an old... `and crazy friend of mine who was collector of magic artifacts near the trail that heads north west out of town, you should ask them for help. I'll hold the spell as long as I can to buy you time!",
                     "increment": "LoreDump 1"
                 },
                 {
