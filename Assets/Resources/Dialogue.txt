@@ -145,7 +145,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "hmm... yes...",
+                    "option": "Hmm... yes...",
                     "increment": "Quartermaster 1"
                 },
                 {
@@ -159,7 +159,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Cuh? Carl trying to sleep, maybe Carl talk later",
+                    "option": "Huh? Carl trying to sleep, maybe Carl talk later",
                     "increment": "Caravan_Carl 1"
                 },
                 {
@@ -301,7 +301,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "I don't get why gramps wants to come here every time we travel. It's just as stupid fountain!",
+                    "option": "I don't get why gramps wants to come here every time we travel. It's just a stupid fountain!",
                     "increment": "none"
                 }
             ]
@@ -311,7 +311,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "I hear there's a really cool artefact over to the east of this trail. Too bad you have to get through the monster infested dunes to get there! HA no thank you!",
+                    "option": "I hear there's a really cool artifact over to the east of this trail. Too bad you have to get through the monster infested dunes to get there! HA no thank you!",
                     "increment": "none"
                 }
             ]
