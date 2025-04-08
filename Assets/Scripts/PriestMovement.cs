@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DesertChestMovement : MonoBehaviour
+public class PriestMovement : MonoBehaviour
 {
     private GameObject dialogueManager;
     private int currentStep;

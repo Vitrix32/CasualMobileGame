@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class DesertChestMovement : MonoBehaviour
+public class StatueMovement : MonoBehaviour
 {
     private GameObject dialogueManager;
     private int currentStep;
-
+    
     void Start()
     {
         dialogueManager = this.GetComponent<NPCDialogue>().dialoguemanager;
