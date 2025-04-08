@@ -20,75 +20,9 @@
             ]
         },
         {
-            "name": "JeffQuest",
-            "questInfo": "This is Jeff's magic cat quest!",
-            "value": 0,
-            "parts": [
-                {
-                    "description": "Talk to Jeff",
-                    "increment": "Jeff -1"
-                },
-                {
-                    "description": "Find the cat and talk to it",
-                    "increment": "Cat -1"
-                },
-                {
-                    "description": "Return to Jeff and tell him what the cat said",
-                    "increment": "Jeff -2"
-                }
-            ]
-        },
-        {
-            "name": "Jeff's Scrolls",
-            "questInfo": "Jeff seems to have misplaced his scrolls",
-            "value": 0,
-            "parts": [
-                {
-                    "description": "Find all Jeff's scrolls (0/8)",
-                    "increment": "Jeff 1"
-                },
-                {
-                    "description": "Find all Jeff's scrolls (1/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Find all Jeff's scrolls (2/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Find all Jeff's scrolls (3/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Find all Jeff's scrolls (4/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Find all Jeff's scrolls (5/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Find all Jeff's scrolls (6/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Find all Jeff's scrolls (7/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Return to Jeff and give him his scrolls",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Quest Complete",
-                    "increment": "Jeff 3"
-                }
-            ]
-        },
-        {
             "name": "Main Quest",
             "questInfo": "Today is going to be an adventure, you can feel it!",
-            "value": 0,
+            "value": 1,
             "parts": [
                 {
                     "description": "Head down to help the inn",
@@ -111,7 +45,7 @@
                     "increment": "Marlena 2"
                 },
                 {
-                    "description": "Check the forest for the magic cat",
+                    "description": "Check with Jack about heading through the forest",
                     "increment": "Samantha 2"
                 },
                 {
@@ -119,11 +53,27 @@
                     "increment": "Jack 3"
                 },
                 {
-                    "description": "Explore the mountain trail",
-                    "increment": "Cat 1"
+                    "description": "Explore the Forest trail",
+                    "increment": "LoreDump 0"
                 },
                 {
-                    "description": "Explore the New Castle trail",
+                    "description": "Explore the Mountain trail",
+                    "increment": "MushroomLady 0"
+                },
+                {
+                    "description": "Explore the Desert trail",
+                    "increment": "SnowChest 0"
+                },
+                {
+                    "description": "Explore the Dungeon",
+                    "increment": "DesertChest 0"
+                },
+                {
+                    "description": "Defeat The Giant",
+                    "increment": "DungeonChest 0"
+                },
+                {
+                    "description": "Game Complete",
                     "increment": "Cat 3"
                 }
             ]
@@ -168,12 +118,16 @@
         },
         {
             "name": "SwordofPower",
-            "questInfo": "Find the legendary Sword of Power in the Northern Peaks",
+            "questInfo": "Brave the dunes to find the legendary Sword",
             "value": 0,
             "parts": [
                 {
                     "description": "Locate the sword of power",
                     "increment": "SnowChest 0"
+                },
+                {
+                    "description": "Quest complete",
+                    "increment": "DesertChest 0"
                 }
             ]
         },
@@ -184,28 +138,40 @@
             "parts": [
                 {
                     "description": "Locate the Magical Collar",
+                    "increment": "DesertChest 0"
+                },
+                {
+                    "description": "Quest complete",
                     "increment": "DungeonChest 0"
                 }
             ]
         },
         {
             "name": "AwesomeAxe",
-            "questInfo": "Brave the dunes to find the legendary Axe",
+            "questInfo": "Find the legendary Axe of Power in the Northern Peaks",
             "value": 0,
             "parts": [
                 {
                     "description": "Locate the Awesome Axe",
-                    "increment": "DesertChest 0"
+                    "increment": "Mushroom Lady 0"
+                },
+                {
+                    "description": "Quest complete",
+                    "increment": "SnowChest 0"
                 }
             ]
         },
         {
             "name": "FungusFlinger",
-            "questInfo": "Go talk to the odd hermit on the trail to Newcastle",
+            "questInfo": "Go talk to the odd hermit in the forest to the North West",
             "value": 0,
             "parts": [
                 {
                     "description": "Talk to the hermit",
+                    "increment": "Cat 1"
+                },
+                {
+                    "description": "Quest complete",
                     "increment": "MushroomLady 0"
                 }
             ]
