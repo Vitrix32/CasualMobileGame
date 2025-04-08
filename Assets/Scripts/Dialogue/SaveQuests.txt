@@ -20,72 +20,6 @@
             ]
         },
         {
-            "name": "JeffQuest",
-            "questInfo": "This is Jeff's magic cat quest!",
-            "value": 0,
-            "parts": [
-                {
-                    "description": "Talk to Jeff",
-                    "increment": "Jeff -1"
-                },
-                {
-                    "description": "Find the cat and talk to it",
-                    "increment": "Cat -1"
-                },
-                {
-                    "description": "Return to Jeff and tell him what the cat said",
-                    "increment": "Jeff -2"
-                }
-            ]
-        },
-        {
-            "name": "Jeff's Scribing Stones",
-            "questInfo": "Jeff seems to have misplaced his scribing stones",
-            "value": 0,
-            "parts": [
-                {
-                    "description": "Find all Jeff's scribing stones (0/8)",
-                    "increment": "Jeff 1"
-                },
-                {
-                    "description": "Find all Jeff's scribing stones (1/8)",
-                    "increment": "Scroll 2"
-                },
-                {
-                    "description": "Find all Jeff's scribing stones (2/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Find all Jeff's scribing stones (3/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Find all Jeff's scribing stones (4/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Find all Jeff's scribing stones (5/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Find all Jeff's scribing stones (6/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Find all Jeff's scribing stones (7/8)",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Return to Jeff and give him his scribing stones",
-                    "increment": "Scroll"
-                },
-                {
-                    "description": "Quest Complete",
-                    "increment": "Jeff 3"
-                }
-            ]
-        },
-        {
             "name": "Main Quest",
             "questInfo": "Today is going to be an adventure, you can feel it!",
             "value": 1,
@@ -119,8 +53,8 @@
                     "increment": "Jack 3"
                 },
                 {
-                    "description": "Explore the New Castle trail",
-                    "increment": "Cat 1"
+                    "description": "Explore the Forest trail",
+                    "increment": "LoreDump 0"
                 },
                 {
                     "description": "Explore the Mountain trail",
@@ -135,7 +69,7 @@
                     "increment": "DesertChest 0"
                 },
                 {
-                    "description": "Defeat Cataclysm",
+                    "description": "Defeat The Giant",
                     "increment": "DungeonChest 0"
                 },
                 {
@@ -184,16 +118,16 @@
         },
         {
             "name": "SwordofPower",
-            "questInfo": "Find the legendary Sword of Power in the Northern Peaks",
+            "questInfo": "Brave the dunes to find the legendary Sword",
             "value": 0,
             "parts": [
                 {
                     "description": "Locate the sword of power",
-                    "increment": "MushroomLady 0"
+                    "increment": "SnowChest 0"
                 },
                 {
-                    "description": "Quest Complete",
-                    "increment": "SnowChest 0"
+                    "description": "Quest complete",
+                    "increment": "DesertChest 0"
                 }
             ]
         },
@@ -207,29 +141,29 @@
                     "increment": "DesertChest 0"
                 },
                 {
-                    "description": "Quest Complete",
+                    "description": "Quest complete",
                     "increment": "DungeonChest 0"
                 }
             ]
         },
         {
             "name": "AwesomeAxe",
-            "questInfo": "Brave the dunes to find the legendary Axe",
+            "questInfo": "Find the legendary Axe of Power in the Northern Peaks",
             "value": 0,
             "parts": [
                 {
                     "description": "Locate the Awesome Axe",
-                    "increment": "SnowChest 0"
+                    "increment": "Mushroom Lady 0"
                 },
                 {
-                    "description": "Quest Complete",
-                    "increment": "DesertChest 0"
+                    "description": "Quest complete",
+                    "increment": "SnowChest 0"
                 }
             ]
         },
         {
             "name": "FungusFlinger",
-            "questInfo": "Go talk to the odd hermit on the trail to New Castle",
+            "questInfo": "Go talk to the odd hermit in the forest to the North West",
             "value": 0,
             "parts": [
                 {
@@ -237,7 +171,7 @@
                     "increment": "Cat 1"
                 },
                 {
-                    "description": "Quest Complete",
+                    "description": "Quest complete",
                     "increment": "MushroomLady 0"
                 }
             ]

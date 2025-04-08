@@ -41,23 +41,7 @@
                     "increment": "Samantha 1; Jeff 1"
                 },
                 {
-                    "option": "Also, if you see any blue crystals around those are my scribing stones, could you bring them to me once you find them all please?",
-                    "increment": "Jeff 2; Scrolls 1"
-                },
-                {
                     "option": "I don't think we have any more business right now, do we?",
-                    "increment": "none"
-                },
-                {
-                    "option": "Oh thanks! My very important scribing stones! What would I do without you?",
-                    "increment": "Jeff 5"
-                },
-                {
-                    "option": "Oh thanks! My very important scribing stones! Now I can make a chocolate cake!",
-                    "increment": "Jeff 5"
-                },
-                {
-                    "option": "Thanks for your help, but I don't think we have any more business right now, do we?",
                     "increment": "none"
                 }
             ]
@@ -69,10 +53,6 @@
                 {
                     "option": "Meow, or something like that.",
                     "increment": "none"
-                },
-                {
-                    "option": "Oh man, I hoped this wouldn't be true when I felt a strange magical vibration but it is; This mystic lake's power is running out! The statue in town is not a statue but a dangerous giant petrified in stone, once the magic in this lake runs out he'll break free! We need to be ready, I heard there's a collector of magic artifacts near the trail that heads north west out of town, we should ask them for help.",
-                    "increment": "Cat 2"
                 },
                 {
                     "option": "You shouldn't be able to see me now, I'm in your party!",
@@ -169,20 +149,8 @@
                     "increment": "Quartermaster 1"
                 },
                 {
-                    "option": "*shuffles some glowing stones around*",
+                    "option": "*shuffles some papers around*",
                     "increment": "Quartermaster 0"
-                },
-                {
-                    "option": "Oh? You're asking me what's inscribed into these scribing stones? Well let's see... Oh! It's a chocolate cake recipe!",
-                    "increment": "Quartermaster 3; Jeff 4"
-                },
-                {
-                    "option": "hmm... yes... chocolate cake...",
-                    "increment": "Quartermaster 4"
-                },
-                {
-                    "option": "*stomach growls*",
-                    "increment": "Quartermaster 3"
                 }
             ]
         },
@@ -220,50 +188,16 @@
                 },
                 {
                     "option": "Huh? Did you need something?",
+                    "increment": "Captain 2"
+                },
+                {
+                    "option": "You know I founded Graville here because of that neat statue at the center of town. The name of the town? Because of all the gravel...",
+                    "increment": "Captain 3"
+                },
+                {
+                    "option": "Man I could use an old man nap...",
                     "increment": "Captain 0"
-                }
-            ]
-        },
-        {
-            "name": "Scrolls",
-            "value": 0,
-            "dialogue": [
-                {
-                    "option": "Huh? What's a scroll doing sitting here? It looks important, I'll just leave it here",
-                    "increment": "none"
                 },
-                {
-                    "option": "First scroll acquired! Only seven more to go...",
-                    "increment": "Scrolls 2"
-                },
-                {
-                    "option": "Second scroll acquired! Only six more to go...",
-                    "increment": "Scrolls 3"
-                },
-                {
-                    "option": "Third scroll acquired! Only five more to go, man there's a lot of these...",
-                    "increment": "Scrolls 4"
-                },
-                {
-                    "option": "Fourth scroll acquired! Only four more to go...",
-                    "increment": "Scrolls 5"
-                },
-                {
-                    "option": "Fifth scroll acquired! Only three more to go...",
-                    "increment": "Scrolls 6"
-                },
-                {
-                    "option": "Sixth scroll acquired! Only two more to go, getting close!",
-                    "increment": "Scrolls 7"
-                },
-                {
-                    "option": "Seventh scroll acquired! Only one more to go!",
-                    "increment": "Scrolls 8"
-                },
-                {
-                    "option": "Eigth scroll acquired! Now I can go back to Jeff and give him these... whatever legal documents these are.",
-                    "increment": "Quartermaster 3; Jeff 3"
-                }
             ]
         },
         {
@@ -397,8 +331,8 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "You found the legendary sword! With you now wielding it, your slash attack will be enhanced!",
-                    "increment": "SwordofPower; SnowChest 1"
+                    "option": "You found the Awesome Axe! With Jack now wielding it, his heavy axe attack will be enhanced!",
+                    "increment": "BigAxe; SnowChest 1; LoreDump 3"
                 },
                 {
                     "option": "The chest is empty",
@@ -411,8 +345,8 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "You found the Awesome Axe! With Jack now wielding it, his heavy axe attack will be enhanced!",
-                    "increment": "BigAxe; DesertChest 1"
+                    "option": "You found the legendary sword! With you now wielding it, your slash attack will be enhanced!",
+                    "increment": "SwordofPower; DesertChest 1; LoreDump 4"
                 },
                 {
                     "option": "The chest is empty",
@@ -426,7 +360,7 @@
             "dialogue": [
                 {
                     "option": "Hey you! Why are you in my house? Because you like MUSHROOMS?! Yes, that must be it... Because of your fellow love of mushrooms, I shall give you the Fungus Flinger! It's much better than some other non-mushroom magical items and with Samantha wielding it, her sharp shot will be enhanced! I left that magical garbage in chests; One in the mountains north of Graville, one in the desert south of Graville, and one in the dungeon east of Graville!",
-                    "increment": "FungusFlinger; MushroomLady 1"
+                    "increment": "FungusFlinger; MushroomLady 1; LoreDump 2"
                 },
                 {
                     "option": "We're in a mush room, hehe get it...",
@@ -440,7 +374,7 @@
             "dialogue": [
                 {
                     "option": "You found the magical collar! With the cat now wearing it, its Shadow Scratch will be enhanced!",
-                    "increment": "MagicalCollar; DungeonChest 1; Priest 1"
+                    "increment": "MagicalCollar; DungeonChest 1; Priest 1; LoreDump 5"
                 },
                 {
                     "option": "The chest is empty",
@@ -524,10 +458,54 @@
             "dialogue": [
                 {
                     "option": "Blessed day to you. All are welcome here in church but your effort to always help the town is especially appreciated",
+                    "increment": "Priest 2"
+                },
+                {
+                    "option": "Oh my goodness! A giant barbarian broke out of the statue in town and climbed on top of the church! You help so much but I ask you to please help once more and defeat him before someone gets hurt! Head through the doorway I was standing in front of to the right inside the church to get to the roof!",
                     "increment": "none"
                 },
                 {
-                    "option": "Oh my goodness! A giant barbarian broke out of the statue in town and climbed on top of the church! You help so much but I ask you to please help once more and defeat him before someone gets hurt!",
+                    "option": "Sorry, but I can't let you in the back parts of the church right now.",
+                    "increment": "Priest 2"
+                },
+            ]
+        },
+        {
+            "name": "LoreDump",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Oh, you've brought me my loyal cat who's been watching the statue for me. He must have sensed what's happened, this mystic lake's power is running out! The statue in town is not a statue but a dangerous giant who I petrified in stone long ago, but once the magic in this lake runs out he'll break free! You four need to defeat him, an old and crazy friend of mine who was collector of magic artifacts near the trail that heads north west out of town, you should ask them for help. I'll hold the spell as long as I can to buy you time!",
+                    "increment": "LoreDump 1"
+                },
+                {
+                    "option": "Hurry! Go find my crazy friend in the forest to the North West!",
+                    "increment": "none"
+                },
+                {
+                    "option": "Artifact in the northern mountains? That must be the legendary awesome axe! Surely a lumberjack should know how to use an axe!",
+                    "increment": "none"
+                },
+                {
+                    "option": "Artifact in the southern desert? That must be the legendary hero's sword! Surely a hero such as yourself should know what to do with that!",
+                    "increment": "none"
+                },
+                {
+                    "option": "Artifact in the dungeon? That must be the legendary magic collar! Surely it would look nice on my magic cat!",
+                    "increment": "none"
+                },
+                {
+                    "option": "You've got every legendary item in this region and the giant has broke free of my spell. Hurry! Go defeat him!",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "LoreSlate",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "Blessed is the one who perseveres under trial because, having stood the test, that person will receive the crown of life that the Lord has promised to those who love him.",
                     "increment": "none"
                 }
             ]
