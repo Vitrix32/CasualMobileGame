@@ -83,7 +83,7 @@
                 {
                     "option": "You shouldn't be able to see me! I'm in your party!",
                     "increment": "none"
-                },
+                }
             ]
         },
         {
@@ -197,7 +197,7 @@
                 {
                     "option": "Man I could use an old man nap...",
                     "increment": "Captain 0"
-                },
+                }
             ]
         },
         {
@@ -467,7 +467,7 @@
                 {
                     "option": "Sorry, but I can't let you in the back parts of the church right now.",
                     "increment": "Priest 2"
-                },
+                }
             ]
         },
         {
