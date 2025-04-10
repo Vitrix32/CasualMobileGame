@@ -322,22 +322,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primaryMusicSource: {fileID: 5663870419614992553}
-  primaryUISource: {fileID: 5663870419614992553}
+  primaryUISource: {fileID: 4755645231051835601}
   primaryAmbianceSource: {fileID: 4343004555665219395}
   primaryFXSource: {fileID: 4343004555665219395}
   backgroundMusics:
-  - {fileID: 8300000, guid: 20de5546cabb92d439e41620d3162b42, type: 3}
   - {fileID: 8300000, guid: cd7775ac57090864d901114b6999481b, type: 3}
+  - {fileID: 8300000, guid: 10ed082ddfd64824d92344ccd54b1a0a, type: 3}
   - {fileID: 8300000, guid: 42b6b77e5337a654bbfd5cfe44531b30, type: 3}
   - {fileID: 8300000, guid: 703264ffbd3819d4fade586eee43ef47, type: 3}
-  - {fileID: 8300000, guid: 4ae25c57c54a0dd45b0079fdcc96482c, type: 3}
   - {fileID: 8300000, guid: 81e19ad96ba305041913a7c95dd305fe, type: 3}
   - {fileID: 8300000, guid: b1ef7ca3efba2a94bbafe47959efea7e, type: 3}
   - {fileID: 8300000, guid: eee18f8f724269048943252c835ec7fa, type: 3}
+  - {fileID: 8300000, guid: 4ae25c57c54a0dd45b0079fdcc96482c, type: 3}
+  - {fileID: 8300000, guid: 3d0ac0e8762e06d42a5a5460d46574dd, type: 3}
+  - {fileID: 8300000, guid: 75794480cf49a5a47a59ceec58c442b2, type: 3}
+  - {fileID: 8300000, guid: d5f2fdd8c8858bd41a1cef400de08f71, type: 3}
   combatMusics:
   - {fileID: 8300000, guid: c9aac6035c9c49841835a8da6c4f101d, type: 3}
   - {fileID: 8300000, guid: 1170ec774d16d464cbfd1626e99ff1e4, type: 3}
-  baseSceneMusic: {fileID: 0}
+  baseSceneMusic: {fileID: 8300000, guid: 20de5546cabb92d439e41620d3162b42, type: 3}
 --- !u!114 &514263291322199684
 MonoBehaviour:
   m_ObjectHideFlags: 0

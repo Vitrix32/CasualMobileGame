@@ -54,7 +54,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
         pauseButton.SetActive(false);
-        WorldPlayer.GetComponent<UniversalAudioHandling>().Pause();
     }
 
     public void ResumeGame()

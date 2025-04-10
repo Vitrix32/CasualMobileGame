@@ -49,7 +49,6 @@ public class TransitionPoint : MonoBehaviour
         FadePanel = GameObject.Find("FadePanel");
         PauseButton = GameObject.Find("PauseButton");
         QuestButton = GameObject.Find("OpenQuests");
-        Map = GameObject.Find("OpenMap");
         VirtualJoystick = GameObject.Find("JoystickPanel");
 
         Player.GetComponent<PlayerMovement>().EnableMovement();
@@ -86,7 +85,6 @@ public class TransitionPoint : MonoBehaviour
         travelMsg.SetActive(false);
         PauseButton.SetActive(false);
         QuestButton.SetActive(false);
-        Map.SetActive(false);
         VirtualJoystick.SetActive(false);
         Player.GetComponent<PlayerMovement>().DisableMovement();
         Invoke("Leave", delay);
@@ -103,7 +101,6 @@ public class TransitionPoint : MonoBehaviour
         travelMsg.SetActive(true);
         PauseButton.SetActive(true);
         QuestButton.SetActive(true);
-        Map.SetActive(true);
         VirtualJoystick.SetActive(true);
         Player.GetComponent<PlayerMovement>().EnableMovement();
     }

@@ -151,6 +151,14 @@ public class UniversalAudioHandling : MonoBehaviour
         {
             switchMusic(8);
         }
+        if (name == "mysticLakeZone")
+        {
+            switchMusic(9);
+        }
+        if (name == "churchRoofZone")
+        {
+            switchMusic(10);
+        }
     }
 
     public void exitedZone()
