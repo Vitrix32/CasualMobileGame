@@ -40,7 +40,7 @@ public class Encounter : MonoBehaviour
                 FadePanel.GetComponent<SceneTransition>().End();
                 PauseButton.SetActive(false);
                 QuestButton.SetActive(false);
-                MapButton.SetActive(false);
+                //MapButton.SetActive(false);
                 VirtualJoystick.SetActive(false);
                 collision.gameObject.GetComponent<PlayerStatus>().LeavingGameWorld(true, delay);
                 StartCoroutine("ChangeScene");
