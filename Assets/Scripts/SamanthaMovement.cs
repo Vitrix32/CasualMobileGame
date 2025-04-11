@@ -26,19 +26,11 @@ public class SamanthaMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Samantha") == 3 && currentStep == 0) //want this to trigger at Samantha == 1 then stop then go to next point at Samantha == 3
+        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Samantha") == 4 && currentStep == 0)
         {
             currentStep++;
         }
         else if (currentStep == 1)
-        {
-            this.GetComponent<NPCMovement>().startPatrol();
-            if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Samantha") == 3)
-            {
-                currentStep++;
-            }
-        }
-        else if (currentStep == 2)
         {
             this.GetComponent<NPCMovement>().startPatrol();
         }

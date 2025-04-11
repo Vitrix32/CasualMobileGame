@@ -26,19 +26,11 @@ public class CatMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Marlena") == 1 && currentStep == 0) //want this to trigger at Marlena == 1 then stop then go to next point at Cat == 2
+        if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Cat") == 1 && currentStep == 0) //want this to trigger at Marlena == 1 then stop then go to next point at Cat == 2
         {
             currentStep++;
         }
         else if (currentStep == 1)
-        {
-            this.GetComponent<NPCMovement>().startPatrol();
-            if (dialogueManager.GetComponent<DialogueManager>().GetNPCValue("Cat") == 2)
-            {
-                currentStep++;
-            }
-        }
-        else if (currentStep == 2)
         {
             this.GetComponent<NPCMovement>().startPatrol();
         }

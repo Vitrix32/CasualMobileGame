@@ -113,7 +113,7 @@
                     "increment": "none"
                 },
                 {
-                    "option": "Oh man! I forgot my lunch again? Well thanks for bringing it to me! A hearty breakfast always help",
+                    "option": "Oh man! I forgot my lunch again? Well thanks for bringing it to me! A hearty breakfast always helps me chopping trees!",
                     "increment": "Marlena 2; Jack 2"
                 },
                 {
