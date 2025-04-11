@@ -201,6 +201,9 @@ public class QuestManager : MonoBehaviour
                 }
             }
             currentQuests.Remove(q);
+            
+            q.value = q.parts.Length;
+            
             Debug.Log("quest ended: " + q.name);
             IM.checkItemAquire(q.name);
         }
@@ -263,7 +266,7 @@ public class QuestManager : MonoBehaviour
                     if (savedQuest.name == currentQuest.name)
                     {
                         currentQuest.value = savedQuest.value;
-                        if (currentQuest.value > 0)
+                        if (currentQuest.value > 0 && currentQuest.value < currentQuest.parts.Length)
                         {
                             starts[currentQuest] = true;
                             if (currentQuest.value == currentQuest.parts.Length)
