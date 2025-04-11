@@ -975,6 +975,7 @@ MonoBehaviour:
   NewGameButton: {fileID: 1588893770}
   OptionsButton: {fileID: 1856386588}
   QuitButton: {fileID: 2043661802}
+  gameSceneName: 
 --- !u!1 &254326482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,10 +1233,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2075245676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -3, y: 93}
-  m_SizeDelta: {x: -0.004272461, y: -0.0014038086}
+  m_SizeDelta: {x: 799.9957, y: 391.9986}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &279029522
 MonoBehaviour:
@@ -1364,6 +1365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a7e9c0321b18e4e81e668d2ddb68fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorldPlayer: {fileID: 0}
   VolumeSlider: {fileID: 326219966}
   MusicVolumeSlider: {fileID: 0}
   SFXVolumeSlider: {fileID: 0}
@@ -1520,6 +1522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a7e9c0321b18e4e81e668d2ddb68fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorldPlayer: {fileID: 0}
   VolumeSlider: {fileID: 365201505}
   MusicVolumeSlider: {fileID: 0}
   SFXVolumeSlider: {fileID: 0}
@@ -2330,6 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a7e9c0321b18e4e81e668d2ddb68fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorldPlayer: {fileID: 0}
   VolumeSlider: {fileID: 740256541}
   MusicVolumeSlider: {fileID: 0}
   SFXVolumeSlider: {fileID: 0}
@@ -3903,9 +3907,9 @@ RectTransform:
   - {fileID: 150526993}
   m_Father: {fileID: 221945654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -104.95}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 150, y: -54.949997}
   m_SizeDelta: {x: 350, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1588893772
@@ -4192,9 +4196,9 @@ RectTransform:
   - {fileID: 632021779}
   m_Father: {fileID: 221945654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -104.95}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -150, y: -54.949997}
   m_SizeDelta: {x: 350, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1719993686
@@ -4728,9 +4732,9 @@ RectTransform:
   - {fileID: 69636389}
   m_Father: {fileID: 221945654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -184.95}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -150, y: -134.95}
   m_SizeDelta: {x: 350, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1856386590
@@ -5291,6 +5295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a7e9c0321b18e4e81e668d2ddb68fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorldPlayer: {fileID: 0}
   VolumeSlider: {fileID: 1966919184}
   MusicVolumeSlider: {fileID: 0}
   SFXVolumeSlider: {fileID: 0}
@@ -5392,9 +5397,9 @@ RectTransform:
   - {fileID: 468965185}
   m_Father: {fileID: 221945654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -184.95}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 150, y: -134.95}
   m_SizeDelta: {x: 350, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2043661804
@@ -5611,6 +5616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a7e9c0321b18e4e81e668d2ddb68fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorldPlayer: {fileID: 0}
   VolumeSlider: {fileID: 1966919184}
   MusicVolumeSlider: {fileID: 326219966}
   SFXVolumeSlider: {fileID: 740256541}
