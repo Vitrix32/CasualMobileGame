@@ -51,7 +51,7 @@ public class DungeonBossEncounter : MonoBehaviour
                 FadePanel = GameObject.Find("FadePanel");
                 PauseButton = GameObject.Find("PauseButton");
                 QuestButton = GameObject.Find("OpenQuests");
-                MapButton = GameObject.Find("OpenMap");
+                //MapButton = GameObject.Find("OpenMap");
                 VirtualJoystick = GameObject.Find("JoystickPanel");
                 FadePanel.GetComponent<SceneTransition>().End();
                 PauseButton.SetActive(false);
