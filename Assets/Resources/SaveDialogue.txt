@@ -114,7 +114,7 @@
                 },
                 {
                     "option": "Oh man! I forgot my lunch again? Well thanks for bringing it to me! A hearty breakfast always helps me chopping trees!",
-                    "increment": "Marlena 2; Jack 2"
+                    "increment": "Marlena 2; Jack 2; Cat 1"
                 },
                 {
                     "option": "Mmmm, lunch. Best part of my day! Well, at least until dinner.",
@@ -122,7 +122,7 @@
                 },
                 {
                     "option": "...zzzZZZzzz huh? Oh hey there! I was just napping on this soft orange pillow- oh it's the cat! I guess that wasn't a dream when the cat said we need to go to the... `lake to check something important there! Let's go! I'm coming with you, and I'm guessing the cat is too!",
-                    "increment": "Cat 1; Jack 4"
+                    "increment": "Jack 4"
                 },
                 {
                     "option": "You shouldn't be able to see me now, I'm in your party!",
@@ -506,6 +506,48 @@
             "dialogue": [
                 {
                     "option": "Blessed is the one who perseveres under trial because, having stood the test, that person will receive the crown of life that the Lord has promised to those who love him.",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "CaveSoldier",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "There's been a cave in, we're working on getting it cleared out, come back later.",
+                    "increment": "none"
+                },
+                {
+                    "option": "We cleared out the cave in, but it's still dangerous in there so be careful.",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "DesertSoldier",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "There's a sandstorm happening in the desert right now, come back later.",
+                    "increment": "none"
+                },
+                {
+                    "option": "The sandstorm is over, but it's still dangerous down there so be careful.",
+                    "increment": "none"
+                }
+            ]
+        },
+        {
+            "name": "DungeonSoldier",
+            "value": 0,
+            "dialogue": [
+                {
+                    "option": "There's a spooky noise coming out of the dungeon, come back later when it's gone.",
+                    "increment": "none"
+                },
+                {
+                    "option": "The spooky noise is gone, but it's still dangerous in there so be careful.",
                     "increment": "none"
                 }
             ]
