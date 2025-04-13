@@ -56,6 +56,9 @@ public class MainMenu : MonoBehaviour
     {
         SetLiveJSONToSave();
 
+        PlayerPrefs.SetInt("LocID", PlayerPrefs.GetInt("SaveLocID"));
+
+
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         WorldPlayer.GetComponent<PlayerStatus>().EnteringGameWorld(false, 0.4f);
         WorldPlayer.GetComponent<PlayerStatus>().SetWorldPosition();

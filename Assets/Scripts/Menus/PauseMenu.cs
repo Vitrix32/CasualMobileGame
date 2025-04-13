@@ -118,6 +118,9 @@ public class PauseMenu : MonoBehaviour
     {
         SetObjectsToLiveJSON();
 
+        PlayerPrefs.SetInt("SaveLocID", PlayerPrefs.GetInt("LocID"));
+
+
         if (File.Exists(questsPath))
         {
             string quest = File.ReadAllText(questsPath);
