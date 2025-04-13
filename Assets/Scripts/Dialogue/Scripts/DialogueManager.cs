@@ -90,6 +90,8 @@ public class DialogueManager : MonoBehaviour
         SB.gameObject.SetActive(false);
         dialogueText.text = "";
         int j = 0;
+        waitForTextScroll = false;
+        click = false;
         for (int i = 0; i < s.Length; i++)
         {
             j++;
