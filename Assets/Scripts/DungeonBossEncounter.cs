@@ -12,7 +12,7 @@ public class DungeonBossEncounter : MonoBehaviour
     private GameObject FadePanel;
     private GameObject PauseButton;
     private GameObject QuestButton;
-    private GameObject MapButton;
+    //private GameObject MapButton;
     private GameObject VirtualJoystick;
     private int enemyId;
     private int numberOfIds;
@@ -51,12 +51,12 @@ public class DungeonBossEncounter : MonoBehaviour
                 FadePanel = GameObject.Find("FadePanel");
                 PauseButton = GameObject.Find("PauseButton");
                 QuestButton = GameObject.Find("OpenQuests");
-                MapButton = GameObject.Find("OpenMap");
+                //MapButton = GameObject.Find("OpenMap");
                 VirtualJoystick = GameObject.Find("JoystickPanel");
                 FadePanel.GetComponent<SceneTransition>().End();
                 PauseButton.SetActive(false);
                 QuestButton.SetActive(false);
-                MapButton.SetActive(false);
+                //MapButton.SetActive(false);
                 VirtualJoystick.SetActive(false);
                 collision.gameObject.GetComponent<PlayerStatus>().LeavingGameWorld(true, delay);
                 StartCoroutine("ChangeScene");
