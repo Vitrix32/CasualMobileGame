@@ -114,7 +114,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    private void SaveGame()
+    public void SaveGame()
     {
         SetObjectsToLiveJSON();
 
