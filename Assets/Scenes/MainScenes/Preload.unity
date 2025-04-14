@@ -3263,6 +3263,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: combatMusics.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 44ea732c06797b141a052ce3a05935a0, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: combatMusics.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 11633d0de4e961e4bbab561ee20c3f8a, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 997fe542eff5f454c961537c344c5db5, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9691b2b62381a4442830dafb0670413e, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: a30477023fe10c64494e6a3352b76723, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: a6f4885160753a84eb0f4ae36601fe27, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b89288414bfdea438533b113148f351, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b146a71f0a27ae48bcdfc097c8b6252, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: afd0a6da7a8ddc042aa60761fa4c4811, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[10]
+      value: 
+      objectReference: {fileID: 8300000, guid: b85aea0543c58174ba44ff709d873921, type: 3}
+    - target: {fileID: 1292509336974223792, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
+      propertyPath: backgroundMusics.Array.data[11]
+      value: 
+      objectReference: {fileID: 8300000, guid: 113a1fe7230a46344b75547979e69879, type: 3}
     - target: {fileID: 9088140619354403192, guid: 7ae362f61da4c3d4581024031a243267, type: 3}
       propertyPath: m_Name
       value: WorldPlayer

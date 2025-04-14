@@ -159,6 +159,10 @@ public class UniversalAudioHandling : MonoBehaviour
         {
             switchMusic(10);
         }
+        if(name =="scarecrowZone")
+        {
+            switchMusic(11);
+        }
     }
 
     public void exitedZone()
