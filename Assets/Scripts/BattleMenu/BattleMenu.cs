@@ -122,6 +122,10 @@ public class BattleMenu : MonoBehaviour
         if (enemiesAmount == 0)
         {
             AllEnemiesDead();
+            if(PlayerPrefs.GetInt("LocID")==6)
+            {
+                SceneManager.LoadScene("EndScreen");
+            }
         }
     }
 

@@ -95,7 +95,7 @@
                     "increment": "none"
                 },
                 {
-                    "option": "Oh thank you for visiting me! If you've got a second, my dear grandson Jack forgot his lunch, could you bring it to him for me? He's probably chopping trees in the... forest to the east.",
+                    "option": "Oh thank you for visiting me! If you've got a second, my dear grandson Jack forgot his lunch, could you bring it to him for me? He's probably chopping trees in the... forest to the east. Oh, and don't forget to take a break at the garden up north. It does a body good to rest!",
                     "increment": "Jack 1"
                 },
                 {
@@ -362,6 +362,10 @@
                     "option": "Hey you! Why are you in my house? Because you like MUSHROOMS?! Yes, that must be it... Because of your fellow love of mushrooms, I shall give you the Fungus Flinger! It's... much better than some other non-mushroom magical items and with Samantha wielding it, her sharp shot will be enhanced! I left that magical garbage in chests; One in the... mountains north of Graville, one in the desert south of Graville, and one in the dungeon east of Graville!",
                     "increment": "FungusFlinger; MushroomLady 1; LoreDump 2"
                 },
+                {
+                    "option": "Also, look out for some of these COOL little gardens with a statue in the middle. There's one around every area. They usually don't have mushrooms though...",
+                    "increment": "MushroomLady 1"
+                }
                 {
                     "option": "We're in a mush room, hehe get it...",
                     "increment": "none"
