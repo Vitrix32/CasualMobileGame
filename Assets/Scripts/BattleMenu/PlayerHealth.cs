@@ -70,7 +70,7 @@ public class PlayerHealth : MonoBehaviour
     private bool isEmpowered = false;
     private float damageMultiplier = 1.0f;
     private bool isShieldActive = false;
-    private float shieldBlockChance = 0.8f;
+    private float shieldBlockChance = 0.75f;
     private bool skipEnemyTurn = false;
     private BattleMenu battleMenu;
     private GameObject debugMenu;
@@ -168,8 +168,6 @@ public class PlayerHealth : MonoBehaviour
                 if (roll <= shieldBlockChance)
                 {
                     UpdateText("Your shield blocked the attack!");
-                    enemy.TakeDamage(bowDamage);
-                    isShieldActive = false;
                     combatStats.GetComponent<CombatStats>().UnsetStat(0);
                     return;
                 }
@@ -476,7 +474,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void PerformSkipEnemyTurn()
     {
-        int actualDamage = Mathf.RoundToInt(bowDamage * damageMultiplier);
+        int actualDamage = Mathf.RoundToInt(5 * damageMultiplier);
 
         if (GameObject.Find("DebugMenu").GetComponent<DebugMenu>().inGodMode())
         {
