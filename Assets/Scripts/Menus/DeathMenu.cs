@@ -39,9 +39,9 @@ public class DeathMenu : MonoBehaviour
     private void ResetSave()
     {
         // RESETTING THE QUESTS
-        if (File.Exists(Path.Combine(Application.persistentDataPath, "SaveQuests.txt")))
+        if (File.Exists(Path.Combine(Application.persistentDataPath, "TestSaveQuests.txt")))
         {
-            string tempJson = File.ReadAllText(Path.Combine(Application.persistentDataPath, "SaveQuests.txt"));
+            string tempJson = File.ReadAllText(Path.Combine(Application.persistentDataPath, "TestSaveQuests.txt"));
             QuestList questList = JsonUtility.FromJson<QuestList>(tempJson);
             List<Quest> list = new List<Quest>();
             for (int i = 0; i < questList.quests.Length; i++)
@@ -52,7 +52,7 @@ public class DeathMenu : MonoBehaviour
             questList.quests = list.ToArray();
             string json = JsonUtility.ToJson(questList, true);
             // Reset the save and the live json files
-            File.WriteAllText(Path.Combine(Application.persistentDataPath, "SaveQuests.txt"), json);
+            File.WriteAllText(Path.Combine(Application.persistentDataPath, "TestSaveQuests.txt"), json);
             File.WriteAllText(Path.Combine(Application.persistentDataPath, "Quests.txt"), json);
         }
         // RESETTING THE DIALOGUE
