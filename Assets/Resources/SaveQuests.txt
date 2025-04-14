@@ -25,27 +25,27 @@
             "value": 1,
             "parts": [
                 {
-                    "description": "Head down to help the inn",
+                    "description": "Head down to help the inn south east of the statue in town",
                     "increment": "Jeff 0"
                 },
                 {
-                    "description": "Talk to Marlena on the north east side of town",
+                    "description": "Talk to Marlena on the north east side of Graville",
                     "increment": "Samantha 1"
                 },
                 {
-                    "description": "Bring Jack his lunch outside the eastern forest",
+                    "description": "Bring Jack his lunch outside the forest east of Graville",
                     "increment": "Marlena 1"
                 },
                 {
-                    "description": "Check back with Marlena",
+                    "description": "Check back with Marlena in Graville",
                     "increment": "Jack 1"
                 },
                 {
-                    "description": "Check if Samantha's seen the magic cat",
+                    "description": "Check if Samantha's seen the magic cat near the inn in Graville",
                     "increment": "Marlena 2"
                 },
                 {
-                    "description": "Check with Jack about heading through the forest",
+                    "description": "Check with Jack about heading through the forest east of Graville",
                     "increment": "Samantha 2"
                 },
                 {
@@ -53,23 +53,23 @@
                     "increment": "Jack 3"
                 },
                 {
-                    "description": "Explore the Forest trail",
+                    "description": "Explore the Forest trail north west of Graville",
                     "increment": "LoreDump 0"
                 },
                 {
-                    "description": "Explore the Mountain trail",
+                    "description": "Explore the Mountain trail north of Graville",
                     "increment": "MushroomLady 0"
                 },
                 {
-                    "description": "Explore the Desert trail",
+                    "description": "Explore the Desert trail south of Graville",
                     "increment": "SnowChest 0"
                 },
                 {
-                    "description": "Explore the Dungeon",
+                    "description": "Explore the Dungeon east of Graville",
                     "increment": "DesertChest 0"
                 },
                 {
-                    "description": "Defeat The Giant",
+                    "description": "Defeat The Giant on the church in Graville",
                     "increment": "DungeonChest 0"
                 },
                 {
@@ -84,11 +84,11 @@
             "value": 0,
             "parts": [
                 {
-                    "description": "Find the Scarecrow near the cornrows east of Graville.",
+                    "description": "Find the Scarecrow near the cornrows east of Graville",
                     "increment": "Ralph 0"
                 },
                 {
-                    "description": "Return to Ralph and sing the scarecrow’s song.",
+                    "description": "Return to Ralph and sing the scarecrow’s song",
                     "increment": "Scarecrow 1"
                 },
                 {
@@ -103,11 +103,11 @@
             "value": 0,
             "parts": [
                 {
-                    "description": "Take the seeds up to Lily’s garden.",
+                    "description": "Take the seeds up to Lily’s garden",
                     "increment": "Ezra 0"
                 },
                 {
-                    "description": "Return Lily’s flower to Ezra.",
+                    "description": "Return Lily’s flower to Ezra",
                     "increment": "Lily 1"
                 },
                 {
@@ -122,7 +122,7 @@
             "value": 0,
             "parts": [
                 {
-                    "description": "Locate the sword of power",
+                    "description": "Locate the sword of power in the desert south of Graville",
                     "increment": "DesertChest 0"
                 }
             ]
@@ -133,7 +133,7 @@
             "value": 0,
             "parts": [
                 {
-                    "description": "Locate the Magical Collar",
+                    "description": "Locate the Magical Collar in the dungeon east of Graville",
                     "increment": "DungeonChest 0"
                 }
             ]
@@ -144,7 +144,7 @@
             "value": 0,
             "parts": [
                 {
-                    "description": "Locate the Awesome Axe",
+                    "description": "Locate the Awesome Axe in the mountains north of Graville",
                     "increment": "SnowChest 0"
                 }
             ]
@@ -155,7 +155,7 @@
             "value": 0,
             "parts": [
                 {
-                    "description": "Talk to the hermit",
+                    "description": "Talk to the hermit in the forest north east of Graville",
                     "increment": "MushroomLady 0"
                 }
             ]

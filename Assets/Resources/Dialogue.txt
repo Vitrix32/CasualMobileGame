@@ -331,7 +331,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "You found the Awesome Axe! With Jack now wielding it, his heavy axe attack will be enhanced!",
+                    "option": "You found the Awesome Axe! With Jack now wielding it, his heavy axe attack will be enhanced! You are overwhelmed with the feeling you should save your progress...",
                     "increment": "BigAxe; SnowChest 1; LoreDump 3"
                 },
                 {
@@ -345,7 +345,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "You found the legendary sword! With you now wielding it, your slash attack will be enhanced!",
+                    "option": "You found the legendary sword! With you now wielding it, your slash attack will be enhanced! You are overwhelmed with the feeling you should save your progress...",
                     "increment": "SwordofPower; DesertChest 1; LoreDump 4"
                 },
                 {
@@ -363,9 +363,13 @@
                     "increment": "FungusFlinger; MushroomLady 1; LoreDump 2"
                 },
                 {
+                    "option": "You know I kind of feel like saving... do you?",
+                    "increment": "MushroomLady 2"
+                },
+                {
                     "option": "Also, look out for some of these COOL little gardens with a statue in the middle. There's one around every area. They usually don't have mushrooms though...",
-                    "increment": "MushroomLady 1"
-                }
+                    "increment": "MushroomLady 3"
+                },
                 {
                     "option": "We're in a mush room, hehe get it...",
                     "increment": "none"
@@ -377,7 +381,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "You found the magical collar! With the cat now wearing it, its Shadow Scratch will be enhanced!",
+                    "option": "You found the magical collar! With the cat now wearing it, its Shadow Scratch will be enhanced! You are overwhelmed with the feeling you should save your progress...",
                     "increment": "MagicalCollar; DungeonChest 1; Priest 1; LoreDump 5"
                 },
                 {
