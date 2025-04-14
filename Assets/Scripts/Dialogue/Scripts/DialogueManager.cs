@@ -92,13 +92,16 @@ public class DialogueManager : MonoBehaviour
         int j = 0;
         waitForTextScroll = false;
         click = false;
+        int lines = 0;
         for (int i = 0; i < s.Length; i++)
         {
             j++;
             if (s[i] == '`')
             {
+                Debug.Log(s[i]);
                 j = 0;
                 click = false;
+                waitForTextScroll = false;
 
                 while(!waitForTextScroll)
                 {
@@ -111,6 +114,7 @@ public class DialogueManager : MonoBehaviour
 
                 click = false;
                 dialogueText.text = "";
+                lines = 0;
                 /*
                 waitForTextScroll = false;
                 while (!waitForTextScroll)
@@ -129,7 +133,6 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                int lines = 0;
                 dialogueText.text += s[i];
                 if (j >= 80 && s[i] == ' ')
                 {

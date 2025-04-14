@@ -479,7 +479,7 @@
             "value": 0,
             "dialogue": [
                 {
-                    "option": "Oh, you've brought me my loyal cat who's been watching the statue for me. He must have sensed what's happened, this mystic lake's power is running out! The statue in town... is not a statue but a dangerous giant who I petrified in stone long ago, but once the magic in this lake runs out he'll break free! You four need to defeat him, an old... and crazy friend of mine who was collector of magic artifacts near the trail that heads north west out of town, you should ask them for help. I'll hold the spell as long as I can to buy you time!",
+                    "option": "Oh, you've brought me my loyal cat who's been watching the statue for me. He must have sensed what's happened, this mystic lake's power is running out! The statue in town... `is not a statue but a dangerous giant who I petrified in stone long ago, but once the magic in this lake runs out he'll break free! You four need to defeat him, an old... `and crazy friend of mine who was collector of magic artifacts near the trail that heads north west out of town, you should ask them for help. I'll hold the spell as long as I can to buy you time!",
                     "increment": "LoreDump 1"
                 },
                 {
