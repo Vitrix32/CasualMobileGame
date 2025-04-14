@@ -8782,7 +8782,7 @@ MonoBehaviour:
   - Poisoned
   statDescriptions:
   - While protected, the next received attack will do half its normal damage.
-  - While empowered, the next attack dealt will deal double its normal damage.
+  - While empowered, the next attack dealt will deal 50% more than its normal damage.
   - While weakened, the next attack dealt will do half its normal damage.
   - While poisoned, 5 damage will be sustained per round for 3 rounds. This effect
     does stack.
@@ -9126,9 +9126,9 @@ MonoBehaviour:
   - Weakened
   - Poisoned
   statDescriptions:
-  - While shielded, the next sustained attack will be completely blocked. There is
-    small chance of failure.
-  - While empowered, the next attack dealt will deal double its normal damage.
+  - While shielded, sustained attacks will be completely blocked. There is a chance
+    of failure upon which it will break.
+  - While empowered, the next attack dealt will deal 50% more than its normal damage.
   - While weakened, the next attack dealt will do half its normal damage.
   - While poisoned, 5 damage will be sustained per round for 3 rounds.
   activeStatDisplay: 0
