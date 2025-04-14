@@ -7302,7 +7302,7 @@ MonoBehaviour:
   - attackName: Shield
     button: {fileID: 1031101910}
     cooldown: 0
-    maxCooldown: 8
+    maxCooldown: 6
   - attackName: Empower
     button: {fileID: 2092465042}
     cooldown: 0

@@ -70,7 +70,7 @@ public class PlayerHealth : MonoBehaviour
     private bool isEmpowered = false;
     private float damageMultiplier = 1.0f;
     private bool isShieldActive = false;
-    private float shieldBlockChance = 0.75f;
+    private float shieldBlockChance = 0.66f;
     private bool skipEnemyTurn = false;
     private BattleMenu battleMenu;
     private GameObject debugMenu;
