@@ -168,7 +168,6 @@ public class PlayerHealth : MonoBehaviour
                 if (roll <= shieldBlockChance)
                 {
                     UpdateText("Your shield blocked the attack!");
-                    combatStats.GetComponent<CombatStats>().UnsetStat(0);
                     return;
                 }
                 else
@@ -452,7 +451,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void PerformEmpower()
     {
-        damageMultiplier = 2.0f;
+        damageMultiplier = 1.5f;
         isEmpowered = true;
 
         //Randomizer
