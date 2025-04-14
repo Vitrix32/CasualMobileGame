@@ -121,7 +121,7 @@ public class Enemy : MonoBehaviour
     {
         int var = GetVar(damageToDeal);
         int criticalDamage = Mathf.RoundToInt(damageToDeal * 1.5f + var);
-        player.UpdateText("The " + name + " performed a critical hit with " + attackName + "!");
+        player.UpdateText("The " + name + " critically hit with " + attackName + "!");
         audioSource.PlayOneShot(Resources.Load<AudioClip>(attackSounds[0]));
         player.TakeDamage(criticalDamage);  
     }
