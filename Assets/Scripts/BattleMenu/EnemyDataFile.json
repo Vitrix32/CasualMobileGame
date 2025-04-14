@@ -113,7 +113,7 @@
     {
       "Id": "12",
       "Name": "Raider",
-      "Hp": "40",
+      "Hp": "50",
       "Damage": "15",
       "LocID": "4",
       "Attacks": [ "Shield", "Heal", "Reg" ],
@@ -123,7 +123,7 @@
     {
       "Id": "13",
       "Name": "Snake",
-      "Hp": "35",
+      "Hp": "45",
       "Damage": "15",
       "LocID": "4",
       "Attacks": [ "Crit", "Heal", "Reg" ],
