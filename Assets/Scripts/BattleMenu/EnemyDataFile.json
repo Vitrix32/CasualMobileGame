@@ -78,7 +78,7 @@
       "LocID": "6",
       "Attacks": [ "Crit", "Heal", "Reg" ],
       "AttackNames": [ "Crushing Blow", "Terrifying Prescence", "Cleave" ],
-      "AudioClips": ["SoundEffects/Creatures/", "SoundEffects/Creatures/", "SoundEffects/Creatures/"]
+      "AudioClips": ["SoundEffects/BladedWeapons/Stab", "SoundEffects/Creatures/zapsplat_fantasy_giant_angry_growl_001_15419", "SoundEffects/BladedWeapons/Stab"]
     },
     {
       "Id": "9",
