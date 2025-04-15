@@ -31,43 +31,43 @@ public class Help : MonoBehaviour
         switch (index) 
         { 
             case 0:
-                str = "In combat, your party fights a single enemy. Both receive an action per round.";
+                str = "In combat, your party fights a single enemy. Both receive one action per round.";
                 break;
             case 1:
-                str = "There are three categories of actions your party can take:\n-Attacks\n-Spells\n-Flee";
+                str = "There are three categories of ACTIONS your party can take:\n-ATTACKS\n-SPELLS\n-FLEE";
                 break;
             case 2:
-                str = "Some actions apply status effects. These are displayed above the party and enemy healthbars and can be tapped for more information.";
+                str = "Some actions apply STATUS EFFECTS. These are displayed above the party and enemy healthbars. TAP THEM for more information.";
                 break;
             case 3:
-                str = "Most actions have a cooldown that is displayed with the action. During this cooldown, the action cannot be used.";
+                str = "Most actions have a COOLDOWN that is displayed with the action. During this cooldown, the action cannot be used.";
                 break;
             case 4:
-                str = "In general, actions that deal damage have a small variation in the damage they deal.";
+                str = "In general, actions that deal DAMAGE have a small VARIATION in the damage they deal.";
                 break;
             case 5:
-                str = "There are four attacks you can choose. Each attack corresponds to a party member.";
+                str = "There are FOUR ATTACKS you can choose. Each attack corresponds to a party member.";
                 break;
             case 6:
-                str = "Slash- Deals standard damage to the enemy.\nShadow Scratch- Deals half damage to the enemy and applies the poison effect.";
+                str = "SLASH- Deals STANDARD damage to the enemy.\nSHADOW SCRATCH- Deals HALF damage to the enemy and applies the POISON effect.";
                 break;
             case 7:
-                str = "Heavy Axe- Deals double damage to the enemy.\nSharp Shot- Deals half damage to the enemy and applies the weakeness effect.";
+                str = "HEAVY AXE- Deals DOUBLE damage to the enemy.\nSHARP SHOT- Deals HALF damage to the enemy and applies the WEAKNESS effect.";
                 break;
             case 8:
-                str = "There are four spells you can choose. Most are defensive in their nature.";
+                str = "There are FOUR SPELLS you can choose. Most are defensive in their nature.";
                 break;
             case 9:
-                str = "Inspire- Heals the party for a small amount and applies the empower effect to the party.\nHealing Winds- Heals the party for a large amount.";
+                str = "INSPIRE- HEALS the party for a SMALL amount and applies the EMPOWER effect to the party.\nHEALING WINDS- HEALS the party for a LARGE amount.";
                 break;
             case 10:
-                str = "Shield Party- Applies the shield effect to the party.\nTime rift- Deals half damage and skips the enemy's turn.";
+                str = "SHIELD PARTY- Applies the SHIELD effect to the party.\nTIME RIFT- Deals HALF damage and SKIPS the enemy's turn.";
                 break;
             case 11:
-                str = "The final action you can take is flee. Fleeing will allow the party to escape combat and return to their quest.";
+                str = "The final action you can take is FLEE. Fleeing will allow the party to ESCAPE combat and return to their quest.";
                 break;
             case 12:
-                str = "Fleeing is not guarenteed to succeed. Failing will damage the party and forfeit their action for the round. Fleeing should be a last resort";
+                str = "Fleeing can FAIL. A failed flee attempt will DAMAGE the party and FORFEIT their action for the round. Fleeing should be a LAST RESORT.";
                 break;
             case 13:
                 str = "Combat will end upon a successful flee, the death of the enemy, or the death of the party.";
