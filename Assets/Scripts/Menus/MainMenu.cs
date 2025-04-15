@@ -50,8 +50,8 @@ public class MainMenu : MonoBehaviour
     public void StartNewGame()
     {
         SceneManager.LoadScene(gameSceneName);
-        PlayerPrefs.SetFloat("XPos", 243);
-        PlayerPrefs.SetFloat("YPos", -13);
+        PlayerPrefs.SetFloat("XPos", 243.0f);
+        PlayerPrefs.SetFloat("YPos", -13.0f);
     }
 
     public void LoadGame()

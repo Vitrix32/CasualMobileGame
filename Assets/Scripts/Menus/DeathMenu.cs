@@ -103,8 +103,8 @@ public class DeathMenu : MonoBehaviour
             // PlayerPrefs.SetInt("Health", 50);
         }
 
-        PlayerPrefs.SetFloat("XPos", 0);
-        PlayerPrefs.SetFloat("YPos", 0);
+        PlayerPrefs.SetFloat("XPos", 243);
+        PlayerPrefs.SetFloat("YPos", -13);
         /*
          * LOCATION ID - KEY
          * Fill in as needed, if we need to have unique combat encounters. 
