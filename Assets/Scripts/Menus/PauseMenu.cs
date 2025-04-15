@@ -42,11 +42,6 @@ public class PauseMenu : MonoBehaviour
         Directory.CreateDirectory(Path.GetDirectoryName(dialoguePath));
     }
 
-    void Update()
-    {
-        
-    }
-
     public void PauseGame()
     {
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
@@ -70,7 +65,6 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveAndExitToMenu()
     {
-        Debug.Log("SaveAndExitToMenu called");
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         SaveGame();
         StartCoroutine(LoadMainMenuWithDelay());
@@ -78,16 +72,13 @@ public class PauseMenu : MonoBehaviour
 
     public void DontSaveAndExitToMenu()
     {
-        Debug.Log("DontSaveAndExitToMenu called");
         WorldPlayer.GetComponent<UniversalAudioHandling>().ButtonPressed();
         StartCoroutine(LoadMainMenuWithDelay());
     }
 
     private IEnumerator LoadMainMenuWithDelay()
     {
-        Debug.Log("Starting delay before scene load");
         yield return new WaitForSecondsRealtime(0.4f);
-        Debug.Log("Delay complete, calling GoToMainMenu");
         GoToMainMenu();
     }
 

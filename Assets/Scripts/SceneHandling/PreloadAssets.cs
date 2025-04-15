@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,6 +31,11 @@ public class PreloadAssets : MonoBehaviour
     IEnumerator VersePresentation()
     {
         yield return new WaitForSeconds(additionalDelay);
+        StartCoroutine(FadeVerse(1.0f, fadeDuration));
+        yield return new WaitForSeconds(fadeDuration + presentationDuration);
+        StartCoroutine(FadeVerse(0.0f, fadeDuration));
+        yield return new WaitForSeconds(fadeDuration + additionalDelay);
+        verseText.GetComponent<TMP_Text>().text = "1 Thessalonians 5:11\r\n\r\nTherefore encourage one another and build one another up, just as you are doing.";
         StartCoroutine(FadeVerse(1.0f, fadeDuration));
         yield return new WaitForSeconds(fadeDuration + presentationDuration);
         StartCoroutine(FadeVerse(0.0f, fadeDuration));

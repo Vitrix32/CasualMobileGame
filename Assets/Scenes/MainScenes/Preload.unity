@@ -432,11 +432,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1 Thessalonians 5:11
+  m_text: 'This game does not have an autosave feature.
 
-
-    "Therefore encourage one another and build
-    one another up, just as you are doing."'
+    Make sure to manually
+    save your progress in the pause menu.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee1b09cdf365f40f197ddd58b173b78d, type: 2}
   m_sharedMaterial: {fileID: -1136047220913946401, guid: ee1b09cdf365f40f197ddd58b173b78d, type: 2}
@@ -2211,7 +2210,7 @@ MonoBehaviour:
   verseText: {fileID: 186413959}
   additionalDelay: 1
   fadeDuration: 2
-  presentationDuration: 3
+  presentationDuration: 1
 --- !u!1 &1752658909
 GameObject:
   m_ObjectHideFlags: 0

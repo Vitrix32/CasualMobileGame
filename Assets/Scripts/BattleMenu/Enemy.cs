@@ -157,7 +157,7 @@ public class Enemy : MonoBehaviour
         float actionRoll = Random.Range(0f, 1f);
         int damageToDeal = attackDamage;
 
-        if (actionRoll <= 0.15f)
+        if (actionRoll <= 0.10f)
         {
             switch(attacks[0])
             {
@@ -187,7 +187,7 @@ public class Enemy : MonoBehaviour
                     break;
             }
         }
-        else if (actionRoll <= 0.35f)
+        else if (actionRoll <= 0.30f)
         {
             switch(attacks[1])
             {
