@@ -35,12 +35,16 @@ public class EnemySpawner : MonoBehaviour
     // This method will spawn the enemy at a random spawn point
     void SpawnEnemy()
     {
-        Vector3 spawnOffset = new Vector3(9f, 0.25f, 0f); // Adjust as needed
+        // Get the main camera
+        Camera mainCamera = Camera.main;
+        
+        // Calculate spawn position based on screen width
+        float screenWidth = mainCamera.orthographicSize * mainCamera.aspect;
+        float horizontalOffset = screenWidth * 0.90f; // Adjust percentage as needed
+        Vector3 spawnOffset = new Vector3(horizontalOffset, 0.25f, 0f);
 
-        Vector3 spawnPoint = player.position + spawnOffset;
-        //Debug.Log(player.position);
-        //Debug.Log(spawnPoint);
-        //Debug.Log("text of enemy.json" + enemyJson.text);
+        Vector3 spawnPosition = player.position + spawnOffset;
+        
         // Dynamically load the enemy prefab using the provided name
         GameObject enemyPrefab = Resources.Load<GameObject>("Enemies/" + enemyPrefabName);
 
@@ -62,10 +66,10 @@ public class EnemySpawner : MonoBehaviour
             spriteRenderer.sprite = newSprite;
         }
 
-        if (enemyPrefab != null && spawnPoint != null)
+        if (enemyPrefab != null)
         {
-            // Instantiate the enemy at the spawn point's position and rotation
-            Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+            // Instantiate the enemy at the calculated position
+            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
         }
     }
 
