@@ -31,6 +31,7 @@ public class DataInitializer : MonoBehaviour
 
         // Initialize health
         CopyDefaultIfNotExists("CurrentHealth.json");
+        CopyDefaultIfNotExists("SaveCurrentHealth.json");
         
         // Log persistentDataPath contents for debugging
         // LogDirectoryContents(Application.persistentDataPath);
@@ -59,6 +60,7 @@ public class DataInitializer : MonoBehaviour
 
         // Initialize health
         CopyDefaultIfNotExists("CurrentHealth.json", true);
+        CopyDefaultIfNotExists("SaveCurrentHealth.json", true);
         
         // Log persistentDataPath contents for debugging
         // LogDirectoryContents(Application.persistentDataPath);

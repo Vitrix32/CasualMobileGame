@@ -24,8 +24,9 @@ public class HealthManager : MonoBehaviour
     public const float MAX_HEALTH = 50f;
     private float _currentHealth;
     
-    // Update the path to use a filename without a directory structure
+    // Add a second filename for saved health
     private readonly string SAVE_FILENAME = "CurrentHealth.json";
+    private readonly string BACKUP_SAVE_FILENAME = "SaveCurrentHealth.json";
 
     private void Awake()
     {
@@ -104,5 +105,36 @@ public class HealthManager : MonoBehaviour
         
         File.WriteAllText(path, json);
         Debug.Log($"Saved health: {_currentHealth} to {path}");
+    }
+
+    // Add a method to backup current health
+    public void BackupCurrentHealth()
+    {
+        string livePath = Path.Combine(Application.persistentDataPath, SAVE_FILENAME);
+        string savePath = Path.Combine(Application.persistentDataPath, BACKUP_SAVE_FILENAME);
+        
+        if (File.Exists(livePath))
+        {
+            File.Copy(livePath, savePath, true);
+            Debug.Log($"Backed up health file from {livePath} to {savePath}");
+        }
+    }
+    
+    // Add a method to restore from backup
+    public void RestoreFromBackup()
+    {
+        string savePath = Path.Combine(Application.persistentDataPath, BACKUP_SAVE_FILENAME);
+        
+        if (File.Exists(savePath))
+        {
+            string json = File.ReadAllText(savePath);
+            SaveData data = JsonUtility.FromJson<SaveData>(json);
+            SetHealth(data.currentHealth);
+            Debug.Log($"Restored health from backup: {_currentHealth}");
+        }
+        else
+        {
+            Debug.LogWarning("No health backup file found. Health remains unchanged.");
+        }
     }
 }

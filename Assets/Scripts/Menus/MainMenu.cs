@@ -135,6 +135,9 @@ public class MainMenu : MonoBehaviour
             {
                 Debug.LogWarning($"SavePlayerStats.txt not found at {savePlayerStatsPath}");
             }
+
+            // Restore health from backup
+            HealthManager.Instance.RestoreFromBackup();
         }
         catch (System.Exception e)
         {

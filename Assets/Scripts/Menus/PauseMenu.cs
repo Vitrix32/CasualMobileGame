@@ -109,6 +109,9 @@ public class PauseMenu : MonoBehaviour
     {
         SetObjectsToLiveJSON();
 
+        // Back up current health
+        HealthManager.Instance.BackupCurrentHealth();
+        
         PlayerPrefs.SetInt("SaveLocID", PlayerPrefs.GetInt("LocID"));
 
 

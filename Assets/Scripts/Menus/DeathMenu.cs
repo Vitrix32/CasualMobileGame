@@ -123,9 +123,9 @@ public class DeathMenu : MonoBehaviour
         PlayerPrefs.SetString("SceneName", "GameplayScene");
         PlayerPrefs.SetInt("DunBoss", 0);
         PlayerPrefs.SetInt("FinBoss", 0);
-
-        // Reset current health
+    
         HealthManager.Instance.SetHealth(HealthManager.MAX_HEALTH);
+
 
         return;
     }
