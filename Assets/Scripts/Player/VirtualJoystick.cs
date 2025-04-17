@@ -20,6 +20,8 @@ public class Joystick : MonoBehaviour
     private bool dynamicJoystick = true;
     [SerializeField, Tooltip("Area where joystick can be activated (0-1 range of screen height)")]
     private float touchableAreaHeight = 0.7f;
+    [SerializeField, Tooltip("Horizontal limit for joystick (0-1 range of screen width)")]
+    private float touchableAreaWidth = 0.33f;
     [SerializeField, Tooltip("Time in seconds to determine if a touch is a tap or drag")]
     private float tapThreshold = 0.2f;
     [SerializeField, Tooltip("Distance in pixels to determine if a touch is a tap or drag")]
@@ -106,8 +108,9 @@ public class Joystick : MonoBehaviour
         if (playerFinger == null)
             return;
             
-        // Check if touch is in the lower part of the screen
-        bool validTouchArea = playerFinger.screenPosition.y < Screen.height * touchableAreaHeight;
+        // Check if touch is in the lower part of the screen and left third
+        bool validTouchArea = playerFinger.screenPosition.y < Screen.height * touchableAreaHeight && 
+                              playerFinger.screenPosition.x < Screen.width * touchableAreaWidth;
         
         if (dynamicJoystick && validTouchArea)
         {
@@ -124,6 +127,10 @@ public class Joystick : MonoBehaviour
         }
         else if (!dynamicJoystick)
         {
+            // For static joystick, only respond to touches within left third if enabled
+            if (playerFinger.screenPosition.x > Screen.width * touchableAreaWidth)
+                return;
+                
             // Original static joystick behavior
             if (RectTransformUtility.RectangleContainsScreenPoint(joystickTransform, playerFinger.screenPosition))
             {
@@ -261,9 +268,17 @@ public class Joystick : MonoBehaviour
     
     private void PositionJoystickAtScreenPoint(Vector2 screenPoint)
     {
+        // Constrain X position to stay within the left third of the screen
+        float maxX = Screen.width * touchableAreaWidth;
+        float halfJoystickWidth = joystickSize.x / 2.0f;
+        
+        // Make sure joystick stays fully visible
+        float clampedX = Mathf.Clamp(screenPoint.x, halfJoystickWidth, maxX - halfJoystickWidth);
+        Vector2 constrainedPosition = new Vector2(clampedX, screenPoint.y);
+        
         if (parentCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
         {
-            joystickTransform.position = screenPoint;
+            joystickTransform.position = constrainedPosition;
         }
         else
         {
@@ -271,7 +286,7 @@ public class Joystick : MonoBehaviour
             Vector2 localPoint;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
                 parentCanvas.GetComponent<RectTransform>(),
-                screenPoint,
+                constrainedPosition,
                 parentCanvas.worldCamera,
                 out localPoint);
                 
