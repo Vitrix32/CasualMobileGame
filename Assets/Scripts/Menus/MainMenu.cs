@@ -44,7 +44,7 @@ public class MainMenu : MonoBehaviour
         LoadGameButton.SetActive(true);
         NewGameButton.SetActive(true);
         OptionsButton.SetActive(true);
-        QuitButton.SetActive(true);
+        //QuitButton.SetActive(true);
     }
 
     public void StartNewGame()

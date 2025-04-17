@@ -231,7 +231,7 @@
                     "increment": "none"
                 },
                 {
-                    "option": "*insert short song here*",
+                    "option": "Mmm-mm-hmm! Tra-la-la—",
                     "increment": "Ralph 2"
                 }
             ]
